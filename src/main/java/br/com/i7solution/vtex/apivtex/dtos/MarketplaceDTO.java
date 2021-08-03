@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class MarketplaceDTO {
+import java.io.Serializable;
+
+public class MarketplaceDTO implements Serializable {
 
 	private String baseURL;
 	private String isCertified;

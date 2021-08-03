@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class ShippingDataDTO {
+import java.io.Serializable;
+
+public class ShippingDataDTO implements Serializable {
 
 	private String id;
 	private AdressDTO shippingDataAdress[];

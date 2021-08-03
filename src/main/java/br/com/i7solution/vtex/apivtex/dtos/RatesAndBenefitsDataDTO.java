@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class RatesAndBenefitsDataDTO {
+import java.io.Serializable;
+
+public class RatesAndBenefitsDataDTO implements Serializable {
 
 	private String id;
 	private String rateAndBenefitsIdentifiers;

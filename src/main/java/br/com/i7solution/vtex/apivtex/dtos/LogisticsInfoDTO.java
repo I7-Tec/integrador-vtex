@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class LogisticsInfoDTO {
+import java.io.Serializable;
+
+public class LogisticsInfoDTO implements Serializable {
 
 	private Integer itemIndex;
 	private String selectedSla;

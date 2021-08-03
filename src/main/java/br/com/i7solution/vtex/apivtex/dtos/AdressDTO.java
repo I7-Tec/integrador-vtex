@@ -1,6 +1,6 @@
 package br.com.i7solution.vtex.apivtex.dtos;
-
-public class AdressDTO {
+import java.io.Serializable;
+public class AdressDTO implements Serializable  {
 
 	private String addressType;
 	private String receiverName;

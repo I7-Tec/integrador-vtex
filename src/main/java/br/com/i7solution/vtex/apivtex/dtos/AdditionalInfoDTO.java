@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class AdditionalInfoDTO {
+import java.io.Serializable;
+
+public class AdditionalInfoDTO implements Serializable{
 
 	private String brandName;
 	private String brandId;

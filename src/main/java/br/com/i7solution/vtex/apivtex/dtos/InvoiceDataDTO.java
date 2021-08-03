@@ -1,8 +1,9 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class InvoiceDataDTO {
+public class InvoiceDataDTO implements Serializable {
 
 	private Date date;
 	private String orderId;

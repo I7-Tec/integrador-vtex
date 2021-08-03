@@ -2,20 +2,20 @@ package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
 
-public class DimensionDTO implements Serializable {
+public class SkuDimensionDTO implements Serializable {
 
-	private Float cubicWeight;
+	private Double cubicweight;
 	private Double height;
 	private Double length;
 	private Double weight;
 	private Double width;
 
-	public Float getCubicWeight() {
-		return cubicWeight;
+	public Double getCubicweight() {
+		return cubicweight;
 	}
 
-	public void setCubicWeight(Float cubicWeight) {
-		this.cubicWeight = cubicWeight;
+	public void setCubicweight(Double cubicweight) {
+		this.cubicweight = cubicweight;
 	}
 
 	public Double getHeight() {

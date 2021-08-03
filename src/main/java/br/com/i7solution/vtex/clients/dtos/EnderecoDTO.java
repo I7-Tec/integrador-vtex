@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.clients.dtos;
 
-public class EnderecoDTO {
+import java.io.Serializable;
+
+public class EnderecoDTO implements Serializable {
 
 	private Long id;
 	private Integer numero;

@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class ItemAttachmentDTO {
+import java.io.Serializable;
+
+public class ItemAttachmentDTO implements Serializable {
 
 	private String content;
 	private String name;

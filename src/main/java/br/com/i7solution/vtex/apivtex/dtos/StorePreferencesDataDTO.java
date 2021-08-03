@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class StorePreferencesDataDTO {
+import java.io.Serializable;
+
+public class StorePreferencesDataDTO implements Serializable{
 	
 	private String	countryCode;
 	private String	currencyCode;

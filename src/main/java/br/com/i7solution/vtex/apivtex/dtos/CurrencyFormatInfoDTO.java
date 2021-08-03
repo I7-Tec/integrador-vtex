@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class CurrencyFormatInfoDTO {
+import java.io.Serializable;
+
+public class CurrencyFormatInfoDTO implements Serializable{
 
 	private Integer currencyDecimalDigits;
 	private String currencyDecimalSeparator;

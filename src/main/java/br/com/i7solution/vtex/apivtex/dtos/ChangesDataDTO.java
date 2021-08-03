@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class ChangesDataDTO {
+import java.io.Serializable;
+
+public class ChangesDataDTO implements Serializable {
 	private String reason;
 	private Double discountValue;
 	private Double incrementValue;

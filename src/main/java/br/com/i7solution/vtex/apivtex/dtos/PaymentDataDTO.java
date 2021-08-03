@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class PaymentDataDTO {
+import java.io.Serializable;
+
+public class PaymentDataDTO implements Serializable {
 
 	private TransactionsDTO transactions[] ;
 

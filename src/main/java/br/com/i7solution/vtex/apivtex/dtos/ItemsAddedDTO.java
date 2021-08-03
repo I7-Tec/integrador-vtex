@@ -1,6 +1,8 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
-public class ItemsAddedDTO {
+import java.io.Serializable;
+
+public class ItemsAddedDTO implements Serializable {
 
 	private String id;
 	private Double price;
