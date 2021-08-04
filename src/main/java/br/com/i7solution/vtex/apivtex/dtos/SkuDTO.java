@@ -19,7 +19,7 @@ public class SkuDTO implements Serializable {
 	private String cSCIdentification;
 	private String brandId;
 	private String brandName;
-	private SkuDimensionDTO dimension[];
+    private SkuDimensionDTO dimension[];
 	private RealDimensionDTO realDimension;
 	private String manufacturerCode;
 	private Boolean isKit;

@@ -16,7 +16,7 @@ public class AdressDTO implements Serializable {
 	private String neighborhood;
 	private String complement;
 	private String reference;
-	private String geoCoordinates;
+	private String geoCoordinates[];
 
 	public String getAddressType() {
 		return addressType;
@@ -114,11 +114,11 @@ public class AdressDTO implements Serializable {
 		this.reference = reference;
 	}
 
-	public String getGeoCoordinates() {
+	public String[] getGeoCoordinates() {
 		return geoCoordinates;
 	}
 
-	public void setGeoCoordinates(String geoCoordinates) {
+	public void setGeoCoordinates(String[] geoCoordinates) {
 		this.geoCoordinates = geoCoordinates;
 	}
 

@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class RatesAndBenefitsDataDTO implements Serializable {
 
 	private String id;
-	private String rateAndBenefitsIdentifiers;
+	private String rateAndBenefitsIdentifiers[];
 
 	public String getId() {
 		return id;
@@ -15,11 +15,11 @@ public class RatesAndBenefitsDataDTO implements Serializable {
 		this.id = id;
 	}
 
-	public String getRateAndBenefitsIdentifiers() {
+	public String[] getRateAndBenefitsIdentifiers() {
 		return rateAndBenefitsIdentifiers;
 	}
 
-	public void setRateAndBenefitsIdentifiers(String rateAndBenefitsIdentifiers) {
+	public void setRateAndBenefitsIdentifiers(String[] rateAndBenefitsIdentifiers) {
 		this.rateAndBenefitsIdentifiers = rateAndBenefitsIdentifiers;
 	}
 

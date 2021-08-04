@@ -14,9 +14,9 @@ public class LogisticsInfoDTO implements Serializable {
 	private String deliveryCompany;
 	private String shippingEstimate;
 	private String shippingEstimateDate;
-	private String slas;
-	private String shipsTo;
-	private String deliveryIds;
+	private String slas[];
+	private String shipsTo[];
+	private String deliveryIds[];
 	private String deliveryChannel;
 	private String pickupStoreInfo;
 	private String addressId;
@@ -102,27 +102,27 @@ public class LogisticsInfoDTO implements Serializable {
 		this.shippingEstimateDate = shippingEstimateDate;
 	}
 
-	public String getSlas() {
+	public String[] getSlas() {
 		return slas;
 	}
 
-	public void setSlas(String slas) {
+	public void setSlas(String[] slas) {
 		this.slas = slas;
 	}
 
-	public String getShipsTo() {
+	public String[] getShipsTo() {
 		return shipsTo;
 	}
 
-	public void setShipsTo(String shipsTo) {
+	public void setShipsTo(String[] shipsTo) {
 		this.shipsTo = shipsTo;
 	}
 
-	public String getDeliveryIds() {
+	public String[] getDeliveryIds() {
 		return deliveryIds;
 	}
 
-	public void setDeliveryIds(String deliveryIds) {
+	public void setDeliveryIds(String[] deliveryIds) {
 		this.deliveryIds = deliveryIds;
 	}
 

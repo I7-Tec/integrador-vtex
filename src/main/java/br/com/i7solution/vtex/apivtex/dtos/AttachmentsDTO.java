@@ -11,6 +11,7 @@ public class AttachmentsDTO implements Serializable {
 	private Integer price;
 	private Integer listPrice;
 	private String manualPrice;
+	private String keys[];
 
 	public Integer getQuantity() {
 		return quantity;
@@ -66,6 +67,14 @@ public class AttachmentsDTO implements Serializable {
 
 	public void setManualPrice(String manualPrice) {
 		this.manualPrice = manualPrice;
+	}
+
+	public String[] getKeys() {
+		return keys;
+	}
+
+	public void setKeys(String keys[]) {
+		this.keys = keys;
 	}
 
 }

@@ -26,7 +26,7 @@ public class OrderDTO implements Serializable {
 	private String orderGroup;
 	private TotalsDTO totals[];
 	private ItemsDTO items[];
-	private String marketplaceItems;
+	private String marketplaceItems[];
 	private ClientProfileDataDTO clientProfileData[];
 	private String giftRegistryData;
 	private String marketingData;
@@ -223,11 +223,11 @@ public class OrderDTO implements Serializable {
 		this.items = items;
 	}
 
-	public String getMarketplaceItems() {
+	public String[] getMarketplaceItems() {
 		return marketplaceItems;
 	}
 
-	public void setMarketplaceItems(String marketplaceItems) {
+	public void setMarketplaceItems(String[] marketplaceItems) {
 		this.marketplaceItems = marketplaceItems;
 	}
 
