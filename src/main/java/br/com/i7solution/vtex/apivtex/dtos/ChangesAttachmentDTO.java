@@ -2,7 +2,7 @@ package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
 
-public class ChangesAttachmentDTO implements Serializable{
+public class ChangesAttachmentDTO implements Serializable {
 
 	private String id;
 	private ChangesDataDTO changesData[];
