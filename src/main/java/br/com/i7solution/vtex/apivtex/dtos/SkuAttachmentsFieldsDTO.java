@@ -2,7 +2,7 @@ package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
 
-public class SkuAttachmentsFieldsDTO implements Serializable{
+public class SkuAttachmentsFieldsDTO implements Serializable {
 
 	private String fieldName;
 	private String maxCaracters;

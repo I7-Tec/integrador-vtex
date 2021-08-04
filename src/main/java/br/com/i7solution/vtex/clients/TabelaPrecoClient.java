@@ -8,9 +8,9 @@ import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.TabelaPrecoDTO;
 
 public class TabelaPrecoClient {
-	
-	public TabelaPrecoDTO getTabelaPrecoPorIds(String idProduto , String idFilial) {
-		String url = DadosVtex.url + "/catalog/category/" + idProduto+ idFilial + "?an=" + DadosVtex.sellers;
+
+	public TabelaPrecoDTO getTabelaPrecoPorIds(String idProduto, String idFilial) {
+		String url = DadosVtex.url + "/catalog/category/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<TabelaPrecoDTO> response = null;
 		try {
@@ -23,8 +23,8 @@ public class TabelaPrecoClient {
 		return response.getBody();
 	}
 
-	public TabelaPrecoDTO putTabelaPrecoPorIds(String idProduto , String idFilial, TabelaPrecoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + idProduto+ idFilial + "?an=" + DadosVtex.sellers;
+	public TabelaPrecoDTO putTabelaPrecoPorIds(String idProduto, String idFilial, TabelaPrecoDTO dados) {
+		String url = DadosVtex.url + "/catalog/price/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<TabelaPrecoDTO> response = null;
 		try {
@@ -37,7 +37,7 @@ public class TabelaPrecoClient {
 		return response.getBody();
 	}
 
-	public TabelaPrecoDTO postTabelaPrecoPorIds(String idProduto , String idFilial, TabelaPrecoDTO dados) {
+	public TabelaPrecoDTO postTabelaPrecoPorIds(String idProduto, String idFilial, TabelaPrecoDTO dados) {
 		String url = DadosVtex.url + "/catalog/price/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		Unirest.setTimeouts(0, 0);
 		HttpResponse<TabelaPrecoDTO> response = null;

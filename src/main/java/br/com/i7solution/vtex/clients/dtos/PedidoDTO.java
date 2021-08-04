@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class PedidoDTO implements Serializable {
-	
+
 	private String id;
 	private String filial;
 	private String cliente;

@@ -8,7 +8,7 @@ import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 
 public class ProdutoClient {
-	
+
 	public ProdutoDTO getProdutoPorId(String id) {
 		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
 		Unirest.setTimeouts(0, 0);
@@ -52,5 +52,3 @@ public class ProdutoClient {
 	}
 
 }
-
-

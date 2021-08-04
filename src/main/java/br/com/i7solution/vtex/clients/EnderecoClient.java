@@ -8,7 +8,7 @@ import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 
 public class EnderecoClient {
-	
+
 	public EnderecoDTO getEnderecoPorId(String id) {
 		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
 		Unirest.setTimeouts(0, 0);

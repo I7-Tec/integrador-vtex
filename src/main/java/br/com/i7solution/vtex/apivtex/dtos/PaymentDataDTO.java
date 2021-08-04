@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class PaymentDataDTO implements Serializable {
 
-	private TransactionsDTO transactions[] ;
+	private TransactionsDTO transactions[];
 
 	public TransactionsDTO[] getTransactions() {
 		return transactions;

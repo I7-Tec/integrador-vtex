@@ -3,8 +3,8 @@ package br.com.i7solution.vtex.apivtex.dtos;
 import java.io.Serializable;
 
 public class PackageAttachmentDTO implements Serializable {
-	   
-	private String packages ;
+
+	private String packages;
 
 	public String getPackages() {
 		return packages;
