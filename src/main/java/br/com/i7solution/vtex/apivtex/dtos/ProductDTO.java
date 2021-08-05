@@ -25,6 +25,8 @@ public class ProductDTO implements Serializable {
 	private Integer listStoreId[];
 	private String adWordsRemarketingCode;
 	private String lomadeeCampaignCode;
+	private Integer store ;
+    
 
 	public Integer getId() {
 		return id;
@@ -192,6 +194,14 @@ public class ProductDTO implements Serializable {
 
 	public void setLomadeeCampaignCode(String lomadeeCampaignCode) {
 		this.lomadeeCampaignCode = lomadeeCampaignCode;
+	}
+
+	public Integer getStore() {
+		return store;
+	}
+
+	public void setStore(Integer store) {
+		this.store = store;
 	}
 
 }

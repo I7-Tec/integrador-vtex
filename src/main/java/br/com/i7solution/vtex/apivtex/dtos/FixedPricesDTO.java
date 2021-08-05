@@ -10,8 +10,8 @@ public class FixedPricesDTO implements Serializable {
 	private String listPrice;
 	private Integer minQuantity;
 	private Date dateRange[];
-	private String dateRangefrom;
-	private String dateRangeto;
+	private String dateRangefrom; // Validity start Date
+	private String dateRangeto; // Validity end Date
 
 	public String getTradePolicyId() {
 		return tradePolicyId;

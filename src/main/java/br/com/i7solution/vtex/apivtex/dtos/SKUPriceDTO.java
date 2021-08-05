@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class SKUPriceDTO implements Serializable {
 
-	private String itemId; //skuId
+	private String itemId; // skuId
 	private Integer listPrice;
 	private Integer costPrice;
 	private Integer markup;

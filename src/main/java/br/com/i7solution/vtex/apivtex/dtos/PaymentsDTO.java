@@ -12,9 +12,10 @@ public class PaymentsDTO implements Serializable {
 	private Integer installments;
 	private Double referenceValue;
 	private String cardHolder;
+	private String cardNumber;
 	private String firstDigits;
 	private String lastDigits;
-	private String url;
+	private String url; 
 	private String giftCardId;
 	private String giftCardName;
 	private String giftCardCaption;
@@ -22,6 +23,9 @@ public class PaymentsDTO implements Serializable {
 	private String group;
 	private String tid;
 	private Date dueDate;
+	private String cvv2;
+    private String expireMonth;
+	private String expireYear;
 
 	public String getId() {
 		return id;
@@ -157,6 +161,38 @@ public class PaymentsDTO implements Serializable {
 
 	public void setDueDate(Date dueDate) {
 		this.dueDate = dueDate;
+	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+
+	public String getCvv2() {
+		return cvv2;
+	}
+
+	public void setCvv2(String cvv2) {
+		this.cvv2 = cvv2;
+	}
+
+	public String getExpireMonth() {
+		return expireMonth;
+	}
+
+	public void setExpireMonth(String expireMonth) {
+		this.expireMonth = expireMonth;
+	}
+
+	public String getExpireYear() {
+		return expireYear;
+	}
+
+	public void setExpireYear(String expireYear) {
+		this.expireYear = expireYear;
 	}
 
 }
