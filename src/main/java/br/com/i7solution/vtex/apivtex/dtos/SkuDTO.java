@@ -4,12 +4,13 @@ import java.io.Serializable;
 
 public class SkuDTO implements Serializable {
 
-	private Integer id;
-	private Integer productId;
+	private String id;
+	private String productId;
 	private String nameComplete;
 	private String productName;
 	private String productDescription;
 	private String skuName;
+	private String ean;
 	private Boolean isActive;
 	private Boolean isTransported;
 	private Boolean isInventoried;
@@ -29,7 +30,7 @@ public class SkuDTO implements Serializable {
 	private SkuAttachmentsDTO skuAttachments[];
 	private String collections[];
 	private SkuSellersDTO skuSeller[];
-	private Integer salesChannels[];
+	private Long salesChannels[];
 	private ImagesDTO images[];
 	private String videos[];
 	private SkuSpecificationsDTO skuSpecifications[];
@@ -38,7 +39,7 @@ public class SkuDTO implements Serializable {
 	private String productCategoryIds;
 	private String productGlobalCategoryId;
 	private ProductCategoriesDTO productCategories;
-	private Integer commercialConditionId;
+	private Long commercialConditionId;
 	private Float rewardValue;
 	private AlternateIdsDTO alternateIds;
 	private String alternateIdValues[];
@@ -48,19 +49,19 @@ public class SkuDTO implements Serializable {
 	private String informationSource;
 	private String modalType;
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public Integer getProductId() {
+	public String getProductId() {
 		return productId;
 	}
 
-	public void setProductId(Integer productId) {
+	public void setProductId(String productId) {
 		this.productId = productId;
 	}
 
@@ -248,11 +249,11 @@ public class SkuDTO implements Serializable {
 		this.skuSeller = skuSeller;
 	}
 
-	public Integer[] getSalesChannels() {
+	public Long[] getSalesChannels() {
 		return salesChannels;
 	}
 
-	public void setSalesChannels(Integer[] salesChannels) {
+	public void setSalesChannels(Long[] salesChannels) {
 		this.salesChannels = salesChannels;
 	}
 
@@ -320,11 +321,11 @@ public class SkuDTO implements Serializable {
 		this.productCategories = productCategories;
 	}
 
-	public Integer getCommercialConditionId() {
+	public Long getCommercialConditionId() {
 		return commercialConditionId;
 	}
 
-	public void setCommercialConditionId(Integer commercialConditionId) {
+	public void setCommercialConditionId(Long commercialConditionId) {
 		this.commercialConditionId = commercialConditionId;
 	}
 
@@ -390,6 +391,14 @@ public class SkuDTO implements Serializable {
 
 	public void setModalType(String modalType) {
 		this.modalType = modalType;
+	}
+
+	public String getEan() {
+		return ean;
+	}
+
+	public void setEan(String ean) {
+		this.ean = ean;
 	}
 
 }

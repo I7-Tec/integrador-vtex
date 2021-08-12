@@ -5,9 +5,9 @@ import java.io.Serializable;
 public class SkuPriceDTO implements Serializable {
 
 	private String itemId; // skuId
-	private Integer listPrice;
-	private Integer costPrice;
-	private Integer markup;
+	private Double listPrice;
+	private Double costPrice;
+	private Double markup;
 	private Double basePrice;
 	private FixedPricesDTO fixedPrices[];
 
@@ -19,27 +19,27 @@ public class SkuPriceDTO implements Serializable {
 		this.itemId = itemId;
 	}
 
-	public Integer getListPrice() {
+	public Double getListPrice() {
 		return listPrice;
 	}
 
-	public void setListPrice(Integer listPrice) {
+	public void setListPrice(Double listPrice) {
 		this.listPrice = listPrice;
 	}
 
-	public Integer getCostPrice() {
+	public Double getCostPrice() {
 		return costPrice;
 	}
 
-	public void setCostPrice(Integer costPrice) {
+	public void setCostPrice(Double costPrice) {
 		this.costPrice = costPrice;
 	}
 
-	public Integer getMarkup() {
+	public Double getMarkup() {
 		return markup;
 	}
 
-	public void setMarkup(Integer markup) {
+	public void setMarkup(Double markup) {
 		this.markup = markup;
 	}
 

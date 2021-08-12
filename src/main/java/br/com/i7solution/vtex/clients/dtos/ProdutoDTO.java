@@ -15,7 +15,7 @@ public class ProdutoDTO implements Serializable {
 	private String codigoDeFabrica;
 	private String departamento;
 	private String secao;
-	private String categoria;
+	private String categoria[];
 	private String unidade;
 	private Boolean ativo;
 	private Boolean erro;
@@ -108,11 +108,11 @@ public class ProdutoDTO implements Serializable {
 		this.secao = secao;
 	}
 
-	public String getCategoria() {
+	public String[] getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(String[] categoria) {
 		this.categoria = categoria;
 	}
 

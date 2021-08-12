@@ -25,8 +25,7 @@ public class ProductDTO implements Serializable {
 	private Integer listStoreId[];
 	private String adWordsRemarketingCode;
 	private String lomadeeCampaignCode;
-	private Integer store ;
-    
+	private Integer store;
 
 	public Integer getId() {
 		return id;

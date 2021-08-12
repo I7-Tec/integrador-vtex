@@ -6,13 +6,13 @@ public class EstoqueDTO implements Serializable {
 
 	private String idProduto;
 	private String idFilial;
-	private Integer quantidadeDisponivel;
-	private Integer quantidadeAvariada;
-	private Integer quantidadeReservada;
-	private Integer quantidadePendente;
-	private Integer quantidadeBloqueada;
-	private Integer quantidadeEmTransito;
-	private Integer quantidaGondola;
+	private Long quantidadeDisponivel;
+	private Long quantidadeAvariada;
+	private Long quantidadeReservada;
+	private Long quantidadePendente;
+	private Long quantidadeBloqueada;
+	private Long quantidadeEmTransito;
+	private Long quantidaGondola;
 	private boolean erro;
 
 	public String getIdProduto() {
@@ -31,59 +31,59 @@ public class EstoqueDTO implements Serializable {
 		this.idFilial = idFilial;
 	}
 
-	public Integer getQuantidadeDisponivel() {
+	public Long getQuantidadeDisponivel() {
 		return quantidadeDisponivel;
 	}
 
-	public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
+	public void setQuantidadeDisponivel(Long quantidadeDisponivel) {
 		this.quantidadeDisponivel = quantidadeDisponivel;
 	}
 
-	public Integer getQuantidadeAvariada() {
+	public Long getQuantidadeAvariada() {
 		return quantidadeAvariada;
 	}
 
-	public void setQuantidadeAvariada(Integer quantidadeAvariada) {
+	public void setQuantidadeAvariada(Long quantidadeAvariada) {
 		this.quantidadeAvariada = quantidadeAvariada;
 	}
 
-	public Integer getQuantidadeReservada() {
+	public Long getQuantidadeReservada() {
 		return quantidadeReservada;
 	}
 
-	public void setQuantidadeReservada(Integer quantidadeReservada) {
+	public void setQuantidadeReservada(Long quantidadeReservada) {
 		this.quantidadeReservada = quantidadeReservada;
 	}
 
-	public Integer getQuantidadePendente() {
+	public Long getQuantidadePendente() {
 		return quantidadePendente;
 	}
 
-	public void setQuantidadePendente(Integer quantidadePendente) {
+	public void setQuantidadePendente(Long quantidadePendente) {
 		this.quantidadePendente = quantidadePendente;
 	}
 
-	public Integer getQuantidadeBloqueada() {
+	public Long getQuantidadeBloqueada() {
 		return quantidadeBloqueada;
 	}
 
-	public void setQuantidadeBloqueada(Integer quantidadeBloqueada) {
+	public void setQuantidadeBloqueada(Long quantidadeBloqueada) {
 		this.quantidadeBloqueada = quantidadeBloqueada;
 	}
 
-	public Integer getQuantidadeEmTransito() {
+	public Long getQuantidadeEmTransito() {
 		return quantidadeEmTransito;
 	}
 
-	public void setQuantidadeEmTransito(Integer quantidadeEmTransito) {
+	public void setQuantidadeEmTransito(Long quantidadeEmTransito) {
 		this.quantidadeEmTransito = quantidadeEmTransito;
 	}
 
-	public Integer getQuantidaGondola() {
+	public Long getQuantidaGondola() {
 		return quantidaGondola;
 	}
 
-	public void setQuantidaGondola(Integer quantidaGondola) {
+	public void setQuantidaGondola(Long quantidaGondola) {
 		this.quantidaGondola = quantidaGondola;
 	}
 

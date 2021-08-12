@@ -1,17 +1,36 @@
 package br.com.i7solution.vtex.clients;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import java.util.List;
+
+import kong.unirest.GenericType;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
+import org.springframework.stereotype.Service;
 
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 
+@Service
 public class ProdutoClient {
+
+	public List<ProdutoDTO> getProdutos() {
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
+		HttpResponse<List<ProdutoDTO>> response = null;
+		try {
+			response = Unirest.get(url).header("Content-Type", "application/json")
+					.asObject(new GenericType<List<ProdutoDTO>>() {
+					});
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
+
+		return response.getBody();
+	}
 
 	public ProdutoDTO getProdutoPorId(String id) {
 		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		// Unirest.setTimeouts(0, 0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -25,7 +44,7 @@ public class ProdutoClient {
 
 	public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
 		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		// Unirest.setTimeouts(0,0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -39,7 +58,7 @@ public class ProdutoClient {
 
 	public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
 		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		// Unirest.setTimeouts(0,0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

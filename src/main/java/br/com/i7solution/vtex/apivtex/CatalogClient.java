@@ -110,4 +110,17 @@ public class CatalogClient {
 
 		return response.getBody();
 	}
+
+	public SkuDTO postSku(SkuDTO dados) {
+		String url = DadosVtex.url + "/catalog/sku?an=" + DadosVtex.sellers;
+		HttpResponse<SkuDTO> response = null;
+		try {
+			response = Unirest.post(url).header("Content-Type", "application/json")
+					.header("Authorization", DadosVtex.bearer).body(dados).asObject(SkuDTO.class);
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
+
+		return response.getBody();
+	}
 }
