@@ -83,10 +83,10 @@ public class VtexService {
 		if (prodsW.size() > 0) {
 			for (int i = 0; i <= prodsW.size(); i++) {
 				var prodY = new InventoryDTO();
-				/*prodY.setSkuId(prodsW.get(i).getIdProduto());
+				prodY.setSkuId(prodsW.get(i).getIdProduto());
 				prodY.setTotalQuantity(prodsW.get(i).getQuantidadeDisponivel());
 				prodY.setReservedQuantity(prodsW.get(i).getQuantidadeReservada());
-				prodY.setWarehouseId(prodsW.get(i).getIdFilial());*/
+				prodY.setWarehouseId(prodsW.get(i).getIdFilial());
 
 			}
 
