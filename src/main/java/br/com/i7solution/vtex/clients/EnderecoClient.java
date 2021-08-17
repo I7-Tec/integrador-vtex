@@ -1,8 +1,8 @@
 package br.com.i7solution.vtex.clients;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
@@ -10,8 +10,7 @@ import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 public class EnderecoClient {
 
 	public EnderecoDTO getEnderecoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -24,8 +23,7 @@ public class EnderecoClient {
 	}
 
 	public EnderecoDTO putEnderecoPorId(String id, EnderecoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -38,8 +36,7 @@ public class EnderecoClient {
 	}
 
 	public EnderecoDTO postEnderecoPorId(String id, EnderecoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

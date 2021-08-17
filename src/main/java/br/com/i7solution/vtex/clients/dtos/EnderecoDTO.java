@@ -2,6 +2,8 @@ package br.com.i7solution.vtex.clients.dtos;
 
 import java.io.Serializable;
 
+import br.com.i7solution.vtex.tipos.TipoEndereco;
+
 public class EnderecoDTO implements Serializable {
 
 	private Long id;
@@ -12,7 +14,9 @@ public class EnderecoDTO implements Serializable {
 	private String uf;
 	private String pais;
 	private String municipio;
+	private Long codigoIbge;
 	private Boolean erro;
+	private TipoEndereco tipoEndereco;
 
 	public Integer getNumero() {
 		return numero;
@@ -80,6 +84,22 @@ public class EnderecoDTO implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Long getCodigoIbge() {
+		return codigoIbge;
+	}
+
+	public void setCodigoIbge(Long codigoIbge) {
+		this.codigoIbge = codigoIbge;
+	}
+
+	public TipoEndereco getTipoEndereco() {
+		return tipoEndereco;
+	}
+
+	public void setTipoEndereco(TipoEndereco tipoEndereco) {
+		this.tipoEndereco = tipoEndereco;
 	}
 
 }

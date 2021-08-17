@@ -29,7 +29,7 @@ public class ProdutoClient {
 	}
 
 	public ProdutoDTO getProdutoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0, 0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {
@@ -43,7 +43,7 @@ public class ProdutoClient {
 	}
 
 	public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0,0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {
@@ -57,7 +57,7 @@ public class ProdutoClient {
 	}
 
 	public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0,0);
 		HttpResponse<ProdutoDTO> response = null;
 		try {

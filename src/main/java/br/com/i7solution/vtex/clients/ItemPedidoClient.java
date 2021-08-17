@@ -1,8 +1,8 @@
 package br.com.i7solution.vtex.clients;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
@@ -10,8 +10,7 @@ import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
 public class ItemPedidoClient {
 
 	public ItemPedidoDTO getItemPedidoPorId(String idProduto) {
-		String url = DadosVtex.url + "/catalog/category/" + idProduto + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -24,8 +23,7 @@ public class ItemPedidoClient {
 	}
 
 	public ItemPedidoDTO putItemPedidoPorId(String idProduto, ItemPedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + idProduto + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -38,8 +36,7 @@ public class ItemPedidoClient {
 	}
 
 	public ItemPedidoDTO postItemPedidoPorId(String idProduto, ItemPedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + idProduto + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

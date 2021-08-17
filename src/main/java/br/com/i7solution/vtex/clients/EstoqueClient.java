@@ -27,7 +27,7 @@ public class EstoqueClient {
 	}
 
 	public EstoqueDTO getEstoquePorId(String id) {
-		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/estoque/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<EstoqueDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -40,7 +40,7 @@ public class EstoqueClient {
 	}
 
 	public EstoqueDTO getEstoquePorIds(String idProduto, String idFilial) {
-		String url = DadosVtex.url + "/catalog/category/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/estoque/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0, 0);
 		HttpResponse<EstoqueDTO> response = null;
 		try {
@@ -54,7 +54,7 @@ public class EstoqueClient {
 	}
 
 	public EstoqueDTO putEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/estoque/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0, 0);
 		HttpResponse<EstoqueDTO> response = null;
 		try {
@@ -68,7 +68,7 @@ public class EstoqueClient {
 	}
 
 	public EstoqueDTO postEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + "/catalog/estoque/" + idProduto + idFilial + "?an=" + DadosVtex.sellers;
 		// Unirest.setTimeouts(0, 0);
 		HttpResponse<EstoqueDTO> response = null;
 		try {

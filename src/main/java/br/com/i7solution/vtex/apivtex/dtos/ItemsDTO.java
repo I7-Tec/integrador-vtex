@@ -26,7 +26,7 @@ public class ItemsDTO implements Serializable {
 	private AdditionalInfoDTO additionalInfo[];
 	private String measurementUnit;
 	private Integer unitMultiplier;
-	private Integer sellingPrice;
+	private Double sellingPrice;
 	private Boolean isGift;
 	private String shippingPrice;
 	private Integer rewardValue;
@@ -212,11 +212,11 @@ public class ItemsDTO implements Serializable {
 		this.unitMultiplier = unitMultiplier;
 	}
 
-	public Integer getSellingPrice() {
+	public Double getSellingPrice() {
 		return sellingPrice;
 	}
 
-	public void setSellingPrice(Integer sellingPrice) {
+	public void setSellingPrice(Double sellingPrice) {
 		this.sellingPrice = sellingPrice;
 	}
 

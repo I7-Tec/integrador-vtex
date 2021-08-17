@@ -2,9 +2,9 @@ package br.com.i7solution.vtex.apivtex;
 
 import org.springframework.stereotype.Service;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 import br.com.i7solution.vtex.apivtex.dtos.BrandDTO;
 import br.com.i7solution.vtex.apivtex.dtos.CategoryDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ProductDTO;
@@ -15,7 +15,7 @@ public class CatalogClient {
 
 	public CategoryDTO getCategorias() {
 		String url = DadosVtex.url + "/catalog/category/?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+
 		HttpResponse<CategoryDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -29,7 +29,7 @@ public class CatalogClient {
 
 	public CategoryDTO getCategoriaPorId(String id) {
 		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+
 		HttpResponse<CategoryDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -43,7 +43,6 @@ public class CatalogClient {
 
 	public BrandDTO getMarcas() {
 		String url = DadosVtex.url + "/catalog/brand/?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
 		HttpResponse<BrandDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -57,7 +56,6 @@ public class CatalogClient {
 
 	public BrandDTO getMarcaPorId(String id) {
 		String url = DadosVtex.url + "/catalog/brand/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
 		HttpResponse<BrandDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -71,7 +69,6 @@ public class CatalogClient {
 
 	public ProductDTO getProdutoPorId(String id) {
 		String url = DadosVtex.url + "/catalog/product/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
 		HttpResponse<ProductDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -85,7 +82,6 @@ public class CatalogClient {
 
 	public SkuDTO getSKUs() {
 		String url = DadosVtex.url + "/catalog/skus/?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
 		HttpResponse<SkuDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -99,7 +95,6 @@ public class CatalogClient {
 
 	public SkuDTO getSKUPorId(String id) {
 		String url = DadosVtex.url + "/catalog/sku/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
 		HttpResponse<SkuDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")

@@ -2,9 +2,9 @@ package br.com.i7solution.vtex.clients;
 
 import org.springframework.stereotype.Service;
 
-import com.mashape.unirest.http.HttpResponse;
-import com.mashape.unirest.http.Unirest;
-import com.mashape.unirest.http.exceptions.UnirestException;
+import kong.unirest.HttpResponse;
+import kong.unirest.Unirest;
+import kong.unirest.UnirestException;
 
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
@@ -13,8 +13,7 @@ import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 public class PedidoClient {
 
 	public PedidoDTO getPedidoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<PedidoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -27,8 +26,7 @@ public class PedidoClient {
 	}
 
 	public PedidoDTO putPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<PedidoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -41,8 +39,7 @@ public class PedidoClient {
 	}
 
 	public PedidoDTO postPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + id + "?an=" + DadosVtex.sellers;
-		Unirest.setTimeouts(0, 0);
+		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<PedidoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")
@@ -52,6 +49,17 @@ public class PedidoClient {
 
 		}
 		return response.getBody();
+
+	}
+
+	public void postPedido(PedidoDTO dados) {
+		String url = DadosMicroServicos.urlPedidos;
+		try {
+			var response = Unirest.post(url).header("Content-Type", "application/json").body(dados);
+
+		} catch (UnirestException e) {
+			e.printStackTrace();
+		}
 
 	}
 }
