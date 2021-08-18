@@ -12,7 +12,7 @@ public class AdressDTO implements Serializable {
 	private String state;
 	private String country;
 	private String street;
-	private String number;
+	private Integer number;
 	private String neighborhood;
 	private String complement;
 	private String reference;
@@ -82,11 +82,11 @@ public class AdressDTO implements Serializable {
 		this.street = street;
 	}
 
-	public String getNumber() {
+	public Integer getNumber() {
 		return number;
 	}
 
-	public void setNumber(String number) {
+	public void setNumber(Integer number) {
 		this.number = number;
 	}
 

@@ -6,8 +6,8 @@ public class BalanceDTO implements Serializable {
 
 	private String warehouseId;
 	private String WarehouseName;
-	private Double totalQuantity;
-	private Double reservedQuantity;
+	private Long totalQuantity;
+	private Long reservedQuantity;
 	private boolean hasUnlimitedQuantity;
 
 	public String getWarehouseId() {
@@ -26,19 +26,19 @@ public class BalanceDTO implements Serializable {
 		WarehouseName = warehouseName;
 	}
 
-	public Double getTotalQuantity() {
+	public Long getTotalQuantity() {
 		return totalQuantity;
 	}
 
-	public void setTotalQuantity(Double totalQuantity) {
+	public void setTotalQuantity(Long totalQuantity) {
 		this.totalQuantity = totalQuantity;
 	}
 
-	public Double getReservedQuantity() {
+	public Long getReservedQuantity() {
 		return reservedQuantity;
 	}
 
-	public void setReservedQuantity(Double reservedQuantity) {
+	public void setReservedQuantity(Long reservedQuantity) {
 		this.reservedQuantity = reservedQuantity;
 	}
 

@@ -16,6 +16,7 @@ import br.com.i7solution.vtex.clients.PedidoClient;
 import br.com.i7solution.vtex.clients.ProdutoClient;
 import br.com.i7solution.vtex.clients.TabelaPrecoClient;
 import br.com.i7solution.vtex.apivtex.dtos.AdressDTO;
+import br.com.i7solution.vtex.apivtex.dtos.BalanceDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ClientProfileDataDTO;
 import br.com.i7solution.vtex.apivtex.dtos.OrderDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ShippingDataDTO;
@@ -89,24 +90,20 @@ public class VtexService {
 		var prodsW = estoqueWinthor.getEstoque();
 		if (prodsW.size() > 0) {
 			for (int i = 0; i <= prodsW.size(); i++) {
-				var prodY = new InventoryDTO();
-				prodY.setSkuId(prodsW.get(i).getIdProduto());
+				var prodY = new BalanceDTO();
+				var prodId = new InventoryDTO();
+				prodId.setSkuId(prodsW.get(i).getIdProduto());
 				prodY.setTotalQuantity(prodsW.get(i).getQuantidadeDisponivel());
 				prodY.setReservedQuantity(prodsW.get(i).getQuantidadeReservada());
 				prodY.setWarehouseId(prodsW.get(i).getIdFilial());
+				prodY.setHasUnlimitedQuantity(false);
 
 			}
 
 		}
 
 	}
-
-	@Async(value = "taskAtualizacoes")
-	@Scheduled(fixedRate = 10800000, initialDelay = 10000)
-	public void atualizarPedidos() {
-
-	}
-
+    /*
 	public void ped_yami_winthor(OrderDTO pedVtex) throws Exception {
 		var pedWinthor = new PedidoDTO();
 		String pontoErro = "";
@@ -126,14 +123,15 @@ public class VtexService {
 			clienteWinthor.setNome(clienteVtex.getFirstName());
 			clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
 
-			var enderecoVtex = enderecoVtex[enderecoVtex.getShippingData()];
+			var enderecoVtex = new AdressDTO();
 			
 			var enderecoWinthor = new EnderecoDTO();
+			
 			enderecoWinthor.setBairro(enderecoVtex.getNeighborhood());
 			enderecoWinthor.setCep(enderecoVtex.getPostalCode());
 			enderecoWinthor.setComplemento(enderecoVtex.getComplement());
 			enderecoWinthor.setMunicipio(enderecoVtex.getCity());
-			enderecoWinthor.setUf(enderecoVtex.get);
+			enderecoWinthor.setUf(enderecoVtex.getState());
 			enderecoWinthor.setPais(enderecoVtex.getCountry());
 			enderecoWinthor.setNumero(enderecoVtex.getNumber());
 			var listEnd = new EnderecoDTO[1];
@@ -165,8 +163,8 @@ public class VtexService {
 			// pedWinthor.setErro(false);
 
 			var itensVtex = pedVtex.getItems();
-			var listItens = new ItemPedidoDTO[pedVtex.getItensCount()];
-			for (var i = 0; i < pedVtex.(); i++) {
+			var listItens = new ItemPedidoDTO[pedVtex.getItems()];
+			for (var i = 0; i < pedVtex.; i++) {
 				var prodW = produtoWinthor.getProdutoPorId(itensVtex[i].getProductId().toString());
 
 				var item = new ItemPedidoDTO();
@@ -176,7 +174,7 @@ public class VtexService {
 				item.setFilialRetira(itensVtex[i]);
 				item.setPreco(itensVtex[i].getSellingPrice());
 				item.setValorDesconto(0.0);
-				item.setQtde(itensVtex[i].get);
+				item.setQtde(itensVtex[i].);
 
 				listItens[i] = item;
 			}
@@ -184,10 +182,13 @@ public class VtexService {
 			pedWinthor.setItens(listItens);
 
 			pedidoWinthor.postPedido(pedWinthor);
-
+         
 		} catch (Exception e) {
 			//log.error("Ped_mag_winthor: " + pontoErro + " -> msg original: " + e.getMessage());
 			throw new Exception(e.getMessage());
 		}
-	}
+	}*/
 }
+	
+
+
