@@ -10,6 +10,7 @@ public class ItemPedidoDTO implements Serializable {
 	private Double valorDesconto;
 	private String filialRetira;
 	private String posicao;
+	private Double quantidade;
 	private boolean erro;
 
 	public String getIdProduto() {
@@ -70,6 +71,14 @@ public class ItemPedidoDTO implements Serializable {
 
 	public boolean isErro() {
 		return erro;
+	}
+
+	public Double getQuantidade() {
+		return quantidade;
+	}
+
+	public void setQuantidade(Double quantidade) {
+		this.quantidade = quantidade;
 	}
 
 	private Integer sequencial;

@@ -3,14 +3,13 @@ package br.com.i7solution.vtex.apivtex.dtos;
 import java.io.Serializable;
 import java.util.Date;
 
-
 public class OrderDTO implements Serializable {
 
 	private String emailTracked;
 	private String approvedBy;
 	private String cancelledBy;
 	private String cancelReason;
-	private String orderId;
+	private Long orderId;
 	private String sequence;
 	private String marketplaceOrderId;
 	private String marketplaceServicesEndpoint;
@@ -21,7 +20,7 @@ public class OrderDTO implements Serializable {
 	private String merchantName;
 	private String status;
 	private String statusDescription;
-	private Integer value;
+	private Double value;
 	private String creationDate;
 	private String lastChange;
 	private String orderGroup;
@@ -34,6 +33,7 @@ public class OrderDTO implements Serializable {
 	private RatesAndBenefitsDataDTO rateAndBenefitsIdentifiers[];
 	private ShippingDataDTO shippingData[];
 	private PaymentDataDTO paymentData[];
+	private PaymentsDTO payments[];
 	private PackageAttachmentDTO packageAttachment[];
 	private SellersDTO sellers[];
 	private String callCenterOperatorData;
@@ -55,6 +55,7 @@ public class OrderDTO implements Serializable {
 	private MarketplaceDTO marketplace[];
 	private Date authorizedDate;
 	private Date invoicedDate;
+	private Double quantity;
 
 	public String getEmailTracked() {
 		return emailTracked;
@@ -88,11 +89,11 @@ public class OrderDTO implements Serializable {
 		this.cancelReason = cancelReason;
 	}
 
-	public String getOrderId() {
+	public Long getOrderId() {
 		return orderId;
 	}
 
-	public void setOrderId(String orderId) {
+	public void setOrderId(Long orderId) {
 		this.orderId = orderId;
 	}
 
@@ -176,11 +177,11 @@ public class OrderDTO implements Serializable {
 		this.statusDescription = statusDescription;
 	}
 
-	public Integer getValue() {
+	public Double getValue() {
 		return value;
 	}
 
-	public void setValue(Integer value) {
+	public void setValue(Double value) {
 		this.value = value;
 	}
 
@@ -446,6 +447,22 @@ public class OrderDTO implements Serializable {
 
 	public void setInvoicedDate(Date invoicedDate) {
 		this.invoicedDate = invoicedDate;
+	}
+
+	public PaymentsDTO[] getPayments() {
+		return payments;
+	}
+
+	public void setPayments(PaymentsDTO payments[]) {
+		this.payments = payments;
+	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
 	}
 
 }

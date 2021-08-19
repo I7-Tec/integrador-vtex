@@ -8,10 +8,10 @@ public class ProdutoDTO implements Serializable {
 	private String descricao;
 	private Double codigoDeBarras;
 	private String fornecedor;
-	private Integer peso;
-	private Integer altura;
-	private Integer comprimento;
-	private Integer largura;
+	private Double peso;
+	private Double altura;
+	private Double comprimento;
+	private Double largura;
 	private String codigoDeFabrica;
 	private String departamento;
 	private String secao;
@@ -52,35 +52,35 @@ public class ProdutoDTO implements Serializable {
 		this.fornecedor = fornecedor;
 	}
 
-	public Integer getPeso() {
+	public Double getPeso() {
 		return peso;
 	}
 
-	public void setPeso(Integer peso) {
+	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
 
-	public Integer getAltura() {
+	public Double getAltura() {
 		return altura;
 	}
 
-	public void setAltura(Integer altura) {
+	public void setAltura(Double altura) {
 		this.altura = altura;
 	}
 
-	public Integer getComprimento() {
+	public Double getComprimento() {
 		return comprimento;
 	}
 
-	public void setComprimento(Integer comprimento) {
+	public void setComprimento(Double comprimento) {
 		this.comprimento = comprimento;
 	}
 
-	public Integer getLargura() {
+	public Double getLargura() {
 		return largura;
 	}
 
-	public void setLargura(Integer largura) {
+	public void setLargura(Double largura) {
 		this.largura = largura;
 	}
 

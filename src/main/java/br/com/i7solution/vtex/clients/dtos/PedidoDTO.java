@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class PedidoDTO implements Serializable {
 
-	private String id;
+	private Long id;
 	private String filial;
 	private String cliente;
 	private Double valorTotal;
@@ -15,26 +15,20 @@ public class PedidoDTO implements Serializable {
 	private Date dataFaturamento;
 	private Date dataBloqueio;
 	private String idPedidoRca;
+	private String idVendedor;
 	private String idPedidoCliente;
-	private Integer quantidadeItens;
+	private Double quantidadeItens;
 	private Date dataEntrega;
 	private String usuario;
-	private Double cobranca;
-	private String formaDePagamento;
+	private String idCobranca;
+	private String idFormaDePagamento;
 	private Double valorFrete;
 	private Double valorOutrasDespesas;
 	private String tipoFrete;
-	private Boolean erro;
+	private boolean erro;
 	private ItemPedidoDTO Itens[];
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
+	
 	public String getFilial() {
 		return filial;
 	}
@@ -115,11 +109,11 @@ public class PedidoDTO implements Serializable {
 		this.idPedidoCliente = idPedidoCliente;
 	}
 
-	public Integer getQuantidadeItens() {
+	public Double getQuantidadeItens() {
 		return quantidadeItens;
 	}
 
-	public void setQuantidadeItens(Integer quantidadeItens) {
+	public void setQuantidadeItens(Double quantidadeItens) {
 		this.quantidadeItens = quantidadeItens;
 	}
 
@@ -138,21 +132,23 @@ public class PedidoDTO implements Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+    
 
-	public Double getCobranca() {
-		return cobranca;
+
+	public String getIdCobranca() {
+		return idCobranca;
 	}
 
-	public void setCobranca(Double cobranca) {
-		this.cobranca = cobranca;
+	public void setIdCobranca(String idCobranca) {
+		this.idCobranca = idCobranca;
 	}
 
-	public String getFormaDePagamento() {
-		return formaDePagamento;
+	public String getIdFormaDePagamento() {
+		return idFormaDePagamento;
 	}
 
-	public void setFormaDePagamento(String formaDePagamento) {
-		this.formaDePagamento = formaDePagamento;
+	public void setIdFormaDePagamento(String idFormaDePagamento) {
+		this.idFormaDePagamento = idFormaDePagamento;
 	}
 
 	public Double getValorFrete() {
@@ -187,8 +183,24 @@ public class PedidoDTO implements Serializable {
 		Itens = itens;
 	}
 
-	public Boolean isErro() {
+	public boolean isErro(boolean b) {
 		return erro;
+	}
+
+	public String getIdVendedor() {
+		return idVendedor;
+	}
+
+	public void setIdVendedor(String idVendedor) {
+		this.idVendedor = idVendedor;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

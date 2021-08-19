@@ -1,11 +1,15 @@
 package br.com.i7solution.vtex.apivtex;
 
 import br.com.i7solution.vtex.apivtex.dtos.InventoryDTO;
+
+import org.springframework.stereotype.Service;
+
 import br.com.i7solution.vtex.apivtex.dtos.BalanceDTO;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 
+@Service
 public class InventoryClient {
 
 	public InventoryDTO getEstoquePorSku(String skuId) {

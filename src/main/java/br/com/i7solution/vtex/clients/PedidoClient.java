@@ -12,12 +12,12 @@ import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 @Service
 public class PedidoClient {
 
-	public PedidoDTO getPedidoPorId(String id) {
+	public Boolean getPedidoPorId(Long id) {
 		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
-		HttpResponse<PedidoDTO> response = null;
+		HttpResponse<Boolean> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(PedidoDTO.class);
+					.header("Authorization", DadosVtex.bearer).asObject(Boolean.class);
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}
