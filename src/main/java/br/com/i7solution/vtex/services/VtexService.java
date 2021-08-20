@@ -5,6 +5,7 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -23,6 +24,7 @@ import br.com.i7solution.vtex.apivtex.dtos.BalanceDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ClientProfileDataDTO;
 import br.com.i7solution.vtex.apivtex.dtos.DimensionDTO;
 import br.com.i7solution.vtex.apivtex.dtos.OrderDTO;
+import br.com.i7solution.vtex.apivtex.dtos.RealDimensionDTO;
 import br.com.i7solution.vtex.apivtex.dtos.SalesChannelDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ShippingDataDTO;
 import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
@@ -98,19 +100,21 @@ public class VtexService {
 				prodY.setIsInventoried(null);
 				// prodY.setSkuUnitMultiplier(prodsW.get(i).getFator);
 				// prodY.setCreatedIn(null);
-				// lprodY.setBooking(true);
+				// prodY.setBooking(true);
 
 				var dimensoes = new SkuDimensionDTO();
 				dimensoes.setHeight(prodsW.get(i).getAltura());
 				dimensoes.setLength(prodsW.get(i).getComprimento());
 				dimensoes.setWidth(prodsW.get(i).getLargura());
-				// prodY.setDimension(dimensoes);
+				dimensoes.setWeight(prodsW.get(i).getPeso());
+				prodY.setDimension(dimensoes);
 
-				var dimensoesReais = new DimensionDTO();
-				dimensoesReais.setHeight(prodsW.get(i).getAltura());
-				dimensoesReais.setLength(prodsW.get(i).getComprimento());
-				dimensoesReais.setWidth(prodsW.get(i).getLargura());
-				// prodY.setRealDimension(dimensoesReais);
+				var dimensoesReais = new RealDimensionDTO();
+				dimensoesReais.setRealHeight(prodsW.get(i).getAltura());
+				dimensoesReais.setRealLength(prodsW.get(i).getComprimento());
+				dimensoesReais.setRealWidth(prodsW.get(i).getLargura());
+				dimensoesReais.setRealWeight(prodsW.get(i).getPeso());
+				prodY.setRealDimension(dimensoesReais);
 
 				produtosVtex.postSku(prodY);
 			}
@@ -132,9 +136,7 @@ public class VtexService {
 								var item = itemSku.getBalance()[0];
 
 								item.setReservedQuantity(listaEstoque.get(i).getQuantidadeReservada());
-
 								item.setTotalQuantity(listaEstoque.get(i).getQuantidadeDisponivel());
-
 								estoqueVtex.putEstoquePorSku(listaEstoque.get(i).getIdProduto(), "1", item);
 
 								log.info("Estoque atualização - SKU " + listaEstoque.get(i).getIdProduto()
@@ -168,7 +170,6 @@ public class VtexService {
 			Date data = new SimpleDateFormat("dd/MM/yyyy").parse(dataString);
 
 			var clienteVtex = new ClientProfileDataDTO();
-
 			var clienteWinthor = new ClienteDTO();
 
 			clienteWinthor.setCpfCnpj(clienteVtex.getDocument());
@@ -177,7 +178,6 @@ public class VtexService {
 			clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
 
 			var enderecoVtex = new AdressDTO();
-
 			var enderecoWinthor = new EnderecoDTO();
 			enderecoWinthor.setBairro(enderecoVtex.getNeighborhood());
 			enderecoWinthor.setCep(enderecoVtex.getPostalCode());
@@ -198,7 +198,7 @@ public class VtexService {
 			pedWinthor.setId(pedVtex.getOrderId());
 			pedWinthor.setIdPedidoCliente(pedVtex.getOrderId().toString());
 
-			pedWinthor.setIdVendedor("12");
+			pedWinthor.setIdVendedor("10");
 
 			pontoErro = "Definindo dados de pagamento...";
 			var pagtos = pedVtex.getPayments();
@@ -255,8 +255,8 @@ public class VtexService {
 				var item = new ItemPedidoDTO();
 				item.setIdProduto(prodW.getId());
 				item.setCodigoDeBarras(prodW.getCodigoDeBarras().longValue());
-				// item.setPosicao("P");
-				// item.setFilialRetira(itensVtex[i].get);
+				item.setPosicao("P");
+				// item.setFilialRetira(itensVtex[i].get)
 				item.setPreco(itensVtex[i].getSellingPrice());
 				item.setValorDesconto(0.0);
 				item.setQuantidade(itensVtex[i].getQuantity().doubleValue());
