@@ -86,7 +86,7 @@ public class VtexService {
 				prodY.setId(prodsW.get(i).getId());// .setId(Ferramentas.stringToLong(prodsW.get(i).getId()));
 				prodY.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
 				prodY.setEan(prodsW.get(i).getCodigoDeBarras().toString());
-				// prodY.setRefId(prodsW.get(i).getId());
+				//prodY.setRefId(prodsW.get(i).GET);
 				prodY.setDetailUrl("");
 				// prodY.setModalId(null);
 				prodY.setModalType(null);
@@ -98,7 +98,7 @@ public class VtexService {
 				// prodY.setManufacturerId(prodsW.get(i).getCodfornec);
 				// prodY.setArrivalDate(null);
 				prodY.setIsInventoried(null);
-				// prodY.setSkuUnitMultiplier(prodsW.get(i).getFator);
+				//prodY.setSkuUnitMultiplier(prodsW.get(i).getFator);
 				// prodY.setCreatedIn(null);
 				// prodY.setBooking(true);
 
