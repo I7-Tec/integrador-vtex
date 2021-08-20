@@ -12,7 +12,7 @@ import kong.unirest.UnirestException;
 public class ClienteClient {
 
 	public ClienteDTO getClientePorId(String id) {
-		String url = DadosVtex.url + "/catalog/clienteSS/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointClientes+ id + "?an=" + DadosVtex.sellers;
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -25,7 +25,7 @@ public class ClienteClient {
 	}
 
 	public ClienteDTO putClientePorId(String id, ClienteDTO dados) {
-		String url = DadosVtex.url + "/catalog/cliente/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros +  DadosMicroServicos.endPointClientes + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -38,7 +38,7 @@ public class ClienteClient {
 	}
 
 	public ClienteDTO postClientePorId(String id, ClienteDTO dados) {
-		String url = DadosVtex.url + "/catalog/cliente/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros+  DadosMicroServicos.endPointClientes + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

@@ -13,7 +13,7 @@ import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 public class PedidoClient {
 
 	public Boolean getPedidoPorId(Long id) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPedidos + id + "?an=" ;
 		HttpResponse<Boolean> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -26,7 +26,7 @@ public class PedidoClient {
 	}
 
 	public PedidoDTO putPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlPedidos+ DadosMicroServicos.endPointPedidos + id + "?an=" ;
 		HttpResponse<PedidoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -39,7 +39,7 @@ public class PedidoClient {
 	}
 
 	public PedidoDTO postPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPedidos + id + "?an=" ;
 		HttpResponse<PedidoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

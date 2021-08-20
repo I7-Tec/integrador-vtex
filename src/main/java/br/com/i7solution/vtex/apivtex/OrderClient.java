@@ -15,7 +15,7 @@ import kong.unirest.UnirestException;
 public class OrderClient {
 
 	public OrderDTO getPedidoPorId(String orderId) {
-		String url = DadosVtex.url + "/oms/orders/" + orderId.toString() + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointProduto + orderId.toString() + "?an=" + DadosVtex.sellers;
 		HttpResponse<OrderDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -34,7 +34,7 @@ public class OrderClient {
 			var temPedidos = true;
 			int pag = 1;
 			while (temPedidos) {
-				String url = DadosVtex.url + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag
+				String url = DadosVtex.url + DadosVtex.endPointProduto + DadosVtex.sellers + "&perPage=50&page=" + pag
 						+ "&status=" + status;
 
 				response = Unirest.get(url).header("Content-Type", "application/json")
@@ -58,7 +58,7 @@ public class OrderClient {
 	            var temPedidos = true;
 	            int pag = 1;
 	            while (temPedidos) {
-	                String url = DadosVtex.url + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag +
+	                String url = DadosVtex.url + DadosVtex.endPointProduto + DadosVtex.sellers + "&perPage=50&page=" + pag +
 	                        "&creationDateStart=" + dataIni + "&creationDateEnd=" + dataFim;
 
 	                response = Unirest.get(url)

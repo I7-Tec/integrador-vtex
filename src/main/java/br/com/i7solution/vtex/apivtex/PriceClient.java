@@ -11,7 +11,7 @@ import br.com.i7solution.vtex.apivtex.dtos.SkuPriceDTO;
 public class PriceClient {
 
 	public SkuPriceDTO getPrecoPorSku(String skuId) {
-		String url = DadosVtex.url + "/catalog/price/" + skuId + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointPreco + skuId + "?an=" + DadosVtex.sellers;
 		HttpResponse<SkuPriceDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -24,7 +24,7 @@ public class PriceClient {
 	}
 
 	public SkuPriceDTO putPrecoPorSku(String skuId, SkuPriceDTO dados) {
-		String url = DadosVtex.url + "/catalog/price/" + skuId + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointPreco + skuId + "?an=" + DadosVtex.sellers;
 		HttpResponse<SkuPriceDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")

@@ -11,4 +11,7 @@ public class DadosMicroServicos {
     public static String endPointMarcas = "";
     public static String endPointEstoques = "/estoques";
     public static String endPointPedidos = "/pedidos";
+    public static String endPointClientes = "/clientes";
+    public static String endPointEnderecos = "/enderecos";
+    public static String endPointItemPedido = "/itempedido";
 }

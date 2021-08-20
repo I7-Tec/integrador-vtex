@@ -13,7 +13,7 @@ import kong.unirest.UnirestException;
 public class InventoryClient {
 
 	public InventoryDTO getEstoquePorSku(String skuId) {
-		String url = DadosVtex.url + "/catalog/inventory/" + skuId + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointEstoque + skuId + "?an=" + DadosVtex.sellers;
 		HttpResponse<InventoryDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -26,7 +26,7 @@ public class InventoryClient {
 	}
 
 	public InventoryDTO putEstoquePorSku(String skuId, String filial, BalanceDTO dados) {
-		String url = DadosVtex.url + "/catalog/inventory/" + skuId + "/" + filial + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointEstoque + skuId + "/" + filial + "?an=" + DadosVtex.sellers;
 		HttpResponse<InventoryDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -39,7 +39,7 @@ public class InventoryClient {
 	}
 
 	public InventoryDTO postEstoquePorSku(String skuId, BalanceDTO dados) {
-		String url = DadosVtex.url + "/catalog/inventory/" + skuId + "/" + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointEstoque + skuId + "/" + "?an=" + DadosVtex.sellers;
 		HttpResponse<InventoryDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-type", "application/json")

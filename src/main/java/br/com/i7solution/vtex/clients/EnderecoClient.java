@@ -10,7 +10,7 @@ import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 public class EnderecoClient {
 
 	public EnderecoDTO getEnderecoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEnderecos+ id + "?an=" ;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -23,7 +23,7 @@ public class EnderecoClient {
 	}
 
 	public EnderecoDTO putEnderecoPorId(String id, EnderecoDTO dados) {
-		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEnderecos + id + "?an=" ;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -36,7 +36,7 @@ public class EnderecoClient {
 	}
 
 	public EnderecoDTO postEnderecoPorId(String id, EnderecoDTO dados) {
-		String url = DadosVtex.url + "/catalog/endereco/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEnderecos + id + "?an=" ;
 		HttpResponse<EnderecoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

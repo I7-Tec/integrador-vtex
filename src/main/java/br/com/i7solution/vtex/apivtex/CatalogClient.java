@@ -14,7 +14,7 @@ import br.com.i7solution.vtex.apivtex.dtos.SkuDTO;
 public class CatalogClient {
 
 	public CategoryDTO getCategorias() {
-		String url = DadosVtex.url + "/catalog/category/?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointCategoria + "/?an=" + DadosVtex.sellers;
 
 		HttpResponse<CategoryDTO> response = null;
 		try {
@@ -28,7 +28,7 @@ public class CatalogClient {
 	}
 
 	public CategoryDTO getCategoriaPorId(String id) {
-		String url = DadosVtex.url + "/catalog/category/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointCategoria + id + "?an=" + DadosVtex.sellers;
 
 		HttpResponse<CategoryDTO> response = null;
 		try {
@@ -42,7 +42,7 @@ public class CatalogClient {
 	}
 
 	public BrandDTO getMarcas() {
-		String url = DadosVtex.url + "/catalog/brand/?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointMarcas +"?an=" + DadosVtex.sellers;
 		HttpResponse<BrandDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -55,7 +55,7 @@ public class CatalogClient {
 	}
 
 	public BrandDTO getMarcaPorId(String id) {
-		String url = DadosVtex.url + "/catalog/brand/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointCategoria + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<BrandDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -68,7 +68,7 @@ public class CatalogClient {
 	}
 
 	public ProductDTO getProdutoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/product/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointProduto +  id + "?an=" + DadosVtex.sellers;
 		HttpResponse<ProductDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -81,7 +81,7 @@ public class CatalogClient {
 	}
 
 	public SkuDTO getSKUs() {
-		String url = DadosVtex.url + "/catalog/skus/?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointProduto +"?an=" + DadosVtex.sellers;
 		HttpResponse<SkuDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -94,7 +94,7 @@ public class CatalogClient {
 	}
 
 	public SkuDTO getSKUPorId(String id) {
-		String url = DadosVtex.url + "/catalog/sku/" + id + "?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url + DadosVtex.endPointProduto  + id + "?an=" + DadosVtex.sellers;
 		HttpResponse<SkuDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -107,7 +107,7 @@ public class CatalogClient {
 	}
 
 	public SkuDTO postSku(SkuDTO dados) {
-		String url = DadosVtex.url + "/catalog/sku?an=" + DadosVtex.sellers;
+		String url = DadosVtex.url +DadosVtex.endPointProduto+"?an=" + DadosVtex.sellers;
 		HttpResponse<SkuDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")

@@ -10,7 +10,7 @@ import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
 public class ItemPedidoClient {
 
 	public ItemPedidoDTO getItemPedidoPorId(String idProduto) {
-		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointItemPedido + idProduto + "?an=" ;
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
@@ -23,7 +23,7 @@ public class ItemPedidoClient {
 	}
 
 	public ItemPedidoDTO putItemPedidoPorId(String idProduto, ItemPedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
+		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointItemPedido + idProduto + "?an=" ;
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
@@ -36,7 +36,7 @@ public class ItemPedidoClient {
 	}
 
 	public ItemPedidoDTO postItemPedidoPorId(String idProduto, ItemPedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/itempedido/" + idProduto + "?an=" + DadosVtex.sellers;
+		String url =DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointItemPedido + idProduto + "?an=";
 		HttpResponse<ItemPedidoDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")
