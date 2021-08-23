@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+
+import br.com.i7solution.vtex.apivtex.dtos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,22 +14,15 @@ import br.com.i7solution.vtex.apivtex.CatalogClient;
 import br.com.i7solution.vtex.apivtex.InventoryClient;
 import br.com.i7solution.vtex.apivtex.OrderClient;
 import br.com.i7solution.vtex.apivtex.PriceClient;
-import br.com.i7solution.vtex.apivtex.dtos.SkuPriceDTO;
 import br.com.i7solution.vtex.clients.EstoqueClient;
 import br.com.i7solution.vtex.clients.PedidoClient;
 import br.com.i7solution.vtex.clients.ProdutoClient;
 import br.com.i7solution.vtex.clients.TabelaPrecoClient;
-import br.com.i7solution.vtex.apivtex.dtos.AdressDTO;
-import br.com.i7solution.vtex.apivtex.dtos.ClientProfileDataDTO;
-import br.com.i7solution.vtex.apivtex.dtos.OrderDTO;
-import br.com.i7solution.vtex.apivtex.dtos.RealDimensionDTO;
 import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
 import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 import lombok.extern.log4j.Log4j2;
-import br.com.i7solution.vtex.apivtex.dtos.SkuDTO;
-import br.com.i7solution.vtex.apivtex.dtos.SkuDimensionDTO;
 
 
 @Log4j2
@@ -58,9 +53,8 @@ public class VtexService {
         if (precosW.size() > 0) {
             for (int i = 0; i <= precosW.size(); i++) {
                 var precoY = new SkuPriceDTO();
-
-                precoY.setPrice(precosW.get(i).getPrecoVenda());
-                precoY.setListPrice(precosW.get(i).getPrecoVenda());
+                precoY.setPrice(precosW.get(i).getPreco().doubleValue());
+                precoY.setItemId(precosW.get(i).getIdProduto());
                 // precoY.setSalesChannel(1L);
                 precosVtex.putPrecoPorSku(precosW.get(i).getIdProduto(), precoY);
             }
@@ -78,21 +72,17 @@ public class VtexService {
                 prodY.setId(prodsW.get(i).getId());// .setId(Ferramentas.stringToLong(prodsW.get(i).getId()));
                 prodY.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
                 prodY.setEan(prodsW.get(i).getCodigoDeBarras().toString());
-                //prodY.setRefId(prodsW.get(i).GET);
                 prodY.setDetailUrl("");
-                // prodY.setModalId(null);
+                prodY.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
+                prodY.setIsTransported(null);
+                //prodY.setUnitMultiplier(prodsW.get(i).get);
                 prodY.setModalType(null);
                 prodY.setIsKit(false);
                 prodY.setIsActive(true);
                 prodY.setIsActive(null);
-                // prodY.setLastUpdate(Date.from(Instant.now()));
                 prodY.setEasurementUnit("M3");
-                // prodY.setManufacturerId(prodsW.get(i).getCodfornec);
-                // prodY.setArrivalDate(null);
                 prodY.setIsInventoried(null);
-                //prodY.setSkuUnitMultiplier(prodsW.get(i).getFator);
-                // prodY.setCreatedIn(null);
-                // prodY.setBooking(true);
+
 
                 var dimensoes = new SkuDimensionDTO();
                 dimensoes.setHeight(prodsW.get(i).getAltura());
@@ -132,7 +122,7 @@ public class VtexService {
                                 estoqueVtex.putEstoquePorSku(listaEstoque.get(i).getIdProduto(), "1", item);
 
                                 log.info("Estoque atualização - SKU " + listaEstoque.get(i).getIdProduto()
-                                        + " atualizado p/ qtde: " + listaEstoque.get(i).getQuantidadeDisponivel());
+                                        + " atualizado por quantidade: " + listaEstoque.get(i).getQuantidadeDisponivel());
                             } catch (Exception e) {
                                 log.error("Estoque atualização(Erro001): Produto " + listaEstoque.get(i).getIdProduto()
                                         + " msg original: " + e);
@@ -168,9 +158,12 @@ public class VtexService {
             clienteWinthor.setEmail(clienteVtex.getEmail());
             clienteWinthor.setNome(clienteVtex.getFirstName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
+            clienteWinthor.setId(clienteVtex.getId());
+
 
             var enderecoVtex = new AdressDTO();
             var enderecoWinthor = new EnderecoDTO();
+
             enderecoWinthor.setBairro(enderecoVtex.getNeighborhood());
             enderecoWinthor.setCep(enderecoVtex.getPostalCode());
             enderecoWinthor.setComplemento(enderecoVtex.getComplement());
@@ -178,17 +171,20 @@ public class VtexService {
             enderecoWinthor.setUf(enderecoVtex.getState());
             enderecoWinthor.setPais(enderecoVtex.getCountry());
             enderecoWinthor.setNumero(enderecoVtex.getNumber());
+
             var listEnd = new EnderecoDTO[1];
             listEnd[0] = enderecoWinthor;
 
             clienteWinthor.setEnderecodto(listEnd);
 
-            pedWinthor.setId(pedVtex.getOrderId());
-            pedWinthor.setFilial("1");
+            pedWinthor.setId(pedVtex.getId());
             pedWinthor.setCliente(clienteWinthor.toString());
             pedWinthor.setValorTotal(pedVtex.getValue());
             pedWinthor.setId(pedVtex.getOrderId());
             pedWinthor.setIdPedidoCliente(pedVtex.getOrderId().toString());
+            pedWinthor.setDataCriacao(pedVtex.getCreationDate());
+            pedWinthor.setQuantidadeItens(pedVtex.getQuantity());
+            pedWinthor.setFilial("1");
 
             pedWinthor.setIdVendedor("10");
 
@@ -251,13 +247,13 @@ public class VtexService {
                 // item.setFilialRetira(itensVtex[i].get)
                 item.setPreco(itensVtex[i].getSellingPrice());
                 item.setValorDesconto(0.0);
-                item.setQuantidade(itensVtex[i].getQuantity().doubleValue());
+                item.setQuantidade(itensVtex[i].getQuantity());
 
                 listItens[i] = item;
             }
 
             pedWinthor.setItens(listItens);
-            pedWinthor.setQuantidadeItens(Double.valueOf(listItens.length));
+            pedWinthor.setQuantidadeItens((double) listItens.length);
 
             pedidoWinthor.postPedido(pedWinthor);
 
@@ -268,7 +264,7 @@ public class VtexService {
     }
 
     @Async
-    @Scheduled(fixedRate = 3600000, initialDelay = 60000)
+    @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
     public void sincronizarPedidos() throws Exception {
         var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
         var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));

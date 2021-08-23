@@ -1,6 +1,7 @@
 package br.com.i7solution.vtex.clients;
 
 import java.util.List;
+
 import kong.unirest.GenericType;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -12,73 +13,73 @@ import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
 @Service
 public class EstoqueClient {
 
-	public List<EstoqueDTO> getEstoque() {
-		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
-		HttpResponse<List<EstoqueDTO>> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.asObject(new GenericType<List<EstoqueDTO>>() {
-					});
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public List<EstoqueDTO> getEstoque() {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
+        HttpResponse<List<EstoqueDTO>> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .asObject(new GenericType<List<EstoqueDTO>>() {
+                    });
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public EstoqueDTO getEstoquePorId(String id) {
-		String url = DadosMicroServicos.urlCadastros+ DadosMicroServicos.endPointEstoques + id + "?an=" ;
-		HttpResponse<EstoqueDTO> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public EstoqueDTO getEstoquePorId(String id) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + id + "?an=";
+        HttpResponse<EstoqueDTO> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public EstoqueDTO getEstoquePorIds(String idProduto, String idFilial) {
-		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";
-		// Unirest.setTimeouts(0, 0);
-		HttpResponse<EstoqueDTO> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public EstoqueDTO getEstoquePorIds(String idProduto, String idFilial) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";
+        // Unirest.setTimeouts(0, 0);
+        HttpResponse<EstoqueDTO> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public EstoqueDTO putEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
-		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=" ;
-		// Unirest.setTimeouts(0, 0);
-		HttpResponse<EstoqueDTO> response = null;
-		try {
-			response = Unirest.put(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public EstoqueDTO putEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";
+        // Unirest.setTimeouts(0, 0);
+        HttpResponse<EstoqueDTO> response = null;
+        try {
+            response = Unirest.put(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public EstoqueDTO postEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
-		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=" ;
-		// Unirest.setTimeouts(0, 0);
-		HttpResponse<EstoqueDTO> response = null;
-		try {
-			response = Unirest.post(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
+    public EstoqueDTO postEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";
+        // Unirest.setTimeouts(0, 0);
+        HttpResponse<EstoqueDTO> response = null;
+        try {
+            response = Unirest.post(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
 
-		}
-		return response.getBody();
+        }
+        return response.getBody();
 
-	}
+    }
 }

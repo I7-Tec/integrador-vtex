@@ -4,82 +4,82 @@ import java.io.Serializable;
 
 public class ItemPedidoDTO implements Serializable {
 
-	private String idProduto;
-	private Long codigoDeBarras;
-	private Double preco;
-	private Double valorDesconto;
-	private String filialRetira;
-	private String posicao;
-	private Double quantidade;
-	private boolean erro;
+    private String idProduto;
+    private Long codigoDeBarras;
+    private Double preco;
+    private Double valorDesconto;
+    private String filialRetira;
+    private String posicao;
+    private Double quantidade;
+    private boolean erro;
 
-	public String getIdProduto() {
-		return idProduto;
-	}
+    public String getIdProduto() {
+        return idProduto;
+    }
 
-	public void setIdProduto(String idProduto) {
-		this.idProduto = idProduto;
-	}
+    public void setIdProduto(String idProduto) {
+        this.idProduto = idProduto;
+    }
 
-	public Long getCodigoDeBarras() {
-		return codigoDeBarras;
-	}
+    public Long getCodigoDeBarras() {
+        return codigoDeBarras;
+    }
 
-	public void setCodigoDeBarras(Long codigoDeBarras) {
-		this.codigoDeBarras = codigoDeBarras;
-	}
+    public void setCodigoDeBarras(Long codigoDeBarras) {
+        this.codigoDeBarras = codigoDeBarras;
+    }
 
-	public Double getPreco() {
-		return preco;
-	}
+    public Double getPreco() {
+        return preco;
+    }
 
-	public void setPreco(Double preco) {
-		this.preco = preco;
-	}
+    public void setPreco(Double preco) {
+        this.preco = preco;
+    }
 
-	public Double getValorDesconto() {
-		return valorDesconto;
-	}
+    public Double getValorDesconto() {
+        return valorDesconto;
+    }
 
-	public void setValorDesconto(Double valorDesconto) {
-		this.valorDesconto = valorDesconto;
-	}
+    public void setValorDesconto(Double valorDesconto) {
+        this.valorDesconto = valorDesconto;
+    }
 
-	public String getFilialRetira() {
-		return filialRetira;
-	}
+    public String getFilialRetira() {
+        return filialRetira;
+    }
 
-	public void setFilialRetira(String filialRetira) {
-		this.filialRetira = filialRetira;
-	}
+    public void setFilialRetira(String filialRetira) {
+        this.filialRetira = filialRetira;
+    }
 
-	public String getPosicao() {
-		return posicao;
-	}
+    public String getPosicao() {
+        return posicao;
+    }
 
-	public void setPosicao(String posicao) {
-		this.posicao = posicao;
-	}
+    public void setPosicao(String posicao) {
+        this.posicao = posicao;
+    }
 
-	public Integer getSequencial() {
-		return sequencial;
-	}
+    public Integer getSequencial() {
+        return sequencial;
+    }
 
-	public void setSequencial(Integer sequencial) {
-		this.sequencial = sequencial;
-	}
+    public void setSequencial(Integer sequencial) {
+        this.sequencial = sequencial;
+    }
 
-	public boolean isErro() {
-		return erro;
-	}
+    public boolean isErro() {
+        return erro;
+    }
 
-	public Double getQuantidade() {
-		return quantidade;
-	}
+    public Double getQuantidade() {
+        return quantidade;
+    }
 
-	public void setQuantidade(Double quantidade) {
-		this.quantidade = quantidade;
-	}
+    public void setQuantidade(Double quantidade) {
+        this.quantidade = quantidade;
+    }
 
-	private Integer sequencial;
+    private Integer sequencial;
 }
