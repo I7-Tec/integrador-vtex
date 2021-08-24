@@ -68,6 +68,7 @@ public class VtexService {
         if (prodsW.size() > 0) {
             for (int i = 0; i <= prodsW.size(); i++) {
                 var prodY = new SkuDTO();
+                //var categ = new CategoryDTO()[0];
 
                 prodY.setId(prodsW.get(i).getId());// .setId(Ferramentas.stringToLong(prodsW.get(i).getId()));
                 prodY.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
@@ -75,6 +76,7 @@ public class VtexService {
                 prodY.setDetailUrl("");
                 prodY.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
                 prodY.setIsTransported(null);
+                prodY.setUnitMultiplier(null);
                 //prodY.setUnitMultiplier(prodsW.get(i).get);
                 prodY.setModalType(null);
                 prodY.setIsKit(false);
@@ -82,7 +84,7 @@ public class VtexService {
                 prodY.setIsActive(null);
                 prodY.setEasurementUnit("M3");
                 prodY.setIsInventoried(null);
-
+                //prodY.setCategories(categ);
 
                 var dimensoes = new SkuDimensionDTO();
                 dimensoes.setHeight(prodsW.get(i).getAltura());
@@ -185,7 +187,7 @@ public class VtexService {
             pedWinthor.setDataCriacao(pedVtex.getCreationDate());
             pedWinthor.setQuantidadeItens(pedVtex.getQuantity());
             pedWinthor.setFilial("1");
-
+            pedWinthor.setDataFaturamento(null);
             pedWinthor.setIdVendedor("10");
 
             pontoErro = "Definindo dados de pagamento...";
@@ -244,11 +246,10 @@ public class VtexService {
                 item.setIdProduto(prodW.getId());
                 item.setCodigoDeBarras(prodW.getCodigoDeBarras().longValue());
                 item.setPosicao("P");
-                // item.setFilialRetira(itensVtex[i].get)
                 item.setPreco(itensVtex[i].getSellingPrice());
                 item.setValorDesconto(0.0);
                 item.setQuantidade(itensVtex[i].getQuantity());
-
+                //item.setSequencial(itensVtex[i].getUniqueId());
                 listItens[i] = item;
             }
 
