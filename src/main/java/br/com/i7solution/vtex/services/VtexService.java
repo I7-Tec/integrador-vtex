@@ -6,6 +6,7 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 import br.com.i7solution.vtex.apivtex.dtos.*;
+import br.com.i7solution.vtex.clients.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -14,16 +15,11 @@ import br.com.i7solution.vtex.apivtex.CatalogClient;
 import br.com.i7solution.vtex.apivtex.InventoryClient;
 import br.com.i7solution.vtex.apivtex.OrderClient;
 import br.com.i7solution.vtex.apivtex.PriceClient;
-import br.com.i7solution.vtex.clients.EstoqueClient;
-import br.com.i7solution.vtex.clients.PedidoClient;
-import br.com.i7solution.vtex.clients.ProdutoClient;
-import br.com.i7solution.vtex.clients.TabelaPrecoClient;
 import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
 import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 import lombok.extern.log4j.Log4j2;
-
 
 @Log4j2
 @Service
@@ -45,6 +41,7 @@ public class VtexService {
     private InventoryClient estoqueVtex;
     @Autowired
     private OrderClient pedidosVtex;
+
 
     @Async(value = "taskAtualizacoes")
     @Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
@@ -75,7 +72,7 @@ public class VtexService {
                 prodY.setEan(prodsW.get(i).getCodigoDeBarras().toString());
                 prodY.setDetailUrl("");
                 prodY.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
-                prodY.setIsTransported(null);
+                prodY.setIsTransported(false);
                 prodY.setUnitMultiplier(null);
                 //prodY.setUnitMultiplier(prodsW.get(i).get);
                 prodY.setModalType(null);
@@ -84,7 +81,7 @@ public class VtexService {
                 prodY.setIsActive(null);
                 prodY.setEasurementUnit("M3");
                 prodY.setIsInventoried(null);
-                //prodY.setCategories(categ);
+
 
                 var dimensoes = new SkuDimensionDTO();
                 dimensoes.setHeight(prodsW.get(i).getAltura());
@@ -161,6 +158,8 @@ public class VtexService {
             clienteWinthor.setNome(clienteVtex.getFirstName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
             clienteWinthor.setId(clienteVtex.getId());
+            clienteWinthor.setDataCadastro(null);
+            clienteWinthor.setDataNascimento(null);
 
 
             var enderecoVtex = new AdressDTO();
@@ -187,8 +186,12 @@ public class VtexService {
             pedWinthor.setDataCriacao(pedVtex.getCreationDate());
             pedWinthor.setQuantidadeItens(pedVtex.getQuantity());
             pedWinthor.setFilial("1");
-            pedWinthor.setDataFaturamento(null);
             pedWinthor.setIdVendedor("10");
+            pedWinthor.setDataFaturamento(null);
+            pedWinthor.setDataCancelamento(null);
+            pedWinthor.setDataEntrega(null);
+            pedWinthor.setDataBloqueio(null);
+
 
             pontoErro = "Definindo dados de pagamento...";
             var pagtos = pedVtex.getPayments();

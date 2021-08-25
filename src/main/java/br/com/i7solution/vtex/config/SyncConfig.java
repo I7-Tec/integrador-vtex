@@ -21,7 +21,7 @@ public class SyncConfig {
 		executor.setMaxPoolSize(10);
 		executor.setQueueCapacity(100);
 		executor.setAllowCoreThreadTimeOut(false);
-		executor.setThreadNamePrefix("AtualizacaoThread-");
+		executor.setThreadNamePrefix("Atualizacao Thread-");
 		executor.initialize();
 		return executor;
 	}
@@ -34,7 +34,7 @@ public class SyncConfig {
 		executor.setMaxPoolSize(10);
 		executor.setQueueCapacity(100);
 		executor.setAllowCoreThreadTimeOut(false);
-		executor.setThreadNamePrefix("PedidoThread-");
+		executor.setThreadNamePrefix("Pedido Thread-");
 		executor.initialize();
 		return executor;
 	}

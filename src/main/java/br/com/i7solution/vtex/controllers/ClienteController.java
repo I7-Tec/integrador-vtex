@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.i7solution.vtex.services.ClienteService;
 
 @RestController
-@RequestMapping("")
-public class ClientController {
+@RequestMapping("/clientes")
+public class ClienteController {
 
 	@Autowired
 	public ClienteService clienteService;
 
-	@GetMapping("/cliente")
+	@GetMapping("/clientes")
 	public void buscarPorId(String id) {
 		clienteService.buscarPorId(id);
 	}
