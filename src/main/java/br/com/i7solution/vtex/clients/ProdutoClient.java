@@ -14,60 +14,60 @@ import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 @Service
 public class ProdutoClient {
 
-	public List<ProdutoDTO> getProdutos() {
-		String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
-		HttpResponse<List<ProdutoDTO>> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.asObject(new GenericType<List<ProdutoDTO>>() {
-					});
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public List<ProdutoDTO> getProdutos() {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
+        HttpResponse<List<ProdutoDTO>> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .asObject(new GenericType<List<ProdutoDTO>>() {
+                    });
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public ProdutoDTO getProdutoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
-		// Unirest.setTimeouts(0, 0);
-		HttpResponse<ProdutoDTO> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(ProdutoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public ProdutoDTO getProdutoPorId(String id) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        // Unirest.setTimeouts(0, 0);
+        HttpResponse<ProdutoDTO> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).asObject(ProdutoDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
-		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
-		// Unirest.setTimeouts(0,0);
-		HttpResponse<ProdutoDTO> response = null;
-		try {
-			response = Unirest.put(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(ProdutoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        // Unirest.setTimeouts(0,0);
+        HttpResponse<ProdutoDTO> response = null;
+        try {
+            response = Unirest.put(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(ProdutoDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
-		String url = DadosVtex.url + "/catalog/produto/" + id + "?an=" + DadosVtex.sellers;
-		// Unirest.setTimeouts(0,0);
-		HttpResponse<ProdutoDTO> response = null;
-		try {
-			response = Unirest.post(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(ProdutoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        // Unirest.setTimeouts(0,0);
+        HttpResponse<ProdutoDTO> response = null;
+        try {
+            response = Unirest.post(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(ProdutoDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
 }

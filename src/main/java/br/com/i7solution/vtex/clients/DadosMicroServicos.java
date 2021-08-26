@@ -1,15 +1,17 @@
 package br.com.i7solution.vtex.clients;
 
 public class DadosMicroServicos {
+    public static String urlCadastros = "https://localhost:5000/api";
+    public static String urlPedidos = "https://localhost:5001/api";
+    public static String urlEstoques = "https://localhost:5002/api";
 
-	public static String urlCadastros = "https://localhost:";
-	public static String urlPedidos = "https://localhost:";
-	public static String urlEstoques = "https://localhost:";
-
-	public static String endPointPrecos = "";
-	public static String endPointProdutos = "";
-	public static String endPointCategorias = "";
-	public static String endPointMarcas = "";
-	public static String endPointEstoques = "";
-	public static String endPointPedidos = "";
+    public static String endPointPrecos = "/precos";
+    public static String endPointProdutos = "/produtos";
+    public static String endPointCategorias = "";
+    public static String endPointMarcas = "";
+    public static String endPointEstoques = "/estoques";
+    public static String endPointPedidos = "/pedidos";
+    public static String endPointClientes = "/clientes";
+    public static String endPointEnderecos = "/enderecos";
+    public static String endPointItemPedido = "/itempedido";
 }

@@ -12,54 +12,54 @@ import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 @Service
 public class PedidoClient {
 
-	public PedidoDTO getPedidoPorId(String id) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
-		HttpResponse<PedidoDTO> response = null;
-		try {
-			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(PedidoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public Boolean getPedidoPorId(Long id) {
+        String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPedidos + id + "?an=";
+        HttpResponse<Boolean> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).asObject(Boolean.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public PedidoDTO putPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
-		HttpResponse<PedidoDTO> response = null;
-		try {
-			response = Unirest.put(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(PedidoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+    public PedidoDTO putPedidoPorId(String id, PedidoDTO dados) {
+        String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPedidos + id + "?an=";
+        HttpResponse<PedidoDTO> response = null;
+        try {
+            response = Unirest.put(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(PedidoDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-		return response.getBody();
-	}
+        return response.getBody();
+    }
 
-	public PedidoDTO postPedidoPorId(String id, PedidoDTO dados) {
-		String url = DadosVtex.url + "/catalog/pedido/" + id + "?an=" + DadosVtex.sellers;
-		HttpResponse<PedidoDTO> response = null;
-		try {
-			response = Unirest.post(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(PedidoDTO.class);
-		} catch (UnirestException e) {
-			e.printStackTrace();
+    public PedidoDTO postPedidoPorId(String id, PedidoDTO dados) {
+        String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPedidos + id + "?an=";
+        HttpResponse<PedidoDTO> response = null;
+        try {
+            response = Unirest.post(url).header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(PedidoDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
 
-		}
-		return response.getBody();
+        }
+        return response.getBody();
 
-	}
+    }
 
-	public void postPedido(PedidoDTO dados) {
-		String url = DadosMicroServicos.urlPedidos;
-		try {
-			var response = Unirest.post(url).header("Content-Type", "application/json").body(dados);
+    public void postPedido(PedidoDTO dados) {
+        String url = DadosMicroServicos.urlPedidos;
+        try {
+            var response = Unirest.post(url).header("Content-Type", "application/json").body(dados);
 
-		} catch (UnirestException e) {
-			e.printStackTrace();
-		}
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
 
-	}
+    }
 }

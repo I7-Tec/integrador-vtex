@@ -4,37 +4,29 @@ import java.io.Serializable;
 
 public class TabelaPrecoDTO implements Serializable {
 
-	private String idProduto;
-	private String idFilial;
-	private Double precoVenda;
-	private Boolean erro;
+    private String idProduto;
+    private Float preco;
+    private Boolean erro;
 
-	public String getIdFilial() {
-		return idFilial;
-	}
 
-	public void setIdFilial(String idFilial) {
-		this.idFilial = idFilial;
-	}
+    public String getIdProduto() {
+        return idProduto;
+    }
 
-	public String getIdProduto() {
-		return idProduto;
-	}
+    public void setIdProduto(String idProduto) {
+        this.idProduto = idProduto;
+    }
 
-	public void setIdProduto(String idProduto) {
-		this.idProduto = idProduto;
-	}
+    public Float getPreco() {
+        return preco;
+    }
 
-	public Double getPrecoVenda() {
-		return precoVenda;
-	}
+    public void setPreco(Float preco) {
+        this.preco = preco;
+    }
 
-	public void setPrecoVenda(Double precoVenda) {
-		this.precoVenda = precoVenda;
-	}
-
-	public Boolean isErro() {
-		return erro;
-	}
+    public Boolean isErro() {
+        return erro;
+    }
 
 }

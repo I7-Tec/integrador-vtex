@@ -35,6 +35,7 @@ public class ItemsDTO implements Serializable {
 	private String taxCode;
 	private String parentItemIndex;
 	private String parentAssemblyBinding;
+	private Double quantity;
 
 	public String getUniqueId() {
 		return uniqueId;
@@ -282,6 +283,14 @@ public class ItemsDTO implements Serializable {
 
 	public void setParentAssemblyBinding(String parentAssemblyBinding) {
 		this.parentAssemblyBinding = parentAssemblyBinding;
+	}
+
+	public Double getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
 	}
 
 }

@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class UnirestConfig {
 
-	@Autowired
-	private com.fasterxml.jackson.databind.ObjectMapper mapper;
+    @Autowired
+    private com.fasterxml.jackson.databind.ObjectMapper mapper;
 
 }
