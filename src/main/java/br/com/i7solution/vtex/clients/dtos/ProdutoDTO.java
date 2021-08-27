@@ -3,22 +3,23 @@ package br.com.i7solution.vtex.clients.dtos;
 import java.io.Serializable;
 
 public class ProdutoDTO implements Serializable {
-
     private String id;
     private String descricao;
-    private Double codigoDeBarras;
-    private String fornecedor;
-    private Double peso;
-    private Double altura;
-    private Double comprimento;
-    private Double largura;
+    private Long codigoDeBarras;
+    private Float peso;
+    private Float altura;
+    private Float comprimento;
+    private Float largura;
     private String codigoDeFabrica;
-    private String departamento;
-    private String secao;
-    private String categoria[];
+    private DepartamentoDTO departamento;
+    private SecaoDTO secao;
+    private MarcaDTO marca;
+    private String categoria;
     private String unidade;
-    private Boolean ativo;
-    private Boolean erro;
+    private FornecedorDTO fornecedor;
+    private boolean ativo;
+    private EmbalagemDTO[] embalagens;
+    private Float pesoLiquido;
 
     public String getId() {
         return id;
@@ -36,51 +37,43 @@ public class ProdutoDTO implements Serializable {
         this.descricao = descricao;
     }
 
-    public Double getCodigoDeBarras() {
+    public Long getCodigoDeBarras() {
         return codigoDeBarras;
     }
 
-    public void setCodigoDeBarras(Double codigoDeBarras) {
+    public void setCodigoDeBarras(Long codigoDeBarras) {
         this.codigoDeBarras = codigoDeBarras;
     }
 
-    public String getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
-    public Double getPeso() {
+    public Float getPeso() {
         return peso;
     }
 
-    public void setPeso(Double peso) {
+    public void setPeso(Float peso) {
         this.peso = peso;
     }
 
-    public Double getAltura() {
+    public Float getAltura() {
         return altura;
     }
 
-    public void setAltura(Double altura) {
+    public void setAltura(Float altura) {
         this.altura = altura;
     }
 
-    public Double getComprimento() {
+    public Float getComprimento() {
         return comprimento;
     }
 
-    public void setComprimento(Double comprimento) {
+    public void setComprimento(Float comprimento) {
         this.comprimento = comprimento;
     }
 
-    public Double getLargura() {
+    public Float getLargura() {
         return largura;
     }
 
-    public void setLargura(Double largura) {
+    public void setLargura(Float largura) {
         this.largura = largura;
     }
 
@@ -92,27 +85,35 @@ public class ProdutoDTO implements Serializable {
         this.codigoDeFabrica = codigoDeFabrica;
     }
 
-    public String getDepartamento() {
+    public DepartamentoDTO getDepartamento() {
         return departamento;
     }
 
-    public void setDepartamento(String departamento) {
+    public void setDepartamento(DepartamentoDTO departamento) {
         this.departamento = departamento;
     }
 
-    public String getSecao() {
+    public SecaoDTO getSecao() {
         return secao;
     }
 
-    public void setSecao(String secao) {
+    public void setSecao(SecaoDTO secao) {
         this.secao = secao;
     }
 
-    public String[] getCategoria() {
+    public MarcaDTO getMarca() {
+        return marca;
+    }
+
+    public void setMarca(MarcaDTO marca) {
+        this.marca = marca;
+    }
+
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(String[] categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
@@ -124,16 +125,35 @@ public class ProdutoDTO implements Serializable {
         this.unidade = unidade;
     }
 
-    public Boolean getAtivo() {
+    public FornecedorDTO getFornecedor() {
+        return fornecedor;
+    }
+
+    public void setFornecedor(FornecedorDTO fornecedor) {
+        this.fornecedor = fornecedor;
+    }
+
+    public boolean isAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Boolean ativo) {
+    public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
 
-    public Boolean isErro() {
-        return erro;
+    public EmbalagemDTO[] getEmbalagens() {
+        return embalagens;
     }
 
+    public void setEmbalagens(EmbalagemDTO[] embalagens) {
+        this.embalagens = embalagens;
+    }
+
+    public Float getPesoLiquido() {
+        return pesoLiquido;
+    }
+
+    public void setPesoLiquido(Float pesoLiquido) {
+        this.pesoLiquido = pesoLiquido;
+    }
 }
