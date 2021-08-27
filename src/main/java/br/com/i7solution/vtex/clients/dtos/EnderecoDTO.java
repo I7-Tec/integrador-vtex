@@ -16,6 +16,7 @@ public class EnderecoDTO implements Serializable {
     private String municipio;
     private Long codigoIbge;
     private Boolean erro;
+    private String rua;
     private TipoEndereco tipoEndereco;
 
     public Integer getNumero() {
@@ -102,4 +103,11 @@ public class EnderecoDTO implements Serializable {
         this.tipoEndereco = tipoEndereco;
     }
 
+    public String getRua() {
+        return rua;
+    }
+
+    public void setRua(String rua) {
+        this.rua = rua;
+    }
 }

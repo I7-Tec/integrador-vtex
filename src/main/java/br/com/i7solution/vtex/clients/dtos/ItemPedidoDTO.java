@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class ItemPedidoDTO implements Serializable {
 
     private String idProduto;
+    private String refId;
     private Long codigoDeBarras;
     private Double preco;
     private Double valorDesconto;
@@ -82,4 +83,6 @@ public class ItemPedidoDTO implements Serializable {
     }
 
     private Integer sequencial;
+
+
 }

@@ -38,23 +38,31 @@ public class VtexService {
     @Autowired
     private PedidoClient pedidoWinthor;
     @Autowired
-    private InventoryClient estoqueVtex;
+    private InventoryClient inventoryVtex;
     @Autowired
     private OrderClient pedidosVtex;
-
+    @Autowired
+    private TabelaPrecoClient tabelaPrecoWinthorClient;
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
-    public void atualizarPrecos() {
-        var precosW = precosWinthor.getPrecosWinthor();
-        if (precosW.size() > 0) {
-            for (int i = 0; i <= precosW.size(); i++) {
-                var precoY = new SKUPriceDTO();
-                precoY.setPrice(precosW.get(i).getPreco().doubleValue());
-                precoY.setItemId(precosW.get(i).getIdProduto());
-                // precoY.setSalesChannel(1L);
-                precosVtex.putPrecoPorSku(precosW.get(i).getIdProduto(), precoY);
+    //@Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
+    public void atualizarPrecos() throws Exception {
+        log.info("Iniciando método de sincornização de preços");
+        var skus = produtosVtex.getSKUs();
+        for (int i = 0; i < skus.getSkus().length; i++) {
+            var sku = skus.getSkus()[i];
+            if (sku.getRefid() != null) {
+                var preco = tabelaPrecoWinthorClient.getPrecosWinthor(sku.getRefid());
+                if (preco != null && preco.length > 0 && preco[0].getPreco() > 0 && sku.getSkuId() != null) {
+                    var precoVtex = new SKUPriceDTO();
+                    precoVtex.setPrice(preco[0].getPreco().doubleValue());
+                    precoVtex.setListPrice(preco[0].getPreco().doubleValue());
+                    //precoVtex.setSalesChannel(1L);
+
+                    precosVtex.putPrecoPorSku(sku.getSkuId(), precoVtex);
+                }
             }
+            log.info("Finalizando método de sincornização de preços");
         }
     }
 
@@ -64,23 +72,23 @@ public class VtexService {
         var prodsW = produtoWinthor.getProdutos();
         if (prodsW.size() > 0) {
             for (int i = 0; i <= prodsW.size(); i++) {
-                var prodY = new SkuDTO();
+                var prodV = new SkuDTO();
                 //var categ = new CategoryDTO()[];
 
-                prodY.setId(prodsW.get(i).getId());// .setId(Ferramentas.stringToLong(prodsW.get(i).getId()));
-                prodY.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
-                prodY.setEan(prodsW.get(i).getCodigoDeBarras().toString());
-                prodY.setDetailUrl("");
-                prodY.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
-                prodY.setIsTransported(false);
-                prodY.setUnitMultiplier(null);
+                prodV.setSkuId(prodsW.get(i).getId());// .setSkuId(Ferramentas.stringToLong(prodsW.get(i).getSkuId()));
+                prodV.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
+                prodV.setEan(prodsW.get(i).getCodigoDeBarras().toString());
+                prodV.setDetailUrl("");
+                prodV.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
+                prodV.setIsTransported(false);
+                prodV.setUnitMultiplier(null);
                 //prodY.setUnitMultiplier(prodsW.get(i).get);
-                prodY.setModalType(null);
-                prodY.setIsKit(false);
-                prodY.setIsActive(true);
-                prodY.setIsActive(null);
-                prodY.setEasurementUnit("M3");
-                prodY.setIsInventoried(null);
+                prodV.setModalType(null);
+                prodV.setIsKit(false);
+                prodV.setIsActive(true);
+                prodV.setIsActive(null);
+                prodV.setEasurementUnit("M3");
+                prodV.setIsInventoried(null);
 
 
                 var dimensoes = new SkuDimensionDTO();
@@ -88,47 +96,39 @@ public class VtexService {
                 dimensoes.setLength(prodsW.get(i).getComprimento());
                 dimensoes.setWidth(prodsW.get(i).getLargura());
                 dimensoes.setWeight(prodsW.get(i).getPeso());
-                prodY.setDimension(dimensoes);
+                prodV.setDimension(dimensoes);
 
                 var dimensoesReais = new RealDimensionDTO();
                 dimensoesReais.setRealHeight(prodsW.get(i).getAltura());
                 dimensoesReais.setRealLength(prodsW.get(i).getComprimento());
                 dimensoesReais.setRealWidth(prodsW.get(i).getLargura());
                 dimensoesReais.setRealWeight(prodsW.get(i).getPeso());
-                prodY.setRealDimension(dimensoesReais);
+                prodV.setRealDimension(dimensoesReais);
 
-                produtosVtex.postSku(prodY);
+                produtosVtex.postSku(prodV);
             }
         }
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 3600000, initialDelay = 10000) // Executa a cada 60mins e inicia após 10 mins
+    @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
     public void atualizacaoEstoque() {
-        log.info("Estoque atualização: Iniciando...");
+        log.info("Iniciando método de sincornização de estoques");
         try {
-            var listaEstoque = estoqueWinthor.getEstoque();
-            if (listaEstoque != null) {
-                if (listaEstoque.size() > 0) {
-                    for (int i = 0; i < listaEstoque.size(); i++) {
-                        if (listaEstoque.get(i).getIdProduto() != null) {
-                            try {
-                                var itemSku = estoqueVtex.getEstoquePorSku(listaEstoque.get(i).getIdProduto());
-                                var item = itemSku.getBalance()[0];
-
-                                item.setReservedQuantity(listaEstoque.get(i).getQuantidadeReservada());
-                                item.setTotalQuantity(listaEstoque.get(i).getQuantidadeDisponivel());
-                                estoqueVtex.putEstoquePorSku(listaEstoque.get(i).getIdProduto(), "1", item);
-
-                                log.info("Estoque atualização - SKU " + listaEstoque.get(i).getIdProduto()
-                                        + " atualizado por quantidade: " + listaEstoque.get(i).getQuantidadeDisponivel());
-                            } catch (Exception e) {
-                                log.error("Estoque atualização(Erro001): Produto " + listaEstoque.get(i).getIdProduto()
-                                        + " msg original: " + e);
-                            }
-                        } else {
-                            log.warn("Estoque atualização: O produto(sku) " + listaEstoque.get(i).getIdProduto()
-                                    + " não possui um Vtex_id válido.");
+            var skus = produtosVtex.getSKUs();
+            for (int i = 0; i < skus.getSkus().length; i++) {
+                var sku = skus.getSkus()[i];
+                if (sku.getRefid() != null) {
+                    var estoques = estoqueWinthor.getEstoque(sku.getRefid());
+                    if (estoques != null && estoques.length > 0 && sku.getSkuId() != null) {
+                        for (int e = 0; e < estoques.length; e++) {
+                            var estoque = estoques[e];
+                            var estoqueVtex = new BalanceDTO();
+                            estoqueVtex.setReservedQuantity(estoque.getQuantidadeReservada().longValue());
+                            estoqueVtex.setTotalQuantity(estoque.getQuantidadeTotal().longValue());
+                            estoqueVtex.setWarehouseId(estoque.getIdFilial());
+                            var s = inventoryVtex.putEstoquePorSku(sku.getSkuId(), estoque.getIdFilial(), estoqueVtex);
+                            log.info(s);
                         }
                     }
                 }
@@ -139,33 +139,28 @@ public class VtexService {
         log.info("Estoque atualização: Finalizado!");
     }
 
-    public void ped_vtex_winthor(OrderDTO pedVtex) throws Exception {
+    public void ped_vtex_winthor(OrderDTO pedVtex) throws
+
+    Exception {//public void ped_vtex_winthor (OrderDTO pedVtex) throws Exception {
         var pedWinthor = new PedidoDTO();
         String pontoErro = "";
 
         try {
+            var pedV = pedidosVtex.getPedidoPorId(pedVtex.getId().toString());
+
             pontoErro = "dados cabeçalho";
 
-            Date dtInclusao = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(pedVtex.getCreationDate() + " UTC");
-            String dataString = new SimpleDateFormat("dd/MM/yyyy").format(dtInclusao);
-            Date data = new SimpleDateFormat("dd/MM/yyyy").parse(dataString);
-
             var clienteVtex = new ClientProfileDataDTO();
-            clienteVtex = pedVtex.getClientProfileData()[0];
+            clienteVtex = pedV.getClientProfileData()[0];
             var clienteWinthor = new ClienteDTO();
-
             clienteWinthor.setCpfCnpj(clienteVtex.getDocument());
             clienteWinthor.setEmail(clienteVtex.getEmail());
-            clienteWinthor.setNome(clienteVtex.getFirstName());
+            clienteWinthor.setNome(clienteVtex.getFirstName() + clienteVtex.getLastName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
-            clienteWinthor.setId(clienteVtex.getId());
-            clienteWinthor.setDataCadastro(null);
-            clienteWinthor.setDataNascimento(null);
-
 
             var enderecoVtex = new AdressDTO();
-            var enderecoWinthor = new EnderecoDTO();
 
+            var enderecoWinthor = new EnderecoDTO();
             enderecoWinthor.setBairro(enderecoVtex.getNeighborhood());
             enderecoWinthor.setCep(enderecoVtex.getPostalCode());
             enderecoWinthor.setComplemento(enderecoVtex.getComplement());
@@ -173,29 +168,20 @@ public class VtexService {
             enderecoWinthor.setUf(enderecoVtex.getState());
             enderecoWinthor.setPais(enderecoVtex.getCountry());
             enderecoWinthor.setNumero(enderecoVtex.getNumber());
+            enderecoWinthor.setRua(enderecoVtex.getStreet());
 
-            var listEnd = new EnderecoDTO[1];
-            listEnd[0] = enderecoWinthor;
-
-            clienteWinthor.setEnderecodto(listEnd);
-
-            pedWinthor.setId(pedVtex.getId());
-            pedWinthor.setCliente(clienteWinthor.toString());
-            pedWinthor.setValorTotal(pedVtex.getValue());
-            pedWinthor.setId(pedVtex.getOrderId());
-            pedWinthor.setIdPedidoCliente(pedVtex.getOrderId().toString());
-            pedWinthor.setDataCriacao(pedVtex.getCreationDate());
-            pedWinthor.setQuantidadeItens(pedVtex.getQuantity());
-            pedWinthor.setFilial("1");
-            pedWinthor.setIdVendedor("10");
-            pedWinthor.setDataFaturamento(null);
-            pedWinthor.setDataCancelamento(null);
-            pedWinthor.setDataEntrega(null);
-            pedWinthor.setDataBloqueio(null);
+            pedWinthor.setId(pedV.getId().toString());
+            pedWinthor.setEndereco(enderecoWinthor);
+            pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
+            pedWinthor.setIdFilial("1");
+            pedWinthor.setCliente(clienteWinthor);
+            pedWinthor.setValorTotal(pedV.getValue());
+            pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
+            pedWinthor.setIdPedidoCliente(pedV.getOrderId().toString());
 
 
             pontoErro = "Definindo dados de pagamento...";
-            var pagtos = pedVtex.getPayments();
+            var pagtos = pedV.getPayments();
             if (pagtos.length > 0) {
                 if (pagtos[0].getGroup() == "credit card") {
                     if (pagtos.length == 1) {
@@ -206,83 +192,86 @@ public class VtexService {
 
                     switch (pagtos.length) {
                         case 1:
-                            pedWinthor.setIdFormaDePagamento("24");
+                            pedWinthor.setIdPlanoDePagamento("24");
                         case 2:
-                            pedWinthor.setIdFormaDePagamento("25");
+                            pedWinthor.setIdPlanoDePagamento("25");
                         case 3:
-                            pedWinthor.setIdFormaDePagamento("26");
+                            pedWinthor.setIdPlanoDePagamento("26");
                         case 4:
-                            pedWinthor.setIdFormaDePagamento("27");
+                            pedWinthor.setIdPlanoDePagamento("27");
                         case 5:
-                            pedWinthor.setIdFormaDePagamento("28");
+                            pedWinthor.setIdPlanoDePagamento("28");
                         case 6:
-                            pedWinthor.setIdFormaDePagamento("29");
+                            pedWinthor.setIdPlanoDePagamento("29");
                         case 7:
-                            pedWinthor.setIdFormaDePagamento("30");
+                            pedWinthor.setIdPlanoDePagamento("30");
                         case 8:
-                            pedWinthor.setIdFormaDePagamento("31");
+                            pedWinthor.setIdPlanoDePagamento("31");
                         case 9:
-                            pedWinthor.setIdFormaDePagamento("32");
+                            pedWinthor.setIdPlanoDePagamento("32");
                         case 10:
-                            pedWinthor.setIdFormaDePagamento("33");
+                            pedWinthor.setIdPlanoDePagamento("33");
                         case 11:
-                            pedWinthor.setIdFormaDePagamento("34");
+                            pedWinthor.setIdPlanoDePagamento("34");
                         case 12:
-                            pedWinthor.setIdFormaDePagamento("35");
+                            pedWinthor.setIdPlanoDePagamento("35");
                         default:
-                            pedWinthor.setIdFormaDePagamento("23");
+                            pedWinthor.setIdPlanoDePagamento("23");
                     }
                 } else {
                     pedWinthor.setIdCobranca("WBI");
-                    pedWinthor.setIdFormaDePagamento("39");
+                    pedWinthor.setIdPlanoDePagamento("39");
                 }
             }
 
-            pedWinthor.isErro(false);
+            pedWinthor.isErro();
 
             pontoErro = "Lendo itens...";
-            var itensVtex = pedVtex.getItems();
+            var itensVtex = pedV.getItems();
             var listItens = new ItemPedidoDTO[itensVtex.length];
             for (var i = 0; i < itensVtex.length; i++) {
-                var prodW = produtoWinthor.getProdutoPorId(itensVtex[i].getProductId());
+                var prodW = produtoWinthor.getProdutoPorId(itensVtex[i].getId());
 
                 var item = new ItemPedidoDTO();
                 item.setIdProduto(prodW.getId());
                 item.setCodigoDeBarras(prodW.getCodigoDeBarras().longValue());
-                item.setPosicao("P");
+                //item.setPosicao("P");
+                //item.setFilialRetira(itensVtex[i]);
                 item.setPreco(itensVtex[i].getSellingPrice());
                 item.setValorDesconto(0.0);
-                item.setQuantidade(itensVtex[i].getQuantity());
-                //item.setSequencial(itensVtex[i].getUniqueId());
+                item.setQuantidade(itensVtex[i].getQuantity().doubleValue());
+
                 listItens[i] = item;
             }
 
             pedWinthor.setItens(listItens);
-            pedWinthor.setQuantidadeItens((double) listItens.length);
+            pedWinthor.setQuantidadeItens(Double.valueOf(listItens.length));
 
             pedidoWinthor.postPedido(pedWinthor);
 
         } catch (Exception e) {
-            log.error("ped_vtex_winthor: " + pontoErro + " -> msg original: " + e.getMessage());
+            log.error("ped_vtex_winthor: " + pontoErro + " -> msg original: " + e);
             throw new Exception(e.getMessage());
         }
     }
 
-    @Async
-    @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
-    public void sincronizarPedidos() throws Exception {
-        var dataIni = new SimpleDateFormat ("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
-        var dataFim = new SimpleDateFormat ("yyyy-MM-dd").format(Date.from(Instant.now()));
 
-        var listOrders = pedidosVtex.getPedidosPorData(dataIni, dataFim);
-        for (int i = 0; i < listOrders.size(); i++) {
-            if ((listOrders.get(i).getStatus() != "canceled")
-                    && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
+        @Async
+        @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
+        public void sincronizarPedidos () throws Exception {
+            var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
+            var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
 
-                var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
-                ped_vtex_winthor(pedidoVtex);
+            var listOrders = pedidosVtex.getPedidosPorData(dataIni, dataFim);
+            for (int i = 0; i < listOrders.size(); i++) {
+                if ((listOrders.get(i).getStatus() != "canceled")
+                        && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
+
+                    var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
+                    ped_vtex_winthor(pedidoVtex);
+                }
             }
         }
+
     }
 
-}

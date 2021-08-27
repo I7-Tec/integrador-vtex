@@ -10,49 +10,42 @@ import org.springframework.stereotype.Service;
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
 
-@Service
-public class EstoqueClient {
 
-    public List<EstoqueDTO> getEstoque() {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
-        HttpResponse<List<EstoqueDTO>> response = null;
-        try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .asObject(new GenericType<List<EstoqueDTO>>() {
-                    });
-        } catch (UnirestException e) {
-            e.printStackTrace();
+    @Service
+    public class EstoqueClient {
+
+        public EstoqueDTO[] getEstoque(String idProduto) {
+            String url = DadosMicroServicos.urlEstoques + DadosMicroServicos.endPointEstoques;
+            HttpResponse<EstoqueDTO[]> response = null;
+            try {
+                response = Unirest.get(url)
+                        .queryString("idProduto", idProduto)
+                        .header("Content-Type", "application/json")
+                        .asObject(new GenericType<EstoqueDTO[]>() {});
+            } catch (UnirestException e) {
+                e.printStackTrace();
+            }
+
+            if(response != null){
+                return response.getBody();
+            }
+            return null;
         }
 
-        return response.getBody();
-    }
+        public EstoqueDTO getEstoquePorId(String id) {
+            String url = DadosMicroServicos.urlEstoques;
+            HttpResponse<EstoqueDTO> response = null;
+            try {
+                response = Unirest.get(url)
+                        .header("Content-Type", "application/json")
+                        .asObject(EstoqueDTO.class);
+            } catch (UnirestException e) {
+                e.printStackTrace();
+            }
 
-    public EstoqueDTO getEstoquePorId(String id) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + id + "?an=";
-        HttpResponse<EstoqueDTO> response = null;
-        try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
-        } catch (UnirestException e) {
-            e.printStackTrace();
+            return response.getBody();
         }
 
-        return response.getBody();
-    }
-
-    public EstoqueDTO getEstoquePorIds(String idProduto, String idFilial) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";
-        // Unirest.setTimeouts(0, 0);
-        HttpResponse<EstoqueDTO> response = null;
-        try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(EstoqueDTO.class);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-
-        return response.getBody();
-    }
 
     public EstoqueDTO putEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
         String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointEstoques + idProduto + idFilial + "?an=";

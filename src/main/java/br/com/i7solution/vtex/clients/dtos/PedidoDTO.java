@@ -5,44 +5,61 @@ import java.util.Date;
 
 public class PedidoDTO implements Serializable {
 
-    private Long id;
-    private String filial;
-    private String cliente;
+    private String id;
+    private String idPedidoEcommerce;
+    private String idPedidoErp;
+    private String idFilial;
     private Double valorTotal;
     private String posicao;
     private Date dataCriacao;
     private Date dataCancelamento;
     private Date dataFaturamento;
     private Date dataBloqueio;
-    private String idPedidoRca;
-    private String idVendedor;
+    private String idPedidoVendedor;
     private String idPedidoCliente;
     private Double quantidadeItens;
     private Date dataEntrega;
-    private String usuario;
+    private String idVendedor;
     private String idCobranca;
-    private String idFormaDePagamento;
+    private String idPlanoDePagamento;
     private Double valorFrete;
     private Double valorOutrasDespesas;
     private String tipoFrete;
+    private ClienteDTO cliente;
+    private ItemPedidoDTO itens[];
+    private EnderecoDTO endereco;
     private boolean erro;
-    private ItemPedidoDTO Itens[];
 
-
-    public String getFilial() {
-        return filial;
+    public String getId() {
+        return id;
     }
 
-    public void setFilial(String filial) {
-        this.filial = filial;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getCliente() {
-        return cliente;
+    public String getIdPedidoEcommerce() {
+        return idPedidoEcommerce;
     }
 
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
+    public void setIdPedidoEcommerce(String idPedidoEcommerce) {
+        this.idPedidoEcommerce = idPedidoEcommerce;
+    }
+
+    public String getIdPedidoErp() {
+        return idPedidoErp;
+    }
+
+    public void setIdPedidoErp(String idPedidoErp) {
+        this.idPedidoErp = idPedidoErp;
+    }
+
+    public String getIdFilial() {
+        return idFilial;
+    }
+
+    public void setIdFilial(String idFilial) {
+        this.idFilial = idFilial;
     }
 
     public Double getValorTotal() {
@@ -93,12 +110,12 @@ public class PedidoDTO implements Serializable {
         this.dataBloqueio = dataBloqueio;
     }
 
-    public String getIdPedidoRca() {
-        return idPedidoRca;
+    public String getIdPedidoVendedor() {
+        return idPedidoVendedor;
     }
 
-    public void setIdPedidoRca(String idPedidoRca) {
-        this.idPedidoRca = idPedidoRca;
+    public void setIdPedidoVendedor(String idPedidoVendedor) {
+        this.idPedidoVendedor = idPedidoVendedor;
     }
 
     public String getIdPedidoCliente() {
@@ -125,14 +142,13 @@ public class PedidoDTO implements Serializable {
         this.dataEntrega = dataEntrega;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getIdVendedor() {
+        return idVendedor;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setIdVendedor(String idVendedor) {
+        this.idVendedor = idVendedor;
     }
-
 
     public String getIdCobranca() {
         return idCobranca;
@@ -142,12 +158,12 @@ public class PedidoDTO implements Serializable {
         this.idCobranca = idCobranca;
     }
 
-    public String getIdFormaDePagamento() {
-        return idFormaDePagamento;
+    public String getIdPlanoDePagamento() {
+        return idPlanoDePagamento;
     }
 
-    public void setIdFormaDePagamento(String idFormaDePagamento) {
-        this.idFormaDePagamento = idFormaDePagamento;
+    public void setIdPlanoDePagamento(String idPlanoDePagamento) {
+        this.idPlanoDePagamento = idPlanoDePagamento;
     }
 
     public Double getValorFrete() {
@@ -174,32 +190,32 @@ public class PedidoDTO implements Serializable {
         this.tipoFrete = tipoFrete;
     }
 
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
     public ItemPedidoDTO[] getItens() {
-        return Itens;
+        return itens;
     }
 
-    public void setItens(ItemPedidoDTO itens[]) {
-        Itens = itens;
+    public void setItens(ItemPedidoDTO[] itens) {
+        this.itens = itens;
     }
 
-    public boolean isErro(boolean b) {
-        return erro;
+    public EnderecoDTO getEndereco() {
+        return endereco;
     }
 
-    public String getIdVendedor() {
-        return idVendedor;
+    public void setEndereco(EnderecoDTO endereco) {
+        this.endereco = endereco;
     }
 
-    public void setIdVendedor(String idVendedor) {
-        this.idVendedor = idVendedor;
-    }
 
-    public Long getId() {
-        return id;
+    public boolean isErro() {
+        return erro ;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
 }

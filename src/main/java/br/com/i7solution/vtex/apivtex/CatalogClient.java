@@ -9,6 +9,7 @@ import br.com.i7solution.vtex.apivtex.dtos.BrandDTO;
 import br.com.i7solution.vtex.apivtex.dtos.CategoryDTO;
 import br.com.i7solution.vtex.apivtex.dtos.ProductDTO;
 import br.com.i7solution.vtex.apivtex.dtos.SkuDTO;
+import br.com.i7solution.vtex.apivtex.dtos.SkusDTO;
 
 @Service
 public class CatalogClient {
@@ -80,7 +81,7 @@ public class CatalogClient {
         return response.getBody();
     }
 
-    public SkuDTO getSKUs() {
+    public SkuDTO getSKU() {
         String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
         HttpResponse<SkuDTO> response = null;
         try {
@@ -118,4 +119,19 @@ public class CatalogClient {
 
         return response.getBody();
     }
+    public SkusDTO getSKUs() {
+        String url = DadosVtex.url + "/catalog/skus/?an=" + DadosVtex.sellers;
+        HttpResponse<SkusDTO> response = null;
+        try {
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", DadosVtex.bearer)
+                    .asObject(SkusDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+        return response.getBody();
+    }
+
 }

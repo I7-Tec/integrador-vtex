@@ -6,13 +6,14 @@ public class EstoqueDTO implements Serializable {
 
     private String idProduto;
     private String idFilial;
-    private Long quantidadeDisponivel;
-    private Long quantidadeAvariada;
-    private Long quantidadeReservada;
-    private Long quantidadePendente;
-    private Long quantidadeBloqueada;
-    private Long quantidadeEmTransito;
-    private Long quantidaGondola;
+    private Double quantidadeDisponivel;
+    private Double quantidadeAvariada;
+    private Double quantidadeReservada;
+    private Double quantidadePendente;
+    private Double quantidadeBloqueada;
+    private Double quantidadeEmTransito;
+    private Double quantidaGondola;
+    private Double quantidadeTotal;
     private boolean erro;
 
     public String getIdProduto() {
@@ -31,64 +32,75 @@ public class EstoqueDTO implements Serializable {
         this.idFilial = idFilial;
     }
 
-    public Long getQuantidadeDisponivel() {
+    public Double getQuantidadeDisponivel() {
         return quantidadeDisponivel;
     }
 
-    public void setQuantidadeDisponivel(Long quantidadeDisponivel) {
+    public void setQuantidadeDisponivel(Double quantidadeDisponivel) {
         this.quantidadeDisponivel = quantidadeDisponivel;
     }
 
-    public Long getQuantidadeAvariada() {
+    public Double getQuantidadeAvariada() {
         return quantidadeAvariada;
     }
 
-    public void setQuantidadeAvariada(Long quantidadeAvariada) {
+    public void setQuantidadeAvariada(Double quantidadeAvariada) {
         this.quantidadeAvariada = quantidadeAvariada;
     }
 
-    public Long getQuantidadeReservada() {
+    public Double getQuantidadeReservada() {
         return quantidadeReservada;
     }
 
-    public void setQuantidadeReservada(Long quantidadeReservada) {
+    public void setQuantidadeReservada(Double quantidadeReservada) {
         this.quantidadeReservada = quantidadeReservada;
     }
 
-    public Long getQuantidadePendente() {
+    public Double getQuantidadePendente() {
         return quantidadePendente;
     }
 
-    public void setQuantidadePendente(Long quantidadePendente) {
+    public void setQuantidadePendente(Double quantidadePendente) {
         this.quantidadePendente = quantidadePendente;
     }
 
-    public Long getQuantidadeBloqueada() {
+    public Double getQuantidadeBloqueada() {
         return quantidadeBloqueada;
     }
 
-    public void setQuantidadeBloqueada(Long quantidadeBloqueada) {
+    public void setQuantidadeBloqueada(Double quantidadeBloqueada) {
         this.quantidadeBloqueada = quantidadeBloqueada;
     }
 
-    public Long getQuantidadeEmTransito() {
+    public Double getQuantidadeEmTransito() {
         return quantidadeEmTransito;
     }
 
-    public void setQuantidadeEmTransito(Long quantidadeEmTransito) {
+    public void setQuantidadeEmTransito(Double quantidadeEmTransito) {
         this.quantidadeEmTransito = quantidadeEmTransito;
     }
 
-    public Long getQuantidaGondola() {
+    public Double getQuantidaGondola() {
         return quantidaGondola;
     }
 
-    public void setQuantidaGondola(Long quantidaGondola) {
+    public void setQuantidaGondola(Double quantidaGondola) {
         this.quantidaGondola = quantidaGondola;
+    }
+
+    public Double getQuantidadeTotal() {
+        return quantidadeTotal;
+    }
+
+    public void setQuantidadeTotal(Double quantidadeTotal) {
+        this.quantidadeTotal = quantidadeTotal;
     }
 
     public boolean isErro() {
         return erro;
     }
 
+    public void setErro(boolean erro) {
+        this.erro = erro;
+    }
 }
