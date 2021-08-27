@@ -49,7 +49,7 @@ public class VtexService {
         var precosW = precosWinthor.getPrecosWinthor();
         if (precosW.size() > 0) {
             for (int i = 0; i <= precosW.size(); i++) {
-                var precoY = new SkuPriceDTO();
+                var precoY = new SKUPriceDTO();
                 precoY.setPrice(precosW.get(i).getPreco().doubleValue());
                 precoY.setItemId(precosW.get(i).getIdProduto());
                 // precoY.setSalesChannel(1L);
@@ -65,7 +65,7 @@ public class VtexService {
         if (prodsW.size() > 0) {
             for (int i = 0; i <= prodsW.size(); i++) {
                 var prodY = new SkuDTO();
-                //var categ = new CategoryDTO()[0];
+                //var categ = new CategoryDTO()[];
 
                 prodY.setId(prodsW.get(i).getId());// .setId(Ferramentas.stringToLong(prodsW.get(i).getId()));
                 prodY.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());

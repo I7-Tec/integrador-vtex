@@ -6,7 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 
-@SpringBootApplication(scanBasePackages = "br.com.i7solution.vtex")
+
+
+@SpringBootApplication(scanBasePackages = "br.com.i7solution.integrador-vtex")
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
 public class VtexApplication {
 

@@ -2,7 +2,7 @@ package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
 
-public class SkuPriceDTO implements Serializable {
+public class SKUPriceDTO implements Serializable {
 
 	private String itemId; // skuId
 	private Double price;
