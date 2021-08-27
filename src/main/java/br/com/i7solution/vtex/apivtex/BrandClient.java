@@ -17,7 +17,8 @@ public class BrandClient {
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .body(brand)
                     .asObject(BrandDTO.class);
         } catch (UnirestException e) {

@@ -104,7 +104,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
+   // @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
     public void atualizacaoEstoque() {
         log.info("Iniciando método de sincornização de estoques");
         try {
@@ -250,7 +250,7 @@ public class VtexService {
 
 
         @Async
-        @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
+       // @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
         public void sincronizarPedidos () throws Exception {
             var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
             var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));

@@ -16,7 +16,9 @@ public class ClienteClient {
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.get(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).asObject(ClienteDTO.class);
+					.header("X-VTEX-API-AppKey", DadosVtex.appKey)
+					.header("X-VTEX-API-AppToken",DadosVtex.appToken)
+					.asObject(ClienteDTO.class);
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}
@@ -29,7 +31,9 @@ public class ClienteClient {
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.put(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(ClienteDTO.class);
+					.header("X-VTEX-API-AppKey", DadosVtex.appKey)
+					.header("X-VTEX-API-AppToken",DadosVtex.appToken)
+					.body(dados).asObject(ClienteDTO.class);
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}
@@ -42,7 +46,9 @@ public class ClienteClient {
 		HttpResponse<ClienteDTO> response = null;
 		try {
 			response = Unirest.post(url).header("Content-Type", "application/json")
-					.header("Authorization", DadosVtex.bearer).body(dados).asObject(ClienteDTO.class);
+					.header("X-VTEX-API-AppKey", DadosVtex.appKey)
+					.header("X-VTEX-API-AppToken",DadosVtex.appToken)
+					.body(dados).asObject(ClienteDTO.class);
 		} catch (UnirestException e) {
 			e.printStackTrace();
 		}

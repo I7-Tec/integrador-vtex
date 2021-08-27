@@ -53,7 +53,9 @@ import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
         HttpResponse<EstoqueDTO> response = null;
         try {
             response = Unirest.put(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(EstoqueDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -67,7 +69,9 @@ import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
         HttpResponse<EstoqueDTO> response = null;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(EstoqueDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(EstoqueDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
 

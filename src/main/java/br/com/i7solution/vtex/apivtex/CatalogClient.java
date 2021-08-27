@@ -21,7 +21,9 @@ public class CatalogClient {
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(CategoryDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -35,7 +37,9 @@ public class CatalogClient {
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(CategoryDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -48,7 +52,9 @@ public class CatalogClient {
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(BrandDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -61,7 +67,9 @@ public class CatalogClient {
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(BrandDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -74,7 +82,9 @@ public class CatalogClient {
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(ProductDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(ProductDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -87,7 +97,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -100,7 +112,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -113,7 +127,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -126,7 +142,8 @@ public class CatalogClient {
         try {
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .asObject(SkusDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -140,7 +157,8 @@ public class CatalogClient {
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .body(dados)
                     .asObject(ProductDTO.class);
         } catch (UnirestException e) {

@@ -14,7 +14,9 @@ public class ItemPedidoClient {
         HttpResponse<ItemPedidoDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(ItemPedidoDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(ItemPedidoDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -27,7 +29,9 @@ public class ItemPedidoClient {
         HttpResponse<ItemPedidoDTO> response = null;
         try {
             response = Unirest.put(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(ItemPedidoDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(ItemPedidoDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -40,7 +44,9 @@ public class ItemPedidoClient {
         HttpResponse<ItemPedidoDTO> response = null;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(ItemPedidoDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(ItemPedidoDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

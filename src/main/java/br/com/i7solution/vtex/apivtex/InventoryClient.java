@@ -18,7 +18,8 @@ public class InventoryClient {
         try {
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .asObject(InventoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -33,7 +34,8 @@ public class InventoryClient {
         try {
             response = Unirest.put(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .body(dados)
                     .asString();
         } catch (UnirestException e) {
@@ -49,7 +51,10 @@ public class InventoryClient {
         HttpResponse<InventoryDTO> response = null;
         try {
             response = Unirest.post(url).header("Content-type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(InventoryDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados)
+                    .asObject(InventoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
