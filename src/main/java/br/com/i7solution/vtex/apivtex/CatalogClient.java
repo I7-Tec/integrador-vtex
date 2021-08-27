@@ -1,5 +1,6 @@
 package br.com.i7solution.vtex.apivtex;
 
+import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 import org.springframework.stereotype.Service;
 
 import kong.unirest.HttpResponse;
@@ -20,7 +21,9 @@ public class CatalogClient {
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(CategoryDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -34,7 +37,9 @@ public class CatalogClient {
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(CategoryDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -47,7 +52,9 @@ public class CatalogClient {
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(BrandDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -60,7 +67,9 @@ public class CatalogClient {
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(BrandDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -68,12 +77,14 @@ public class CatalogClient {
         return response.getBody();
     }
 
-    public ProductDTO getProdutoPorId(String id) {
+    public ProductDTO getProdutoPorId(Long id) {
         String url = DadosVtex.url + DadosVtex.endPointProduto + id + "?an=" + DadosVtex.sellers;
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(ProductDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(ProductDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -86,7 +97,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -99,7 +112,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -112,7 +127,9 @@ public class CatalogClient {
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados).asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -120,13 +137,30 @@ public class CatalogClient {
         return response.getBody();
     }
     public SkusDTO getSKUs() {
-        String url = DadosVtex.url + "/catalog/skus/?an=" + DadosVtex.sellers;
+        String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
         HttpResponse<SkusDTO> response = null;
         try {
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer)
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .asObject(SkusDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+        return response.getBody();
+    }
+    public ProductDTO postProduto(ProductDTO dados) {
+        String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
+        HttpResponse<ProductDTO> response = null;
+        try {
+            response = Unirest.post(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .body(dados)
+                    .asObject(ProductDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

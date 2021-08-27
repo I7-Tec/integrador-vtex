@@ -5,16 +5,14 @@ import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+import br.com.i7solution.vtex.apivtex.*;
 import br.com.i7solution.vtex.apivtex.dtos.*;
 import br.com.i7solution.vtex.clients.*;
+import br.com.i7solution.vtex.tools.Ferramentas;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import br.com.i7solution.vtex.apivtex.CatalogClient;
-import br.com.i7solution.vtex.apivtex.InventoryClient;
-import br.com.i7solution.vtex.apivtex.OrderClient;
-import br.com.i7solution.vtex.apivtex.PriceClient;
 import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
@@ -43,6 +41,8 @@ public class VtexService {
     private OrderClient pedidosVtex;
     @Autowired
     private TabelaPrecoClient tabelaPrecoWinthorClient;
+    @Autowired
+    private BrandClient marcaWinthor ;
 
     @Async(value = "taskAtualizacoes")
     //@Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
@@ -67,51 +67,44 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 3600000, initialDelay = 10000) // de 60 em 60 mins
+    //@Scheduled(fixedRate = 1800000, initialDelay = 10000) //de 30 em 30 mins
     public void atualizarProdutos() {
-        var prodsW = produtoWinthor.getProdutos();
-        if (prodsW.size() > 0) {
-            for (int i = 0; i <= prodsW.size(); i++) {
-                var prodV = new SkuDTO();
-                //var categ = new CategoryDTO()[];
+        log.info("Iniciando sincronização de produtos...");
+        var produtos = produtoWinthor.getProdutos();
+        for (int i = 0; i < produtos.size(); i++) {
+            var produto = produtos.get(i);
+            if (produto.getMarca().getIdEcommerce() != null && produto.getSecao().getIdEcommerce() != null) {
+                var produtoVtex = new ProductDTO();
+                produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
+                produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
+                produtoVtex.setDescription((produto.getDescricao()));
+                produtoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase()));
+                produtoVtex.setName(produto.getDescricao());
+               produtoVtex.setRefId(produto.getId());
 
-                prodV.setSkuId(prodsW.get(i).getId());// .setSkuId(Ferramentas.stringToLong(prodsW.get(i).getSkuId()));
-                prodV.setNameComplete(prodsW.get(i).getDescricao());// setName(prodsW.get(i).getDescricao());
-                prodV.setEan(prodsW.get(i).getCodigoDeBarras().toString());
-                prodV.setDetailUrl("");
-                prodV.setManufacturerCode(prodsW.get(i).getFornecedor()); //valiar campo no microserviço
-                prodV.setIsTransported(false);
-                prodV.setUnitMultiplier(null);
-                //prodY.setUnitMultiplier(prodsW.get(i).get);
-                prodV.setModalType(null);
-                prodV.setIsKit(false);
-                prodV.setIsActive(true);
-                prodV.setIsActive(null);
-                prodV.setEasurementUnit("M3");
-                prodV.setIsInventoried(null);
+                var produtoRetorno = produtosVtex.postProduto(produtoVtex);
+                var sku = new SkuDTO();
+                sku.setProductId(produtoRetorno.getId().toString());
+                sku.setNameComplete(produto.getDescricao());
+                sku.setEan(produto.getCodigoDeBarras().toString());
+                sku.setRefid(produto.getId());
+                sku.getUnitMultiplier();
 
+                var dimension = new SkuDimensionDTO();
+                dimension.setHeight(produto.getAltura().doubleValue());
+                dimension.setWidth(produto.getLargura().doubleValue());
+                dimension.setLength(produto.getComprimento().doubleValue());
+                dimension.setWeight(produto.getPesoLiquido().doubleValue());
 
-                var dimensoes = new SkuDimensionDTO();
-                dimensoes.setHeight(prodsW.get(i).getAltura());
-                dimensoes.setLength(prodsW.get(i).getComprimento());
-                dimensoes.setWidth(prodsW.get(i).getLargura());
-                dimensoes.setWeight(prodsW.get(i).getPeso());
-                prodV.setDimension(dimensoes);
+                sku.setDimension(dimension);
 
-                var dimensoesReais = new RealDimensionDTO();
-                dimensoesReais.setRealHeight(prodsW.get(i).getAltura());
-                dimensoesReais.setRealLength(prodsW.get(i).getComprimento());
-                dimensoesReais.setRealWidth(prodsW.get(i).getLargura());
-                dimensoesReais.setRealWeight(prodsW.get(i).getPeso());
-                prodV.setRealDimension(dimensoesReais);
-
-                produtosVtex.postSku(prodV);
+                produtosVtex.postSku(sku);
             }
         }
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
+   // @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
     public void atualizacaoEstoque() {
         log.info("Iniciando método de sincornização de estoques");
         try {
@@ -257,7 +250,7 @@ public class VtexService {
 
 
         @Async
-        @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
+       // @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
         public void sincronizarPedidos () throws Exception {
             var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
             var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
@@ -273,5 +266,6 @@ public class VtexService {
             }
         }
 
-    }
+
+}
 

@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class ProductDTO implements Serializable {
 
-	private Integer id;
+	private Long id;
 	private String name;
-	private Integer departmentId;
-	private Integer categoryId;
-	private Integer brandId;
+	private Long departmentId;
+	private Long categoryId;
+	private Long brandId;
 	private String linkId;
 	private String refId;
 	private Boolean isVisible;
@@ -20,18 +20,18 @@ public class ProductDTO implements Serializable {
 	private Boolean isActive;
 	private String taxCode;
 	private String metaTagDescription;
-	private Integer supplierId;
+	private Long supplierId;
 	private Boolean showWithoutStock;
 	private Integer listStoreId[];
 	private String adWordsRemarketingCode;
 	private String lomadeeCampaignCode;
 	private Integer store;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -43,27 +43,27 @@ public class ProductDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getDepartmentId() {
+	public Long getDepartmentId() {
 		return departmentId;
 	}
 
-	public void setDepartmentId(Integer departmentId) {
+	public void setDepartmentId(Long departmentId) {
 		this.departmentId = departmentId;
 	}
 
-	public Integer getCategoryId() {
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
-	public void setCategoryId(Integer categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 
-	public Integer getBrandId() {
+	public Long getBrandId() {
 		return brandId;
 	}
 
-	public void setBrandId(Integer brandId) {
+	public void setBrandId(Long brandId) {
 		this.brandId = brandId;
 	}
 
@@ -155,11 +155,11 @@ public class ProductDTO implements Serializable {
 		this.metaTagDescription = metaTagDescription;
 	}
 
-	public Integer getSupplierId() {
+	public Long getSupplierId() {
 		return supplierId;
 	}
 
-	public void setSupplierId(Integer supplierId) {
+	public void setSupplierId(Long supplierId) {
 		this.supplierId = supplierId;
 	}
 

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
-import br.com.i7solution.vtex.apivtex.dtos.SKUPriceDTO;
+
 
 @Service
 public class PriceClient {
@@ -16,7 +16,9 @@ public class PriceClient {
         HttpResponse<SKUPriceDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(SKUPriceDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .asObject(SKUPriceDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -29,7 +31,9 @@ public class PriceClient {
         HttpResponse<SKUPriceDTO> response = null;
         try {
             response = Unirest.put(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).body(dados).asObject(SKUPriceDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .body(dados).asObject(SKUPriceDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

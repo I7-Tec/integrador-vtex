@@ -20,7 +20,9 @@ public class OrderClient {
         HttpResponse<OrderDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("Authorization", DadosVtex.bearer).asObject(OrderDTO.class);
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(OrderDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -39,7 +41,9 @@ public class OrderClient {
                         + "&status=" + status;
 
                 response = Unirest.get(url).header("Content-Type", "application/json")
-                        .header("Authorization", DadosVtex.bearer).asObject(OrdersDTO.class);
+                        .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                        .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                        .asObject(OrdersDTO.class);
 
                 Arrays.stream(response.getBody().getOrders()).map(result::add);
 
@@ -65,7 +69,8 @@ public class OrderClient {
 
                 response = Unirest.get(url)
                         .header("Content-Type", "application/json")
-                        .header("Authorization", DadosVtex.bearer)
+                        .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                        .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                         .asObject(OrdersDTO.class);
 
                 Arrays.stream(response.getBody().getOrders())
