@@ -42,10 +42,10 @@ public class VtexService {
     @Autowired
     private TabelaPrecoClient tabelaPrecoWinthorClient;
     @Autowired
-    private BrandClient marcaWinthor ;
+    private BrandClient marcaWinthor;
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
+    @Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
     public void atualizarPrecos() throws Exception {
         log.info("Iniciando método de sincornização de preços");
         var skus = produtosVtex.getSKUs();
@@ -67,7 +67,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 1800000, initialDelay = 10000) //de 30 em 30 mins
+    @Scheduled(fixedRate = 30000, initialDelay = 10000) //de 30 em 30 mins
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var produtos = produtoWinthor.getProdutos();
@@ -80,7 +80,7 @@ public class VtexService {
                 produtoVtex.setDescription((produto.getDescricao()));
                 produtoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase()));
                 produtoVtex.setName(produto.getDescricao());
-               produtoVtex.setRefId(produto.getId());
+                produtoVtex.setRefId(produto.getId());
 
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
                 var sku = new SkuDTO();
@@ -104,7 +104,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-   // @Scheduled(fixedRate = 1200000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
+    @Scheduled(fixedRate = 30000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
     public void atualizacaoEstoque() {
         log.info("Iniciando método de sincornização de estoques");
         try {
@@ -132,9 +132,8 @@ public class VtexService {
         log.info("Estoque atualização: Finalizado!");
     }
 
-    public void ped_vtex_winthor(OrderDTO pedVtex) throws
+    public void ped_vtex_winthor(OrderDTO pedVtex) throws Exception {
 
-    Exception {//public void ped_vtex_winthor (OrderDTO pedVtex) throws Exception {
         var pedWinthor = new PedidoDTO();
         String pontoErro = "";
 
@@ -249,22 +248,22 @@ public class VtexService {
     }
 
 
-        @Async
-       // @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
-        public void sincronizarPedidos () throws Exception {
-            var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
-            var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
+    @Async
+    @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
+    public void sincronizarPedidos() throws Exception {
+        var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
+        var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
 
-            var listOrders = pedidosVtex.getPedidosPorData(dataIni, dataFim);
-            for (int i = 0; i < listOrders.size(); i++) {
-                if ((listOrders.get(i).getStatus() != "canceled")
-                        && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
+        var listOrders = pedidosVtex.getPedidosPorData(dataIni, dataFim);
+        for (int i = 0; i < listOrders.size(); i++) {
+            if ((listOrders.get(i).getStatus() != "canceled")
+                    && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
 
-                    var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
-                    ped_vtex_winthor(pedidoVtex);
-                }
+                var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
+                ped_vtex_winthor(pedidoVtex);
             }
         }
+    }
 
 
 }
