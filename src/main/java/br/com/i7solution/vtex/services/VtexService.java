@@ -1,23 +1,26 @@
 package br.com.i7solution.vtex.services;
 
-import java.text.SimpleDateFormat;
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.Date;
-
 import br.com.i7solution.vtex.apivtex.*;
 import br.com.i7solution.vtex.apivtex.dtos.*;
-import br.com.i7solution.vtex.clients.*;
-import br.com.i7solution.vtex.tools.Ferramentas;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+import br.com.i7solution.vtex.clients.EstoqueClient;
+import br.com.i7solution.vtex.clients.PedidoClient;
+import br.com.i7solution.vtex.clients.ProdutoClient;
+import br.com.i7solution.vtex.clients.TabelaPrecoClient;
 import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
 import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
 import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
 import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
+import br.com.i7solution.vtex.tools.Ferramentas;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 
 @Log4j2
 @Service
@@ -88,7 +91,7 @@ public class VtexService {
                 sku.setNameComplete(produto.getDescricao());
                 sku.setEan(produto.getCodigoDeBarras().toString());
                 sku.setRefid(produto.getId());
-                sku.getUnitMultiplier();
+                //sku.getUnitMultiplier();
 
                 var dimension = new SkuDimensionDTO();
                 dimension.setHeight(produto.getAltura().doubleValue());
@@ -147,9 +150,9 @@ public class VtexService {
             var clienteWinthor = new ClienteDTO();
             clienteWinthor.setCpfCnpj(clienteVtex.getDocument());
             clienteWinthor.setEmail(clienteVtex.getEmail());
-            clienteWinthor.setNome(clienteVtex.getFirstName() + clienteVtex.getLastName());
+            clienteWinthor.setNome(clienteVtex.getFirstName() + " " + clienteVtex.getLastName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
-
+            clienteWinthor.setTelefoneCelular(clienteVtex.getCorporatePhone()); // observação
             var enderecoVtex = new AdressDTO();
 
             var enderecoWinthor = new EnderecoDTO();
@@ -216,7 +219,7 @@ public class VtexService {
                 }
             }
 
-            pedWinthor.isErro();
+            pedWinthor.isErro(false);
 
             pontoErro = "Lendo itens...";
             var itensVtex = pedV.getItems();
@@ -226,12 +229,12 @@ public class VtexService {
 
                 var item = new ItemPedidoDTO();
                 item.setIdProduto(prodW.getId());
-                item.setCodigoDeBarras(prodW.getCodigoDeBarras().longValue());
-                //item.setPosicao("P");
-                //item.setFilialRetira(itensVtex[i]);
+                item.setCodigoDeBarras(prodW.getCodigoDeBarras());
+                item.setPosicao("P");
+                //item.setFilialRetira(itensVtex[i].get);
                 item.setPreco(itensVtex[i].getSellingPrice());
                 item.setValorDesconto(0.0);
-                item.setQuantidade(itensVtex[i].getQuantity().doubleValue());
+                item.setQuantidade(itensVtex[i].getQuantity());
 
                 listItens[i] = item;
             }

@@ -214,8 +214,11 @@ public class PedidoDTO implements Serializable {
         this.endereco = endereco;
     }
 
+    public boolean getErro (boolean erro) {
+        return erro ;
+    }
 
-    public boolean isErro() {
+    public boolean isErro(boolean erro) {
         return erro ;
     }
 }
