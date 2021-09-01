@@ -1,5 +1,7 @@
 package br.com.i7solution.vtex.config;
 
+
+
 import lombok.extern.log4j.Log4j2;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +23,7 @@ public class SyncConfig {
 		executor.setMaxPoolSize(10);
 		executor.setQueueCapacity(100);
 		executor.setAllowCoreThreadTimeOut(false);
-		executor.setThreadNamePrefix("Atualizacao Thread-");
+		executor.setThreadNamePrefix("AtualizacaoThread-");
 		executor.initialize();
 		return executor;
 	}
@@ -34,7 +36,7 @@ public class SyncConfig {
 		executor.setMaxPoolSize(10);
 		executor.setQueueCapacity(100);
 		executor.setAllowCoreThreadTimeOut(false);
-		executor.setThreadNamePrefix("Pedido Thread-");
+		executor.setThreadNamePrefix("PedidoThread-");
 		executor.initialize();
 		return executor;
 	}

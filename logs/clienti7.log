@@ -1,0 +1,78 @@
+2021-09-01 17:33:21,353 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 93100 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-01 17:33:21,358 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-01 17:33:21,472 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-01 17:33:21,473 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-01 17:33:23,921 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-01 17:33:23,938 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-01 17:33:23,939 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-01 17:33:23,940 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-01 17:33:24,088 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-01 17:33:24,088 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2612 ms
+2021-09-01 17:33:25,944 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-01 17:33:25,968 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-01 17:33:26,045 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-01 17:33:26,071 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.582 seconds (JVM running for 7.277)
+2021-09-01 17:36:29,700 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 92724 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-01 17:36:29,702 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-01 17:36:29,755 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-01 17:36:29,755 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-01 17:36:31,204 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-01 17:36:31,216 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-01 17:36:31,216 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-01 17:36:31,217 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-01 17:36:31,308 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-01 17:36:31,308 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1552 ms
+2021-09-01 17:36:32,596 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-01 17:36:32,618 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-01 17:36:32,671 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-01 17:36:32,685 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.474 seconds (JVM running for 4.039)
+2021-09-01 17:36:42,704 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-01 17:36:42,704 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando método de sincornização de estoques...
+2021-09-01 17:36:42,704 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando método de sincornização de preços...
+2021-09-01 17:36:42,944 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+	at br.com.i7solution.vtex.clients.ProdutoClient.getProdutos(ProdutoClient.java:28)
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:76)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-01 17:36:44,260 ERROR br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Estoque atualização(Erro002): java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.SkusDTO.getSkus()" because "skus" is null
+2021-09-01 17:36:44,260 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarPrecos()
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.SkusDTO.getSkus()" because "skus" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarPrecos(VtexService.java:55)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-01 17:36:44,260 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Estoque atualização: Finalizado!
+2021-09-01 17:37:02,686 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-01 17:37:02,690 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-4] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+	at br.com.i7solution.vtex.clients.ProdutoClient.getProdutos(ProdutoClient.java:28)
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:76)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-01 17:37:12,685 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando método de sincornização de estoques...
+2021-09-01 17:37:13,199 ERROR br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Estoque atualização(Erro002): java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.SkusDTO.getSkus()" because "skus" is null
+2021-09-01 17:37:13,200 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Estoque atualização: Finalizado!
