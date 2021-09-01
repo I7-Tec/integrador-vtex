@@ -17,7 +17,7 @@ public class PedidoDTO implements Serializable {
     private Date dataBloqueio;
     private String idPedidoVendedor;
     private String idPedidoCliente;
-    private Double quantidadeItens;
+    private Long quantidadeItens;
     private Date dataEntrega;
     private String idVendedor;
     private String idCobranca;
@@ -126,11 +126,11 @@ public class PedidoDTO implements Serializable {
         this.idPedidoCliente = idPedidoCliente;
     }
 
-    public Double getQuantidadeItens() {
+    public Long getQuantidadeItens() {
         return quantidadeItens;
     }
 
-    public void setQuantidadeItens(Double quantidadeItens) {
+    public void setQuantidadeItens(Long quantidadeItens) {
         this.quantidadeItens = quantidadeItens;
     }
 
@@ -214,11 +214,11 @@ public class PedidoDTO implements Serializable {
         this.endereco = endereco;
     }
 
-    public boolean getErro (boolean erro) {
-        return erro ;
+    public boolean getErro(boolean erro) {
+        return erro;
     }
 
     public boolean isErro(boolean erro) {
-        return erro ;
+        return erro;
     }
 }

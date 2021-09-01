@@ -59,10 +59,13 @@ public class OrderDTO implements Serializable {
     private Double quantity;
 
 
+    public Long getId() {
+        return id;
+    }
 
-    public Long getId(){return id;}
-
-    public void setId(){this.id = id;}
+    public void setId() {
+        this.id = id;
+    }
 
     public String getEmailTracked() {
         return emailTracked;
