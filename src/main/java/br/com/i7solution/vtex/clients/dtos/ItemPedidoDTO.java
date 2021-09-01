@@ -11,7 +11,7 @@ public class ItemPedidoDTO implements Serializable {
     private Double valorDesconto;
     private String filialRetira;
     private String posicao;
-    private Double quantidade;
+    private Long quantidade;
     private boolean erro;
 
     public String getIdProduto() {
@@ -74,11 +74,11 @@ public class ItemPedidoDTO implements Serializable {
         return erro;
     }
 
-    public Double getQuantidade() {
+    public Long getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(Double quantidade) {
+    public void setQuantidade(Long quantidade) {
         this.quantidade = quantidade;
     }
 

@@ -1,6 +1,6 @@
 package br.com.i7solution.vtex.apivtex;
 
-import br.com.i7solution.vtex.apivtex.dtos.SKUPriceDTO;
+import br.com.i7solution.vtex.apivtex.dtos.PriceDTO;
 import org.springframework.stereotype.Service;
 
 import kong.unirest.HttpResponse;
@@ -11,14 +11,14 @@ import kong.unirest.UnirestException;
 @Service
 public class PriceClient {
 
-    public SKUPriceDTO getPrecoPorSku(String skuId) {
+    public PriceDTO getPrecoPorSku(String skuId) {
         String url = DadosVtex.url + DadosVtex.endPointPreco + skuId + "?an=" + DadosVtex.sellers;
-        HttpResponse<SKUPriceDTO> response = null;
+        HttpResponse<PriceDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(SKUPriceDTO.class);
+                    .asObject(PriceDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -26,14 +26,14 @@ public class PriceClient {
         return response.getBody();
     }
 
-    public SKUPriceDTO putPrecoPorSku(String skuId, SKUPriceDTO dados) {
+    public PriceDTO putPrecoPorSku(String skuId, PriceDTO dados) {
         String url = DadosVtex.url + DadosVtex.endPointPreco + skuId + "?an=" + DadosVtex.sellers;
-        HttpResponse<SKUPriceDTO> response = null;
+        HttpResponse<PriceDTO> response = null;
         try {
             response = Unirest.put(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .body(dados).asObject(SKUPriceDTO.class);
+                    .body(dados).asObject(PriceDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }

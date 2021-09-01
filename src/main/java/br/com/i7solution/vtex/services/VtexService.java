@@ -48,29 +48,29 @@ public class VtexService {
     private BrandClient marcaWinthor;
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1800000, initialDelay = 10000) // de 30 em 30 mins
-    public void atualizarPrecos() throws Exception {
-        log.info("Iniciando método de sincornização de preços");
+    @Scheduled(fixedRate = 40000, initialDelay = 10000)
+    public void atualizarPrecos() {
+        log.info("Iniciando método de sincornização de preços...");
         var skus = produtosVtex.getSKUs();
         for (int i = 0; i < skus.getSkus().length; i++) {
             var sku = skus.getSkus()[i];
             if (sku.getRefid() != null) {
                 var preco = tabelaPrecoWinthorClient.getPrecosWinthor(sku.getRefid());
                 if (preco != null && preco.length > 0 && preco[0].getPreco() > 0 && sku.getSkuId() != null) {
-                    var precoVtex = new SKUPriceDTO();
+                    var precoVtex = new PriceDTO();
                     precoVtex.setPrice(preco[0].getPreco().doubleValue());
                     precoVtex.setListPrice(preco[0].getPreco().doubleValue());
-                    //precoVtex.setSalesChannel(1L);
+                    precoVtex.setSkuId(preco[0].getIdProduto());
 
                     precosVtex.putPrecoPorSku(sku.getSkuId(), precoVtex);
                 }
             }
-            log.info("Finalizando método de sincornização de preços");
+            log.info("Finalizando método de sincornização de preços!");
         }
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 30000, initialDelay = 10000) //de 30 em 30 mins
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var produtos = produtoWinthor.getProdutos();
@@ -84,6 +84,7 @@ public class VtexService {
                 produtoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase()));
                 produtoVtex.setName(produto.getDescricao());
                 produtoVtex.setRefId(produto.getId());
+                produtoVtex.setShowWithoutStock(false);
 
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
                 var sku = new SkuDTO();
@@ -103,13 +104,14 @@ public class VtexService {
 
                 produtosVtex.postSku(sku);
             }
+            log.info("Fim da sincronização de produtos!");
         }
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 30000, initialDelay = 10000)//Executa a cada 20mins e inicia após 10 mins
+    @Scheduled(fixedRate = 30000, initialDelay = 10000)
     public void atualizacaoEstoque() {
-        log.info("Iniciando método de sincornização de estoques");
+        log.info("Iniciando método de sincornização de estoques...");
         try {
             var skus = produtosVtex.getSKUs();
             for (int i = 0; i < skus.getSkus().length; i++) {
@@ -153,8 +155,8 @@ public class VtexService {
             clienteWinthor.setNome(clienteVtex.getFirstName() + " " + clienteVtex.getLastName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
             clienteWinthor.setTelefoneCelular(clienteVtex.getCorporatePhone()); // observação
-            var enderecoVtex = new AdressDTO();
 
+            var enderecoVtex = new AdressDTO();
             var enderecoWinthor = new EnderecoDTO();
             enderecoWinthor.setBairro(enderecoVtex.getNeighborhood());
             enderecoWinthor.setCep(enderecoVtex.getPostalCode());
@@ -174,9 +176,8 @@ public class VtexService {
             pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
             pedWinthor.setIdPedidoCliente(pedV.getOrderId().toString());
 
-
             pontoErro = "Definindo dados de pagamento...";
-            var pagtos = pedV.getPayments();
+            var pagtos = pedV.getPayments();//validar pagamentos
             if (pagtos.length > 0) {
                 if (pagtos[0].getGroup() == "credit card") {
                     if (pagtos.length == 1) {
@@ -217,7 +218,7 @@ public class VtexService {
                     pedWinthor.setIdCobranca("WBI");
                     pedWinthor.setIdPlanoDePagamento("39");
                 }
-            }
+            }//validar pagamentos
 
             pedWinthor.isErro(false);
 
@@ -231,16 +232,17 @@ public class VtexService {
                 item.setIdProduto(prodW.getId());
                 item.setCodigoDeBarras(prodW.getCodigoDeBarras());
                 item.setPosicao("P");
-                //item.setFilialRetira(itensVtex[i].get);
+                item.setFilialRetira(null);
                 item.setPreco(itensVtex[i].getSellingPrice());
                 item.setValorDesconto(0.0);
                 item.setQuantidade(itensVtex[i].getQuantity());
+
 
                 listItens[i] = item;
             }
 
             pedWinthor.setItens(listItens);
-            pedWinthor.setQuantidadeItens(Double.valueOf(listItens.length));
+            pedWinthor.setQuantidadeItens(Long.valueOf(listItens.length));
 
             pedidoWinthor.postPedido(pedWinthor);
 
@@ -248,11 +250,12 @@ public class VtexService {
             log.error("ped_vtex_winthor: " + pontoErro + " -> msg original: " + e);
             throw new Exception(e.getMessage());
         }
+        log.info("Fim da leitura dos Itens !");
     }
 
 
     @Async
-    @Scheduled(fixedRate = 3600000, initialDelay = 60000) // inicia 60 em 60 minutos
+    @Scheduled(fixedRate = 10000, initialDelay = 60000)
     public void sincronizarPedidos() throws Exception {
         var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
         var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
@@ -261,7 +264,6 @@ public class VtexService {
         for (int i = 0; i < listOrders.size(); i++) {
             if ((listOrders.get(i).getStatus() != "canceled")
                     && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
-
                 var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
                 ped_vtex_winthor(pedidoVtex);
             }
