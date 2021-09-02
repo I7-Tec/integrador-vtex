@@ -15,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
+import java.util.List;
 
 @Log4j2
 @Service
@@ -73,40 +74,14 @@ public class VtexService {
     //@Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
-        var produtos = produtoWinthor.getProdutos();
-        if (produtos != null) {
-            log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
-            for (int i = 0; i < produtos.size(); i++) {
-                var produto = produtos.get(i);
-                if (produto.getMarca().getIdEcommerce() != null && produto.getSecao().getIdEcommerce() != null) {
-                    var produtoVtex = new ProductDTO();
-                    produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
-                    produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
-                    produtoVtex.setDescription((produto.getDescricao()));
-                    produtoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase()));
-                    produtoVtex.setName(produto.getDescricao());
-                    produtoVtex.setRefId(produto.getId());
-                    produtoVtex.setShowWithoutStock(false);
-
-                    var produtoRetorno = produtosVtex.postProduto(produtoVtex);
-                    log.info("Produto gerado: " + produtoRetorno.getId());
-                    var sku = new SkuDTO();
-                    sku.setProductId(produtoRetorno.getId().toString());
-                    sku.setNameComplete(produto.getDescricao());
-                    sku.setEan(produto.getCodigoDeBarras().toString());
-                    sku.setRefid(produto.getId());
-                    //sku.getUnitMultiplier();
-
-                    var dimension = new SkuDimensionDTO();
-                    dimension.setHeight(produto.getAltura().doubleValue());
-                    dimension.setWidth(produto.getLargura().doubleValue());
-                    dimension.setLength(produto.getComprimento().doubleValue());
-                    dimension.setWeight(produto.getPesoLiquido().doubleValue());
-
-                    sku.setDimension(dimension);
-
-                    produtosVtex.postSku(sku);
-                }
+        var existeProximo = true;
+        while(existeProximo) {
+            var produtos = produtoWinthor.getProdutos(1, 100);
+            if (produtos != null) {
+                sincronizarProdutos(produtos);
+            }
+            if(produtos.size() < 100) {
+                existeProximo = false;
             }
         }
         log.info("Fim da sincronização de produtos!");
@@ -275,7 +250,7 @@ public class VtexService {
     }
 
     @Async
-    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void sincronizarMarcas() {
         log.info("Iniciando sincronização de Marcas...");
         try {
@@ -289,15 +264,16 @@ public class VtexService {
                     brand.setSiteTitle(marca.getDescricao());
 
                     var brandRetorno = marcaVtex.postBrand(brand);
-                    if(brandRetorno != null) {
+                    if (brandRetorno != null) {
                         marca.setIdEcommerce(brandRetorno.getId().toString());
                         marcaClient.putMarca(marca);
                     }
                 }
             }
 
-
+            log.info("Finalizando sincronização de Marcas...");
         } catch (Exception e) {
+            log.error(e.toString());
             e.printStackTrace();
         }
 
@@ -317,23 +293,55 @@ public class VtexService {
                     category.setName(secao.getDescricao());
                     category.setActive(true);
 
-
                     var secaoRetorno = secaoVtex.postCategory(category);
-                    if(secaoRetorno!= null) {
+                    if (secaoRetorno != null) {
+                        System.out.println(secaoRetorno.getId());
                         secao.setIdEcommerce(secaoRetorno.getId().toString());
                         secaoClient.putSecao(secao);
                     }
                 }
             }
-
-
+            log.info("Finalizando sincronização de Seções...");
         } catch (Exception e) {
+            log.error(e.toString());
             e.printStackTrace();
         }
-
-
     }
 
+    private void sincronizarProdutos(List<ProdutoDTO> produtos) {
+        log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
+        for (int i = 0; i < produtos.size(); i++) {
+            var produto = produtos.get(i);
+            if (produto.getMarca().getIdEcommerce() != null && produto.getSecao().getIdEcommerce() != null) {
+                var produtoVtex = new ProductDTO();
+                produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
+                produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
+                produtoVtex.setDescription((produto.getDescricao()));
+                produtoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase()));
+                produtoVtex.setName(produto.getDescricao());
+                produtoVtex.setRefId(produto.getId());
+                produtoVtex.setShowWithoutStock(false);
 
+                var produtoRetorno = produtosVtex.postProduto(produtoVtex);
+                log.info("Produto gerado: " + produtoRetorno.getId());
+                var sku = new SkuDTO();
+                sku.setProductId(produtoRetorno.getId().toString());
+                sku.setNameComplete(produto.getDescricao());
+                sku.setEan(produto.getCodigoDeBarras().toString());
+                sku.setRefid(produto.getId());
+                //sku.getUnitMultiplier();
+
+                var dimension = new SkuDimensionDTO();
+                dimension.setHeight(produto.getAltura().doubleValue());
+                dimension.setWidth(produto.getLargura().doubleValue());
+                dimension.setLength(produto.getComprimento().doubleValue());
+                dimension.setWeight(produto.getPesoLiquido().doubleValue());
+
+                sku.setDimension(dimension);
+
+                produtosVtex.postSku(sku);
+            }
+        }
+    }
 }
 

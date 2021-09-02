@@ -9,7 +9,7 @@ public class DadosVtex {
     public static String endPointPreco = "/pricing/pipeline/catalog";//conferir
     public static String endPointProduto = "/catalog/pvt/product";//conferir
     public static String endPointEstoque = "/logistics/pvt/inventory";//conferir
-    public static String endPointCategoria = "/catalog/category";//conferir
+    public static String endPointCategoria = "/catalog/pvt/category";//conferir
     public static String endPointMarcas = "/catalog/pvt/brand";//conferir
     public static String endPointPedidos = "/oms/pvt/orders";//conferir
 }

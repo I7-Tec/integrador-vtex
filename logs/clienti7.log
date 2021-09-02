@@ -2839,3 +2839,210 @@ Consider defining a bean of type 'br.com.i7solution.vtex.apivtex.CategoryClient'
 2021-09-02 16:19:19,073 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Seções...
 2021-09-02 16:19:39,070 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Seções...
 2021-09-02 16:19:59,077 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Seções...
+2021-09-02 16:32:33,817 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 6372 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:32:33,817 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:32:33,883 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:32:33,899 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:32:36,127 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:32:36,134 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:32:36,134 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:32:36,134 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:32:36,245 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:32:36,245 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2346 ms
+2021-09-02 16:32:38,188 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:32:38,220 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:32:38,252 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:32:38,267 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.107 seconds (JVM running for 5.739)
+2021-09-02 16:32:48,276 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:32:48,291 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:32:49,803 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] java.lang.NullPointerException
+2021-09-02 16:33:08,273 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-02 16:33:08,635 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] java.lang.NullPointerException
+2021-09-02 16:33:46,296 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 17440 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:33:46,302 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:33:46,454 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:33:46,455 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:33:49,080 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:33:49,095 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:33:49,095 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:33:49,095 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:33:49,206 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:33:49,206 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2748 ms
+2021-09-02 16:33:50,827 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:33:50,843 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:33:50,875 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:33:50,891 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.426 seconds (JVM running for 6.152)
+2021-09-02 16:34:00,892 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:34:00,909 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:34:01,896 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] java.lang.NullPointerException
+2021-09-02 16:34:52,275 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 23472 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:34:52,281 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:34:52,399 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:34:52,402 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:34:54,771 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:34:54,789 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:34:54,790 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:34:54,791 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:34:54,898 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:34:54,898 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2494 ms
+2021-09-02 16:34:57,130 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:34:57,156 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:34:57,187 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:34:57,208 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.713 seconds (JVM running for 6.406)
+2021-09-02 16:35:07,212 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:35:07,227 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:35:09,968 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:41:02,780 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 10200 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:41:02,792 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:41:02,872 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:41:02,874 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:41:05,692 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:41:05,703 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:41:05,703 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:41:05,713 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:41:05,816 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:41:05,816 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2942 ms
+2021-09-02 16:41:08,100 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:41:08,116 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:41:08,160 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:41:08,178 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.018 seconds (JVM running for 6.714)
+2021-09-02 16:41:18,182 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:41:18,198 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:41:19,584 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:41:40,533 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 25800 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:41:40,549 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:41:40,620 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:41:40,620 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:41:42,549 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:41:42,565 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:41:42,565 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:41:42,565 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:41:42,675 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:41:42,675 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2055 ms
+2021-09-02 16:41:44,176 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:41:44,192 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:41:44,225 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:41:44,240 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.304 seconds (JVM running for 5.074)
+2021-09-02 16:41:54,259 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:41:54,272 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:41:55,307 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:42:39,783 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 16088 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:42:39,787 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:42:39,848 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:42:39,862 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:42:41,889 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:42:41,889 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:42:41,889 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:42:41,889 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:42:42,001 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:42:42,001 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2138 ms
+2021-09-02 16:42:43,566 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:42:43,583 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:42:43,599 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:42:43,616 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.469 seconds (JVM running for 5.086)
+2021-09-02 16:42:53,631 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:42:53,646 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:42:54,649 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:46:41,824 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 4404 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:46:41,824 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:46:41,903 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:46:41,903 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:46:43,909 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:46:43,912 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:46:43,912 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:46:43,912 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:46:44,012 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:46:44,012 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2109 ms
+2021-09-02 16:46:45,599 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:46:45,631 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:46:45,647 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:46:45,663 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.455 seconds (JVM running for 5.102)
+2021-09-02 16:46:55,677 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:46:55,693 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:46:56,941 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:50:42,867 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 3824 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:50:42,867 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:50:42,931 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:50:42,931 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:50:44,959 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:50:44,975 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:50:44,975 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:50:44,975 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:50:45,069 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:50:45,069 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2138 ms
+2021-09-02 16:50:46,629 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:50:46,645 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:50:46,677 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:50:46,694 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.418 seconds (JVM running for 5.058)
+2021-09-02 16:50:56,703 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:50:56,719 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:50:58,165 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:52:27,064 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 24752 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:52:27,064 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:52:27,128 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:52:27,128 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:52:29,145 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:52:29,151 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:52:29,151 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:52:29,151 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:52:29,270 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:52:29,286 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2142 ms
+2021-09-02 16:52:30,853 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:52:30,865 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:52:30,897 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:52:30,913 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.408 seconds (JVM running for 5.04)
+2021-09-02 16:52:40,914 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:52:40,930 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:52:42,302 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:53:00,919 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-02 16:53:01,310 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Finalizando sincronização de Seções...
+2021-09-02 16:53:20,914 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Seções...
+2021-09-02 16:53:21,625 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Finalizando sincronização de Seções...
+2021-09-02 16:54:03,250 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 17840 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:54:03,255 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:54:03,320 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:54:03,320 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:54:05,699 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:54:05,715 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:54:05,715 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:54:05,715 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:54:05,808 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:54:05,808 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2488 ms
+2021-09-02 16:54:07,688 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:54:07,705 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:54:07,739 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:54:07,755 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.157 seconds (JVM running for 5.888)
+2021-09-02 16:54:47,920 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 12248 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:54:47,936 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:54:48,000 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:54:48,000 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:54:50,212 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:54:50,235 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:54:50,235 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:54:50,235 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:54:50,352 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:54:50,352 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2352 ms
+2021-09-02 16:54:52,022 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:54:53,582 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:54:53,604 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:54:53,621 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.262 seconds (JVM running for 6.877)
+2021-09-02 16:55:03,628 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:55:03,643 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:55:04,801 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...
+2021-09-02 16:55:37,982 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 23160 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-02 16:55:37,982 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:55:38,043 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:55:38,043 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:55:40,022 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:55:40,037 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:55:40,037 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:55:40,037 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:55:40,146 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:55:40,146 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2103 ms
+2021-09-02 16:55:41,729 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:55:41,745 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:55:41,776 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:55:41,792 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.404 seconds (JVM running for 5.008)
+2021-09-02 16:55:51,795 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:55:51,810 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:55:52,802 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Finalizando sincronização de Seções...

@@ -17,12 +17,14 @@ import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 @Service
 public class ProdutoClient {
 
-    public List<ProdutoDTO> getProdutos() {
+    public List<ProdutoDTO> getProdutos(int pageNumber, int pageSize) {
         String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
         HttpResponse<List<ProdutoDTO>> response = null;
         try {
             response = Unirest.get(url)
                     .connectTimeout(60000)
+                    .queryString("pageSize", pageSize)
+                    .queryString("pageNumber", pageNumber)
                     .queryString("diasAlteracao", 5)
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<List<ProdutoDTO>>() {});
