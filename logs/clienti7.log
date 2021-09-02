@@ -2062,3 +2062,780 @@ java.lang.NullPointerException: Cannot invoke "java.util.Optional.get()" because
 2021-09-02 12:00:41,531 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
 2021-09-02 12:00:43,147 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de produtos a sincronizar: 1
 2021-09-02 12:00:43,147 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:19:00,708 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 98992 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 14:19:00,711 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 14:19:00,767 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 14:19:00,768 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 14:19:02,227 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 14:19:02,239 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:19:02,240 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 14:19:02,240 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 14:19:02,322 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 14:19:02,323 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1555 ms
+2021-09-02 14:19:03,686 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 14:19:03,709 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:19:03,747 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 14:19:03,764 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.573 seconds (JVM running for 4.154)
+2021-09-02 14:19:13,778 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:19:14,576 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar1
+2021-09-02 14:19:14,577 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:19:46,911 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 83920 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 14:19:46,913 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 14:19:46,969 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 14:19:46,970 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 14:19:48,440 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 14:19:48,453 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:19:48,454 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 14:19:48,454 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 14:19:48,536 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 14:19:48,536 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1565 ms
+2021-09-02 14:19:49,868 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 14:19:49,886 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:19:49,931 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 14:19:49,950 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.547 seconds (JVM running for 4.079)
+2021-09-02 14:19:59,954 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:20:00,490 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:20:00,491 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:20:19,953 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:20:20,501 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:20:20,501 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:20:39,955 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:20:40,304 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:20:40,305 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:27:13,896 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 91768 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 14:27:13,900 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 14:27:13,962 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 14:27:13,963 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 14:27:15,384 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 14:27:15,397 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:27:15,398 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 14:27:15,398 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 14:28:03,179 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 82536 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 14:28:03,181 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 14:28:03,239 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 14:28:03,240 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 14:28:04,695 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 14:28:04,706 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:28:04,707 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 14:28:04,707 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 14:28:04,795 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 14:28:04,795 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1554 ms
+2021-09-02 14:28:06,117 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 14:28:06,133 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:28:06,174 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 14:28:06,194 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.501 seconds (JVM running for 4.122)
+2021-09-02 14:28:16,220 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:28:16,895 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:28:16,895 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:28:36,194 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:28:36,594 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:28:36,595 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:28:57,001 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 96280 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 14:28:57,004 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 14:28:57,062 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 14:28:57,063 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 14:28:58,453 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 14:28:58,465 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:28:58,466 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 14:28:58,466 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 14:28:58,555 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 14:28:58,556 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1492 ms
+2021-09-02 14:28:59,834 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 14:28:59,852 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 14:28:59,896 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 14:28:59,912 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.419 seconds (JVM running for 3.992)
+2021-09-02 14:29:09,923 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:29:10,505 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:29:10,505 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:29:29,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:29:30,688 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:29:30,689 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:29:49,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:29:50,277 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:29:50,279 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:30:09,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:30:10,284 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:30:10,285 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:30:29,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:30:30,375 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:30:30,376 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:30:49,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:30:50,306 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:30:50,307 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:31:09,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:31:10,284 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:31:10,284 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:31:29,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:31:30,380 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:31:30,380 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:31:49,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:31:50,284 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:31:50,286 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:32:09,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:32:10,268 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:32:10,268 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:32:29,922 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:32:30,473 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:32:30,474 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:32:49,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:32:50,309 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:32:50,310 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:33:09,907 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:33:10,280 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:33:10,282 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:33:29,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:33:30,459 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:33:30,460 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:33:49,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:33:50,244 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:33:50,244 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:34:09,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:34:10,278 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:34:10,278 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:34:29,907 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:34:30,427 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:34:30,428 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:34:49,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:34:50,270 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:34:50,271 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:35:09,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:35:10,214 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:35:10,215 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:35:29,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:35:30,543 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:35:30,543 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:35:49,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:35:50,291 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:35:50,292 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:36:09,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:36:10,369 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:36:10,370 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:36:29,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:36:31,102 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:36:31,102 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:36:49,918 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:36:50,290 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:36:50,291 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:37:09,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:37:10,323 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:37:10,324 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:37:29,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:37:30,516 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:37:30,517 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:37:49,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:38:09,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:38:10,284 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:38:10,285 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:38:29,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:38:30,479 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:38:30,481 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:38:49,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:38:49,931 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:38:50,266 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:38:50,267 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:39:09,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:39:10,265 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:39:10,265 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:39:29,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:39:30,471 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:39:30,473 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:39:49,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:39:50,320 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:39:50,321 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:40:09,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:40:10,325 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:40:10,327 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:40:29,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:40:30,476 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:40:30,476 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:40:49,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:40:50,281 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:40:50,282 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:41:09,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:41:10,254 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:41:10,255 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:41:29,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:41:30,431 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:41:30,432 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:41:49,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:41:50,294 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:41:50,295 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:42:09,907 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:42:10,399 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:42:10,400 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:42:29,907 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:42:33,447 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:42:33,448 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:42:49,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:42:50,251 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:42:50,252 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:43:09,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:43:10,295 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:43:10,296 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:43:29,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:43:30,484 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:43:30,484 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:43:49,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:43:50,378 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:43:50,378 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:44:09,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:44:10,250 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:44:10,251 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:44:29,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:44:30,389 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:44:30,389 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:44:49,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:44:50,320 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:44:50,321 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:45:09,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:45:10,235 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:45:10,236 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:45:29,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:45:30,322 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:45:30,323 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:45:49,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:45:50,427 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:45:50,428 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:46:09,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:46:10,253 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:46:10,254 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:46:29,913 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:46:30,298 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:46:30,298 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:46:49,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:46:50,368 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:46:50,368 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:47:09,907 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:47:10,286 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:47:10,287 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:47:29,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:47:30,265 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:47:30,265 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:47:49,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:47:50,299 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:47:50,300 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:48:09,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:48:10,250 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:48:10,251 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:48:29,913 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:48:30,232 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:48:30,233 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:48:49,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:48:50,362 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:48:50,363 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:49:09,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:49:10,262 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:49:10,262 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:49:29,922 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:49:30,397 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:49:30,399 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:49:49,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:49:50,418 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:49:50,419 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:50:09,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:50:10,295 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:50:10,295 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:50:29,921 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:50:30,281 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:50:30,282 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:50:49,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:50:50,793 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:50:50,794 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:51:09,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:51:10,275 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:51:10,275 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:51:29,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:51:30,521 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:51:30,522 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:51:49,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:51:50,351 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:51:50,351 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:52:09,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:52:10,339 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:52:10,339 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:52:29,922 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:52:31,752 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:52:31,752 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:52:49,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:52:50,863 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:52:50,863 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:53:09,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:53:10,557 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:53:10,557 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:53:29,913 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:53:30,262 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:53:30,262 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:53:49,911 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:53:51,083 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:53:51,084 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:54:09,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:54:10,770 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:54:10,771 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:54:29,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:54:30,308 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:54:30,309 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:54:49,922 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:54:50,461 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:54:50,462 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:55:09,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:55:10,852 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:55:10,853 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:55:29,913 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:55:31,281 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:55:31,282 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:55:49,919 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:55:51,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:55:51,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:56:09,915 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:56:11,270 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:56:11,271 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:56:29,918 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:56:31,458 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:56:31,459 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:56:49,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:56:51,571 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:56:51,572 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:57:09,910 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:57:10,361 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:57:10,361 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:57:29,912 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:57:33,984 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:57:33,984 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:57:49,914 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:57:50,230 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:57:50,231 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 14:58:09,908 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-02 14:58:10,436 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:58:10,437 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Fim da sincronização de produtos!
+2021-09-02 14:58:29,909 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-02 14:58:30,285 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:58:30,285 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Fim da sincronização de produtos!
+2021-09-02 14:58:49,920 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-02 14:58:50,232 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:58:50,233 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-02 14:59:09,922 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-02 14:59:10,441 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  1
+2021-09-02 14:59:10,442 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Fim da sincronização de produtos!
+2021-09-02 15:00:54,052 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 88904 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:00:54,055 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:00:54,107 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:00:54,107 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:00:55,585 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:00:55,599 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:00:55,599 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:00:55,600 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:00:55,724 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:00:55,724 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1616 ms
+2021-09-02 15:00:56,961 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:00:56,978 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:00:57,016 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:00:57,029 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.513 seconds (JVM running for 4.05)
+2021-09-02 15:01:07,030 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:01:07,062 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:01:27,040 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:01:47,030 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:02:51,973 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 79672 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:02:51,975 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:02:52,030 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:02:52,030 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:02:53,426 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:02:53,438 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:02:53,439 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:02:53,439 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:02:53,533 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:02:53,534 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1503 ms
+2021-09-02 15:02:54,791 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:02:54,811 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:02:54,851 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:02:54,873 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.402 seconds (JVM running for 3.954)
+2021-09-02 15:03:04,878 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:03:04,886 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:03:24,885 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:03:44,872 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:03:52,285 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 80120 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:03:52,288 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:03:52,340 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:03:52,341 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:03:53,824 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:03:53,836 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:03:53,837 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:03:53,837 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:03:53,923 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:03:53,923 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1581 ms
+2021-09-02 15:03:55,193 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:03:55,207 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:03:55,245 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:03:55,257 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.462 seconds (JVM running for 4.013)
+2021-09-02 15:04:05,264 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:04:05,274 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:04:25,255 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:04:30,997 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 94204 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:04:31,000 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:04:31,049 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:04:31,050 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:04:32,476 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:04:32,487 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:04:32,488 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:04:32,488 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:04:32,585 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:04:32,586 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1535 ms
+2021-09-02 15:04:33,834 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:04:33,848 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:04:33,885 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:04:33,898 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.453 seconds (JVM running for 4.008)
+2021-09-02 15:04:43,909 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:04:43,918 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:05:03,900 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:05:23,906 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:05:43,900 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 99408 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:05:43,903 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:05:43,958 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:05:43,958 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:05:45,424 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:05:45,435 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:05:45,435 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:05:45,435 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:05:45,533 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:05:45,533 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1574 ms
+2021-09-02 15:05:46,766 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:05:46,781 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:05:46,819 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:05:46,839 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.566 seconds (JVM running for 4.173)
+2021-09-02 15:05:56,841 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:05:56,852 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:06:43,058 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 82128 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:06:43,060 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:06:43,117 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:06:43,118 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:06:45,850 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:06:45,869 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:06:45,870 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:06:45,870 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:06:45,997 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:06:45,998 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2879 ms
+2021-09-02 15:06:48,335 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:06:48,367 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:06:48,425 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:06:48,453 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.988 seconds (JVM running for 6.613)
+2021-09-02 15:06:58,445 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:06:58,455 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:07:18,449 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:07:38,440 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:07:58,452 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:08:18,443 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-02 15:08:24,817 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 85364 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:08:24,822 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:08:24,911 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:08:24,912 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:08:27,406 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:08:27,426 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:08:27,427 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:08:27,427 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:08:27,600 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:08:27,600 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2687 ms
+2021-09-02 15:08:29,840 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:08:29,867 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:08:29,948 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:08:29,977 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.173 seconds (JVM running for 7.042)
+2021-09-02 15:08:39,983 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:08:40,007 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:08:59,981 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:09:19,971 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:09:39,980 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:09:59,971 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-02 15:10:19,973 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Marcas...
+2021-09-02 15:10:39,985 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] Iniciando sincronização de Marcas...
+2021-09-02 15:11:00,033 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] Iniciando sincronização de Marcas...
+2021-09-02 15:11:19,970 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-9] Iniciando sincronização de Marcas...
+2021-09-02 15:11:39,976 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-10] Iniciando sincronização de Marcas...
+2021-09-02 15:11:59,980 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-11] Iniciando sincronização de Marcas...
+2021-09-02 15:12:19,985 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-12] Iniciando sincronização de Marcas...
+2021-09-02 15:12:29,495 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 96080 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:12:29,499 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:12:29,602 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:12:29,603 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:12:31,940 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:12:31,960 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:12:31,961 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:12:31,962 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:12:32,116 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:12:32,117 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2512 ms
+2021-09-02 15:12:34,239 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:12:34,262 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:12:34,326 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:12:34,356 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.683 seconds (JVM running for 6.626)
+2021-09-02 15:12:44,351 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:12:44,360 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:13:04,353 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:13:24,358 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:13:44,351 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:14:04,363 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-02 15:14:24,352 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Marcas...
+2021-09-02 15:14:44,359 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] Iniciando sincronização de Marcas...
+2021-09-02 15:15:04,351 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] Iniciando sincronização de Marcas...
+2021-09-02 15:15:29,104 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 50912 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:15:29,110 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:15:29,209 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:15:29,210 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:15:31,544 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:15:31,562 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:15:31,562 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:15:31,563 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:15:31,697 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:15:31,698 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2488 ms
+2021-09-02 15:15:33,903 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:15:33,929 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:15:33,994 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:15:34,014 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.733 seconds (JVM running for 6.649)
+2021-09-02 15:15:44,015 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:15:44,031 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:16:04,014 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:16:24,014 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:16:44,009 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:17:04,012 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-02 15:17:24,012 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Marcas...
+2021-09-02 15:17:44,013 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] Iniciando sincronização de Marcas...
+2021-09-02 15:18:04,008 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] Iniciando sincronização de Marcas...
+2021-09-02 15:18:24,010 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-9] Iniciando sincronização de Marcas...
+2021-09-02 15:18:44,017 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-10] Iniciando sincronização de Marcas...
+2021-09-02 15:19:04,019 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-11] Iniciando sincronização de Marcas...
+2021-09-02 15:19:24,018 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-12] Iniciando sincronização de Marcas...
+2021-09-02 15:19:44,018 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-13] Iniciando sincronização de Marcas...
+2021-09-02 15:20:04,016 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-14] Iniciando sincronização de Marcas...
+2021-09-02 15:20:24,016 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-15] Iniciando sincronização de Marcas...
+2021-09-02 15:20:48,709 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 99340 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:20:48,714 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:20:48,807 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:20:48,808 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:20:51,247 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:20:51,267 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:20:51,268 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:20:51,269 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:20:51,442 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:20:51,443 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2634 ms
+2021-09-02 15:20:53,685 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:20:53,710 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:20:53,775 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:20:53,806 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.938 seconds (JVM running for 6.844)
+2021-09-02 15:21:03,794 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:21:03,803 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:21:23,800 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:21:43,792 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:22:03,800 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:22:23,793 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-02 15:22:43,806 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Marcas...
+2021-09-02 15:23:03,796 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] Iniciando sincronização de Marcas...
+2021-09-02 15:23:23,796 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] Iniciando sincronização de Marcas...
+2021-09-02 15:23:43,791 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-9] Iniciando sincronização de Marcas...
+2021-09-02 15:24:03,797 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-10] Iniciando sincronização de Marcas...
+2021-09-02 15:24:23,798 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-11] Iniciando sincronização de Marcas...
+2021-09-02 15:24:43,793 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-12] Iniciando sincronização de Marcas...
+2021-09-02 15:25:03,799 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-13] Iniciando sincronização de Marcas...
+2021-09-02 15:25:19,489 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 59432 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:25:19,494 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:25:19,590 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:25:19,590 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:26:32,544 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 97248 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:26:32,549 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:26:32,648 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:26:32,649 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:26:35,229 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:26:35,250 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:26:35,251 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:26:35,251 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:26:35,419 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:26:35,420 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2769 ms
+2021-09-02 15:26:37,693 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:26:37,719 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:26:37,789 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:26:37,811 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.179 seconds (JVM running for 7.218)
+2021-09-02 15:26:47,820 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:26:47,829 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:27:07,813 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:27:27,806 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-02 15:27:47,804 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Marcas...
+2021-09-02 15:27:53,294 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 98772 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:27:53,299 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:27:53,392 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:27:53,393 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:27:55,701 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:27:55,717 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:27:55,718 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:27:55,719 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:27:55,848 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:27:55,849 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2455 ms
+2021-09-02 15:27:57,960 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:27:57,990 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:27:58,061 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:27:58,085 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.601 seconds (JVM running for 6.473)
+2021-09-02 15:28:08,084 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:28:08,093 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:28:28,092 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Marcas...
+2021-09-02 15:44:07,964 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 84768 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:44:07,970 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:44:08,067 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:44:08,067 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:44:10,697 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:44:10,723 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:44:10,724 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:44:10,724 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:44:10,875 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:44:10,875 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2807 ms
+2021-09-02 15:44:13,204 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:44:13,231 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:44:13,297 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:44:13,326 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.222 seconds (JVM running for 7.182)
+2021-09-02 15:44:23,318 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:44:23,344 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 15:45:37,623 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 93796 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 15:45:37,629 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 15:45:37,721 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 15:45:37,721 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 15:45:40,073 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 15:45:40,092 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:45:40,093 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 15:45:40,093 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 15:45:40,264 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 15:45:40,265 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2543 ms
+2021-09-02 15:45:42,406 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 15:45:42,431 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 15:45:42,495 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 15:45:42,525 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.747 seconds (JVM running for 6.665)
+2021-09-02 15:45:52,532 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 15:45:52,542 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-02 16:09:32,846 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 98044 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 16:09:32,852 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:09:32,955 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:09:32,955 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:09:35,503 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:09:35,522 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:09:35,523 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:09:35,524 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:09:35,663 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:09:35,663 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2707 ms
+2021-09-02 16:09:36,049 WARN org.springframework.context.support.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'vtexService': Unsatisfied dependency expressed through field 'secaoClient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'br.com.i7solution.vtex.clients.SecaoClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2021-09-02 16:09:36,055 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2021-09-02 16:09:36,079 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-02 16:09:36,114 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field secaoClient in br.com.i7solution.vtex.services.VtexService required a bean of type 'br.com.i7solution.vtex.clients.SecaoClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.i7solution.vtex.clients.SecaoClient' in your configuration.
+
+2021-09-02 16:11:13,801 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 96420 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 16:11:13,805 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:11:13,908 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:11:13,909 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:11:16,522 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:11:16,541 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:11:16,541 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:11:16,542 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:11:16,689 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:11:16,690 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2779 ms
+2021-09-02 16:11:17,119 WARN org.springframework.context.support.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'vtexService': Unsatisfied dependency expressed through field 'secaoClient'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'br.com.i7solution.vtex.clients.SecaoClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2021-09-02 16:11:17,125 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2021-09-02 16:11:17,149 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-02 16:11:17,188 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field secaoClient in br.com.i7solution.vtex.services.VtexService required a bean of type 'br.com.i7solution.vtex.clients.SecaoClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.i7solution.vtex.clients.SecaoClient' in your configuration.
+
+2021-09-02 16:13:31,306 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 98808 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 16:13:31,312 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:13:31,407 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:13:31,408 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:13:33,804 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:13:33,822 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:13:33,823 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:13:33,823 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:13:33,960 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:13:33,961 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2552 ms
+2021-09-02 16:13:34,397 WARN org.springframework.context.support.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'vtexService': Unsatisfied dependency expressed through field 'secaoVtex'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'br.com.i7solution.vtex.apivtex.CategoryClient' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2021-09-02 16:13:34,402 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2021-09-02 16:13:34,428 INFO org.springframework.boot.autoconfigure.logging.ConditionEvaluationReportLoggingListener [restartedMain] 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2021-09-02 16:13:34,466 ERROR org.springframework.boot.diagnostics.LoggingFailureAnalysisReporter [restartedMain] 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field secaoVtex in br.com.i7solution.vtex.services.VtexService required a bean of type 'br.com.i7solution.vtex.apivtex.CategoryClient' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'br.com.i7solution.vtex.apivtex.CategoryClient' in your configuration.
+
+2021-09-02 16:14:13,453 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 96428 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 16:14:13,458 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:14:13,553 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:14:13,554 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:14:15,976 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:14:15,996 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:14:15,997 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:14:15,998 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:14:16,166 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:14:16,166 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2611 ms
+2021-09-02 16:14:18,396 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:14:18,421 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:14:18,499 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:14:18,527 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 5.906 seconds (JVM running for 6.855)
+2021-09-02 16:14:28,526 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:14:28,546 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:14:48,523 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-02 16:18:23,628 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 92940 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-02 16:18:23,632 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-02 16:18:23,731 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-02 16:18:23,732 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-02 16:18:26,253 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-02 16:18:26,273 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:18:26,274 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-02 16:18:26,274 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-02 16:18:26,442 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-02 16:18:26,442 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2709 ms
+2021-09-02 16:18:28,935 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-02 16:18:28,964 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-02 16:18:29,049 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-02 16:18:29,077 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 6.292 seconds (JVM running for 7.234)
+2021-09-02 16:18:39,071 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-02 16:18:39,092 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Seções...
+2021-09-02 16:18:59,079 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-02 16:19:19,073 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Seções...
+2021-09-02 16:19:39,070 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Seções...
+2021-09-02 16:19:59,077 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Seções...

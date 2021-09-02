@@ -152,8 +152,9 @@ public class CatalogClient {
         return response.getBody();
     }
     public ProductDTO postProduto(ProductDTO dados) {
-        String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
+        String url = DadosVtex.url + DadosVtex.endPointProduto;
         HttpResponse<ProductDTO> response = null;
+        System.out.println(url);
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")

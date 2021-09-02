@@ -65,7 +65,10 @@ public class ProdutoClient {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if(response != null) {
+            return response.getBody();
+        }
+        return null;
     }
 
     public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
@@ -81,7 +84,10 @@ public class ProdutoClient {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if(response != null) {
+            return response.getBody();
+        }
+        return null;
     }
     public List<PaymentsDTO> getPagamentosPedido(Long orderId) {
         List<PaymentsDTO> result = new ArrayList<>();

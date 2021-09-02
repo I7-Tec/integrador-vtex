@@ -2,14 +2,8 @@ package br.com.i7solution.vtex.services;
 
 import br.com.i7solution.vtex.apivtex.*;
 import br.com.i7solution.vtex.apivtex.dtos.*;
-import br.com.i7solution.vtex.clients.EstoqueClient;
-import br.com.i7solution.vtex.clients.PedidoClient;
-import br.com.i7solution.vtex.clients.ProdutoClient;
-import br.com.i7solution.vtex.clients.TabelaPrecoClient;
-import br.com.i7solution.vtex.clients.dtos.ClienteDTO;
-import br.com.i7solution.vtex.clients.dtos.EnderecoDTO;
-import br.com.i7solution.vtex.clients.dtos.ItemPedidoDTO;
-import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
+import br.com.i7solution.vtex.clients.*;
+import br.com.i7solution.vtex.clients.dtos.*;
 import br.com.i7solution.vtex.tools.Ferramentas;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +39,13 @@ public class VtexService {
     @Autowired
     private TabelaPrecoClient tabelaPrecoWinthorClient;
     @Autowired
-    private BrandClient marcaWinthor;
+    private BrandClient marcaVtex;
+    @Autowired
+    private MarcaClient marcaClient;
+    @Autowired
+    private SecaoClient secaoClient;
+    @Autowired
+    private CategoryClient secaoVtex;
 
     @Async(value = "taskAtualizacoes")
     //@Scheduled(fixedRate = 40000, initialDelay = 10000)
@@ -70,12 +70,12 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 200000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var produtos = produtoWinthor.getProdutos();
         if (produtos != null) {
-            log.info("Quantidade de produtos a sincronizar: " + produtos.size());
+            log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
             for (int i = 0; i < produtos.size(); i++) {
                 var produto = produtos.get(i);
                 if (produto.getMarca().getIdEcommerce() != null && produto.getSecao().getIdEcommerce() != null) {
@@ -89,6 +89,7 @@ public class VtexService {
                     produtoVtex.setShowWithoutStock(false);
 
                     var produtoRetorno = produtosVtex.postProduto(produtoVtex);
+                    log.info("Produto gerado: " + produtoRetorno.getId());
                     var sku = new SkuDTO();
                     sku.setProductId(produtoRetorno.getId().toString());
                     sku.setNameComplete(produto.getDescricao());
@@ -271,6 +272,66 @@ public class VtexService {
                 ped_vtex_winthor(pedidoVtex);
             }
         }
+    }
+
+    @Async
+    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
+    public void sincronizarMarcas() {
+        log.info("Iniciando sincronização de Marcas...");
+        try {
+            var marcas = marcaClient.getMarcas();
+            for (int i = 0; i < 1; i++) {
+                var marca = marcas.get(i);
+                if (marca.getIdEcommerce() == null) {
+                    var brand = new BrandInclusaoDTO();
+                    brand.setName(marca.getDescricao());
+                    brand.setActive(true);
+                    brand.setSiteTitle(marca.getDescricao());
+
+                    var brandRetorno = marcaVtex.postBrand(brand);
+                    if(brandRetorno != null) {
+                        marca.setIdEcommerce(brandRetorno.getId().toString());
+                        marcaClient.putMarca(marca);
+                    }
+                }
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    @Async
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
+    public void sincronizarSecao() {
+        log.info("Iniciando sincronização de Seções...");
+        try {
+            var secoes = secaoClient.getSecoes();
+            for (int i = 0; i < 1; i++) {
+                var secao = secoes.get(i);
+                if (secao.getIdEcommerce() == null) {
+                    var category = new CategoryInclusaoDTO();
+                    category.setName(secao.getDescricao());
+                    category.setActive(true);
+
+
+                    var secaoRetorno = secaoVtex.postCategory(category);
+                    if(secaoRetorno!= null) {
+                        secao.setIdEcommerce(secaoRetorno.getId().toString());
+                        secaoClient.putSecao(secao);
+                    }
+                }
+            }
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
     }
 
 
