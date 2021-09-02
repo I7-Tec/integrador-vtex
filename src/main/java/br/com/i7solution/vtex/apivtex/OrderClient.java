@@ -64,7 +64,7 @@ public class OrderClient {
             var temPedidos = true;
             int pag = 1;
             while (temPedidos) {
-                String url = DadosVtex.url + DadosVtex.endPointPedidos + DadosVtex.sellers + "&perPage=50&page=" + pag +
+                String url = DadosVtex.url + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag +
                         "&creationDateStart=" + dataIni + "&creationDateEnd=" + dataFim;
 
                 response = Unirest.get(url)
@@ -73,8 +73,10 @@ public class OrderClient {
                         .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                         .asObject(OrdersDTO.class);
 
-                Arrays.stream(response.getBody().getOrders())
-                        .map(result::add);
+                var list = response.getBody().getOrders();
+                for (var i = 0; i < list.length; i++) {
+                    result.add(list[i]);
+                }
 
                 ++pag;
                 temPedidos = !(response.getBody().getPageCount() < response.getBody().getPerPage());
@@ -84,6 +86,7 @@ public class OrderClient {
         }
 
         return result;
+
     }
 
 }

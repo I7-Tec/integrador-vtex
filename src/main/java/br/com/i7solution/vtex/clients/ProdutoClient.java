@@ -1,7 +1,10 @@
 package br.com.i7solution.vtex.clients;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+import br.com.i7solution.vtex.apivtex.dtos.PaymentsDTO;
 import kong.unirest.GenericType;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
@@ -18,14 +21,19 @@ public class ProdutoClient {
         String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
         HttpResponse<List<ProdutoDTO>> response = null;
         try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .asObject(new GenericType<List<ProdutoDTO>>() {
-                    });
+            response = Unirest.get(url)
+                    .connectTimeout(60000)
+                    .queryString("diasAlteracao", 5)
+                    .header("Content-Type", "application/json")
+                    .asObject(new GenericType<List<ProdutoDTO>>() {});
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if(response != null) {
+            return response.getBody();
+        }
+        return null;
     }
 
     public ProdutoDTO getProdutoPorId(String id) {
@@ -75,5 +83,27 @@ public class ProdutoClient {
 
         return response.getBody();
     }
+    public List<PaymentsDTO> getPagamentosPedido(Long orderId) {
+        List<PaymentsDTO> result = new ArrayList<>();
+        HttpResponse<List<PaymentsDTO>> response = null;
+        try {
+            String url = DadosVtex.url + DadosVtex.endPointPedidos + orderId + "/payments?an=" + DadosVtex.sellers;
+
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .asObject(new GenericType<List<PaymentsDTO>>() {
+                    });
+
+            result = response.getBody();
+
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
 }
+
