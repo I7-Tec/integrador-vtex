@@ -75,14 +75,14 @@ public class VtexService {
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
+        var proximaPagina = 1;
         while(existeProximo) {
-            var produtos = produtoWinthor.getProdutos(1, 100);
+            var produtos = produtoWinthor.getProdutos(proximaPagina, 100);
             if (produtos != null) {
                 sincronizarProdutos(produtos);
             }
-            if(produtos.size() < 100) {
-                existeProximo = false;
-            }
+            proximaPagina++;
+            existeProximo = !(produtos.size() < 100);
         }
         log.info("Fim da sincronização de produtos!");
     }
