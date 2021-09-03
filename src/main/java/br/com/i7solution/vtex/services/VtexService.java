@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -312,7 +312,10 @@ public class VtexService {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
         for (int i = 0; i < produtos.size(); i++) {
             var produto = produtos.get(i);
-            if (produto.getMarca().getIdEcommerce() != null && produto.getSecao().getIdEcommerce() != null) {
+            if (produto.getMarca() != null &&
+                    produto.getSecao() != null &&
+                    produto.getMarca().getIdEcommerce() != null &&
+                    produto.getSecao().getIdEcommerce() != null) {
                 var produtoVtex = new ProductDTO();
                 produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
                 produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
