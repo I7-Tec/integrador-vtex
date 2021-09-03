@@ -136,3 +136,210 @@ java.lang.NullPointerException: null
 	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:829)
+2021-09-03 10:09:28,331 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 104340 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-03 10:09:28,334 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-03 10:09:28,390 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-03 10:09:28,391 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-03 10:09:30,267 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-03 10:09:30,279 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:09:30,280 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-03 10:09:30,280 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-03 10:09:30,372 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-03 10:09:30,372 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1981 ms
+2021-09-03 10:09:31,592 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-03 10:09:31,608 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:09:31,653 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-03 10:09:31,668 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.918 seconds (JVM running for 5.352)
+2021-09-03 10:09:41,695 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-03 10:09:41,703 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-03 10:09:41,703 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-03 10:09:41,703 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-03 10:09:41,926 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:09:41,927 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:09:41,927 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:10:01,667 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-03 10:10:01,667 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-03 10:10:01,667 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Seções...
+2021-09-03 10:10:01,675 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:01,676 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:10:01,677 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:21,675 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-03 10:10:21,676 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Seções...
+2021-09-03 10:10:21,675 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-03 10:10:21,681 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-3] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:10:21,682 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:21,683 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:41,663 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
+2021-09-03 10:10:41,664 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] Iniciando sincronização de Marcas...
+2021-09-03 10:10:41,664 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] Iniciando sincronização de Seções...
+2021-09-03 10:10:41,667 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-7] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:41,668 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-8] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:10:41,668 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-4] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:10:48,729 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 96072 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-03 10:10:48,732 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-03 10:10:48,795 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-03 10:10:48,796 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-03 10:10:50,333 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-03 10:10:50,345 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:10:50,345 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-03 10:10:50,346 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-03 10:10:50,442 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-03 10:10:50,442 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1645 ms
+2021-09-03 10:10:52,208 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-03 10:10:52,228 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:10:52,298 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-03 10:10:52,318 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.123 seconds (JVM running for 4.728)
+2021-09-03 10:11:02,313 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-03 10:11:02,323 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-03 10:11:02,323 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-03 10:11:02,323 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-03 10:11:02,493 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:11:02,494 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:11:02,494 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:11:22,315 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-03 10:11:22,315 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Seções...
+2021-09-03 10:11:22,315 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-03 10:11:22,319 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:11:22,320 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:11:22,321 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:11:42,316 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] Iniciando sincronização de Marcas...
+2021-09-03 10:11:42,316 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
+2021-09-03 10:11:42,316 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] Iniciando sincronização de Seções...
+2021-09-03 10:11:42,321 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-6] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:11:42,323 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-3] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:11:42,325 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-5] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:14:37,481 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 16.0.1 on LAPTOP-PG663SQH with PID 100108 (C:\projects\integrador-vtex\target\classes started by harry in C:\projects\integrador-vtex)
+2021-09-03 10:14:37,484 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-03 10:14:37,555 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-03 10:14:37,556 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-03 10:14:39,124 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-03 10:14:39,134 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:14:39,135 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-03 10:14:39,135 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-03 10:14:39,225 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-03 10:14:39,225 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1668 ms
+2021-09-03 10:14:40,480 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-03 10:14:40,498 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-03 10:14:40,561 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-03 10:14:40,580 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 3.589 seconds (JVM running for 4.209)
+2021-09-03 10:14:50,593 INFO org.springframework.aop.interceptor.AsyncExecutionAspectSupport [scheduling-1] More than one TaskExecutor bean found within the context, and none is named 'taskExecutor'. Mark one of them as primary or name it 'taskExecutor' (possibly as an alias) in order to use it for async processing: [taskAtualizacoes, taskPedidos, taskScheduler]
+2021-09-03 10:14:50,599 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] Iniciando sincronização de Seções...
+2021-09-03 10:14:50,599 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] Iniciando sincronização de Marcas...
+2021-09-03 10:14:50,599 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
+2021-09-03 10:14:50,788 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-2] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:14:50,790 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-1] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:14:50,791 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:15:10,573 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
+2021-09-03 10:15:10,574 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] Iniciando sincronização de Marcas...
+2021-09-03 10:15:10,574 INFO br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] Iniciando sincronização de Seções...
+2021-09-03 10:15:10,588 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
+java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "produtos" is null
+	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:85)
+	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750)
+	at org.springframework.aop.interceptor.AsyncExecutionInterceptor.lambda$invoke$0(AsyncExecutionInterceptor.java:115)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+2021-09-03 10:15:10,591 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-3] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null
+2021-09-03 10:15:10,592 ERROR br.com.i7solution.vtex.services.VtexService [SimpleAsyncTaskExecutor-4] java.lang.NullPointerException: Cannot invoke "kong.unirest.HttpResponse.getBody()" because "response" is null

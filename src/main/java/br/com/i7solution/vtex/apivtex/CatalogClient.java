@@ -1,16 +1,12 @@
 package br.com.i7solution.vtex.apivtex;
 
+import br.com.i7solution.vtex.apivtex.dtos.*;
 import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 import org.springframework.stereotype.Service;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
-import br.com.i7solution.vtex.apivtex.dtos.BrandDTO;
-import br.com.i7solution.vtex.apivtex.dtos.CategoryDTO;
-import br.com.i7solution.vtex.apivtex.dtos.ProductDTO;
-import br.com.i7solution.vtex.apivtex.dtos.SkuDTO;
-import br.com.i7solution.vtex.apivtex.dtos.SkusDTO;
 
 @Service
 public class CatalogClient {
@@ -22,13 +18,17 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public CategoryDTO getCategoriaPorId(String id) {
@@ -38,13 +38,17 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public BrandDTO getMarcas() {
@@ -53,13 +57,17 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public BrandDTO getMarcaPorId(String id) {
@@ -68,28 +76,36 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public ProductDTO getProdutoPorId(Long id) {
-        String url = DadosVtex.url + DadosVtex.endPointProduto + id + "?an=" + DadosVtex.sellers;
+        String url = DadosVtex.url + DadosVtex.endPointProduto + id;
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(ProductDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public SkuDTO getSKU() {
@@ -98,13 +114,17 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
     public SkuDTO getSKUPorId(String id) {
@@ -113,29 +133,37 @@ public class CatalogClient {
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(SkuDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 
-    public SkuDTO postSku(SkuDTO dados) {
+    public SkuInclusao postSku(SkuInclusao dados) {
         String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
-        HttpResponse<SkuDTO> response = null;
+        HttpResponse<SkuInclusao> response = null;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
-                    .body(dados).asObject(SkuDTO.class);
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .body(dados).asObject(SkuInclusao.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+        return null ;
     }
+
     public SkusDTO getSKUs() {
         String url = DadosVtex.url + DadosVtex.endPointProduto + "?an=" + DadosVtex.sellers;
         HttpResponse<SkusDTO> response = null;
@@ -143,17 +171,26 @@ public class CatalogClient {
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(SkusDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+        return   null;
     }
-    public ProductDTO postProduto(ProductDTO dados) {
+
+
+
+
+
+
+    public ProductInclusao postProduto(ProductInclusao dados) {
         String url = DadosVtex.url + DadosVtex.endPointProduto;
-        HttpResponse<ProductDTO> response = null;
+        HttpResponse<ProductInclusao> response = null;
         System.out.println(url);
         try {
             response = Unirest.post(url)
@@ -161,12 +198,15 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .body(dados)
-                    .asObject(ProductDTO.class);
+                    .asObject(ProductInclusao.class);
         } catch (UnirestException e) {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+        return null ;
     }
 
 }

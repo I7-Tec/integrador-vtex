@@ -316,7 +316,7 @@ public class VtexService {
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
                     produto.getSecao().getIdEcommerce() != null) {
-                var produtoVtex = new ProductDTO();
+                var produtoVtex = new ProductInclusao();
                 produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
                 produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
                 produtoVtex.setDescription((produto.getDescricao()));
@@ -327,20 +327,19 @@ public class VtexService {
 
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
                 log.info("Produto gerado: " + produtoRetorno.getId());
-                var sku = new SkuDTO();
-                sku.setProductId(produtoRetorno.getId().toString());
-                sku.setNameComplete(produto.getDescricao());
-                sku.setEan(produto.getCodigoDeBarras().toString());
-                sku.setRefid(produto.getId());
+                var sku = new SkuInclusao();
+                sku.setProductId(produtoRetorno.getId());
+                sku.setName(produtoRetorno.getName());
+                sku.setRefId(produtoRetorno.getRefId());
+
                 //sku.getUnitMultiplier();
 
                 var dimension = new SkuDimensionDTO();
-                dimension.setHeight(produto.getAltura().doubleValue());
-                dimension.setWidth(produto.getLargura().doubleValue());
-                dimension.setLength(produto.getComprimento().doubleValue());
-                dimension.setWeight(produto.getPesoLiquido().doubleValue());
-
-                sku.setDimension(dimension);
+                sku.setHeight(dimension.getHeight());
+                sku.setCubicWeight(dimension.getCubicweight());
+                sku.setWidth(dimension.getWidth());
+                sku.setWeightKg(dimension.getWeight());
+                sku.setLength(dimension.getLength());
 
                 produtosVtex.postSku(sku);
             }
