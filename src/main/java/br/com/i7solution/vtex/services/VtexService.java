@@ -76,7 +76,7 @@ public class VtexService {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
         var proximaPagina = 1;
-        while(existeProximo) {
+        while (existeProximo) {
             var produtos = produtoWinthor.getProdutos(proximaPagina, 100);
             if (produtos != null) {
                 sincronizarProdutos(produtos);
@@ -327,23 +327,26 @@ public class VtexService {
                 produtoVtex.setShowWithoutStock(false);
 
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
-                log.info("Produto gerado: " + produtoRetorno.getId());
-                var sku = new SkuInclusao();
-                sku.setProductId(produtoRetorno.getId());
-                sku.setName(produtoRetorno.getName());
-                sku.setRefId(produtoRetorno.getRefId());
+                if (produtoRetorno != null) {
+                    log.info("Produto gerado: " + produtoRetorno.getRefId());
+                    var sku = new SkuInclusao();
+                    sku.setProductId(produtoRetorno.getId());
+                    sku.setName(produtoRetorno.getName());
+                    sku.setRefId(produtoRetorno.getRefId());
 
-                //sku.getUnitMultiplier();
+                    //sku.getUnitMultiplier();
 
-                var dimension = new SkuDimensionDTO();
-                sku.setHeight(dimension.getHeight());
-                sku.setCubicWeight(dimension.getCubicweight());
-                sku.setWidth(dimension.getWidth());
-                sku.setWeightKg(dimension.getWeight());
-                sku.setLength(dimension.getLength());
+                    var dimension = new SkuDimensionDTO();
+                    sku.setHeight(dimension.getHeight());
+                    sku.setCubicWeight(dimension.getCubicweight());
+                    sku.setWidth(dimension.getWidth());
+                    sku.setWeightKg(dimension.getWeight());
+                    sku.setLength(dimension.getLength());
 
-                produtosVtex.postSku(sku);
+                    produtosVtex.postSku(sku);
+                }
             }
+
         }
     }
 }
