@@ -82,7 +82,8 @@ public class VtexService {
                 sincronizarProdutos(produtos);
             }
             proximaPagina++;
-            existeProximo = !(produtos.size() < 100);
+
+            existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
         }
         log.info("Fim da sincronização de produtos!");
     }
@@ -250,7 +251,7 @@ public class VtexService {
     }
 
     @Async
-    @Scheduled(fixedRate = 20000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void sincronizarMarcas() {
         log.info("Iniciando sincronização de Marcas...");
         try {
@@ -281,7 +282,7 @@ public class VtexService {
     }
 
     @Async
-    @Scheduled(fixedRate = 20000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void sincronizarSecao() {
         log.info("Iniciando sincronização de Seções...");
         try {
