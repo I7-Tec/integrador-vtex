@@ -25,8 +25,6 @@ public class ProdutoClient {
                     .connectTimeout(60000)
                     .queryString("pageSize", pageSize)
                     .queryString("pageNumber", pageNumber)
-                    .queryString("diasAlteracao", 5)
-                    .queryString("idProduto", 2057)
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<List<ProdutoDTO>>() {});
         } catch (UnirestException e) {

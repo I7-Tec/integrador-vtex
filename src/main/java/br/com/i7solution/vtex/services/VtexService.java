@@ -71,17 +71,17 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 200000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
-        var proximaPagina = 1;
+        var pagina = 1;
         while (existeProximo) {
-            var produtos = produtoWinthor.getProdutos(proximaPagina, 100);
+            var produtos = produtoWinthor.getProdutos(pagina, 100);
             if (produtos != null) {
                 sincronizarProdutos(produtos);
             }
-            proximaPagina++;
+            pagina++;
 
             existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
         }
