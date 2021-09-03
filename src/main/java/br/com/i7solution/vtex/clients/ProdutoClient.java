@@ -18,7 +18,7 @@ import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 public class ProdutoClient {
 
     public List<ProdutoDTO> getProdutos(int pageNumber, int pageSize) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + "?idProduto=2057";
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
         HttpResponse<List<ProdutoDTO>> response = null;
         try {
             response = Unirest.get(url)
@@ -26,6 +26,7 @@ public class ProdutoClient {
                     .queryString("pageSize", pageSize)
                     .queryString("pageNumber", pageNumber)
                     .queryString("diasAlteracao", 5)
+                    .queryString("idProduto", 2057)
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<List<ProdutoDTO>>() {});
         } catch (UnirestException e) {

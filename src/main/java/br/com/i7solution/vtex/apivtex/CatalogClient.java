@@ -191,7 +191,6 @@ public class CatalogClient {
     public ProductInclusao postProduto(ProductInclusao dados) {
         String url = DadosVtex.url + DadosVtex.endPointProduto;
         HttpResponse<ProductInclusao> response = null;
-        System.out.println(url);
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
@@ -199,14 +198,11 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .body(dados)
                     .asObject(ProductInclusao.class);
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
+            return null;
         }
-
-        if (response != null) {
-            return response.getBody();
-        }
-        return null ;
     }
 
 }

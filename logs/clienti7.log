@@ -683,3 +683,17 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 11:00:22,733 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
 2021-09-03 11:00:25,098 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  2
 2021-09-03 11:00:25,271 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
+2021-09-03 11:23:15,238 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Starting VtexApplication using Java 11.0.12 on DESKTOP-7T0TTHO with PID 8128 (S:\projects\Trabalho\integrador-vtex\target\classes started by Samue in S:\projects\Trabalho\integrador-vtex)
+2021-09-03 11:23:15,241 INFO org.springframework.boot.SpringApplication [restartedMain] No active profile set, falling back to default profiles: default
+2021-09-03 11:23:15,305 INFO org.springframework.boot.logging.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-09-03 11:23:15,305 INFO org.springframework.boot.logging.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-09-03 11:23:17,244 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat initialized with port(s): 8080 (http)
+2021-09-03 11:23:17,255 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2021-09-03 11:23:17,256 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2021-09-03 11:23:17,256 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-09-03 11:23:17,340 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2021-09-03 11:23:17,340 INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 2034 ms
+2021-09-03 11:23:19,013 INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2021-09-03 11:23:19,032 INFO org.apache.juli.logging.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2021-09-03 11:23:19,051 INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer [restartedMain] Tomcat started on port(s): 8080 (http) with context path ''
+2021-09-03 11:23:19,068 INFO org.springframework.boot.StartupInfoLogger [restartedMain] Started VtexApplication in 4.621 seconds (JVM running for 6.227)
