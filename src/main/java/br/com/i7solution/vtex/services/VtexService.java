@@ -380,11 +380,11 @@ public class VtexService {
 
                      produtosVtex.postSku(skuInclusao);
                   }
-
+                  log.info("Fim da Atualização!");
 
                  }
              }
          }
-    }
+
 
 
