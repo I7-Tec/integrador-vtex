@@ -52,7 +52,7 @@ public class VtexService {
     //@Scheduled(fixedRate = 40000, initialDelay = 10000)
     public void atualizarPrecos() {
         log.info("Iniciando método de sincornização de preços...");
-        var skus = produtosVtex.getSKUs();
+        var skus = produtosVtex.getSKU();
         for (int i = 0; i < skus.getSkus().length; i++) {
             var sku = skus.getSkus()[i];
             if (sku.getRefId() != null) {
@@ -105,7 +105,7 @@ public class VtexService {
                             estoqueVtex.setReservedQuantity(estoque.getQuantidadeReservada().longValue());
                             estoqueVtex.setTotalQuantity(estoque.getQuantidadeTotal().longValue());
                             estoqueVtex.setWarehouseId(estoque.getIdFilial());
-                            var s = inventoryVtex.putEstoquePorSku(sku.getId().toString(), estoque.getIdFilial(), estoqueVtex);
+                            var s = inventoryVtex.putEstoquePorSku(sku.getId().toString(), estoqueVtex);
                             log.info(s);
                         }
                     }
@@ -316,7 +316,9 @@ public class VtexService {
             if (produto.getMarca() != null &&
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
-                    produto.getSecao().getIdEcommerce() != null) {
+                    produto.getSecao().getIdEcommerce() != null &&
+                    produto.getId() == null) {
+
                 var produtoVtex = new ProductInclusaoDTO();
                 produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
                 produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
@@ -327,9 +329,9 @@ public class VtexService {
                 produtoVtex.setShowWithoutStock(false);
 
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
-                if (produtoRetorno != null) {
-                    log.info("Produto gerado: " + produtoRetorno.getRefId());
-                    var sku = new SkuDTO();
+                if (produtoRetorno != null && produtoRetorno.getRefId() == null) {
+                    log.info("Incluindo Produto ...");
+                    var sku = new SkuInclusaoDTO();
                     sku.setProductId(produtoRetorno.getId());
                     sku.setName(produtoRetorno.getName());
                     sku.setRefId(produtoRetorno.getRefId());
@@ -343,7 +345,7 @@ public class VtexService {
                     sku.setWeightKg(dimension.getWeight());
                     sku.setLength(dimension.getLength());
 
-                    produtosVtex.postSku(sku);
+                    produtosVtex.postSKURefId(sku);
                 }
             }
 
