@@ -107,7 +107,7 @@ public class CatalogClient {
         return null ;
     }
 
-    public SkusDTO getSKU() {
+    public SkusDTO getSKUs() {
         String url = DadosVtex.url + DadosVtex.endPointSku ;
         HttpResponse<SkusDTO> response = null;
         try {
@@ -226,5 +226,23 @@ public class CatalogClient {
             e.printStackTrace();
             return null;
         }
+    }
+    public SkuDTO getSKU() {
+        String url = DadosVtex.url + DadosVtex.endPointSku ;
+        HttpResponse<SkuDTO> response = null;
+        try {
+            response = Unirest.get(url).header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .asObject(SkuDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
+        }
+
+        if (response != null) {
+            return response.getBody();
+        }
+
+        return null ;
     }
 }
