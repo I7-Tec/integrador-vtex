@@ -359,10 +359,10 @@ public class VtexService {
         @Scheduled(fixedRate = 200000, initialDelay = 10000)
          private void  atualizarSKU (SkuDTO sku) {
                  log.info("Iniciando Atualização de SKU's ..." );
-             var produtoV = produtosVtex.getSKU();
-             for (int i = 0; i < sku.getLength(); i++) {
 
-                 if(sku.getRefId() == null ){
+             for (int i = 0; i < sku.getLength(); i++) {
+                 var produtoV = produtosVtex.getSKU();
+                 if(produtosVtex.getSKURefId(produtoV.getRefId()) == null ){
                      log.info("Incluindo SKU...");
                      var skuInclusao = new SkuInclusaoDTO();
                      skuInclusao.setProductId(produtoV.getProductId());
@@ -379,8 +379,8 @@ public class VtexService {
                      skuInclusao.setLength(dimension.getLength());
 
                      produtosVtex.postSku(skuInclusao);
-                  }else {
-                      
+                  }
+
 
                  }
              }
