@@ -1,413 +1,224 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class SkuDTO implements Serializable {
 
-    private String skuId;
-    private String refid;
-    private String productId;
-    private String nameComplete;
-    private String productName;
-    private String productDescription;
-    private String skuName;
-    private String ean;
-    private Boolean isActive;
-    private Boolean isTransported;
-    private Boolean isInventoried;
-    private Boolean isGiftCardRecharge;
-    private String imageUrl;
-    private String detailUrl;
-    private String cSCIdentification;
-    private String brandId;
-    private String brandName;
-    private SkuDimensionDTO dimension;
-    private RealDimensionDTO realDimension;
-    private String manufacturerCode;
-    private Boolean isKit;
-    private String kitItems[];
-    private String services[];
-    private String Categories[];
-    private SkuAttachmentsDTO skuAttachments[];
-    private String collections[];
-    private SkuSellersDTO skuSeller[];
-    private Long salesChannels[];
-    private ImagesDTO images[];
-    private String videos[];
-    private SkuSpecificationsDTO skuSpecifications[];
-    private ProductSpecificationsDTO productSpecifications[];
-    private String productClustersIds;
-    private String productCategoryIds;
-    private String productGlobalCategoryId;
-    private ProductCategoriesDTO productCategories;
-    private Long commercialConditionId;
-    private Float rewardValue;
-    private AlternateIdsDTO alternateIds;
-    private String alternateIdValues[];
-    private String estimatedDateArrival;
-    private String easurementUnit;
-    private Float unitMultiplier;
-    private String informationSource;
-    private String modalType;
+    private Long Id ; // SKU ID
+    private Long ProductId ; //ProductId	integer	Product ID
+    private Boolean IsActive; //boolean	Shows if the SKU is active. To avoid receiving a 400 - Bad Request this attribute must be false
+    private String Name; //	string	SKU Name
+    private String RefId; //	string	SKU RefId
+    private Double PackagedHeight; //	decimal	Packaged Height
+    private Double PackagedLength; //	decimal	Packaged Length
+    private Double PackagedWidth; //	decimal	Packaged Width
+    private Double PackagedWeightKg; //	decimal	Packaged Weight
+    private Double Height; //	decimal	SKU Height
+    private Double Length; //	decimal	SKU Length
+    private Double Width; //	decimal	SKU Width
+    private Double WeightKg;	//	SKU Weight
+    private Double CubicWeight; //	decimal	Cubic Weight
+    private Boolean IsKit; //	boolean	Shows if the SKU is a Kit
+    private Date CreationDate; //	string	SKU Creation Date
+    private Double RewardValue ; //	decimal	How much the client will get rewarded by buying the SKU
+    private String EstimatedDateArrival; //	string	SKU Estimated Date Arrival
+    private String ManufacturerCode; //	string	Manufacturer Code
+    private Double CommercialConditionId; //	integer	Commercial Condition ID
+    private String MeasurementUnit; //	string	Measurement Unit
+    private Double UnitMultiplier; //	decimal	Multiplies the amount of SKUs inserted on the cart
+    private String ModalType; //	string	Defines deliver model
+    private Boolean KitItensSellApart; //	boolean	Defines if Kit components can be sold apart
 
-    public String getSkuId() {
-        return skuId;
+    public Long getId() {
+        return Id;
     }
 
-    public void setSkuId(String skuId) {
-        this.skuId = skuId;
+    public void setId(Long id) {
+        Id = id;
     }
 
-    public String getRefid() {
-        return refid;
+    public Long getProductId() {
+        return ProductId;
     }
 
-    public void setRefid(String refid) {
-        this.refid = refid;
+    public void setProductId(Long productId) {
+        ProductId = productId;
     }
 
-    public String getProductId() {
-        return productId;
+    public Boolean getActive() {
+        return IsActive;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setActive(Boolean active) {
+        IsActive = active;
     }
 
-    public String getNameComplete() {
-        return nameComplete;
+    public String getName() {
+        return Name;
     }
 
-    public void setNameComplete(String nameComplete) {
-        this.nameComplete = nameComplete;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getProductName() {
-        return productName;
+    public String getRefId() {
+        return RefId;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setRefId(String refId) {
+        RefId = refId;
     }
 
-    public String getProductDescription() {
-        return productDescription;
+    public Double getPackagedHeight() {
+        return PackagedHeight;
     }
 
-    public void setProductDescription(String productDescription) {
-        this.productDescription = productDescription;
+    public void setPackagedHeight(Double packagedHeight) {
+        PackagedHeight = packagedHeight;
     }
 
-    public String getSkuName() {
-        return skuName;
+    public Double getPackagedLength() {
+        return PackagedLength;
     }
 
-    public void setSkuName(String skuName) {
-        this.skuName = skuName;
+    public void setPackagedLength(Double packagedLength) {
+        PackagedLength = packagedLength;
     }
 
-    public Boolean getIsActive() {
-        return isActive;
+    public Double getPackagedWidth() {
+        return PackagedWidth;
     }
 
-    public void setIsActive(Boolean isActive) {
-        this.isActive = isActive;
+    public void setPackagedWidth(Double packagedWidth) {
+        PackagedWidth = packagedWidth;
     }
 
-    public Boolean getIsTransported() {
-        return isTransported;
+    public Double getPackagedWeightKg() {
+        return PackagedWeightKg;
     }
 
-    public void setIsTransported(Boolean isTransported) {
-        this.isTransported = isTransported;
+    public void setPackagedWeightKg(Double packagedWeightKg) {
+        PackagedWeightKg = packagedWeightKg;
     }
 
-    public Boolean getIsInventoried() {
-        return isInventoried;
+    public Double getHeight() {
+        return Height;
     }
 
-    public void setIsInventoried(Boolean isInventoried) {
-        this.isInventoried = isInventoried;
+    public void setHeight(Double height) {
+        Height = height;
     }
 
-    public Boolean getIsGiftCardRecharge() {
-        return isGiftCardRecharge;
+    public Double getLength() {
+        return Length;
     }
 
-    public void setIsGiftCardRecharge(Boolean isGiftCardRecharge) {
-        this.isGiftCardRecharge = isGiftCardRecharge;
+    public void setLength(Double length) {
+        Length = length;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Double getWidth() {
+        return Width;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setWidth(Double width) {
+        Width = width;
     }
 
-    public String getDetailUrl() {
-        return detailUrl;
+    public Double getWeightKg() {
+        return WeightKg;
     }
 
-    public void setDetailUrl(String detailUrl) {
-        this.detailUrl = detailUrl;
+    public void setWeightKg(Double weightKg) {
+        WeightKg = weightKg;
     }
 
-    public String getcSCIdentification() {
-        return cSCIdentification;
+    public Double getCubicWeight() {
+        return CubicWeight;
     }
 
-    public void setcSCIdentification(String cSCIdentification) {
-        this.cSCIdentification = cSCIdentification;
+    public void setCubicWeight(Double cubicWeight) {
+        CubicWeight = cubicWeight;
     }
 
-    public String getBrandId() {
-        return brandId;
+    public Boolean getKit() {
+        return IsKit;
     }
 
-    public void setBrandId(String brandId) {
-        this.brandId = brandId;
+    public void setKit(Boolean kit) {
+        IsKit = kit;
     }
 
-    public String getBrandName() {
-        return brandName;
+    public Date getCreationDate() {
+        return CreationDate;
     }
 
-    public void setBrandName(String brandName) {
-        this.brandName = brandName;
+    public void setCreationDate(Date creationDate) {
+        CreationDate = creationDate;
     }
 
-    public SkuDimensionDTO getDimension() {
-        return dimension;
+    public Double getRewardValue() {
+        return RewardValue;
     }
 
-    public void setDimension(SkuDimensionDTO dimension) {
-        this.dimension = dimension;
-    }
-
-    public RealDimensionDTO getRealDimension() {
-        return realDimension;
-    }
-
-    public void setRealDimension(RealDimensionDTO realDimension) {
-        this.realDimension = realDimension;
-    }
-
-    public String getManufacturerCode() {
-        return manufacturerCode;
-    }
-
-    public void setManufacturerCode(String manufacturerCode) {
-        this.manufacturerCode = manufacturerCode;
-    }
-
-    public Boolean getIsKit() {
-        return isKit;
-    }
-
-    public void setIsKit(Boolean isKit) {
-        this.isKit = isKit;
-    }
-
-    public String[] getKitItems() {
-        return kitItems;
-    }
-
-    public void setKitItems(String[] kitItems) {
-        this.kitItems = kitItems;
-    }
-
-    public String[] getServices() {
-        return services;
-    }
-
-    public void setServices(String[] services) {
-        this.services = services;
-    }
-
-    public String[] getCategories() {
-        return Categories;
-    }
-
-    public void setCategories(String[] categories) {
-        Categories = categories;
-    }
-
-    public SkuAttachmentsDTO[] getSkuAttachments() {
-        return skuAttachments;
-    }
-
-    public void setSkuAttachments(SkuAttachmentsDTO[] skuAttachments) {
-        this.skuAttachments = skuAttachments;
-    }
-
-    public String[] getCollections() {
-        return collections;
-    }
-
-    public void setCollections(String[] collections) {
-        this.collections = collections;
-    }
-
-    public SkuSellersDTO[] getSkuSeller() {
-        return skuSeller;
-    }
-
-    public void setSkuSeller(SkuSellersDTO[] skuSeller) {
-        this.skuSeller = skuSeller;
-    }
-
-    public Long[] getSalesChannels() {
-        return salesChannels;
-    }
-
-    public void setSalesChannels(Long[] salesChannels) {
-        this.salesChannels = salesChannels;
-    }
-
-    public ImagesDTO[] getImages() {
-        return images;
-    }
-
-    public void setImages(ImagesDTO[] images) {
-        this.images = images;
-    }
-
-    public String[] getVideos() {
-        return videos;
-    }
-
-    public void setVideos(String[] videos) {
-        this.videos = videos;
-    }
-
-    public SkuSpecificationsDTO[] getSkuSpecifications() {
-        return skuSpecifications;
-    }
-
-    public void setSkuSpecifications(SkuSpecificationsDTO[] skuSpecifications) {
-        this.skuSpecifications = skuSpecifications;
-    }
-
-    public ProductSpecificationsDTO[] getProductSpecifications() {
-        return productSpecifications;
-    }
-
-    public void setProductSpecifications(ProductSpecificationsDTO[] productSpecifications) {
-        this.productSpecifications = productSpecifications;
-    }
-
-    public String getProductClustersIds() {
-        return productClustersIds;
-    }
-
-    public void setProductClustersIds(String productClustersIds) {
-        this.productClustersIds = productClustersIds;
-    }
-
-    public String getProductCategoryIds() {
-        return productCategoryIds;
-    }
-
-    public void setProductCategoryIds(String productCategoryIds) {
-        this.productCategoryIds = productCategoryIds;
-    }
-
-    public String getProductGlobalCategoryId() {
-        return productGlobalCategoryId;
-    }
-
-    public void setProductGlobalCategoryId(String productGlobalCategoryId) {
-        this.productGlobalCategoryId = productGlobalCategoryId;
-    }
-
-    public ProductCategoriesDTO getProductCategories() {
-        return productCategories;
-    }
-
-    public void setProductCategories(ProductCategoriesDTO productCategories) {
-        this.productCategories = productCategories;
-    }
-
-    public Long getCommercialConditionId() {
-        return commercialConditionId;
-    }
-
-    public void setCommercialConditionId(Long commercialConditionId) {
-        this.commercialConditionId = commercialConditionId;
-    }
-
-    public Float getRewardValue() {
-        return rewardValue;
-    }
-
-    public void setRewardValue(Float rewardValue) {
-        this.rewardValue = rewardValue;
-    }
-
-    public AlternateIdsDTO getAlternateIds() {
-        return alternateIds;
-    }
-
-    public void setAlternateIds(AlternateIdsDTO alternateIds) {
-        this.alternateIds = alternateIds;
-    }
-
-    public String[] getAlternateIdValues() {
-        return alternateIdValues;
-    }
-
-    public void setAlternateIdValues(String[] alternateIdValues) {
-        this.alternateIdValues = alternateIdValues;
+    public void setRewardValue(Double rewardValue) {
+        RewardValue = rewardValue;
     }
 
     public String getEstimatedDateArrival() {
-        return estimatedDateArrival;
+        return EstimatedDateArrival;
     }
 
     public void setEstimatedDateArrival(String estimatedDateArrival) {
-        this.estimatedDateArrival = estimatedDateArrival;
+        EstimatedDateArrival = estimatedDateArrival;
     }
 
-    public String getEasurementUnit() {
-        return easurementUnit;
+    public String getManufacturerCode() {
+        return ManufacturerCode;
     }
 
-    public void setEasurementUnit(String easurementUnit) {
-        this.easurementUnit = easurementUnit;
+    public void setManufacturerCode(String manufacturerCode) {
+        ManufacturerCode = manufacturerCode;
     }
 
-    public Float getUnitMultiplier() {
-        return unitMultiplier;
+    public Double getCommercialConditionId() {
+        return CommercialConditionId;
     }
 
-    public void setUnitMultiplier(Float unitMultiplier) {
-        this.unitMultiplier = unitMultiplier;
+    public void setCommercialConditionId(Double commercialConditionId) {
+        CommercialConditionId = commercialConditionId;
     }
 
-    public String getInformationSource() {
-        return informationSource;
+    public String getMeasurementUnit() {
+        return MeasurementUnit;
     }
 
-    public void setInformationSource(String informationSource) {
-        this.informationSource = informationSource;
+    public void setMeasurementUnit(String measurementUnit) {
+        MeasurementUnit = measurementUnit;
+    }
+
+    public Double getUnitMultiplier() {
+        return UnitMultiplier;
+    }
+
+    public void setUnitMultiplier(Double unitMultiplier) {
+        UnitMultiplier = unitMultiplier;
     }
 
     public String getModalType() {
-        return modalType;
+        return ModalType;
     }
 
     public void setModalType(String modalType) {
-        this.modalType = modalType;
+        ModalType = modalType;
     }
 
-    public String getEan() {
-        return ean;
+    public Boolean getKitItensSellApart() {
+        return KitItensSellApart;
     }
 
-    public void setEan(String ean) {
-        this.ean = ean;
+    public void setKitItensSellApart(Boolean kitItensSellApart) {
+        KitItensSellApart = kitItensSellApart;
     }
-
 }

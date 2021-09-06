@@ -55,15 +55,15 @@ public class VtexService {
         var skus = produtosVtex.getSKUs();
         for (int i = 0; i < skus.getSkus().length; i++) {
             var sku = skus.getSkus()[i];
-            if (sku.getRefid() != null) {
-                var preco = tabelaPrecoWinthorClient.getPrecosWinthor(sku.getRefid());
-                if (preco != null && preco.length > 0 && preco[0].getPreco() > 0 && sku.getSkuId() != null) {
+            if (sku.getRefId() != null) {
+                var preco = tabelaPrecoWinthorClient.getPrecosWinthor(sku.getRefId());
+                if (preco != null && preco.length > 0 && preco[0].getPreco() > 0 && sku.getId() != null) {
                     var precoVtex = new PriceDTO();
                     precoVtex.setPrice(preco[0].getPreco().doubleValue());
                     precoVtex.setListPrice(preco[0].getPreco().doubleValue());
                     precoVtex.setSkuId(preco[0].getIdProduto());
 
-                    precosVtex.putPrecoPorSku(sku.getSkuId(), precoVtex);
+                    precosVtex.putPrecoPorSku(sku.getId().toString(), precoVtex);
                 }
             }
             log.info("Finalizando método de sincornização de preços!");
@@ -93,19 +93,19 @@ public class VtexService {
     public void atualizacaoEstoque() {
         log.info("Iniciando método de sincornização de estoques...");
         try {
-            var skus = produtosVtex.getSKUs();
+            var skus = produtosVtex.getSKU();
             for (int i = 0; i < skus.getSkus().length; i++) {
                 var sku = skus.getSkus()[i];
-                if (sku.getRefid() != null) {
-                    var estoques = estoqueWinthor.getEstoque(sku.getRefid());
-                    if (estoques != null && estoques.length > 0 && sku.getSkuId() != null) {
+                if (sku.getRefId() != null) {
+                    var estoques = estoqueWinthor.getEstoque(sku.getRefId());
+                    if (estoques != null && estoques.length > 0 && sku.getId() != null) {
                         for (int e = 0; e < estoques.length; e++) {
                             var estoque = estoques[e];
                             var estoqueVtex = new BalanceDTO();
                             estoqueVtex.setReservedQuantity(estoque.getQuantidadeReservada().longValue());
                             estoqueVtex.setTotalQuantity(estoque.getQuantidadeTotal().longValue());
                             estoqueVtex.setWarehouseId(estoque.getIdFilial());
-                            var s = inventoryVtex.putEstoquePorSku(sku.getSkuId(), estoque.getIdFilial(), estoqueVtex);
+                            var s = inventoryVtex.putEstoquePorSku(sku.getId().toString(), estoque.getIdFilial(), estoqueVtex);
                             log.info(s);
                         }
                     }
@@ -317,7 +317,7 @@ public class VtexService {
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
                     produto.getSecao().getIdEcommerce() != null) {
-                var produtoVtex = new ProductInclusao();
+                var produtoVtex = new ProductInclusaoDTO();
                 produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
                 produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
                 produtoVtex.setDescription((produto.getDescricao()));
@@ -329,7 +329,7 @@ public class VtexService {
                 var produtoRetorno = produtosVtex.postProduto(produtoVtex);
                 if (produtoRetorno != null) {
                     log.info("Produto gerado: " + produtoRetorno.getRefId());
-                    var sku = new SkuInclusao();
+                    var sku = new SkuDTO();
                     sku.setProductId(produtoRetorno.getId());
                     sku.setName(produtoRetorno.getName());
                     sku.setRefId(produtoRetorno.getRefId());

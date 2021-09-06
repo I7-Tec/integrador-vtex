@@ -3,7 +3,7 @@ package br.com.i7solution.vtex.apivtex.dtos;
 import java.io.Serializable;
 import java.util.Date;
 
-public class SkuInclusao implements Serializable {
+public class SkuInclusaoDTO implements Serializable {
 
     private Long Id ; // SKU ID
     private Long ProductId ; //ProductId	integer	Product ID

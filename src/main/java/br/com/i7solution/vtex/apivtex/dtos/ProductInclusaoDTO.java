@@ -2,7 +2,7 @@ package br.com.i7solution.vtex.apivtex.dtos;
 
 import java.io.Serializable;
 
-public class ProductInclusao implements Serializable {
+public class ProductInclusaoDTO implements Serializable {
 
     private Long Id ;// Product Id
 

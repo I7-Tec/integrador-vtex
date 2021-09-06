@@ -16,7 +16,7 @@ import kong.unirest.UnirestException;
 public class OrderClient {
 
     public OrderDTO getPedidoPorId(String orderId) {
-        String url = DadosVtex.url + DadosVtex.endPointProduto + orderId.toString() + "?an=" + DadosVtex.sellers;
+        String url = DadosVtex.url + DadosVtex.endPointProdutoGet + orderId.toString() + "?an=" + DadosVtex.sellers;
         HttpResponse<OrderDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")

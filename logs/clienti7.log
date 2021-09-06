@@ -475,7 +475,7 @@ java.lang.NullPointerException: Cannot invoke "java.util.List.size()" because "p
 2021-09-03 10:53:23,925 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
 2021-09-03 10:53:24,810 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:53:25,410 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -491,7 +491,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:53:43,901 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
 2021-09-03 10:53:44,415 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:53:44,609 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -521,7 +521,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:55:01,051 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
 2021-09-03 10:55:01,862 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:55:02,263 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -551,7 +551,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:57:00,236 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Iniciando sincronização de produtos...
 2021-09-03 10:57:04,335 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:57:04,740 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -568,7 +568,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:57:40,224 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
 2021-09-03 10:57:40,723 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:57:41,143 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-3] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -584,7 +584,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:58:00,220 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
 2021-09-03 10:58:00,725 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:58:00,922 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-4] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -601,7 +601,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:58:20,225 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Fim da sincronização de produtos!
 2021-09-03 10:58:20,842 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-1] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:58:21,070 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-1] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -617,7 +617,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:58:40,214 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Iniciando sincronização de produtos...
 2021-09-03 10:58:40,727 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-3] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:58:40,915 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-3] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -633,7 +633,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:59:00,226 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Iniciando sincronização de produtos...
 2021-09-03 10:59:00,822 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-4] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:59:01,468 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-4] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
@@ -649,7 +649,7 @@ java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dt
 2021-09-03 10:59:20,216 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Iniciando sincronização de produtos...
 2021-09-03 10:59:20,751 INFO br.com.i7solution.vtex.services.VtexService [AtualizacaoThread-2] Quantidade de Produtos a sincronizar:  2
 2021-09-03 10:59:20,942 ERROR org.springframework.aop.interceptor.SimpleAsyncUncaughtExceptionHandler [AtualizacaoThread-2] Unexpected exception occurred invoking async method: public void br.com.i7solution.vtex.services.VtexService.atualizarProdutos()
-java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusao.getRefId()" because "produtoRetorno" is null
+java.lang.NullPointerException: Cannot invoke "br.com.i7solution.vtex.apivtex.dtos.ProductInclusaoDTO.getRefId()" because "produtoRetorno" is null
 	at br.com.i7solution.vtex.services.VtexService.sincronizarProdutos(VtexService.java:330)
 	at br.com.i7solution.vtex.services.VtexService.atualizarProdutos(VtexService.java:82)
 	at br.com.i7solution.vtex.services.VtexService$$FastClassBySpringCGLIB$$dacd0315.invoke(<generated>)
