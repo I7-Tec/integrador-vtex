@@ -308,6 +308,7 @@ public class VtexService {
             e.printStackTrace();
         }
     }
+
     @Async(value = "taskAtualizacoes")
     @Scheduled(fixedRate = 200000, initialDelay = 10000)
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
@@ -317,10 +318,10 @@ public class VtexService {
             if (produto.getMarca() != null &&
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
-                    produto.getSecao().getIdEcommerce() != null &&
-                    produto.getId() == null) {
+                    produto.getSecao().getIdEcommerce() != null
+                   ) {
                 var produtVtex = new ProductDTO();
-                if (produto.getId() == null && produtVtex.getRefId()==null) {
+                if (produtVtex.getRefId() == null) {
                     var produtoVtex = new ProductInclusaoDTO();
                     produtoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
                     produtoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
@@ -350,41 +351,42 @@ public class VtexService {
                         produtosVtex.postSKURefId(sku);
 
                      */
-                       produtosVtex.postProduto(produtoVtex);
-                    }
+                    produtosVtex.postProduto(produtoVtex);
                 }
             }
         }
-        @Async(value = "taskAtualizacoes")
-        @Scheduled(fixedRate = 200000, initialDelay = 10000)
-         private void  atualizarSKU (SkuDTO sku) {
-                 log.info("Iniciando Atualização de SKU's ..." );
+    }
 
-             for (int i = 0; i < sku.getLength(); i++) {
-                 var produtoV = produtosVtex.getSKU();
-                 if(produtosVtex.getSKURefId(produtoV.getRefId()) == null ){
-                     log.info("Incluindo SKU...");
-                     var skuInclusao = new SkuInclusaoDTO();
-                     skuInclusao.setProductId(produtoV.getProductId());
-                     skuInclusao.setName(produtoV.getName());
-                     skuInclusao.setRefId(produtoV.getRefId());
+    private void atualizarSKU(SkuDTO sku) {
+        log.info("Iniciando Atualização de SKU's ...");
 
-                     //sku.getUnitMultiplier();
+        for (int i = 0; i < sku.getLength(); i++) {
+            var produtoV = produtosVtex.getSKU();
+            if (sku.getRefId() == null) {
+                log.info("Incluindo SKU...");
+                var skuInclusao = new SkuInclusaoDTO();
+                skuInclusao.setProductId(produtoV.getProductId());
+                skuInclusao.setName(produtoV.getName());
+                skuInclusao.setRefId(produtoV.getRefId());
 
-                     var dimension = new SkuDimensionDTO();
-                     skuInclusao.setHeight(dimension.getHeight());
-                     skuInclusao.setCubicWeight(dimension.getCubicweight());
-                     skuInclusao.setWidth(dimension.getWidth());
-                     skuInclusao.setWeightKg(dimension.getWeight());
-                     skuInclusao.setLength(dimension.getLength());
 
-                     produtosVtex.postSku(skuInclusao);
-                  }
-                  log.info("Fim da Atualização!");
+                //sku.getUnitMultiplier();
 
-                 }
-             }
-         }
+                var dimension = new SkuDimensionDTO();
+                skuInclusao.setHeight(dimension.getHeight());
+                skuInclusao.setCubicWeight(dimension.getCubicweight());
+                skuInclusao.setWidth(dimension.getWidth());
+                skuInclusao.setWeightKg(dimension.getWeight());
+                skuInclusao.setLength(dimension.getLength());
+
+                produtosVtex.postSku(skuInclusao);
+            }
+
+
+        }
+        log.info("Fim da Atualização!");
+    }
+}
 
 
 
