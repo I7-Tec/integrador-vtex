@@ -308,7 +308,8 @@ public class VtexService {
             e.printStackTrace();
         }
     }
-
+    @Async(value = "taskAtualizacoes")
+    @Scheduled(fixedRate = 200000, initialDelay = 10000)
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
         for (int i = 0; i < produtos.size(); i++) {
@@ -354,11 +355,13 @@ public class VtexService {
                 }
             }
         }
-         private void  sincronizarSKU (List<SkuDTO> skus) {
-                 log.info("Iniciando Sincronização de SKU's " + "  " +skus.size());
+        @Async(value = "taskAtualizacoes")
+        @Scheduled(fixedRate = 200000, initialDelay = 10000)
+         private void  atualizarSKU (SkuDTO sku) {
+                 log.info("Iniciando Atualização de SKU's ..." );
              var produtoV = produtosVtex.getSKU();
-             for (int i = 0; i < skus.size(); i++) {
-                 var sku = skus.get(i);
+             for (int i = 0; i < sku.getLength(); i++) {
+
                  if(sku.getRefId() == null ){
                      log.info("Incluindo SKU...");
                      var skuInclusao = new SkuInclusaoDTO();
@@ -376,7 +379,10 @@ public class VtexService {
                      skuInclusao.setLength(dimension.getLength());
 
                      produtosVtex.postSku(skuInclusao);
-                  }
+                  }else {
+                      
+
+                 }
              }
          }
     }
