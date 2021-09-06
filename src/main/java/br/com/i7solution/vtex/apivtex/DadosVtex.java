@@ -14,4 +14,8 @@ public class DadosVtex {
     public static String endPointMarcas = "/catalog/pvt/brand";//conferir
     public static String endPointPedidos = "/oms/pvt/orders";//conferir
     public static String endPointSku = "/catalog/pvt/stockkeepingunit";
+    public static String endPointSkuRefIdGet = "/catalog_system/pvt/sku/stockkeepingunitidbyrefid/";
+    public static String endPointPostRefId = "/catalog_system/pub/sku/stockkeepingunitidsbyrefids";
+    public static String endPointEstoquePorSku = "/logistics/pvt/inventory/skus/";
+
 }

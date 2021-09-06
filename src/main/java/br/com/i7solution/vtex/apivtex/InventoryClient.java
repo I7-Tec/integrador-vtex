@@ -13,7 +13,7 @@ import kong.unirest.UnirestException;
 public class InventoryClient {
 
     public InventoryDTO getEstoquePorSku(String skuId) {
-        String url = DadosVtex.url + DadosVtex.endPointEstoque+ skuId + "?an=" + DadosVtex.sellers;
+        String url = DadosVtex.url + DadosVtex.endPointEstoquePorSku + skuId;
         HttpResponse<InventoryDTO> response = null;
         try {
             response = Unirest.get(url)
@@ -28,8 +28,8 @@ public class InventoryClient {
         return response.getBody();
     }
 
-    public String putEstoquePorSku(String skuId, String filial, BalanceDTO dados) {
-        String url = DadosVtex.url + DadosVtex.endPointEstoque + skuId + "/" + filial + "?an=" + DadosVtex.sellers;
+    public String putEstoquePorSku(String skuId , BalanceDTO dados) {
+        String url = DadosVtex.url + DadosVtex.endPointEstoquePorSku + skuId;
         HttpResponse<String> response = null;
         try {
             response = Unirest.put(url)
@@ -45,7 +45,7 @@ public class InventoryClient {
         return response.getBody();
     }
 
-
+   /*
     public InventoryDTO postEstoquePorSku(String skuId, BalanceDTO dados) {
         String url = DadosVtex.url + DadosVtex.endPointEstoque + skuId + "/" + "?an=" + DadosVtex.sellers;
         HttpResponse<InventoryDTO> response = null;
@@ -62,5 +62,7 @@ public class InventoryClient {
         return response.getBody();
 
     }
+   */
+
 
 }
