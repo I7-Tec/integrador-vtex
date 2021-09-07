@@ -49,7 +49,7 @@ public class VtexService {
     private CategoryClient secaoVtex;
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 40000, initialDelay = 10000)
+    @Scheduled(fixedRate = 40000, initialDelay = 10000)
     public void atualizarPrecos() {
         log.info("Iniciando método de sincornização de preços...");
         var skus = produtosVtex.getSKUs();
@@ -89,7 +89,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 30000, initialDelay = 10000)
+    @Scheduled(fixedRate = 30000, initialDelay = 10000)
     public void atualizacaoEstoque() {
         log.info("Iniciando método de sincornização de estoques...");
         try {
@@ -235,7 +235,7 @@ public class VtexService {
 
 
     @Async
-    //@Scheduled(fixedRate = 10000, initialDelay = 60000)
+    @Scheduled(fixedRate = 10000, initialDelay = 60000)
     public void sincronizarPedidos() throws Exception {
         var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
         var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
@@ -251,7 +251,7 @@ public class VtexService {
     }
 
     @Async
-    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void sincronizarMarcas() {
         log.info("Iniciando sincronização de Marcas...");
         try {
@@ -282,7 +282,7 @@ public class VtexService {
     }
 
     @Async
-    //@Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void sincronizarSecao() {
         log.info("Iniciando sincronização de Seções...");
         try {
