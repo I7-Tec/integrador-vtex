@@ -242,11 +242,9 @@ public class CatalogClient {
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-
-        if (response != null) {
+        if(response != null) {
             return response.getBody();
         }
-
         return null;
     }
 }
