@@ -346,8 +346,9 @@ public class VtexService {
             var skuRef = produtosVtex.getSKURefId(produtos.get(i).getId());
             var skuVtex = produtosVtex.getSKU();
             if (skuRef == null) {
-                log.info("...");
+
                 atualizarSKU(skuVtex);
+                log.info("Sku Atualizado Com Sucesso!");
             } else {
                 produtosVtex.getSKURefId(skuRef.getRefId());
                 log.info("Sku já incluido!");
@@ -361,17 +362,17 @@ public class VtexService {
     private void atualizarSKU(SkuDTO sku) {
         log.info("Iniciando Atualização de SKU's ...");
 
-        var skuP = new SkuDTO();
-        var skuR = produtosVtex.getSKURefId(skuP.getRefId());
+        var skuNew = new SkuDTO();
+        var skuR = produtosVtex.getSKURefId(skuNew.getRefId());
 
             if (skuR == null) {
 
                 log.info("Incluindo SKU...");
 
                 var skuInc = new SkuInclusaoDTO();
-                skuInc.setProductId(skuP.getProductId());
-                skuInc.setName(skuP.getName());
-                skuInc.setRefId(skuP.getRefId());
+                skuInc.setProductId(skuNew.getProductId());
+                skuInc.setName(skuNew.getName());
+                skuInc.setRefId(skuNew.getRefId());
 
 
                 //sku.getUnitMultiplier();
@@ -385,9 +386,10 @@ public class VtexService {
 
 
                 produtosVtex.postSku(skuInc);
+
                 log.info("SKU Incluido!" );
             } else {
-                var skuExiste = produtosVtex.getSKURefId(skuP.getRefId());
+                var skuExiste = produtosVtex.getSKURefId(sku.getRefId());
                 log.info("Sku já existe" + "  " + skuExiste);
 
             }
