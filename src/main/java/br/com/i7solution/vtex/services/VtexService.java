@@ -361,41 +361,36 @@ public class VtexService {
 
     private void atualizarSKU(SkuDTO sku) {
         log.info("Iniciando Atualização de SKU's ...");
-
-        var skuNew = new SkuDTO();
-        var skuR = produtosVtex.getSKURefId(skuNew.getRefId());
+        if (sku != null) {
+            var skuR = produtosVtex.getSKURefId(sku.getRefId());
 
             if (skuR == null) {
-
-                log.info("Incluindo SKU...");
-
-                var skuInc = new SkuInclusaoDTO();
-                skuInc.setProductId(skuNew.getProductId());
-                skuInc.setName(skuNew.getName());
-                skuInc.setRefId(skuNew.getRefId());
-
+                sku.setRefId(sku.getRefId());
+                sku.setProductId(sku.getProductId());
+                sku.setName(sku.getName());
 
                 //sku.getUnitMultiplier();
 
                 var dimension = new SkuDimensionDTO();
-                skuInc.setHeight(dimension.getHeight());
-                skuInc.setCubicWeight(dimension.getCubicweight());
-                skuInc.setWidth(dimension.getWidth());
-                skuInc.setWeightKg(dimension.getWeight());
-                skuInc.setLength(dimension.getLength());
+                sku.setHeight(dimension.getHeight());
+                sku.setCubicWeight(dimension.getCubicweight());
+                sku.setWidth(dimension.getWidth());
+                sku.setWeightKg(dimension.getWeight());
+                sku.setLength(dimension.getLength());
 
 
-                produtosVtex.postSku(skuInc);
+                produtosVtex.postSku(sku);
 
-                log.info("SKU Incluido!" );
+                log.info("SKU Incluido!");
+
             } else {
                 var skuExiste = produtosVtex.getSKURefId(sku.getRefId());
                 log.info("Sku já existe" + "  " + skuExiste);
 
             }
-
         }
     }
+}
 
 
 

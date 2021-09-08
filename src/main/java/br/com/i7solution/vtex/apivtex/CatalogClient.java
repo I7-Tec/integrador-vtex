@@ -31,7 +31,7 @@ public class CatalogClient {
     }
 
     public CategoryDTO getCategoriaPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointCategoria +"/" + id ;
+        String url = DadosVtex.url + DadosVtex.endPointCategoria + id ;
 
         HttpResponse<CategoryDTO> response = null;
         try {
@@ -70,7 +70,7 @@ public class CatalogClient {
     }
 
     public BrandDTO getMarcaPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointMarcas + "/" + id ;
+        String url = DadosVtex.url + DadosVtex.endPointMarcas +  id ;
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
@@ -127,7 +127,7 @@ public class CatalogClient {
     }
 
     public SkuDTO getSKUPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointSku +"/"+ id;
+        String url = DadosVtex.url + DadosVtex.endPointSku + id;
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
@@ -146,16 +146,16 @@ public class CatalogClient {
     }
 
 
-    public void postSku(SkuInclusaoDTO sku) {
+    public void postSku(SkuDTO sku) {
         String url = DadosVtex.url + DadosVtex.endPointSku;
-        HttpResponse<SkuInclusaoDTO> response = null;
+        HttpResponse<SkuDTO> response = null;
 
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(sku)
-                    .asObject(SkuInclusaoDTO.class);
+                    .asObject(SkuDTO.class);
             response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -196,7 +196,7 @@ public class CatalogClient {
     }
 
     public ProductDTO getProdutoRefId(String refId) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoGet + "/" + refId;
+        String url = DadosVtex.url + DadosVtex.endPointProdutoGet +  refId;
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url)
@@ -211,16 +211,16 @@ public class CatalogClient {
         }
     }
 
-    public SkuInclusaoDTO postSKURefId(SkuInclusaoDTO refId) {
+    public SkuDTO postSKURefId(SkuDTO refId) {
         String url = DadosVtex.url + DadosVtex.endPointPostRefId + refId;
-        HttpResponse<SkuInclusaoDTO> response = null;
+        HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.post(url)
                     .queryString("refId", refId)
                     .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(SkuInclusaoDTO.class);
+                    .asObject(SkuDTO.class);
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
