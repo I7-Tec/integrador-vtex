@@ -26,7 +26,8 @@ public class ProdutoClient {
                     .queryString("pageSize", pageSize)
                     .queryString("pageNumber", pageNumber)
                     .header("Content-Type", "application/json")
-                    .asObject(new GenericType<List<ProdutoDTO>>() {});
+                    .asObject(new GenericType<List<ProdutoDTO>>() {
+                    });
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -38,7 +39,7 @@ public class ProdutoClient {
     }
 
     public ProdutoDTO getProdutoPorId(String id) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id ;
         // Unirest.setTimeouts(0, 0);
         HttpResponse<ProdutoDTO> response = null;
         try {
@@ -50,11 +51,14 @@ public class ProdutoClient {
             e.printStackTrace();
         }
 
-        return response.getBody();
+        if (response != null) {
+            return response.getBody();
+        }
+        return null ;
     }
 
     public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + "/" +id ;
         // Unirest.setTimeouts(0,0);
         HttpResponse<ProdutoDTO> response = null;
         try {
@@ -73,7 +77,7 @@ public class ProdutoClient {
     }
 
     public ProdutoDTO postProdutoPorId(String id, ProdutoDTO dados) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id + "?an=";
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos  ;
         // Unirest.setTimeouts(0,0);
         HttpResponse<ProdutoDTO> response = null;
         try {
@@ -94,7 +98,7 @@ public class ProdutoClient {
         List<PaymentsDTO> result = new ArrayList<>();
         HttpResponse<List<PaymentsDTO>> response = null;
         try {
-            String url = DadosVtex.url + DadosVtex.endPointPedidos + orderId + "/payments?an=" + DadosVtex.sellers;
+            String url = DadosVtex.url + DadosVtex.endPointPedidos + orderId + "/payment-transaction" ;
 
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
