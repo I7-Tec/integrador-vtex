@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 120000, initialDelay = 10000)
+    @Scheduled(fixedRate = 200000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -360,40 +360,42 @@ public class VtexService {
 
     private void atualizarSKU(SkuDTO sku) {
         log.info("Iniciando Atualização de SKU's ...");
-        var skuInit = produtosVtex.getSKU().getRefId();
-        var skuR = produtosVtex.getSKURefId(skuInit);
-        var produtoV = produtosVtex.getSKU();
 
-        if (skuR == null) {
-            log.info("Incluindo SKU...");
-            var skuInc = new SkuInclusaoDTO();
-            skuInc.setProductId(produtoV.getProductId());
-            skuInc.setName(produtoV.getName());
-            skuInc.setRefId(produtoV.getRefId());
+        var skuP = new SkuDTO();
+        var skuR = produtosVtex.getSKURefId(skuP.getRefId());
 
+            if (skuR == null) {
 
-            //sku.getUnitMultiplier();
+                log.info("Incluindo SKU...");
 
-            var dimension = new SkuDimensionDTO();
-            skuInc.setHeight(dimension.getHeight());
-            skuInc.setCubicWeight(dimension.getCubicweight());
-            skuInc.setWidth(dimension.getWidth());
-            skuInc.setWeightKg(dimension.getWeight());
-            skuInc.setLength(dimension.getLength());
+                var skuInc = new SkuInclusaoDTO();
+                skuInc.setProductId(skuP.getProductId());
+                skuInc.setName(skuP.getName());
+                skuInc.setRefId(skuP.getRefId());
 
 
+                //sku.getUnitMultiplier();
 
-            produtosVtex.postSku(skuInc);
-        } else {
-            var skuExiste = produtosVtex.getSKURefId(produtoV.getRefId());
-            log.info("Sku já existe" + "  " + skuExiste);
+                var dimension = new SkuDimensionDTO();
+                skuInc.setHeight(dimension.getHeight());
+                skuInc.setCubicWeight(dimension.getCubicweight());
+                skuInc.setWidth(dimension.getWidth());
+                skuInc.setWeightKg(dimension.getWeight());
+                skuInc.setLength(dimension.getLength());
+
+
+                produtosVtex.postSku(skuInc);
+                log.info("SKU Incluido!" );
+            } else {
+                var skuExiste = produtosVtex.getSKURefId(skuP.getRefId());
+                log.info("Sku já existe" + "  " + skuExiste);
+
+            }
 
         }
-
-
     }
 
-}
+
 
 
 
