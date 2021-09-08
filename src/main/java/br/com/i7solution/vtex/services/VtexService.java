@@ -319,7 +319,7 @@ public class VtexService {
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
                     produto.getSecao().getIdEcommerce() != null
-                   ) {
+            ) {
                 var produtVtex = new ProductDTO();
                 if (produtVtex.getRefId() == null) {
                     var produtoVtex = new ProductInclusaoDTO();
@@ -330,28 +330,10 @@ public class VtexService {
                     produtoVtex.setName(produto.getDescricao());
                     produtoVtex.setRefId(produto.getId());
                     produtoVtex.setShowWithoutStock(false);
-                    /*
-                    var produtoRetorno = produtosVtex.postProduto(produtoVtex);
 
-                        log.info("Incluindo Produto ...");
-                        var sku = new SkuInclusaoDTO();
-                        sku.setProductId(produtoRetorno.getId());
-                        sku.setName(produtoRetorno.getName());
-                        sku.setRefId(produtoRetorno.getRefId());
-
-                        //sku.getUnitMultiplier();
-
-                        var dimension = new SkuDimensionDTO();
-                        sku.setHeight(dimension.getHeight());
-                        sku.setCubicWeight(dimension.getCubicweight());
-                        sku.setWidth(dimension.getWidth());
-                        sku.setWeightKg(dimension.getWeight());
-                        sku.setLength(dimension.getLength());
-
-                        produtosVtex.postSKURefId(sku);
-
-                     */
                     produtosVtex.postProduto(produtoVtex);
+
+
                 }
             }
         }
