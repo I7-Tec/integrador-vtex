@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 200000, initialDelay = 10000)
+    @Scheduled(fixedRate = 180000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -343,20 +343,22 @@ public class VtexService {
                     log.info("Produto Já Incluido!");
                 }
             }
-            var skuRef = produtosVtex.getSKURefId(produtos.get(i).getId());
-            var skuVtex = produtosVtex.getSKU();
-            if (skuRef == null) {
 
-                atualizarSKU(skuVtex);
-                log.info("Sku Atualizado Com Sucesso!");
-            } else {
-                produtosVtex.getSKURefId(skuRef.getRefId());
-                log.info("Sku já incluido!");
+
+
+                var skuVtex = new SkuDTO();
+                var skuRef = produtosVtex.getSKURefId(skuVtex.getRefId());
+                if (skuRef == null) {
+                    atualizarSKU(skuVtex);
+                    log.info("Sku Atualizado Com Sucesso!");
+                } else {
+                    produtosVtex.getSKURefId(skuRef.getRefId());
+                    log.info("Sku já incluido!");
+                }
             }
-
-
         }
-    }
+
+
 
 
     private void atualizarSKU(SkuDTO sku) {
@@ -379,7 +381,7 @@ public class VtexService {
                 sku.setLength(dimension.getLength());
 
 
-                produtosVtex.postSku(sku);
+                produtosVtex.postSKURefId(sku);
 
                 log.info("SKU Incluido!");
 
