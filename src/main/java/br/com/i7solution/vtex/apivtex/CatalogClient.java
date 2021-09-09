@@ -159,7 +159,7 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(sku)
                     .asObject(SkuDTO.class);
-
+                     log.info(response.getStatus());
         } catch (UnirestException e) {
             e.printStackTrace();
         }
@@ -187,7 +187,7 @@ public class CatalogClient {
     }
 
     public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
-        String url = "http://tb0921.vtexcommercestable.com.br/api//catalog/pvt/product";
+        String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
         HttpResponse<ProductInclusaoDTO> response = null;
         try {
             response = Unirest.post(url)
