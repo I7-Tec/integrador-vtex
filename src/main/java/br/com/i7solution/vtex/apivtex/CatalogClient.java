@@ -146,9 +146,9 @@ public class CatalogClient {
     }
 
 
-    public SkuInclusaoDTO postSku(SkuInclusaoDTO sku) {
+    public void postSku(SkuDTO sku) {
         String url = DadosVtex.url + DadosVtex.endPointSku;
-        HttpResponse<SkuInclusaoDTO> response = null;
+        HttpResponse<SkuDTO> response = null;
 
 
         try {
@@ -156,11 +156,10 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(sku)
-                    .asObject(SkuInclusaoDTO.class);
-            return response.getBody();
+                    .asObject(SkuDTO.class);
+            response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
-            return null;
         }
     }
 
