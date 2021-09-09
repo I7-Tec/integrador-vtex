@@ -314,9 +314,8 @@ public class VtexService {
 
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
-        for (ProdutoDTO produto : produtos) {
-
-
+        for (int i = 0; i < produtos.size(); i++)  {
+            var produto = produtos.get(i);
             if (produto.getMarca() != null &&
                     produto.getSecao() != null &&
                     produto.getMarca().getIdEcommerce() != null &&
