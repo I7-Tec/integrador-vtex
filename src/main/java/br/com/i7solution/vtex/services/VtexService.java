@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 20000, initialDelay = 10000)
+    @Scheduled(fixedRate = 120000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -84,10 +84,11 @@ public class VtexService {
             pagina++;
 
             existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
-        }
-        log.info("Fim da sincronização de produtos!");
 
+            log.info("Fim Da Atualização de produtos");
+        }
     }
+
 
     //@Async(value = "taskAtualizacoes")
     //@Scheduled(fixedRate = 30000, initialDelay = 10000)
@@ -351,13 +352,12 @@ public class VtexService {
 
                     produtosVtex.postSku(sku);
 
-                    log.info("Produto Incluido !" + produtoInclusaoVtex.getRefId());
-                    log.info("SKU incluido !" + sku.getRefId());
+
                 } else {
                     produtosVtex.getSKURefId(produtoVtexRef.getRefId());
                     produtosVtex.getProdutoRefId(produtoVtexRef.getRefId());
-                    log.info("Produto Já Incluido!");
-                    log.info("SKU Já foi Incluido!");
+                    log.info("Produto Já existe!");
+                    log.info("SKU Já existe!");
                 }
 
 
