@@ -187,7 +187,7 @@ public class CatalogClient {
     }
 
     public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
+        String url = "http://tb0921.vtexcommercestable.com.br/api//catalog/pvt/product";
         HttpResponse<ProductInclusaoDTO> response = null;
         try {
             response = Unirest.post(url)
