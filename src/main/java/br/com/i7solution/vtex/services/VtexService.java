@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1200000, initialDelay = 10000)
+    @Scheduled(fixedRate = 20000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -313,9 +313,8 @@ public class VtexService {
 
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
-        for (int i = 0; i < produtos.size(); i++) {
-            var produto = produtos.get(i);
-            var produtoVtexRef = produtosVtex.getProdutoRefId(produtos.get(i).getId());
+        for (ProdutoDTO produto : produtos) {
+            var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
 
 
             if (produto.getMarca() != null &&
@@ -338,28 +337,28 @@ public class VtexService {
                     produtosVtex.postProduto(produtoInclusaoVtex);
 
 
-
-
                     var sku = new SkuDTO();
                     sku.setName(produtoInclusaoVtex.getName());
                     sku.setRefId(produtoInclusaoVtex.getRefId());
                     sku.setProductId(produtoInclusaoVtex.getId());
                     sku.setActive(true);
-
-
+                    sku.setManufacturerCode(" ");
+                    sku.setHeight(sku.getHeight());
+                    sku.setCubicWeight(sku.getCubicWeight());
+                    sku.setWeightKg(sku.getWeightKg());
+                    sku.setHeight(sku.getHeight());
 
 
                     produtosVtex.postSku(sku);
 
                     log.info("Produto Incluido !" + produtoInclusaoVtex.getRefId());
-                    log.info("SKU incluido !"+ sku.getRefId());
+                    log.info("SKU incluido !" + sku.getRefId());
                 } else {
-
+                    produtosVtex.getSKURefId(produtoVtexRef.getRefId());
                     produtosVtex.getProdutoRefId(produtoVtexRef.getRefId());
                     log.info("Produto Já Incluido!");
+                    log.info("SKU Já foi Incluido!");
                 }
-
-
 
 
             }
