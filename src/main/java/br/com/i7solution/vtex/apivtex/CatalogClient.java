@@ -157,11 +157,14 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(sku)
                     .asObject(SkuDTO.class);
-            response.getBody();
+
         } catch (UnirestException e) {
             e.printStackTrace();
         }
-        return sku;
+        if (response != null) {
+            return response.getBody();
+        }
+        return null;
     }
 
     public SkuDTO getSKURefId(String refId) {

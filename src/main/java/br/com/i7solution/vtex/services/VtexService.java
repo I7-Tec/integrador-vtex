@@ -71,7 +71,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 120000, initialDelay = 10000)
+    @Scheduled(fixedRate = 100000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
@@ -315,7 +315,6 @@ public class VtexService {
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
         for (ProdutoDTO produto : produtos) {
-            var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
 
 
             if (produto.getMarca() != null &&
@@ -323,7 +322,8 @@ public class VtexService {
                     produto.getMarca().getIdEcommerce() != null &&
                     produto.getSecao().getIdEcommerce() != null
             ) {
-
+                var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
+                Long idProdutoVtex = 0L;
                 if (produtoVtexRef == null) {
                     log.info("Incluindo Produto ...");
                     var produtoInclusaoVtex = new ProductInclusaoDTO();
@@ -335,31 +335,39 @@ public class VtexService {
                     produtoInclusaoVtex.setRefId(produto.getId());
                     produtoInclusaoVtex.setShowWithoutStock(false);
 
-                    produtosVtex.postProduto(produtoInclusaoVtex);
-
-
-                    var sku = new SkuDTO();
-                    sku.setName(produtoInclusaoVtex.getName());
-                    sku.setRefId(produtoInclusaoVtex.getRefId());
-                    sku.setProductId(produtoInclusaoVtex.getId());
-                    sku.setActive(true);
-                    sku.setManufacturerCode(" ");
-                    sku.setHeight(sku.getHeight());
-                    sku.setCubicWeight(sku.getCubicWeight());
-                    sku.setWeightKg(sku.getWeightKg());
-                    sku.setHeight(sku.getHeight());
-
-
-                    produtosVtex.postSku(sku);
-
+                    var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
+                    if (produtoIncluido != null) {
+                        idProdutoVtex = produtoIncluido.getId();
+                        log.info("Produto Incluido!");
+                    }
 
                 } else {
+                    idProdutoVtex = produtoVtexRef.getId();
                     produtosVtex.getSKURefId(produtoVtexRef.getRefId());
                     produtosVtex.getProdutoRefId(produtoVtexRef.getRefId());
                     log.info("Produto Já existe!");
                     log.info("SKU Já existe!");
                 }
+                if (idProdutoVtex != 0L) {
+                    var skuVtexRef = produtosVtex.getSKURefId(produto.getId());
+                    if (skuVtexRef == null) {
 
+                        var sku = new SkuDTO();
+                        sku.setName(produto.getDescricao());
+                        sku.setRefId(produto.getId());
+                        sku.setProductId(idProdutoVtex);
+                        sku.setActive(produto.isAtivo());
+                        sku.setManufacturerCode(" ");
+                        sku.setHeight(sku.getHeight());
+                        sku.setCubicWeight(sku.getCubicWeight());
+                        sku.setWeightKg(sku.getWeightKg());
+                        sku.setHeight(sku.getHeight());
+
+
+                        produtosVtex.postSku(sku);
+                        log.info("SKU incluido!");
+                    }
+                }
 
             }
         }
