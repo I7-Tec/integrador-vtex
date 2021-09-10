@@ -194,8 +194,9 @@ public class CatalogClient {
         HttpResponse<ProductInclusaoDTO> response = null;
         var map = new ObjectMapper();
         map.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        log.info("Post Produto: " + map.writeValueAsString(dados));
         log.info(url);
+        log.info("Post Produto: " + map.writeValueAsString(dados));
+
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
