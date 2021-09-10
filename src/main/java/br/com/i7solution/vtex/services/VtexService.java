@@ -5,6 +5,7 @@ import br.com.i7solution.vtex.apivtex.dtos.*;
 import br.com.i7solution.vtex.clients.*;
 import br.com.i7solution.vtex.clients.dtos.*;
 import br.com.i7solution.vtex.tools.Ferramentas;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -72,7 +73,7 @@ public class VtexService {
 
     @Async(value = "taskAtualizacoes")
     @Scheduled(fixedRate = 100000, initialDelay = 10000)
-    public void atualizarProdutos() {
+    public void atualizarProdutos() throws JsonProcessingException {
         log.info("Iniciando sincronização de produtos...");
         var existeProximo = true;
         var pagina = 1;
@@ -83,7 +84,7 @@ public class VtexService {
             }
             pagina++;
 
-            existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
+            existeProximo = false ; //!((produtos != null ? produtos.size() : 0) < 100);
 
             log.info("Fim Da Atualização de produtos");
         }
@@ -312,9 +313,9 @@ public class VtexService {
     }
 
 
-    private void sincronizarProdutos(List<ProdutoDTO> produtos) {
+    private void sincronizarProdutos(List<ProdutoDTO> produtos) throws JsonProcessingException {
         log.info("Quantidade de Produtos a sincronizar:" + "  " + produtos.size());
-        for (int i = 0; i < produtos.size(); i++)  {
+        for (int i = 0; i < 1; i++)  {
             var produto = produtos.get(i);
             if (produto.getMarca() != null &&
                     produto.getSecao() != null &&

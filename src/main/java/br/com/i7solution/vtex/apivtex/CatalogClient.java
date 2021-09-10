@@ -1,6 +1,9 @@
 package br.com.i7solution.vtex.apivtex;
 
 import br.com.i7solution.vtex.apivtex.dtos.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
@@ -186,9 +189,13 @@ public class CatalogClient {
         }
     }
 
-    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
+    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) throws JsonProcessingException {
         String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
         HttpResponse<ProductInclusaoDTO> response = null;
+        var map = new ObjectMapper();
+        map.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        log.info("Post Produto: " + map.writeValueAsString(dados));
+        log.info(url);
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
