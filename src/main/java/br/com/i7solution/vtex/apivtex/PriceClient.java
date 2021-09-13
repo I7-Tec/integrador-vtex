@@ -30,7 +30,6 @@ public class PriceClient {
 
     public PriceDTO putPreco(Long skuId, PriceDTO dados) {
         String url = DadosVtex.url + DadosVtex.endPointPreco + skuId;
-        log.info(url);
         HttpResponse<PriceDTO> response = null;
         try {
             response = Unirest.put(url)
@@ -39,8 +38,6 @@ public class PriceClient {
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(dados)
                     .asObject(PriceDTO.class);
-            log.info("Status Code Put Price: " + response.getStatus());
-            log.info("Body Response Put Price " + response.getBody());
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();

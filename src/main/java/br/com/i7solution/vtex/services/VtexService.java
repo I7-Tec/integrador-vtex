@@ -55,7 +55,7 @@ public class VtexService {
     private WarehouseClient warehouseClientService;
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 4000000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 1800000, initialDelay = 10000)
     public void atualizarPrecos() {
         log.info("Iniciando sincronização de preços");
         var existeProximo = true;
@@ -73,7 +73,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1000000, initialDelay = 10000)
+    @Scheduled(fixedRate = 10000000, initialDelay = 10000)
     public void atualizarFiliais() {
         log.info("Inciando sincronização de filiais");
         var filiais = filialClientService.carregar();
@@ -110,7 +110,7 @@ public class VtexService {
 
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 30000, initialDelay = 30000)
+    @Scheduled(fixedRate = 1200000, initialDelay = 10000)
     public void atualizacaoEstoque() {
         log.info("Iniciando sincronização de estoques");
         var existeProximo = true;
