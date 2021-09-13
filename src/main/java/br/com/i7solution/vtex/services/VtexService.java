@@ -397,7 +397,11 @@ public class VtexService {
             if(skuVetx != null) {
                 var priceVtexDto = new PriceDTO();
                 priceVtexDto.setBasePrice(preco.getPreco());
-                priceVtexDto.setMarkup(preco.getMargemPrevista().intValue());
+                if(preco.getMargemPrevista() != null) {
+                    priceVtexDto.setMarkup(preco.getMargemPrevista().intValue());
+                } else {
+                    priceVtexDto.setMarkup(0);
+                }
                 var precoAtualizado = precosVtex.putPreco(skuVetx.getId(), priceVtexDto);
                 if(precoAtualizado != null) log.info("Preço do produto: " + preco.getIdProduto() + " atualizado com sucesso!");
             } else {
