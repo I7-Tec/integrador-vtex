@@ -420,6 +420,7 @@ public class VtexService {
                 inventory.setUnlimitedQuantity(false);
                 inventory.setQuantity(estoque.getQuantidadeDisponivel());
 
+                log.info("Atualizando estoque do SKU: " + skuVetx.getId());
                 inventoryVtex.putEstoquePorSku(inventory, skuVetx.getId(), estoque.getIdFilial());
             }
         }
