@@ -6,10 +6,10 @@ public class ProdutoDTO implements Serializable {
     private String id;
     private String descricao;
     private Long codigoDeBarras;
-    private Float peso;
-    private Float altura;
-    private Float comprimento;
-    private Float largura;
+    private Double peso;
+    private Double altura;
+    private Double comprimento;
+    private Double largura;
     private String codigoDeFabrica;
     private DepartamentoDTO departamento;
     private SecaoDTO secao;
@@ -19,7 +19,7 @@ public class ProdutoDTO implements Serializable {
     private FornecedorDTO fornecedor;
     private boolean ativo;
     private EmbalagemDTO[] embalagens;
-    private Float pesoLiquido;
+    private Double pesoLiquido;
 
     public String getId() {
         return id;
@@ -45,35 +45,35 @@ public class ProdutoDTO implements Serializable {
         this.codigoDeBarras = codigoDeBarras;
     }
 
-    public Float getPeso() {
+    public Double getPeso() {
         return peso;
     }
 
-    public void setPeso(Float peso) {
+    public void setPeso(Double peso) {
         this.peso = peso;
     }
 
-    public Float getAltura() {
+    public Double getAltura() {
         return altura;
     }
 
-    public void setAltura(Float altura) {
+    public void setAltura(Double altura) {
         this.altura = altura;
     }
 
-    public Float getComprimento() {
+    public Double getComprimento() {
         return comprimento;
     }
 
-    public void setComprimento(Float comprimento) {
+    public void setComprimento(Double comprimento) {
         this.comprimento = comprimento;
     }
 
-    public Float getLargura() {
+    public Double getLargura() {
         return largura;
     }
 
-    public void setLargura(Float largura) {
+    public void setLargura(Double largura) {
         this.largura = largura;
     }
 
@@ -149,11 +149,11 @@ public class ProdutoDTO implements Serializable {
         this.embalagens = embalagens;
     }
 
-    public Float getPesoLiquido() {
+    public Double getPesoLiquido() {
         return pesoLiquido;
     }
 
-    public void setPesoLiquido(Float pesoLiquido) {
+    public void setPesoLiquido(Double pesoLiquido) {
         this.pesoLiquido = pesoLiquido;
     }
 }

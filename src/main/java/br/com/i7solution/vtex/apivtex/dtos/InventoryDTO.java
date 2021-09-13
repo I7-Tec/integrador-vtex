@@ -4,24 +4,22 @@ import java.io.Serializable;
 
 public class InventoryDTO implements Serializable {
 
-    private String skuId;
-    private BalanceDTO balance[];
+    private boolean unlimitedQuantity;
+    private Double quantity;
 
-
-    public String getSkuId() {
-        return skuId;
+    public boolean isUnlimitedQuantity() {
+        return unlimitedQuantity;
     }
 
-    public void setSkuId(String skuId) {
-        this.skuId = skuId;
+    public void setUnlimitedQuantity(boolean unlimitedQuantity) {
+        this.unlimitedQuantity = unlimitedQuantity;
     }
 
-    public BalanceDTO[] getBalance() {
-        return balance;
+    public Double getQuantity() {
+        return quantity;
     }
 
-    public void setBalance(BalanceDTO balance[]) {
-        this.balance = balance;
+    public void setQuantity(Double quantity) {
+        this.quantity = quantity;
     }
-
 }

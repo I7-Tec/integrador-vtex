@@ -13,5 +13,6 @@ public class DadosMicroServicos {
     public static String endPointPedidos = "/pedidos";
     public static String endPointClientes = "/clientes";
     public static String endPointEnderecos = "/enderecos";
+    public static String endPointFiliais = "/filiais";
 }
 

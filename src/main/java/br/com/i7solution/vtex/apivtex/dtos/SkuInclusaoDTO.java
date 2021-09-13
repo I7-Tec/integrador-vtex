@@ -5,30 +5,31 @@ import java.util.Date;
 
 public class SkuInclusaoDTO implements Serializable {
 
-    private Long Id ; // SKU ID
-    private Long ProductId ; //ProductId	integer	Product ID
-    private Boolean IsActive; //boolean	Shows if the SKU is active. To avoid receiving a 400 - Bad Request this attribute must be false
-    private String Name; //	string	SKU Name
-    private String RefId; //	string	SKU RefId
-    private Double PackagedHeight; //	decimal	Packaged Height
-    private Double PackagedLength; //	decimal	Packaged Length
-    private Double PackagedWidth; //	decimal	Packaged Width
-    private Double PackagedWeightKg; //	decimal	Packaged Weight
-    private Double Height; //	decimal	SKU Height
-    private Double Length; //	decimal	SKU Length
-    private Double Width; //	decimal	SKU Width
-    private Double WeightKg;	//	SKU Weight
-    private Double CubicWeight; //	decimal	Cubic Weight
-    private Boolean IsKit; //	boolean	Shows if the SKU is a Kit
-    private Date CreationDate; //	string	SKU Creation Date
-    private Double RewardValue ; //	decimal	How much the client will get rewarded by buying the SKU
-    private String EstimatedDateArrival; //	string	SKU Estimated Date Arrival
-    private String ManufacturerCode; //	string	Manufacturer Code
-    private Double CommercialConditionId; //	integer	Commercial Condition ID
-    private String MeasurementUnit; //	string	Measurement Unit
-    private Double UnitMultiplier; //	decimal	Multiplies the amount of SKUs inserted on the cart
-    private String ModalType; //	string	Defines deliver model
-    private Boolean KitItensSellApart; //	boolean	Defines if Kit components can be sold apart
+    private Long Id ;
+    private Long ProductId ;
+    private boolean IsActive;
+    private String Name;
+    private String RefId;
+    private Double PackagedHeight;
+    private Double PackagedLength;
+    private Double PackagedWidth;
+    private Double PackagedWeightKg;
+    private Double Height;
+    private Double Length;
+    private Double Width;
+    private Double WeightKg;
+    private Double CubicWeight;
+    private boolean IsKit;
+    private Date CreationDate;
+    private Double RewardValue;
+    private String EstimatedDateArrival;
+    private String ManufacturerCode;
+    private Integer CommercialConditionId;
+    private String MeasurementUnit;
+    private Double UnitMultiplier;
+    private String ModalType;
+    private boolean KitItensSellApart;
+    private Double HeighCubicWeightt;
 
     public Long getId() {
         return Id;
@@ -182,11 +183,11 @@ public class SkuInclusaoDTO implements Serializable {
         ManufacturerCode = manufacturerCode;
     }
 
-    public Double getCommercialConditionId() {
+    public Integer getCommercialConditionId() {
         return CommercialConditionId;
     }
 
-    public void setCommercialConditionId(Double commercialConditionId) {
+    public void setCommercialConditionId(Integer commercialConditionId) {
         CommercialConditionId = commercialConditionId;
     }
 
@@ -220,5 +221,44 @@ public class SkuInclusaoDTO implements Serializable {
 
     public void setKitItensSellApart(Boolean kitItensSellApart) {
         KitItensSellApart = kitItensSellApart;
+    }
+
+    public Double getHeighCubicWeightt() {
+        return HeighCubicWeightt;
+    }
+
+    public void setHeighCubicWeightt(Double heighCubicWeightt) {
+        HeighCubicWeightt = heighCubicWeightt;
+    }
+
+    @Override
+    public String toString() {
+        return "SkuInclusaoDTO{" +
+                "Id:" + Id +
+                ", ProductId:" + ProductId +
+                ", IsActive:" + IsActive +
+                ", Name:'" + Name + '\'' +
+                ", RefId:'" + RefId + '\'' +
+                ", PackagedHeight:" + PackagedHeight +
+                ", PackagedLength:" + PackagedLength +
+                ", PackagedWidth:" + PackagedWidth +
+                ", PackagedWeightKg:" + PackagedWeightKg +
+                ", Height:" + Height +
+                ", Length:" + Length +
+                ", Width:" + Width +
+                ", WeightKg:" + WeightKg +
+                ", CubicWeight:" + CubicWeight +
+                ", IsKit:" + IsKit +
+                ", CreationDate:" + CreationDate +
+                ", RewardValue:" + RewardValue +
+                ", EstimatedDateArrival:'" + EstimatedDateArrival + '\'' +
+                ", ManufacturerCode:'" + ManufacturerCode + '\'' +
+                ", CommercialConditionId:" + CommercialConditionId +
+                ", MeasurementUnit:'" + MeasurementUnit + '\'' +
+                ", UnitMultiplier:" + UnitMultiplier +
+                ", ModalType:'" + ModalType + '\'' +
+                ", KitItensSellApart:" + KitItensSellApart +
+                ", HeighCubicWeightt:" + HeighCubicWeightt +
+                '}';
     }
 }

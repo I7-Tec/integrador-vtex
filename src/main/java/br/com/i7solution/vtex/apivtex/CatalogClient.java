@@ -63,15 +63,11 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(BrandDTO.class);
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
+            return null;
         }
-
-        if (response != null) {
-            return response.getBody();
-        }
-
-        return null;
     }
 
     public BrandDTO getMarcaPorId(String id) {
@@ -151,29 +147,27 @@ public class CatalogClient {
     }
 
 
-    public SkuDTO postSku(SkuDTO sku) {
+    public SkuInclusaoDTO postSku(SkuInclusaoDTO sku) {
         String url = DadosVtex.url + DadosVtex.endPointSku;
-        HttpResponse<SkuDTO> response = null;
-
-
+        HttpResponse<SkuInclusaoDTO> response = null;
+        log.info("SKU à ser incluido: " + sku.toString());
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(sku)
-                    .asObject(SkuDTO.class);
-                     log.info(response.getStatus());
+                    .asObject(SkuInclusaoDTO.class);
+            log.info("Status Code Post SKU: " + response.getStatus());
+            log.info("Body Response Post SKU " + response.getBody());
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
+            return null;
         }
-        if (response != null) {
-            return response.getBody();
-        }
-        return null;
     }
 
     public SkuDTO getSKURefId(String refId) {
-        String url = DadosVtex.url + DadosVtex.endPointSkuRefIdGet + refId;
+        String url = DadosVtex.url + DadosVtex.endPointSkuRefIdGet;
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url)
@@ -189,14 +183,10 @@ public class CatalogClient {
         }
     }
 
-    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) throws JsonProcessingException {
+    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
         String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
         HttpResponse<ProductInclusaoDTO> response = null;
-        var map = new ObjectMapper();
-        map.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        log.info(url);
-        log.info("Post Produto: " + map.writeValueAsString(dados));
-
+        log.info("Produto à ser incluido: " + dados.toString());
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
@@ -204,7 +194,8 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(dados)
                     .asObject(ProductInclusaoDTO.class);
-                    log.info(response.getStatus());
+                    log.info("Status Code Post Produto: " + response.getStatus());
+                    log.info("Body Response Post Produto " + response.getBody());
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -213,7 +204,7 @@ public class CatalogClient {
     }
 
     public ProductDTO getProdutoRefId(String refId) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoGet + "/" + refId;
+        String url = DadosVtex.url + "/catalog_system/pvt/products/productgetbyrefid/" + refId;
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url)
@@ -221,23 +212,6 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(ProductDTO.class);
-            return response.getBody();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public SkuDTO postSKURefId(SkuDTO refId) {
-        String url = DadosVtex.url + DadosVtex.endPointPostRefId + refId;
-        HttpResponse<SkuDTO> response = null;
-        try {
-            response = Unirest.post(url)
-                    .queryString("refId", refId)
-                    .header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(SkuDTO.class);
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -253,12 +227,10 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(SkuDTO.class);
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
+            return null;
         }
-        if(response != null) {
-            return response.getBody();
-        }
-        return null;
     }
 }

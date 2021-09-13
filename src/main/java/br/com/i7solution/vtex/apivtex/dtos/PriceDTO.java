@@ -3,41 +3,17 @@ package br.com.i7solution.vtex.apivtex.dtos;
 import java.io.Serializable;
 
 public class PriceDTO implements Serializable {
-
-    private Long index;
-    private String skuId;
-    private Double price;
-    private Long quantity;
+    private Integer markup;
     private Double listPrice;
-    private Double costPrice;
-    private Double markup;
     private Double basePrice;
-    private String priceTable;
-    private String priceValidUnit;
-    private FixedPricesDTO fixedPrices[];
+    private Double costPrice;
 
-    public Long getIndex() {
-        return index;
+    public Integer getMarkup() {
+        return markup;
     }
 
-    public void setIndex(Long index) {
-        this.index = index;
-    }
-
-    public String getSkuId() {
-        return skuId;
-    }
-
-    public void setSkuId(String skuId) {
-        this.skuId = skuId;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setMarkup(Integer markup) {
+        this.markup = markup;
     }
 
     public Double getListPrice() {
@@ -48,22 +24,6 @@ public class PriceDTO implements Serializable {
         this.listPrice = listPrice;
     }
 
-    public Double getCostPrice() {
-        return costPrice;
-    }
-
-    public void setCostPrice(Double costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public Double getMarkup() {
-        return markup;
-    }
-
-    public void setMarkup(Double markup) {
-        this.markup = markup;
-    }
-
     public Double getBasePrice() {
         return basePrice;
     }
@@ -72,35 +32,21 @@ public class PriceDTO implements Serializable {
         this.basePrice = basePrice;
     }
 
-    public String getPriceTable() {
-        return priceTable;
+    public Double getCostPrice() {
+        return costPrice;
     }
 
-    public void setPriceTable(String priceTable) {
-        this.priceTable = priceTable;
+    public void setCostPrice(Double costPrice) {
+        this.costPrice = costPrice;
     }
 
-    public String getPriceValidUnit() {
-        return priceValidUnit;
-    }
-
-    public void setPriceValidUnit(String priceValidUnit) {
-        this.priceValidUnit = priceValidUnit;
-    }
-
-    public FixedPricesDTO[] getFixedPrices() {
-        return fixedPrices;
-    }
-
-    public void setFixedPrices(FixedPricesDTO[] fixedPrices) {
-        this.fixedPrices = fixedPrices;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Long quantity) {
-        this.quantity = quantity;
+    @Override
+    public String toString() {
+        return "PriceDTO{" +
+                "markup:" + markup +
+                ", listPrice:" + listPrice +
+                ", basePrice:" + basePrice +
+                ", costPrice:" + costPrice +
+                '}';
     }
 }

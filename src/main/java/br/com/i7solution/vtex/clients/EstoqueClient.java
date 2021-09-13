@@ -11,40 +11,39 @@ import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
 
 
-    @Service
-    public class EstoqueClient {
+@Service
+public class EstoqueClient {
 
-        public EstoqueDTO[] getEstoque(String idProduto) {
-            String url = DadosMicroServicos.urlEstoques + DadosMicroServicos.endPointEstoques;
-            HttpResponse<EstoqueDTO[]> response = null;
-            try {
-                response = Unirest.get(url)
-                        .queryString("idProduto", idProduto)
-                        .header("Content-Type", "application/json")
-                        .asObject(new GenericType<EstoqueDTO[]>() {});
-            } catch (UnirestException e) {
-                e.printStackTrace();
-            }
-
-            if(response != null){
-                return response.getBody();
-            }
+    public EstoqueDTO[] getEstoque(int pageNumber, int pageSize) {
+        String url = DadosMicroServicos.urlEstoques + DadosMicroServicos.endPointEstoques;
+        HttpResponse<EstoqueDTO[]> response = null;
+        try {
+            response = Unirest.get(url)
+                    .queryString("pageSize", pageSize)
+                    .queryString("pageNumber", pageNumber)
+                    .header("Content-Type", "application/json")
+                    .asObject(new GenericType<EstoqueDTO[]>() {
+                    });
+            return response.getBody();
+        } catch (UnirestException e) {
+            e.printStackTrace();
             return null;
         }
+    }
 
-        public EstoqueDTO getEstoquePorId(String id) {
-            String url = DadosMicroServicos.urlEstoques;
-            HttpResponse<EstoqueDTO> response = null;
-            try {
-                response = Unirest.get(url)
-                        .header("Content-Type", "application/json")
-                        .asObject(EstoqueDTO.class);
-            } catch (UnirestException e) {
-                e.printStackTrace();
-            }
-
-            return response.getBody();
+    public EstoqueDTO getEstoquePorId(String id) {
+        String url = DadosMicroServicos.urlEstoques;
+        HttpResponse<EstoqueDTO> response = null;
+        try {
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
+                    .asObject(EstoqueDTO.class);
+        } catch (UnirestException e) {
+            e.printStackTrace();
         }
+
+        return response.getBody();
+    }
 
 
     public EstoqueDTO putEstoquePorIds(String idProduto, String idFilial, EstoqueDTO dados) {
@@ -54,7 +53,7 @@ import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
         try {
             response = Unirest.put(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(dados).asObject(EstoqueDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -70,7 +69,7 @@ import br.com.i7solution.vtex.clients.dtos.EstoqueDTO;
         try {
             response = Unirest.post(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .body(dados).asObject(EstoqueDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();

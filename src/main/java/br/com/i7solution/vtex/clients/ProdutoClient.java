@@ -25,6 +25,7 @@ public class ProdutoClient {
                     .connectTimeout(60000)
                     .queryString("pageSize", pageSize)
                     .queryString("pageNumber", pageNumber)
+                    .queryString("ativo", true)
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<List<ProdutoDTO>>() {
                     });

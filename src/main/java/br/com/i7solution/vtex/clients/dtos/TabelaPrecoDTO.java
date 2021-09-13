@@ -5,9 +5,8 @@ import java.io.Serializable;
 public class TabelaPrecoDTO implements Serializable {
 
     private String idProduto;
-    private Float preco;
-    private Boolean erro;
-
+    private Double preco;
+    private Double margemPrevista;
 
     public String getIdProduto() {
         return idProduto;
@@ -17,16 +16,19 @@ public class TabelaPrecoDTO implements Serializable {
         this.idProduto = idProduto;
     }
 
-    public Float getPreco() {
+    public Double getPreco() {
         return preco;
     }
 
-    public void setPreco(Float preco) {
+    public void setPreco(Double preco) {
         this.preco = preco;
     }
 
-    public Boolean isErro() {
-        return erro;
+    public Double getMargemPrevista() {
+        return margemPrevista;
     }
 
+    public void setMargemPrevista(Double margemPrevista) {
+        this.margemPrevista = margemPrevista;
+    }
 }

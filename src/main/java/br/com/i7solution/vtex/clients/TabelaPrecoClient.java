@@ -12,22 +12,21 @@ import br.com.i7solution.vtex.clients.dtos.TabelaPrecoDTO;
 @Service
 public class TabelaPrecoClient {
 
-    public TabelaPrecoDTO[] getPrecosWinthor(String idProduto) {
+    public TabelaPrecoDTO[] getPrecos(int pageNumber, int pageSize) {
         String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPrecos;
         HttpResponse<TabelaPrecoDTO[]> response = null;
         try {
             response = Unirest.get(url)
-                    .queryString("idProduto", idProduto)
+                    .connectTimeout(60000)
+                    .queryString("pageSize", pageSize)
+                    .queryString("pageNumber", pageNumber)
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<TabelaPrecoDTO[]>() {
                     });
+            return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
+            return null;
         }
-
-        if(response != null){
-            return response.getBody();
-        }
-        return null;
     }
 }

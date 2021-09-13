@@ -4,7 +4,27 @@ import java.io.Serializable;
 
 public class ProductInclusaoDTO implements Serializable {
 
-    private Long Id ;// Product Id
+    private Long Id ;
+    private String Name;
+    private Long DepartmentId;
+    private Long CategoryId;
+    private Long BrandId;
+    private String LinkId;
+    private String  RefId;
+    private Boolean IsVisible;
+    private String Description;
+    private String DescriptionShort;
+    private String ReleaseDate;
+    private String KeyWords;
+    private String  Title;
+    private Boolean IsActive;
+    private String  TaxCode;
+    private String MetaTagDescription;
+    private Long  SupplierId;
+    private Boolean ShowWithoutStock;
+    private String AdWordsRemarketingCode;
+    private String LomadeeCampaignCode;
+    private Long Score;
 
     public Long getId() {
         return Id;
@@ -13,27 +33,6 @@ public class ProductInclusaoDTO implements Serializable {
     public void setId(Long id) {
         Id = id;
     }
-
-    private String Name; //	string	Product Name
-    private Long DepartmentId;//	integer	Product Department ID
-    private Long CategoryId;	//integer	Product Category ID
-    private Long BrandId; //	integer	Product Brand ID
-    private String LinkId; //	string	Text Link
-    private String  RefId; //	string	Product Referecial Code
-    private Boolean IsVisible;	//boolean	If the Product is visible on the store
-    private String Description;	//string	Product Description
-    private String DescriptionShort	; //string	Complement Name
-    private String ReleaseDate ; //	string	Product Release Date
-    private String KeyWords; //	string	Substitutes words for the Product
-    private String  Title;	//string	Tag Title
-    private Boolean IsActive; //	boolean	If the Product is active or not
-    private String  TaxCode; //	string	Product Fiscal Code
-    private String MetaTagDescription; //	string	Meta Tag Description
-    private Long  SupplierId; //	integer	Product Supplier ID
-    private Boolean ShowWithoutStock;	//boolean	Defines if the Product will remain being shown in the store even if it’s out of stock
-    private String AdWordsRemarketingCode; //	string	Code specific for AdWords Remarketing
-    private String LomadeeCampaignCode; //	string	Code specific for Lomadee Campaign
-    private Long Score; //	integer	Value used for Product search ordenation
 
     public String getName() {
         return Name;
@@ -193,5 +192,32 @@ public class ProductInclusaoDTO implements Serializable {
 
     public void setScore(Long score) {
         Score = score;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductInclusaoDTO{" +
+                "Id:" + Id +
+                ", Name:'" + Name + '\'' +
+                ", DepartmentId:" + DepartmentId +
+                ", CategoryId:" + CategoryId +
+                ", BrandId:" + BrandId +
+                ", LinkId:'" + LinkId + '\'' +
+                ", RefId:'" + RefId + '\'' +
+                ", IsVisible:" + IsVisible +
+                ", Description:'" + Description + '\'' +
+                ", DescriptionShort:'" + DescriptionShort + '\'' +
+                ", ReleaseDate:'" + ReleaseDate + '\'' +
+                ", KeyWords:'" + KeyWords + '\'' +
+                ", Title:'" + Title + '\'' +
+                ", IsActive:" + IsActive +
+                ", TaxCode:'" + TaxCode + '\'' +
+                ", MetaTagDescription:'" + MetaTagDescription + '\'' +
+                ", SupplierId:" + SupplierId +
+                ", ShowWithoutStock:" + ShowWithoutStock +
+                ", AdWordsRemarketingCode:'" + AdWordsRemarketingCode + '\'' +
+                ", LomadeeCampaignCode:'" + LomadeeCampaignCode + '\'' +
+                ", Score:" + Score +
+                '}';
     }
 }

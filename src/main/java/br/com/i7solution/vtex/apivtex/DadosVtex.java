@@ -6,7 +6,7 @@ public class DadosVtex {
     public static String url = "https://tb0921.vtexcommercestable.com.br/api";
     public static String appKey = "vtexappkey-tb0921-JZWCTS" ;
     public static String appToken = "OGUXMEDQFOCTKURPBQLGRDFJLUKWLNTDRSKCLHRHTRANTUCMSWFEKRMLAKLRTHFSVZCSJODUYDNADRQQRYDOHOSZFYBBVZOMLISURKCESLFHEMIJTUAVDQKGGDMLMCYZ" ;
-    public static String endPointPreco = "/pricing/pipeline/catalog";
+    public static String endPointPreco = "/pricing/prices/";
     public static String endPointProdutoPost = "/catalog/pvt/product";
     public static String endPointProdutoGet = "/catalog_system/pvt/product";
     public static String endPointEstoque = "/logistics/pvt/inventory";
@@ -14,8 +14,7 @@ public class DadosVtex {
     public static String endPointMarcas = "/catalog/pvt/brand";
     public static String endPointPedidos = "/oms/pvt/orders";
     public static String endPointSku = "/catalog/pvt/stockkeepingunit";
-    public static String endPointSkuRefIdGet = "/catalog_system/pvt/sku/stockkeepingunitidbyrefid/";
-    public static String endPointPostRefId = "/catalog_system/pub/sku/stockkeepingunitidsbyrefids";
+    public static String endPointSkuRefIdGet = "/catalog/pvt/stockkeepingunit";
     public static String endPointEstoquePorSku = "/logistics/pvt/inventory/skus/";
-
+    public static String endPointWarehouse = "/logistics/pvt/configuration/warehouses";
 }
