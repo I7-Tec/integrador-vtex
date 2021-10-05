@@ -95,8 +95,8 @@ public class VtexService {
     @Scheduled(fixedRate = 100000, initialDelay = 10000)
     public void atualizarProdutos() {
         log.info("[atualizarProdutos] - Iniciando sincronização de produtos");
-        var existeProximo = true;
-        var pagina = 1;
+//        var existeProximo = true;
+//        var pagina = 1;
 //        while (existeProximo) {
 //            var produtos = produtoWinthor.getProdutos(pagina, 100);
 //            if (produtos != null) {
@@ -118,6 +118,7 @@ public class VtexService {
             var produtos = new ArrayList<ProdutoDTO>();
             if (produto != null) {
                 produtos.add(produto);
+                log.info("[atualizarProdutos] - Sincronizando produto " + produto.getId());
                 sincronizarProdutos(produtos);
             }
         }
