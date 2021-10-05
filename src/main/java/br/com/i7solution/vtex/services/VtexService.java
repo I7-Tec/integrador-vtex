@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -73,7 +74,7 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 10000000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 10000000, initialDelay = 10000)
     public void atualizarFiliais() {
         log.info("Inciando sincronização de filiais");
         var filiais = filialClientService.carregar();
@@ -91,26 +92,40 @@ public class VtexService {
     }
 
     @Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 100000, initialDelay = 10000)
+    @Scheduled(fixedRate = 100000, initialDelay = 10000)
     public void atualizarProdutos() {
-        log.info("Iniciando sincronização de produtos");
+        log.info("[atualizarProdutos] - Iniciando sincronização de produtos");
         var existeProximo = true;
         var pagina = 1;
-        while (existeProximo) {
-            var produtos = produtoWinthor.getProdutos(pagina, 100);
-            if (produtos != null) {
+//        while (existeProximo) {
+//            var produtos = produtoWinthor.getProdutos(pagina, 100);
+//            if (produtos != null) {
+//                sincronizarProdutos(produtos);
+//            }
+//            pagina++;
+//
+//            existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
+//        }
+        var lista = new ArrayList<String>();
+        lista.add("2507");
+        lista.add("51682");
+        lista.add("25100");
+        lista.add("25639");
+        lista.add("63092");
+
+        for (var i = 0; i < lista.size(); i++) {
+            var produto = produtoWinthor.getProdutoPorId(lista.get(i));
+            var produtos = new ArrayList<ProdutoDTO>();
+            if (produto != null) {
+                produtos.add(produto);
                 sincronizarProdutos(produtos);
             }
-            pagina++;
-
-            existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
         }
-        log.info("Fim da Atualização de Produtos");
+        log.info("[atualizarProdutos] - Fim da Atualização de Produtos");
     }
 
-
     @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1200000, initialDelay = 10000)
+    //@Scheduled(fixedRate = 1200000, initialDelay = 10000)
     public void atualizacaoEstoque() {
         log.info("Iniciando sincronização de estoques");
         var existeProximo = true;

@@ -1,9 +1,9 @@
 package br.com.i7solution.vtex.clients;
 
 public class DadosMicroServicos {
-    public static String urlCadastros = "http://localhost:5000/api";
-    public static String urlPedidos = "http://localhost:5001/api";
-    public static String urlEstoques = "http://localhost:5002/api";
+    public static String urlCadastros = "http://localhost:5000/api/comet";
+    public static String urlPedidos = "http://localhost:5001/api/orion";
+    public static String urlEstoques = "http://localhost:5002/api/andromeda";
 
     public static String endPointPrecos = "/precos";
     public static String endPointProdutos = "/produtos";

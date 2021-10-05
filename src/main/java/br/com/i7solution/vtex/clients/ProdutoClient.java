@@ -9,11 +9,13 @@ import kong.unirest.GenericType;
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import br.com.i7solution.vtex.apivtex.DadosVtex;
 import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 
+@Log4j2
 @Service
 public class ProdutoClient {
 
@@ -29,33 +31,41 @@ public class ProdutoClient {
                     .header("Content-Type", "application/json")
                     .asObject(new GenericType<List<ProdutoDTO>>() {
                     });
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
 
-        if(response != null) {
-            return response.getBody();
+            if(response != null) {
+                return response.getBody();
+            }
+            return null;
+        } catch (UnirestException e) {
+            log.warn("[getProdutos: UnirestException] - Erro: " + e.getMessage());
+            return null;
+        } catch (Exception e) {
+            log.warn("[getProdutos: Exception] - Erro: " + e);
+            return null;
         }
-        return null;
     }
 
     public ProdutoDTO getProdutoPorId(String id) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos + id ;
-        // Unirest.setTimeouts(0, 0);
+        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
         HttpResponse<ProdutoDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .queryString("idProduto", id)
                     .asObject(ProdutoDTO.class);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
 
-        if (response != null) {
-            return response.getBody();
+            if(response != null) {
+                return response.getBody();
+            }
+            return null;
+        } catch (UnirestException e) {
+            log.warn("[getProdutoPorId: UnirestException] - Erro: " + e.getMessage());
+            return null;
+        } catch (Exception e) {
+            log.warn("[getProdutoPorId: Exception] - Erro: " + e);
+            return null;
         }
-        return null ;
     }
 
     public ProdutoDTO putProdutoPorId(String id, ProdutoDTO dados) {
