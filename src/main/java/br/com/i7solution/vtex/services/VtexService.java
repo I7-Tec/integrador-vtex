@@ -114,12 +114,15 @@ public class VtexService {
         lista.add("63092");
 
         for (var i = 0; i < lista.size(); i++) {
+            log.info("[atualizarProdutos] - Lendo produto " + lista.get(i));
             var produto = produtoWinthor.getProdutoPorId(lista.get(i));
             var produtos = new ArrayList<ProdutoDTO>();
             if (produto != null) {
                 produtos.add(produto);
                 log.info("[atualizarProdutos] - Sincronizando produto " + produto.getId());
                 sincronizarProdutos(produtos);
+            } else {
+                log.warn("[atualizarProdutos] - Produto " + lista.get(i) + " não encontrado no Winthor.");
             }
         }
         log.info("[atualizarProdutos] - Fim da Atualização de Produtos");
@@ -337,71 +340,73 @@ public class VtexService {
 
 
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
-        for (int i = 0; i < produtos.size(); i++) {
-            var produto = produtos.get(i);
-            if (produto.getMarca() != null &&
-                    produto.getSecao() != null &&
-                    produto.getMarca().getIdEcommerce() != null &&
-                    produto.getSecao().getIdEcommerce() != null
-            ) {
-                var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
-                Long idProdutoVtex = 0L;
-                if (produtoVtexRef == null) {
-                    log.info("Incluindo Produto");
-                    var produtoInclusaoVtex = new ProductInclusaoDTO();
-                    produtoInclusaoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
-                    produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
-                    produtoInclusaoVtex.setDescription(produto.getDescricao());
-                    produtoInclusaoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase(Locale.ROOT)) + " " + produto.getId());
-                    produtoInclusaoVtex.setName(produto.getDescricao());
-                    produtoInclusaoVtex.setRefId(produto.getId());
-                    produtoInclusaoVtex.setShowWithoutStock(false);
+        try {
+            for (int i = 0; i < produtos.size(); i++) {
+                var produto = produtos.get(i);
+                if (produto.getMarca() != null &&
+                        produto.getSecao() != null &&
+                        produto.getMarca().getIdEcommerce() != null &&
+                        produto.getSecao().getIdEcommerce() != null
+                ) {
+                    var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
+                    Long idProdutoVtex = 0L;
+                    if (produtoVtexRef == null) {
+                        log.info("Incluindo Produto");
+                        var produtoInclusaoVtex = new ProductInclusaoDTO();
+                        produtoInclusaoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
+                        produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
+                        produtoInclusaoVtex.setDescription(produto.getDescricao());
+                        produtoInclusaoVtex.setLinkId(Ferramentas.removerAcentos(produto.getDescricao().toLowerCase(Locale.ROOT)) + " " + produto.getId());
+                        produtoInclusaoVtex.setName(produto.getDescricao());
+                        produtoInclusaoVtex.setRefId(produto.getId());
+                        produtoInclusaoVtex.setShowWithoutStock(false);
 
-                    var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
-                    if (produtoIncluido != null) {
-                        idProdutoVtex = produtoIncluido.getId();
-                        log.info("Produto Incluido!");
+                        var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
+                        if (produtoIncluido != null) {
+                            idProdutoVtex = produtoIncluido.getId();
+                            log.info("Produto Incluido!");
+                        }
+
+                    } else {
+                        idProdutoVtex = produtoVtexRef.getId();
+                    }
+                    if (idProdutoVtex != null && idProdutoVtex != 0L) {
+                        var skuVtexRef = produtosVtex.getSKURefId(produto.getId());
+                        if (skuVtexRef == null) {
+
+                            var sku = new SkuInclusaoDTO();
+                            sku.setName(produto.getDescricao());
+                            sku.setRefId(produto.getId());
+                            sku.setProductId(idProdutoVtex);
+                            sku.setActive(false);
+                            sku.setPackagedHeight(produto.getAltura());
+                            sku.setPackagedLength(produto.getComprimento());
+                            sku.setPackagedWidth(produto.getLargura());
+                            sku.setPackagedWeightKg(produto.getPeso() != null ? produto.getPeso() : produto.getPesoLiquido());
+                            sku.setHeight(produto.getAltura());
+                            sku.setLength(produto.getComprimento());
+                            sku.setWidth(produto.getLargura());
+                            sku.setWeightKg(produto.getPeso() != null ? produto.getPeso() : produto.getPesoLiquido());
+                            sku.setHeighCubicWeightt(1.0);
+                            sku.setKit(false);
+                            sku.setRewardValue(0.0);
+                            sku.setManufacturerCode(produto.getFornecedor().getId());
+                            sku.setMeasurementUnit(produto.getUnidade());
+                            sku.setUnitMultiplier(1.0);
+                            sku.setKitItensSellApart(false);
+
+                            produtosVtex.postSku(sku);
+                            log.info("SKU incluido!");
+                        }
                     }
 
                 } else {
-                    idProdutoVtex = produtoVtexRef.getId();
+                    log.info("Produto não possui marca ou seção");
                 }
-                if (idProdutoVtex != null && idProdutoVtex != 0L) {
-                    var skuVtexRef = produtosVtex.getSKURefId(produto.getId());
-                    if (skuVtexRef == null) {
-
-                        var sku = new SkuInclusaoDTO();
-                        sku.setName(produto.getDescricao());
-                        sku.setRefId(produto.getId());
-                        sku.setProductId(idProdutoVtex);
-                        sku.setActive(false);
-                        sku.setPackagedHeight(produto.getAltura());
-                        sku.setPackagedLength(produto.getComprimento());
-                        sku.setPackagedWidth(produto.getLargura());
-                        sku.setPackagedWeightKg(produto.getPeso() != null ? produto.getPeso() : produto.getPesoLiquido());
-                        sku.setHeight(produto.getAltura());
-                        sku.setLength(produto.getComprimento());
-                        sku.setWidth(produto.getLargura());
-                        sku.setWeightKg(produto.getPeso() != null ? produto.getPeso() : produto.getPesoLiquido());
-                        sku.setHeighCubicWeightt(1.0);
-                        sku.setKit(false);
-                        sku.setRewardValue(0.0);
-                        sku.setManufacturerCode(produto.getFornecedor().getId());
-                        sku.setMeasurementUnit(produto.getUnidade());
-                        sku.setUnitMultiplier(1.0);
-                        sku.setKitItensSellApart(false);
-
-                        produtosVtex.postSku(sku);
-                        log.info("SKU incluido!");
-                    }
-                }
-
-            } else {
-                log.info("Produto não possui marca ou seção");
             }
+        } catch (Exception e) {
+            log.warn("[sincronizarProdutos] - Erro: " + e);
         }
-
-
     }
 
     private void sincronizarPrecos(TabelaPrecoDTO[] precos) {
