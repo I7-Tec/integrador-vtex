@@ -47,17 +47,19 @@ public class ProdutoClient {
 
     public ProdutoDTO getProdutoPorId(String id) {
         String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
-        HttpResponse<ProdutoDTO> response = null;
+        HttpResponse<ProdutoDTO[]> response = null;
         try {
             log.info("[getProdutoPorId] - Buscando produto " + id);
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken",DadosVtex.appToken)
-                    .queryString("idProduto", id)
-                    .asObject(ProdutoDTO.class);
+                    .queryString("id", id)
+                    .asObject(ProdutoDTO[].class);
 
             if (response != null) {
-                return response.getBody();
+                if (response.getBody().length > 0) {
+                    return response.getBody()[0];
+                }
             }
             return null;
         } catch (UnirestException e) {
