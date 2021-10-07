@@ -4,6 +4,7 @@ import br.com.i7solution.vtex.apivtex.*;
 import br.com.i7solution.vtex.apivtex.dtos.*;
 import br.com.i7solution.vtex.clients.*;
 import br.com.i7solution.vtex.clients.dtos.*;
+import br.com.i7solution.vtex.tools.DadosException;
 import br.com.i7solution.vtex.tools.Ferramentas;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.extern.log4j.Log4j2;
@@ -287,7 +288,7 @@ public class VtexService {
             var marcas = marcaClient.getMarcas();
             for (int i = 0; i < 1; i++) {
                 var marca = marcas.get(i);
-                if (marca.getIdEcommerce() == null) {
+                if (marca.getIdVtex() == null) {
                     var brand = new BrandInclusaoDTO();
                     brand.setName(marca.getDescricao());
                     brand.setActive(true);
@@ -295,7 +296,7 @@ public class VtexService {
 
                     var brandRetorno = marcaVtex.postBrand(brand);
                     if (brandRetorno != null) {
-                        marca.setIdEcommerce(brandRetorno.getId().toString());
+                        marca.setIdVtex(brandRetorno.getId().toString());
                         marcaClient.putMarca(marca);
                     }
                 }
@@ -318,7 +319,7 @@ public class VtexService {
             var secoes = secaoClient.getSecoes();
             for (int i = 0; i < 1; i++) {
                 var secao = secoes.get(i);
-                if (secao.getIdEcommerce() != null) {
+                if (secao.getIdVtex() != null) {
                     var category = new CategoryInclusaoDTO();
                     category.setName(secao.getDescricao());
                     category.setActive(true);
@@ -326,7 +327,7 @@ public class VtexService {
                     var secaoRetorno = secaoVtex.postCategory(category);
                     if (secaoRetorno != null) {
                         System.out.println(secaoRetorno.getId());
-                        secao.setIdEcommerce(secaoRetorno.getId().toString());
+                        secao.setIdVtex(secaoRetorno.getId().toString());
                         secaoClient.putSecao(secao);
                     }
                 }
@@ -351,9 +352,21 @@ public class VtexService {
                     var produtoInclusaoVtex = new ProductInclusaoDTO();
 
                     produtoInclusaoVtex.setName(produto.getDescricao());
-                    produtoInclusaoVtex.setDepartmentId(Ferramentas.stringToLong(produto.getDepartamento().getIdEcommerce()));
-                    produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getCategoria().getIdEcommerce()));
-                    produtoInclusaoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
+                    if (produto.getDepartamento() != null) {
+                        produtoInclusaoVtex.setDepartmentId(Ferramentas.stringToLong(produto.getDepartamento().getIdVtex()));
+                    } else {
+                        throw new DadosException("Produto " + produto.getId() + " sem departamento válido.");
+                    }
+                    if (produto.getCategoria() != null) {
+                        produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getCategoria().getIdVtex()));
+                    } else {
+                        throw new DadosException("Produto " + produto.getId() + " sem categoria válida.");
+                    }
+                    if (produto.getMarca() != null) {
+                        produtoInclusaoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdVtex()));
+                    } else {
+                        throw new DadosException("Produto " + produto.getId() + " sem marca válida.");
+                    }
 
                     var link = Ferramentas.removerAcentos(produto.getDescricao().toLowerCase(Locale.ROOT)) + "-" + produto.getId();
                     produtoInclusaoVtex.setLinkId(link.replace(" ", "-"));
@@ -420,6 +433,8 @@ public class VtexService {
                     }
                 }
             }
+        } catch (DadosException e) {
+            log.warn("[sincronizarProdutos] - Erro: " + e.getMensagem());
         } catch (Exception e) {
             log.warn("[sincronizarProdutos] - Erro: " + e);
         }

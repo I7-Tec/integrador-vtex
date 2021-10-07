@@ -9,7 +9,7 @@ public class SecaoDTO implements Serializable {
     private String id;
     private String descricao;
     private boolean ativo;
-    private String idEcommerce;
+    private String idVtex;
     private String enviaEcommerce;
 }
 

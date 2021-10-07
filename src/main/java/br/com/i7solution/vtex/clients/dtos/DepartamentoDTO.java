@@ -9,6 +9,6 @@ public class DepartamentoDTO implements Serializable {
     private String id;
     private String descricao;
     private boolean ativo;
-    private String idEcommerce;
+    private String idVtex;
     private boolean enviaEcommerce;
 }
