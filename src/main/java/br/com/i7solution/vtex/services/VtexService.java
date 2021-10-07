@@ -349,14 +349,30 @@ public class VtexService {
                 if (produtoVtexRef == null) {
                     log.info("Cadastrando produto " + produto.getId());
                     var produtoInclusaoVtex = new ProductInclusaoDTO();
+
+                    produtoInclusaoVtex.setName(produto.getDescricao());
+                    produtoInclusaoVtex.setDepartmentId(Ferramentas.stringToLong(produto.getDepartamento().getIdEcommerce()));
+                    produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getCategoria().getIdEcommerce()));
                     produtoInclusaoVtex.setBrandId(Ferramentas.stringToLong(produto.getMarca().getIdEcommerce()));
-                    produtoInclusaoVtex.setCategoryId(Ferramentas.stringToLong(produto.getSecao().getIdEcommerce()));
-                    produtoInclusaoVtex.setDescription(produto.getDescricao());
 
                     var link = Ferramentas.removerAcentos(produto.getDescricao().toLowerCase(Locale.ROOT)) + "-" + produto.getId();
                     produtoInclusaoVtex.setLinkId(link.replace(" ", "-"));
-                    produtoInclusaoVtex.setName(produto.getDescricao());
+
                     produtoInclusaoVtex.setRefId(produto.getId());
+                    produtoInclusaoVtex.setVisible(true);
+                    produtoInclusaoVtex.setDescription(produto.getDescricao());
+                    produtoInclusaoVtex.setDescriptionShort(produto.getDescricao());
+                    produtoInclusaoVtex.setReleaseDate(Date.from(Instant.now()).toString());
+                    produtoInclusaoVtex.setKeyWords("");
+                    produtoInclusaoVtex.setTitle("");
+                    produtoInclusaoVtex.setActive(true);
+                    produtoInclusaoVtex.setTaxCode("");
+                    produtoInclusaoVtex.setMetaTagDescription("");
+                    produtoInclusaoVtex.setSupplierId(0L);
+                    produtoInclusaoVtex.setShowWithoutStock(true);
+                    produtoInclusaoVtex.setAdWordsRemarketingCode("");
+                    produtoInclusaoVtex.setLomadeeCampaignCode("");
+                    produtoInclusaoVtex.setScore(1L);
                     produtoInclusaoVtex.setShowWithoutStock(false);
 
                     var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
@@ -389,7 +405,7 @@ public class VtexService {
                         skuInclusaoVtex.setManufacturerCode(produto.getCodigoDeFabrica());
                         skuInclusaoVtex.setCommercialConditionId(null);
                         skuInclusaoVtex.setMeasurementUnit(produto.getUnidade());
-                        skuInclusaoVtex.setUnitMultiplier(1.0);
+                        skuInclusaoVtex.setUnitMultiplier(produto.getMultiploVenda());
                         skuInclusaoVtex.setModalType(null);
                         skuInclusaoVtex.setKitItensSellApart(null);
                         skuInclusaoVtex.setHeighCubicWeightt(null);
