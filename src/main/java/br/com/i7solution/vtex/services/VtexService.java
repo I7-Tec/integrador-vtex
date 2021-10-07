@@ -58,7 +58,7 @@ public class VtexService {
     @Async(value = "taskAtualizacoes")
     //@Scheduled(fixedRate = 1800000, initialDelay = 10000)
     public void atualizarPrecos() {
-        log.info("Iniciando sincronização de preços");
+        log.info("[atualizarPrecos] - Iniciando sincronização de preços");
         var existeProximo = true;
         var pagina = 1;
         while (existeProximo) {
@@ -70,13 +70,13 @@ public class VtexService {
 
             existeProximo = !((precos != null ? precos.length : 0) < 100);
         }
-        log.info("Fim da atualização de preços");
+        log.info("[atualizarPrecos] - Fim da atualização de preços");
     }
 
     @Async(value = "taskAtualizacoes")
     //@Scheduled(fixedRate = 10000000, initialDelay = 10000)
     public void atualizarFiliais() {
-        log.info("Inciando sincronização de filiais");
+        log.info("[atualizarFiliais] - Inciando sincronização de filiais");
         var filiais = filialClientService.carregar();
         if(filiais != null) {
             var warehouse = new WarehouseDTO();
@@ -88,7 +88,7 @@ public class VtexService {
                 warehouseClientService.postWarehouse(warehouse);
             }
         }
-        log.info("Finalizando sincronização de filiais");
+        log.info("[atualizarFiliais] - Finalizando sincronização de filiais");
     }
 
     @Async(value = "taskAtualizacoes")

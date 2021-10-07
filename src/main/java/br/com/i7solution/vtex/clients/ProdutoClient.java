@@ -49,13 +49,14 @@ public class ProdutoClient {
         String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointProdutos;
         HttpResponse<ProdutoDTO> response = null;
         try {
+            log.info("[getProdutoPorId] - Buscando produto " + id);
             response = Unirest.get(url).header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken",DadosVtex.appToken)
                     .queryString("idProduto", id)
                     .asObject(ProdutoDTO.class);
 
-            if(response != null) {
+            if (response != null) {
                 return response.getBody();
             }
             return null;
