@@ -146,6 +146,25 @@ public class CatalogClient {
         return null;
     }
 
+    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
+        String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
+        HttpResponse<ProductInclusaoDTO> response = null;
+        log.info("Produto à ser incluido: " + dados.toString());
+        try {
+            response = Unirest.post(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
+                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .body(dados)
+                    .asObject(ProductInclusaoDTO.class);
+            log.info("Status Code Post Produto: " + response.getStatus());
+            log.info("Body Response Post Produto " + response.getBody());
+            return response.getBody();
+        } catch (UnirestException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     public SkuInclusaoDTO postSku(SkuInclusaoDTO sku) {
         String url = DadosVtex.url + DadosVtex.endPointSku;
@@ -176,26 +195,6 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppKey", DadosVtex.appKey)
                     .header("X-VTEX-API-AppToken", DadosVtex.appToken)
                     .asObject(SkuDTO.class);
-            return response.getBody();
-        } catch (UnirestException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-
-    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
-        HttpResponse<ProductInclusaoDTO> response = null;
-        log.info("Produto à ser incluido: " + dados.toString());
-        try {
-            response = Unirest.post(url)
-                    .header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .body(dados)
-                    .asObject(ProductInclusaoDTO.class);
-                    log.info("Status Code Post Produto: " + response.getStatus());
-                    log.info("Body Response Post Produto " + response.getBody());
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();
