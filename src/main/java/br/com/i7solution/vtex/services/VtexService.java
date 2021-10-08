@@ -444,9 +444,9 @@ public class VtexService {
         for(int i = 0; i < precos.length; i++) {
             var preco = precos[i];
             log.info("Sincronizando preço do produto: " + preco.getIdProduto());
-            var skuVetx = produtosVtex.getSKURefId(preco.getIdProduto());
+            var skuVtex = produtosVtex.getSKURefId(preco.getIdProduto());
 
-            if(skuVetx != null) {
+            if(skuVtex != null) {
                 var priceVtexDto = new PriceDTO();
                 priceVtexDto.setBasePrice(preco.getPreco());
                 if(preco.getMargemPrevista() != null) {
@@ -454,7 +454,7 @@ public class VtexService {
                 } else {
                     priceVtexDto.setMarkup(0);
                 }
-                var precoAtualizado = precosVtex.putPreco(skuVetx.getId(), priceVtexDto);
+                var precoAtualizado = precosVtex.putPreco(skuVtex.getId(), priceVtexDto);
                 if(precoAtualizado != null) log.info("Preço do produto: " + preco.getIdProduto() + " atualizado com sucesso!");
             } else {
                 log.info("Não existe SKU para o produto: " + preco.getIdProduto());
