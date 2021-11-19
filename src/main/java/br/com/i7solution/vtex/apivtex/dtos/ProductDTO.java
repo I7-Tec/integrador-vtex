@@ -1,206 +1,52 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class ProductDTO implements Serializable {
-
+	@JsonProperty("Id")
 	private Long id;
+	@JsonProperty("Name")
 	private String name;
+	@JsonProperty("DepartmentId")
 	private Long departmentId;
+	@JsonProperty("CategoryId")
 	private Long categoryId;
+	@JsonProperty("BrandId")
 	private Long brandId;
+	@JsonProperty("LinkId")
 	private String linkId;
+	@JsonProperty("RefId")
 	private String refId;
+	@JsonProperty("IsVisible")
 	private Boolean isVisible;
+	@JsonProperty("Description")
 	private String description;
+	@JsonProperty("DescriptionShort")
 	private String descriptionShort;
+	@JsonProperty("ReleaseDate")
 	private String releaseDate;
+	@JsonProperty("KeyWords")
 	private String keyWords;
+	@JsonProperty("Title")
 	private String title;
+	@JsonProperty("IsActive")
 	private Boolean isActive;
+	@JsonProperty("TaxCode")
 	private String taxCode;
+	@JsonProperty("MetaTagDescription")
 	private String metaTagDescription;
+	@JsonProperty("SupplierId")
 	private Long supplierId;
+	@JsonProperty("ShowWithoutStock")
 	private Boolean showWithoutStock;
+	@JsonProperty("ListStoreId")
 	private Integer listStoreId[];
+	@JsonProperty("AdWordsRemarketingCode")
 	private String adWordsRemarketingCode;
+	@JsonProperty("LomadeeCampaignCode")
 	private String lomadeeCampaignCode;
-	private Integer store;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Long getDepartmentId() {
-		return departmentId;
-	}
-
-	public void setDepartmentId(Long departmentId) {
-		this.departmentId = departmentId;
-	}
-
-	public Long getCategoryId() {
-		return categoryId;
-	}
-
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
-
-	public Long getBrandId() {
-		return brandId;
-	}
-
-	public void setBrandId(Long brandId) {
-		this.brandId = brandId;
-	}
-
-	public String getLinkId() {
-		return linkId;
-	}
-
-	public void setLinkId(String linkId) {
-		this.linkId = linkId;
-	}
-
-	public String getRefId() {
-		return refId;
-	}
-
-	public void setRefId(String refId) {
-		this.refId = refId;
-	}
-
-	public Boolean getIsVisible() {
-		return isVisible;
-	}
-
-	public void setIsVisible(Boolean isVisible) {
-		this.isVisible = isVisible;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getDescriptionShort() {
-		return descriptionShort;
-	}
-
-	public void setDescriptionShort(String descriptionShort) {
-		this.descriptionShort = descriptionShort;
-	}
-
-	public String getReleaseDate() {
-		return releaseDate;
-	}
-
-	public void setReleaseDate(String releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-
-	public String getKeyWords() {
-		return keyWords;
-	}
-
-	public void setKeyWords(String keyWords) {
-		this.keyWords = keyWords;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public Boolean getIsActive() {
-		return isActive;
-	}
-
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public String getTaxCode() {
-		return taxCode;
-	}
-
-	public void setTaxCode(String taxCode) {
-		this.taxCode = taxCode;
-	}
-
-	public String getMetaTagDescription() {
-		return metaTagDescription;
-	}
-
-	public void setMetaTagDescription(String metaTagDescription) {
-		this.metaTagDescription = metaTagDescription;
-	}
-
-	public Long getSupplierId() {
-		return supplierId;
-	}
-
-	public void setSupplierId(Long supplierId) {
-		this.supplierId = supplierId;
-	}
-
-	public Boolean getShowWithoutStock() {
-		return showWithoutStock;
-	}
-
-	public void setShowWithoutStock(Boolean showWithoutStock) {
-		this.showWithoutStock = showWithoutStock;
-	}
-
-	public Integer[] getListStoreId() {
-		return listStoreId;
-	}
-
-	public void setListStoreId(Integer[] listStoreId) {
-		this.listStoreId = listStoreId;
-	}
-
-	public String getAdWordsRemarketingCode() {
-		return adWordsRemarketingCode;
-	}
-
-	public void setAdWordsRemarketingCode(String adWordsRemarketingCode) {
-		this.adWordsRemarketingCode = adWordsRemarketingCode;
-	}
-
-	public String getLomadeeCampaignCode() {
-		return lomadeeCampaignCode;
-	}
-
-	public void setLomadeeCampaignCode(String lomadeeCampaignCode) {
-		this.lomadeeCampaignCode = lomadeeCampaignCode;
-	}
-
-	public Integer getStore() {
-		return store;
-	}
-
-	public void setStore(Integer store) {
-		this.store = store;
-	}
-
 }

@@ -13,7 +13,7 @@ import java.util.List;
 public class SecaoClient {
 
     public List<SecaoDTO> getSecoes() {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointSecoes;
+        String url = DadosMicroServicos.endPointSecoes;
         HttpResponse<List<SecaoDTO>> response = null;
         try {
             response = Unirest.get(url)
@@ -29,7 +29,7 @@ public class SecaoClient {
     }
 
     public SecaoDTO putSecao(SecaoDTO secao) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointSecoes;
+        String url = DadosMicroServicos.endPointSecoes;
         HttpResponse<SecaoDTO> response = null;
         try {
             response = Unirest.put(url)

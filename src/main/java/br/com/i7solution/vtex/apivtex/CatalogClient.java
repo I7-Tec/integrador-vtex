@@ -1,28 +1,39 @@
 package br.com.i7solution.vtex.apivtex;
 
 import br.com.i7solution.vtex.apivtex.dtos.*;
+import br.com.i7solution.vtex.config.PropertiesConfig;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kong.unirest.GenericType;
 import lombok.extern.log4j.Log4j2;
+import org.hibernate.mapping.Map;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kong.unirest.HttpResponse;
 import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 
+import java.io.IOException;
+import java.util.HashMap;
+
 @Log4j2
 @Service
 public class CatalogClient {
 
-    public CategoryDTO getCategorias() {
-        String url = DadosVtex.url + DadosVtex.endPointCategoria + "/?an=" + DadosVtex.sellers;
+    @Autowired
+    private PropertiesConfig properties;
+
+    public CategoryDTO getCategorias() throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointCategoria + "/?an=" + DadosVtex.sellers;
 
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -35,14 +46,15 @@ public class CatalogClient {
         return null;
     }
 
-    public CategoryDTO getCategoriaPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointCategoria + id + "?an=" + DadosVtex.sellers;
+    public CategoryDTO getCategoriaPorId(String id) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointCategoria + id + "?an=" + DadosVtex.sellers;
 
         HttpResponse<CategoryDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(CategoryDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -55,13 +67,14 @@ public class CatalogClient {
         return null;
     }
 
-    public BrandDTO getMarcas() {
-        String url = DadosVtex.url + DadosVtex.endPointMarcas + "?an=" + DadosVtex.sellers;
+    public BrandDTO getMarcas() throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointMarcas + "?an=" + DadosVtex.sellers;
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(BrandDTO.class);
             return response.getBody();
         } catch (UnirestException e) {
@@ -70,13 +83,14 @@ public class CatalogClient {
         }
     }
 
-    public BrandDTO getMarcaPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointMarcas + id + "?an=" + DadosVtex.sellers;
+    public BrandDTO getMarcaPorId(String id) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointMarcas + id + "?an=" + DadosVtex.sellers;
         HttpResponse<BrandDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(BrandDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -89,13 +103,14 @@ public class CatalogClient {
         return null;
     }
 
-    public ProductDTO getProdutoPorId(Long id) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoGet + id;
+    public ProductDTO getProdutoPorId(Long id) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoGet + id;
         HttpResponse<ProductDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(ProductDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -108,123 +123,199 @@ public class CatalogClient {
         return null;
     }
 
-    public SkusDTO getSKUs() {
-        String url = DadosVtex.url + DadosVtex.endPointSku;
-        HttpResponse<SkusDTO> response = null;
-        try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(SkusDTO.class);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
-
-        if (response != null) {
-            return response.getBody();
-        }
-
-        return null;
-    }
-
-    public SkuDTO getSKUPorId(String id) {
-        String url = DadosVtex.url + DadosVtex.endPointSku;
+    public SkuDTO getSKUPorRefId(String refId) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointSku;
         HttpResponse<SkuDTO> response = null;
         try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
+                    .queryString("refId", refId)
                     .asObject(SkuDTO.class);
+
+            if (response.isSuccess()) {
+                return response.getBody();
+            }
+            return null;
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[getSKUPorRefId] Erro: " + e.getMessage());
+            return null;
         }
-
-        if (response != null) {
-            return response.getBody();
-        }
-
-        return null;
     }
 
-    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoPost;
+    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoPost;
         HttpResponse<ProductInclusaoDTO> response = null;
         log.info("Produto à ser incluido: " + dados.toString());
         try {
             response = Unirest.post(url)
                     .header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .body(dados)
                     .asObject(ProductInclusaoDTO.class);
             log.info("Status Code Post Produto: " + response.getStatus());
-            log.info("Body Response Post Produto " + response.getBody());
-            return response.getBody();
+            if (response.isSuccess()) {
+                log.info("Body Response Post Produto " + response.getBody());
+                return response.getBody();
+            }
+
+            var msg = response.mapError(HashMap.class);
+            if (msg.containsKey("Message")) log.info("Erro: " + msg.get("Message"));
+            if (msg.containsKey("message")) log.info("Erro: " + msg.get("message"));
+            return null;
+
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[postSku] Erro: " + e.getMessage());
             return null;
         }
     }
 
-    public SkuInclusaoDTO postSku(SkuInclusaoDTO sku) {
-        String url = DadosVtex.url + DadosVtex.endPointSku;
+    public SkuInclusaoDTO postSku(SkuInclusaoDTO sku) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointSku;
         HttpResponse<SkuInclusaoDTO> response = null;
-        log.info("SKU à ser incluido: " + sku.toString());
         try {
-            response = Unirest.post(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+            response = Unirest.post(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .body(sku)
                     .asObject(SkuInclusaoDTO.class);
-            log.info("Status Code Post SKU: " + response.getStatus());
-            log.info("Body Response Post SKU " + response.getBody());
-            return response.getBody();
+
+            if (response.getStatus() == 200) {
+                return response.getBody();
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " - ";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("Message")) msgErro += msg.get("Message") + "\n";
+                    if (msg.containsKey("message")) msgErro += msg.get("message") + "\n";
+                }
+                throw new UnirestException(msgErro);
+            }
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[postSku] Erro: " + e.getMessage());
             return null;
         }
     }
 
-    public SkuDTO getSKURefId(String refId) {
-        String url = DadosVtex.url + DadosVtex.endPointSkuRefIdGet;
+    public SkuFileDTO[] getSkuFile(Long skuId) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") +
+                DadosVtex.endPointSku +
+                "/" + skuId +
+                "/file";
+        HttpResponse<SkuFileDTO[]> response = null;
+        try {
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
+                    .asObject(SkuFileDTO[].class);
+
+            if (response.getStatus() == 200) {
+                var result = response.getBody();
+                if (result.length > 0) return result;
+                return null;
+            }
+            return null;
+        } catch (UnirestException e) {
+            log.warn("[postSkuFile] Erro: " + e.getMessage());
+            return null;
+        }
+    }
+
+    public boolean postSkuFile(SkuFileDTO skuFile) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") +
+                DadosVtex.endPointSku +
+                "/" + skuFile.getSkuId() +
+                "/file";
+        HttpResponse<String> response = null;
+        try {
+            response = Unirest.post(url)
+                    .header("Content-Type", "application/json")
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
+                    .body(skuFile)
+                    .asObject(new GenericType<String>() {});
+
+            if (response.getStatus() == 200) {
+                log.info("[postSkuFile] Body Response Post SkuFile: " + response.getBody());
+                return true;
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " - ";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("Message")) msgErro += msg.get("Message") + "\n";
+                    if (msg.containsKey("message")) msgErro += msg.get("message") + "\n";
+                }
+                throw new UnirestException(msgErro);
+            }
+
+        } catch (UnirestException e) {
+            log.warn("[postSkuFile] Erro: " + e.getMessage());
+            return false;
+        }
+    }
+
+    public SkuDTO getSKURefId(String refId) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointSkuRefIdGet;
         HttpResponse<SkuDTO> response = null;
         try {
-            response = Unirest.get(url)
+            var request = Unirest.get(url)
                     .queryString("refId", refId)
                     .header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(SkuDTO.class);
-            return response.getBody();
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"));
+
+            response = request.asObject(SkuDTO.class);
+            if (response.getStatus() == 200) {
+                return response.getBody();
+            } else {
+                throw new UnirestException("HttpStatus: " + response.getStatus());
+            }
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[getSKURefId] Erro: " + e.getMessage());
             return null;
         }
     }
 
-    public ProductDTO getProdutoRefId(String refId) {
-        String url = DadosVtex.url + "/catalog_system/pvt/products/productgetbyrefid/" + refId;
+    public ProductDTO getProdutoRefId(String refId) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoPorRefId + refId;
         HttpResponse<ProductDTO> response = null;
         try {
-            response = Unirest.get(url)
+            var request = Unirest.get(url)
                     .header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
-                    .asObject(ProductDTO.class);
-            return response.getBody();
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"));
+
+            response = request.asObject(ProductDTO.class);
+
+            if (response.isSuccess()) {
+                return response.getBody();
+            }
+            return null;
         } catch (UnirestException e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    public SkuDTO getSKU() {
-        String url = DadosVtex.url + DadosVtex.endPointSku;
+    public SkuDTO getSKU() throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointSku;
         HttpResponse<SkuDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken", DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(SkuDTO.class);
             return response.getBody();
         } catch (UnirestException e) {

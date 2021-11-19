@@ -1,10 +1,12 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Data
 public class SkuInclusaoDTO implements Serializable {
-
     private Long Id ;
     private Long ProductId ;
     private boolean IsActive;
@@ -31,234 +33,34 @@ public class SkuInclusaoDTO implements Serializable {
     private boolean KitItensSellApart;
     private Double HeighCubicWeightt;
 
-    public Long getId() {
-        return Id;
-    }
-
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public Long getProductId() {
-        return ProductId;
-    }
-
-    public void setProductId(Long productId) {
-        ProductId = productId;
-    }
-
-    public Boolean getActive() {
-        return IsActive;
-    }
-
-    public void setActive(Boolean active) {
-        IsActive = active;
-    }
-
-    public String getName() {
-        return Name;
-    }
-
-    public void setName(String name) {
-        Name = name;
-    }
-
-    public String getRefId() {
-        return RefId;
-    }
-
-    public void setRefId(String refId) {
-        RefId = refId;
-    }
-
-    public Double getPackagedHeight() {
-        return PackagedHeight;
-    }
-
-    public void setPackagedHeight(Double packagedHeight) {
-        PackagedHeight = packagedHeight;
-    }
-
-    public Double getPackagedLength() {
-        return PackagedLength;
-    }
-
-    public void setPackagedLength(Double packagedLength) {
-        PackagedLength = packagedLength;
-    }
-
-    public Double getPackagedWidth() {
-        return PackagedWidth;
-    }
-
-    public void setPackagedWidth(Double packagedWidth) {
-        PackagedWidth = packagedWidth;
-    }
-
-    public Double getPackagedWeightKg() {
-        return PackagedWeightKg;
-    }
-
-    public void setPackagedWeightKg(Double packagedWeightKg) {
-        PackagedWeightKg = packagedWeightKg;
-    }
-
-    public Double getHeight() {
-        return Height;
-    }
-
-    public void setHeight(Double height) {
-        Height = height;
-    }
-
-    public Double getLength() {
-        return Length;
-    }
-
-    public void setLength(Double length) {
-        Length = length;
-    }
-
-    public Double getWidth() {
-        return Width;
-    }
-
-    public void setWidth(Double width) {
-        Width = width;
-    }
-
-    public Double getWeightKg() {
-        return WeightKg;
-    }
-
-    public void setWeightKg(Double weightKg) {
-        WeightKg = weightKg;
-    }
-
-    public Double getCubicWeight() {
-        return CubicWeight;
-    }
-
-    public void setCubicWeight(Double cubicWeight) {
-        CubicWeight = cubicWeight;
-    }
-
-    public Boolean getKit() {
-        return IsKit;
-    }
-
-    public void setKit(Boolean kit) {
-        IsKit = kit;
-    }
-
-    public Date getCreationDate() {
-        return CreationDate;
-    }
-
-    public void setCreationDate(Date creationDate) {
-        CreationDate = creationDate;
-    }
-
-    public Double getRewardValue() {
-        return RewardValue;
-    }
-
-    public void setRewardValue(Double rewardValue) {
-        RewardValue = rewardValue;
-    }
-
-    public String getEstimatedDateArrival() {
-        return EstimatedDateArrival;
-    }
-
-    public void setEstimatedDateArrival(String estimatedDateArrival) {
-        EstimatedDateArrival = estimatedDateArrival;
-    }
-
-    public String getManufacturerCode() {
-        return ManufacturerCode;
-    }
-
-    public void setManufacturerCode(String manufacturerCode) {
-        ManufacturerCode = manufacturerCode;
-    }
-
-    public Integer getCommercialConditionId() {
-        return CommercialConditionId;
-    }
-
-    public void setCommercialConditionId(Integer commercialConditionId) {
-        CommercialConditionId = commercialConditionId;
-    }
-
-    public String getMeasurementUnit() {
-        return MeasurementUnit;
-    }
-
-    public void setMeasurementUnit(String measurementUnit) {
-        MeasurementUnit = measurementUnit;
-    }
-
-    public Double getUnitMultiplier() {
-        return UnitMultiplier;
-    }
-
-    public void setUnitMultiplier(Double unitMultiplier) {
-        UnitMultiplier = unitMultiplier;
-    }
-
-    public String getModalType() {
-        return ModalType;
-    }
-
-    public void setModalType(String modalType) {
-        ModalType = modalType;
-    }
-
-    public Boolean getKitItensSellApart() {
-        return KitItensSellApart;
-    }
-
-    public void setKitItensSellApart(Boolean kitItensSellApart) {
-        KitItensSellApart = kitItensSellApart;
-    }
-
-    public Double getHeighCubicWeightt() {
-        return HeighCubicWeightt;
-    }
-
-    public void setHeighCubicWeightt(Double heighCubicWeightt) {
-        HeighCubicWeightt = heighCubicWeightt;
-    }
-
     @Override
     public String toString() {
         return "SkuInclusaoDTO{" +
-                "Id:" + Id +
-                ", ProductId:" + ProductId +
-                ", IsActive:" + IsActive +
-                ", Name:'" + Name + '\'' +
-                ", RefId:'" + RefId + '\'' +
-                ", PackagedHeight:" + PackagedHeight +
-                ", PackagedLength:" + PackagedLength +
-                ", PackagedWidth:" + PackagedWidth +
-                ", PackagedWeightKg:" + PackagedWeightKg +
-                ", Height:" + Height +
-                ", Length:" + Length +
-                ", Width:" + Width +
-                ", WeightKg:" + WeightKg +
-                ", CubicWeight:" + CubicWeight +
-                ", IsKit:" + IsKit +
-                ", CreationDate:" + CreationDate +
-                ", RewardValue:" + RewardValue +
-                ", EstimatedDateArrival:'" + EstimatedDateArrival + '\'' +
-                ", ManufacturerCode:'" + ManufacturerCode + '\'' +
-                ", CommercialConditionId:" + CommercialConditionId +
-                ", MeasurementUnit:'" + MeasurementUnit + '\'' +
-                ", UnitMultiplier:" + UnitMultiplier +
-                ", ModalType:'" + ModalType + '\'' +
-                ", KitItensSellApart:" + KitItensSellApart +
-                ", HeighCubicWeightt:" + HeighCubicWeightt +
+                "   \"Id\": \"" + Id + "\",\n" +
+                "   \"ProductId\": \"" + ProductId + "\",\n" +
+                "   \"IsActive\": \"" + IsActive + "\",\n" +
+                "   \"Name\": \"" + Name + "\",\n" +
+                "   \"RefId\": \"" + RefId + "\",\n" +
+                "   \"PackagedHeight\": \"" + PackagedHeight + "\",\n" +
+                "   \"PackagedLength\": \"" + PackagedLength + "\",\n" +
+                "   \"PackagedWidth\": \"" + PackagedWidth + "\",\n" +
+                "   \"PackagedWeightKg\": \"" + PackagedWeightKg + "\",\n" +
+                "   \"Height\": \"" + Height + "\",\n" +
+                "   \"Length\": \"" + Length + "\",\n" +
+                "   \"Width\": \"" + Width + "\",\n" +
+                "   \"WeightKg\": \"" + WeightKg + "\",\n" +
+                "   \"CubicWeight\": \"" + CubicWeight + "\",\n" +
+                "   \"IsKit\": \"" + IsKit + "\",\n" +
+                "   \"CreationDate\": \"" + CreationDate + "\",\n" +
+                "   \"RewardValue\": \"" + RewardValue + "\",\n" +
+                "   \"EstimatedDateArrival\": \"" + EstimatedDateArrival + "\",\n" +
+                "   \"ManufacturerCode\": \"" + ManufacturerCode + "\",\n" +
+                "   \"CommercialConditionId\": \"" + CommercialConditionId + "\",\n" +
+                "   \"MeasurementUnit\": \"" + MeasurementUnit + "\",\n" +
+                "   \"UnitMultiplier\": \"" + UnitMultiplier + "\",\n" +
+                "   \"ModalType\": \"" + ModalType + "\",\n" +
+                "   \"KitItensSellApart\": \"" + KitItensSellApart + "\",\n" +
+                "   \"HeighCubicWeightt\": \"" + HeighCubicWeightt + "\"\n" +
                 '}';
     }
 }

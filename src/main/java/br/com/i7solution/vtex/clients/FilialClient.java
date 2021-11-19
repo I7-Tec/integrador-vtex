@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FilialClient {
     public FilialDTO[] carregar() {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointFiliais;
+        String url = DadosMicroServicos.endPointFiliais;
         HttpResponse<FilialDTO[]> response = null;
         try {
             response = Unirest.get(url)

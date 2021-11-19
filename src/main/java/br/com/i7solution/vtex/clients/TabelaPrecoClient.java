@@ -13,7 +13,7 @@ import br.com.i7solution.vtex.clients.dtos.TabelaPrecoDTO;
 public class TabelaPrecoClient {
 
     public TabelaPrecoDTO[] getPrecos(int pageNumber, int pageSize) {
-        String url = DadosMicroServicos.urlPedidos + DadosMicroServicos.endPointPrecos;
+        String url = DadosMicroServicos.endPointPrecos;
         HttpResponse<TabelaPrecoDTO[]> response = null;
         try {
             response = Unirest.get(url)

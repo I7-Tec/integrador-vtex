@@ -197,27 +197,27 @@ public class ProductInclusaoDTO implements Serializable {
     @Override
     public String toString() {
         return "ProductInclusaoDTO{" +
-                "Id:" + Id +
-                ", Name:'" + Name + '\'' +
-                ", DepartmentId:" + DepartmentId +
-                ", CategoryId:" + CategoryId +
-                ", BrandId:" + BrandId +
-                ", LinkId:'" + LinkId + '\'' +
-                ", RefId:'" + RefId + '\'' +
-                ", IsVisible:" + IsVisible +
-                ", Description:'" + Description + '\'' +
-                ", DescriptionShort:'" + DescriptionShort + '\'' +
-                ", ReleaseDate:'" + ReleaseDate + '\'' +
-                ", KeyWords:'" + KeyWords + '\'' +
-                ", Title:'" + Title + '\'' +
-                ", IsActive:" + IsActive +
-                ", TaxCode:'" + TaxCode + '\'' +
-                ", MetaTagDescription:'" + MetaTagDescription + '\'' +
-                ", SupplierId:" + SupplierId +
-                ", ShowWithoutStock:" + ShowWithoutStock +
-                ", AdWordsRemarketingCode:'" + AdWordsRemarketingCode + '\'' +
-                ", LomadeeCampaignCode:'" + LomadeeCampaignCode + '\'' +
-                ", Score:" + Score +
+                "\"Id\": \"" + Id + "\",\n" +
+                " \"Name\": \"" + Name + "\",\n" +
+                " \"DepartmentId\": \"" + DepartmentId + "\",\n" +
+                " \"CategoryId\": \"" + CategoryId + "\",\n" +
+                " \"BrandId\": \"" + BrandId + "\",\n" +
+                " \"LinkId\": \"" + LinkId + "\",\n" +
+                " \"RefId\": \"" + RefId + "\",\n" +
+                " \"IsVisible\": \"" + IsVisible + "\",\n" +
+                " \"Description\": \"" + Description + "\",\n" +
+                " \"DescriptionShort\": \"" + DescriptionShort + "\",\n" +
+                " \"ReleaseDate\": \"" + ReleaseDate + "\",\n" +
+                " \"KeyWords\": \"" + KeyWords + "\",\n" +
+                " \"Title\": \"" + Title + "\",\n" +
+                " \"IsActive\": \"" + IsActive + "\",\n" +
+                " \"TaxCode\": \"" + TaxCode + "\",\n" +
+                " \"MetaTagDescription\": \"" + MetaTagDescription + "\",\n" +
+                " \"SupplierId\": \"" + SupplierId + "\",\n" +
+                " \"ShowWithoutStock\": \"" + ShowWithoutStock + "\",\n" +
+                " \"AdWordsRemarketingCode\": \"" + AdWordsRemarketingCode + "\",\n" +
+                " \"LomadeeCampaignCode\": \"" + LomadeeCampaignCode + "\",\n" +
+                " \"Score\": \"" + Score + "\"\n" +
                 '}';
     }
 }

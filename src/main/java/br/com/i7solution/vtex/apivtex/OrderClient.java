@@ -1,9 +1,12 @@
 package br.com.i7solution.vtex.apivtex;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import br.com.i7solution.vtex.config.PropertiesConfig;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.i7solution.vtex.apivtex.dtos.OrderDTO;
 import br.com.i7solution.vtex.apivtex.dtos.OrdersDTO;
@@ -15,13 +18,17 @@ import kong.unirest.UnirestException;
 @Service
 public class OrderClient {
 
-    public OrderDTO getPedidoPorId(String orderId) {
-        String url = DadosVtex.url + DadosVtex.endPointProdutoGet + orderId.toString() + "?an=" + DadosVtex.sellers;
+    @Autowired
+    private PropertiesConfig properties;
+
+    public OrderDTO getPedidoPorId(String orderId) throws IOException {
+        var props = properties.getProperties();
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoGet + orderId.toString() + "?an=" + DadosVtex.sellers;
         HttpResponse<OrderDTO> response = null;
         try {
             response = Unirest.get(url).header("Content-Type", "application/json")
-                    .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                    .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                    .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                    .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(OrderDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
@@ -30,19 +37,20 @@ public class OrderClient {
         return response.getBody();
     }
 
-    public List<OrderDTO> getPedidosPorStatus(String status) {
+    public List<OrderDTO> getPedidosPorStatus(String status) throws IOException {
+        var props = properties.getProperties();
         List<OrderDTO> result = new ArrayList<>();
         HttpResponse<OrdersDTO> response = null;
         try {
             var temPedidos = true;
             int pag = 1;
             while (temPedidos) {
-                String url = DadosVtex.url + DadosVtex.endPointPedidos + DadosVtex.sellers + "&perPage=50&page=" + pag
+                String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointPedidos + DadosVtex.sellers + "&perPage=50&page=" + pag
                         + "&status=" + status;
 
                 response = Unirest.get(url).header("Content-Type", "application/json")
-                        .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                        .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                        .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                        .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                         .asObject(OrdersDTO.class);
 
                 Arrays.stream(response.getBody().getOrders()).map(result::add);
@@ -57,20 +65,21 @@ public class OrderClient {
         return result;
     }
 
-    public List<OrderDTO> getPedidosPorData(String dataIni, String dataFim) {
+    public List<OrderDTO> getPedidosPorData(String dataIni, String dataFim) throws IOException {
+        var props = properties.getProperties();
         List<OrderDTO> result = new ArrayList<>();
         HttpResponse<OrdersDTO> response = null;
         try {
             var temPedidos = true;
             int pag = 1;
             while (temPedidos) {
-                String url = DadosVtex.url + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag +
+                String url = props.getProperty("properties.vtex.url") + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag +
                         "&creationDateStart=" + dataIni + "&creationDateEnd=" + dataFim;
 
                 response = Unirest.get(url)
                         .header("Content-Type", "application/json")
-                        .header("X-VTEX-API-AppKey", DadosVtex.appKey)
-                        .header("X-VTEX-API-AppToken",DadosVtex.appToken)
+                        .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
+                        .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                         .asObject(OrdersDTO.class);
 
                 var list = response.getBody().getOrders();

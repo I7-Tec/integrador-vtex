@@ -1,18 +1,20 @@
 package br.com.i7solution.vtex.clients;
 
 public class DadosMicroServicos {
-    public static String urlCadastros = "http://localhost:5000/api/comet";
-    public static String urlPedidos = "http://localhost:5001/api/orion";
-    public static String urlEstoques = "http://localhost:5002/api/andromeda";
+    static private String baseUrl = "http://srv62463.oracledba.com.br:5006/api";
 
-    public static String endPointPrecos = "/precos";
-    public static String endPointProdutos = "/produtos";
-    public static String endPointSecoes = "/secoes";
-    public static String endPointMarcas = "/marcas";
-    public static String endPointEstoques = "/estoques";
-    public static String endPointPedidos = "/pedidos";
-    public static String endPointClientes = "/clientes";
-    public static String endPointEnderecos = "/enderecos";
-    public static String endPointFiliais = "/filiais";
+    static public String endPointProdutos = baseUrl + "/comet/produtos";
+    static public String endPointFotoProduto = baseUrl + "/comet/produtos/fotos";
+    static public String endPointSecoes = baseUrl + "/comet/secoes";
+    static public String endPointMarcas = baseUrl + "/comet/marcas";
+    static public String endPointClientes = baseUrl + "/comet/clientes";
+    static public String endPointEnderecos = baseUrl + "/comet/enderecos";
+    static public String endPointFiliais = baseUrl + "/comet/filiais";
+
+    static public String endPointPrecos = baseUrl + "/orion/precos";
+    static public String endPointEstoques = baseUrl + "/orion/estoques";
+    static public String endPointPedidos = baseUrl + "/orion/pedidos";
+
+    static public String idProdutoI7 = "aeb894da-8125-43d4-b6b2-2597062f985d";
 }
 

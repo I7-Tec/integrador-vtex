@@ -13,7 +13,7 @@ import java.util.List;
 public class MarcaClient {
 
     public List<MarcaDTO> getMarcas() {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointMarcas;
+        String url = DadosMicroServicos.endPointMarcas;
         HttpResponse<List<MarcaDTO>> response = null;
         try {
             response = Unirest.get(url)
@@ -29,7 +29,7 @@ public class MarcaClient {
     }
 
     public MarcaDTO putMarca(MarcaDTO marca) {
-        String url = DadosMicroServicos.urlCadastros + DadosMicroServicos.endPointMarcas;
+        String url = DadosMicroServicos.endPointMarcas;
         HttpResponse<MarcaDTO> response = null;
         try {
             response = Unirest.put(url)
