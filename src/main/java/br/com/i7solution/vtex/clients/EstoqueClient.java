@@ -20,20 +20,21 @@ public class EstoqueClient {
     @Autowired
     private PropertiesConfig properties;
 
-    public EstoqueDTO[] getEstoque(int pageNumber, int pageSize) throws IOException {
+    public EstoqueDTO[] getEstoque() throws IOException {
         var props = properties.getProperties();
         String url = DadosMicroServicos.endPointEstoques;
         HttpResponse<EstoqueDTO[]> response = null;
         try {
             response = Unirest.get(url)
-                    .queryString("pageSize", pageSize)
-                    .queryString("pageNumber", pageNumber)
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + props.getProperty("properties.token"))
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
                     .queryString("idClienteI7", props.getProperty("properties.idcliente"))
-                    .asObject(new GenericType<EstoqueDTO[]>() {
-                    });
+                    //.queryString("idProduto", "")
+                    .queryString("idFilial", "1")
+                    .queryString("enviaEcommerce", true)
+                    .asObject(EstoqueDTO[].class);
+
             return response.getBody();
         } catch (UnirestException e) {
             e.printStackTrace();

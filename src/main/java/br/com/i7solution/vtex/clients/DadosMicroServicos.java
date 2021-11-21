@@ -11,8 +11,9 @@ public class DadosMicroServicos {
     static public String endPointEnderecos = baseUrl + "/comet/enderecos";
     static public String endPointFiliais = baseUrl + "/comet/filiais";
 
+    static public String endPointEstoques = baseUrl + "/andromeda/estoques";
+
     static public String endPointPrecos = baseUrl + "/orion/precos";
-    static public String endPointEstoques = baseUrl + "/orion/estoques";
     static public String endPointPedidos = baseUrl + "/orion/pedidos";
 
     static public String idProdutoI7 = "aeb894da-8125-43d4-b6b2-2597062f985d";

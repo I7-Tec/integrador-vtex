@@ -7,6 +7,7 @@ import br.com.i7solution.vtex.clients.dtos.*;
 import br.com.i7solution.vtex.tools.Ferramentas;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
@@ -91,21 +92,11 @@ public class VtexService {
         log.info("[atualizarFiliais] - Finalizando sincronização de filiais");
     }
 
-    //@Async(value = "taskAtualizacoes")
-    @Scheduled(fixedDelay = 60000, initialDelay = 10000)
+    @Async(value = "taskAtualizacoes")
+    @Scheduled(fixedDelay = 1800000, initialDelay = 10000)
     public void atualizarProdutos() throws IOException {
         log.info("[atualizarProdutos] - Iniciando sincronização de produtos");
-//        var existeProximo = true;
-//        var pagina = 1;
-//        while (existeProximo) {
-//            var produtos = produtoWinthor.getProdutos(pagina, 100);
-//            if (produtos != null) {
-//                sincronizarProdutos(produtos);
-//            }
-//            pagina++;
-//
-//            existeProximo = !((produtos != null ? produtos.size() : 0) < 100);
-//        }
+
         var lista = new ArrayList<String>();
         lista.add("2507");
         lista.add("51682");
@@ -128,20 +119,36 @@ public class VtexService {
         log.info("[atualizarProdutos] - Fim da Atualização de Produtos");
     }
 
-    //@Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 1200000, initialDelay = 10000)
+    @Async(value = "taskAtualizacoes")
+    @Scheduled(fixedRate = 1200000, initialDelay = 60000)
     public void atualizacaoEstoque() throws IOException {
         log.info("Iniciando sincronização de estoques");
-        var existeProximo = true;
-        var pagina = 1;
-        while (existeProximo) {
-            var estoques = estoqueWinthor.getEstoque(pagina, 100);
-            if (estoques != null) {
-                sincronizarEstoque(estoques);
-            }
-            pagina++;
+        try {
+            var listaEstoques = estoqueWinthor.getEstoque();
 
-            existeProximo = !((estoques != null ? estoques.length : 0) < 100);
+            for (int e = 0; e < listaEstoques.length; e++) {
+                var estoque = listaEstoques[e];
+                var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId());
+                if (skuVtex != null) {
+                    log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
+                            estoque.getProduto().getId() +
+                            " - " +
+                            estoque.getProduto().getDescricao() +
+                            " para " + estoque.getQuantidadeDisponivel()
+                    );
+                    var itemEstoque = new InventoryPutDTO();
+                    itemEstoque.setQuantity(estoque.getQuantidadeDisponivel());
+                    itemEstoque.setUnlimitedQuantity(false);
+
+                    inventoryVtex.putEstoquePorSku(
+                            itemEstoque,
+                            skuVtex.getId(),
+                            estoque.getFilial().getId()
+                    );
+                }
+            }
+        } catch (Exception e) {
+            log.warn("[atualizacaoEstoque] - Erro: " + e);
         }
         log.info("Finalizando sincronização de estoques");
     }
@@ -378,8 +385,8 @@ public class VtexService {
                     produtoInclusaoVtex.setReleaseDate(
                             Ferramentas.dataFormatada(Date.from(Instant.now()),"yyyy-MM-dd HH:mm:ss")
                     );
-                    produtoInclusaoVtex.setKeyWords("");
-                    produtoInclusaoVtex.setTitle("");
+                    produtoInclusaoVtex.setKeyWords(Ferramentas.toRSCase(produto.getSubtituloecommerce()));
+                    produtoInclusaoVtex.setTitle(Ferramentas.toRSCase(produto.getNomeecommerce()));
                     produtoInclusaoVtex.setActive(true);
                     produtoInclusaoVtex.setTaxCode("");
                     produtoInclusaoVtex.setMetaTagDescription("");
@@ -388,7 +395,6 @@ public class VtexService {
                     produtoInclusaoVtex.setAdWordsRemarketingCode("");
                     produtoInclusaoVtex.setLomadeeCampaignCode("");
                     produtoInclusaoVtex.setScore(1L);
-                    produtoInclusaoVtex.setShowWithoutStock(false);
 
                     var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
                     if (produtoIncluido != null) {
@@ -449,7 +455,7 @@ public class VtexService {
                                 skuFile.setText(skuProduto.getName());
                                 skuFile.setUrl((String) imgProd.get("url"));
                                 skuFile.setIsMain(true);
-                                skuFile.setImage((byte[]) imgProd.get("file"));
+                                //skuFile.setImage((byte[]) imgProd.get("file"));
 
                                 if (produtosVtex.postSkuFile(skuFile)) {
                                     log.info("Foto enviada com sucesso");
@@ -458,8 +464,17 @@ public class VtexService {
                                 }
                             }
                         }
+
+                        var skuEan = produtosVtex.getSkuEan(skuProduto.getId().toString());
+                        if (skuEan == null) {
+                            produtosVtex.postSkuEan(
+                                skuProduto.getId().toString(),
+                                produto.getCodigoDeBarras().toString()
+                            );
+                        }
                     }
                 }
+
             }
 
         } catch (Exception e) {
@@ -487,21 +502,6 @@ public class VtexService {
                 log.info("Não existe SKU para o produto: " + preco.getIdProduto());
             }
 
-        }
-    }
-
-    private void sincronizarEstoque(EstoqueDTO[] estoques) throws IOException {
-        for(int i = 0; i < estoques.length; i++) {
-            var estoque = estoques[i];
-            var skuVetx = produtosVtex.getSKURefId(estoque.getIdProduto());
-            if(skuVetx != null) {
-                var inventory = new InventoryDTO();
-                inventory.setUnlimitedQuantity(false);
-                inventory.setQuantity(estoque.getQuantidadeDisponivel());
-
-                log.info("Atualizando estoque do SKU: " + skuVetx.getId());
-                inventoryVtex.putEstoquePorSku(inventory, skuVetx.getId(), estoque.getIdFilial());
-            }
         }
     }
 

@@ -2,6 +2,7 @@ package br.com.i7solution.vtex.clients.dtos;
 
 import lombok.Data;
 import java.io.Serializable;
+import java.util.Date;
 
 @Data
 public class ProdutoDTO implements Serializable {
@@ -23,4 +24,10 @@ public class ProdutoDTO implements Serializable {
     private EmbalagemDTO[] embalagens;
     private Double pesoLiquido;
     private Double multiploVenda;
+    private Date dtexclusao;
+    private String enviaecommerce;
+    private String revenda;
+    private String nomeecommerce;
+    private String tituloecommerce;
+    private String subtituloecommerce;
 }
