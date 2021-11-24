@@ -8,5 +8,14 @@ import java.io.Serializable;
 public class InventoryPutDTO implements Serializable {
     private boolean unlimitedQuantity;
     private String dateUtcOnBalanceSystem;
-    private Double quantity;
+    private Integer quantity;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "   \"unlimitedQuantity\": \"" + unlimitedQuantity + "\",\n" +
+                "   \"dateUtcOnBalanceSystem\": \"" + dateUtcOnBalanceSystem + "\",\n" +
+                "   \"quantity\": " + quantity + "\n" +
+                "}";
+    }
 }

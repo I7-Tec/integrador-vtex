@@ -56,8 +56,8 @@ public class VtexService {
     @Autowired
     private WarehouseClient warehouseClientService;
 
-    //@Async(value = "taskAtualizacoes")
-    //@Scheduled(fixedRate = 1800000, initialDelay = 10000)
+    @Async(value = "taskAtualizacoes")
+    @Scheduled(fixedRate = 1800000, initialDelay = 10000)
     public void atualizarPrecos() throws IOException {
         log.info("[atualizarPrecos] - Iniciando sincronização de preços");
         var existeProximo = true;
@@ -98,11 +98,16 @@ public class VtexService {
         log.info("[atualizarProdutos] - Iniciando sincronização de produtos");
 
         var lista = new ArrayList<String>();
-        lista.add("2507");
-        lista.add("51682");
-        lista.add("25100");
-        lista.add("25639");
-        lista.add("63092");
+//        lista.add("2507");
+//        lista.add("51682");
+//        lista.add("25100");
+//        lista.add("25639");
+//        lista.add("63092");
+        lista.add("75");
+        lista.add("312");
+        lista.add("619");
+        lista.add("1090");
+        lista.add("1297");
 
         for (var i = 0; i < lista.size(); i++) {
             log.info("[atualizarProdutos] - Lendo produto " + lista.get(i));
@@ -124,29 +129,59 @@ public class VtexService {
     public void atualizacaoEstoque() throws IOException {
         log.info("Iniciando sincronização de estoques");
         try {
-            var listaEstoques = estoqueWinthor.getEstoque();
+            //
+            var lista = new ArrayList<String>();
+            lista.add("75");
+            lista.add("312");
+            lista.add("619");
+            lista.add("1090");
+            lista.add("1297");
+            for (int e = 0; e < lista.size(); e++) {
+                var estoque = estoqueWinthor.getEstoquePorId("1", lista.get(e));
+                if (estoque != null) {
+                    var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId());
+                    if (skuVtex != null) {
+                        log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
+                                estoque.getProduto().getId() +
+                                " - " +
+                                estoque.getProduto().getDescricao() +
+                                " para " + estoque.getQuantidadeDisponivel()
+                        );
+                        var itemEstoque = new InventoryPutDTO();
+                        itemEstoque.setQuantity(estoque.getQuantidadeDisponivel().intValue());
+                        itemEstoque.setUnlimitedQuantity(false);
 
-            for (int e = 0; e < listaEstoques.length; e++) {
-                var estoque = listaEstoques[e];
-                var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId());
-                if (skuVtex != null) {
-                    log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
-                            estoque.getProduto().getId() +
-                            " - " +
-                            estoque.getProduto().getDescricao() +
-                            " para " + estoque.getQuantidadeDisponivel()
-                    );
-                    var itemEstoque = new InventoryPutDTO();
-                    itemEstoque.setQuantity(estoque.getQuantidadeDisponivel());
-                    itemEstoque.setUnlimitedQuantity(false);
-
-                    inventoryVtex.putEstoquePorSku(
-                            itemEstoque,
-                            skuVtex.getId(),
-                            estoque.getFilial().getId()
-                    );
+                        inventoryVtex.putEstoquePorSku(
+                                itemEstoque,
+                                skuVtex.getId(),
+                                estoque.getFilial().getId()
+                        );
+                    }
                 }
             }
+
+//            var listaEstoques = estoqueWinthor.getEstoque();
+//            for (int e = 0; e < listaEstoques.length; e++) {
+//                var estoque = listaEstoques[e];
+//                var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId());
+//                if (skuVtex != null) {
+//                    log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
+//                            estoque.getProduto().getId() +
+//                            " - " +
+//                            estoque.getProduto().getDescricao() +
+//                            " para " + estoque.getQuantidadeDisponivel()
+//                    );
+//                    var itemEstoque = new InventoryPutDTO();
+//                    itemEstoque.setQuantity(estoque.getQuantidadeDisponivel());
+//                    itemEstoque.setUnlimitedQuantity(false);
+//
+//                    inventoryVtex.putEstoquePorSku(
+//                            itemEstoque,
+//                            skuVtex.getId(),
+//                            estoque.getFilial().getId()
+//                    );
+//                }
+//            }
         } catch (Exception e) {
             log.warn("[atualizacaoEstoque] - Erro: " + e);
         }
@@ -483,21 +518,18 @@ public class VtexService {
     }
 
     private void sincronizarPrecos(TabelaPrecoDTO[] precos) throws IOException {
-        for(int i = 0; i < precos.length; i++) {
+        for (int i = 0; i < precos.length; i++) {
             var preco = precos[i];
             log.info("Sincronizando preço do produto: " + preco.getIdProduto());
             var skuVtex = produtosVtex.getSKURefId(preco.getIdProduto());
 
-            if(skuVtex != null) {
+            if (skuVtex != null) {
                 var priceVtexDto = new PriceDTO();
                 priceVtexDto.setBasePrice(preco.getPreco());
-                if(preco.getMargemPrevista() != null) {
-                    priceVtexDto.setMarkup(preco.getMargemPrevista().intValue());
-                } else {
-                    priceVtexDto.setMarkup(0);
-                }
-                var precoAtualizado = precosVtex.putPreco(skuVtex.getId(), priceVtexDto);
-                if(precoAtualizado != null) log.info("Preço do produto: " + preco.getIdProduto() + " atualizado com sucesso!");
+                priceVtexDto.setMarkup(null);
+                priceVtexDto.setListPrice(preco.getPreco());
+                var precoAtualizado = precosVtex.putPreco(skuVtex.getId().toString(), priceVtexDto);
+                if (precoAtualizado) log.info("Preço do produto: " + preco.getIdProduto() + " atualizado com sucesso!");
             } else {
                 log.info("Não existe SKU para o produto: " + preco.getIdProduto());
             }

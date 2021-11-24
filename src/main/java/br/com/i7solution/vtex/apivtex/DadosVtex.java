@@ -12,6 +12,6 @@ public class DadosVtex {
     public static String endPointMarcas = "/catalog/pvt/brand";
     public static String endPointPedidos = "/oms/pvt/orders";
     public static String endPointSku = "/catalog/pvt/stockkeepingunit";
-    public static String endPointEstoquePorSku = "/logistics/pvt/inventory/skus/";
+    public static String endPointInventory = "/logistics/pvt/inventory/skus/";
     public static String endPointWarehouse = "/logistics/pvt/configuration/warehouses";
 }

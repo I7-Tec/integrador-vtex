@@ -11,7 +11,7 @@ import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 
 import java.io.IOException;
-
+import java.util.HashMap;
 
 @Service
 @Log4j2
@@ -22,35 +22,58 @@ public class PriceClient {
 
     public PriceDTO getPreco(String skuId) throws IOException {
         var props = properties.getProperties();
-        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointPreco + skuId;
+        String url = props.getProperty("properties.vtex.url2") + DadosVtex.endPointPreco + skuId;
         HttpResponse<PriceDTO> response = null;
         try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
                     .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(PriceDTO.class);
-            return response.getBody();
+
+            if (response.getStatus() == 200) {
+                return response.getBody();
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " ";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
+                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                }
+                throw new UnirestException(msgErro);
+            }
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[getPreco] - Erro: " + e.getMessage());
             return null;
         }
     }
 
-    public PriceDTO putPreco(Long skuId, PriceDTO dados) throws IOException {
+    public boolean putPreco(String skuId, PriceDTO dados) throws IOException {
         var props = properties.getProperties();
         String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointPreco + skuId;
-        HttpResponse<PriceDTO> response = null;
+        HttpResponse<String> response = null;
         try {
             response = Unirest.put(url)
                     .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
                     .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .body(dados)
-                    .asObject(PriceDTO.class);
-            return response.getBody();
+                    .asString();
+
+            if (response.getStatus() == 200) {
+                return true;
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " ";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
+                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                }
+                throw new UnirestException(msgErro);
+            }
         } catch (UnirestException e) {
-            e.printStackTrace();
-            return null;
+            log.warn("[putPreco] - Erro: " + e.getMessage());
+            return false;
         }
     }
 }

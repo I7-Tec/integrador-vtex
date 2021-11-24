@@ -23,7 +23,7 @@ public class InventoryClient {
 
     public InventoryGetDTO getEstoquePorSku(InventoryPutDTO inventory, Long skuId, String warehouseId) throws IOException {
         var props = properties.getProperties();
-        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointEstoquePorSku + skuId + "/warehouses/" + warehouseId;
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointInventory + skuId + "/warehouses/" + warehouseId;
         HttpResponse<InventoryGetDTO> response = null;
         try {
             response = Unirest.get(url)
@@ -51,9 +51,10 @@ public class InventoryClient {
 
     public boolean putEstoquePorSku(InventoryPutDTO inventory, Long skuId, String warehouseId) throws IOException {
         var props = properties.getProperties();
-        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointEstoquePorSku + skuId + "/warehouses/" + warehouseId;
+        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointInventory + skuId + "/warehouses/" + warehouseId;
         HttpResponse<String> response = null;
         try {
+            log.info("[putEstoquePorSku] - Dados: " + inventory.toString());
             response = Unirest.put(url)
                     .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
