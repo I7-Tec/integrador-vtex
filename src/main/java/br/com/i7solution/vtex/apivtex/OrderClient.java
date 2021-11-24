@@ -3,9 +3,11 @@ package br.com.i7solution.vtex.apivtex;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import br.com.i7solution.vtex.config.PropertiesConfig;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.i7solution.vtex.apivtex.dtos.OrderDTO;
@@ -16,6 +18,7 @@ import kong.unirest.Unirest;
 import kong.unirest.UnirestException;
 
 @Service
+@Log4j2
 public class OrderClient {
 
     @Autowired
@@ -30,11 +33,22 @@ public class OrderClient {
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
                     .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(OrderDTO.class);
-        } catch (UnirestException e) {
-            e.printStackTrace();
-        }
 
-        return response.getBody();
+            if (response.getStatus() == 200) {
+                return response.getBody();
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " ";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
+                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                }
+                throw new UnirestException(msgErro);
+            }
+        } catch (UnirestException e) {
+            log.warn("[getPedidoPorId] - Erro: " + e.getMessage());
+            return null;
+        }
     }
 
     public List<OrderDTO> getPedidosPorStatus(String status) throws IOException {
@@ -58,11 +72,11 @@ public class OrderClient {
                 ++pag;
                 temPedidos = !(response.getBody().getPageCount() < response.getBody().getPerPage());
             }
+            return result;
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[getPedidosPorData] - Erro: " + e.getMessage());
+            return null;
         }
-
-        return result;
     }
 
     public List<OrderDTO> getPedidosPorData(String dataIni, String dataFim) throws IOException {
@@ -90,12 +104,11 @@ public class OrderClient {
                 ++pag;
                 temPedidos = !(response.getBody().getPageCount() < response.getBody().getPerPage());
             }
+            return result;
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[getPedidosPorData] - Erro: " + e.getMessage());
+            return null;
         }
-
-        return result;
-
     }
 
 }
