@@ -139,7 +139,7 @@ public class VtexService {
             for (int e = 0; e < lista.size(); e++) {
                 var estoque = estoqueWinthor.getEstoquePorId("1", lista.get(e));
                 if (estoque != null) {
-                    var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId());
+                    var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId().toString());
                     if (skuVtex != null) {
                         log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
                                 estoque.getProduto().getId() +
@@ -194,12 +194,12 @@ public class VtexService {
         String pontoErro = "";
 
         try {
-            var pedV = pedidosVtex.getPedidoPorId(pedVtex.getId().toString());
+            var pedV = pedidosVtex.getPedidoPorId(pedVtex.getId());
 
             pontoErro = "dados cabeçalho";
 
             var clienteVtex = new ClientProfileDataDTO();
-            clienteVtex = pedV.getClientProfileData()[0];
+            clienteVtex = pedV.getClientProfileData();
             var clienteWinthor = new ClienteDTO();
             clienteWinthor.setCpfCnpj(clienteVtex.getDocument());
             clienteWinthor.setEmail(clienteVtex.getEmail());
@@ -271,28 +271,31 @@ public class VtexService {
                 }
             }//validar pagamentos
 
-            pedWinthor.isErro(false);
-
             pontoErro = "Lendo itens...";
             var itensVtex = pedV.getItems();
             var listItens = new ItemPedidoDTO[itensVtex.length];
             for (var i = 0; i < itensVtex.length; i++) {
-                var prodW = produtoWinthor.getProdutoPorId(itensVtex[i].getId());
+                var prodW = produtoWinthor.getProdutoPorId(itensVtex[i].getRefId());
 
                 var item = new ItemPedidoDTO();
-                item.setIdProduto(prodW.getId());
-                item.setCodigoDeBarras(prodW.getCodigoDeBarras());
-                item.setPosicao("P");
-                item.setFilialRetira(null);
-                item.setPreco(itensVtex[i].getSellingPrice());
-                item.setValorDesconto(0.0);
-                item.setQuantidade(itensVtex[i].getQuantity());
+                item.setNumpedweb(Long.parseLong(Ferramentas.somenteNumeros(pedV.getOrderId())));
+                item.setIntegradora("28");
+                item.setCodcli(pedWinthor.getCliente().getId());
+                item.setCodfilialretira(null);
+                item.setCodprod(prodW.getId());
+                item.setCodauxiliar(prodW.getCodigoDeBarras());
+                item.setData(pedWinthor.getDataCriacao());
+                item.setPesobruto(prodW.getPeso());
+                item.setPtabela((double) itensVtex[i].getListPrice() / 100);
+                item.setPvenda((double) itensVtex[i].getPrice() / 100);
+                item.setQt((double) itensVtex[i].getQuantity());
+                item.setNumseq((long) i);
 
                 listItens[i] = item;
             }
 
             pedWinthor.setItens(listItens);
-            pedWinthor.setQuantidadeItens(Long.valueOf(listItens.length));
+            pedWinthor.setQuantidadeItens((long) listItens.length);
 
             pedidoWinthor.postPedido(pedWinthor);
 
@@ -304,18 +307,16 @@ public class VtexService {
     }
 
 
-    //@Async
-    //@Scheduled(fixedRate = 10000, initialDelay = 60000)
+    @Async(value = "taskPedidos")
+    @Scheduled(fixedRate = 10000, initialDelay = 60000)
     public void sincronizarPedidos() throws Exception {
-        var dataIni = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now().minus(7, ChronoUnit.DAYS)));
-        var dataFim = new SimpleDateFormat("yyyy-MM-dd").format(Date.from(Instant.now()));
-
-        var listOrders = pedidosVtex.getPedidosPorData(dataIni, dataFim);
+        var listOrders = pedidosVtex.getPedidos("payment-approved", 10L);
         for (int i = 0; i < listOrders.size(); i++) {
-            if ((listOrders.get(i).getStatus() != "canceled")
-                    && (pedidoWinthor.getPedidoPorId(listOrders.get(i).getOrderId()))) {
-                var pedidoVtex = pedidosVtex.getPedidoPorId(listOrders.get(i).getOrderId().toString());
-                ped_vtex_winthor(pedidoVtex);
+            var pedW = pedidoWinthor.getPedidoPorNumpedWeb(
+                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+            );
+            if ((pedW == null) || (pedW.getId() == null)) {
+                ped_vtex_winthor(listOrders.get(i));
             }
         }
     }
@@ -385,7 +386,7 @@ public class VtexService {
             for (int i = 0; i < produtos.size(); i++) {
                 var produto = produtos.get(i);
 
-                var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId());
+                var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId().toString());
                 var produtoInclusaoVtex = new ProductInclusaoDTO();
                 Long idProdutoVtex = 0L;
                 if (produtoVtexRef == null) {
@@ -413,7 +414,7 @@ public class VtexService {
                     var link = Ferramentas.removerAcentos(produto.getDescricao().toLowerCase(Locale.ROOT)) + "-" + produto.getId();
                     produtoInclusaoVtex.setLinkId(link.replace(" ", "-"));
 
-                    produtoInclusaoVtex.setRefId(produto.getId());
+                    produtoInclusaoVtex.setRefId(produto.getId().toString());
                     produtoInclusaoVtex.setVisible(false);
                     produtoInclusaoVtex.setDescription(Ferramentas.toRSCase(produto.getDescricao()));
                     produtoInclusaoVtex.setDescriptionShort(Ferramentas.toRSCase(produto.getDescricao()));
@@ -440,7 +441,7 @@ public class VtexService {
                     }
                 }
 
-                var skuProduto = produtosVtex.getSKURefId(produto.getId());
+                var skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
                 var skuInclusaoVtex = new SkuInclusaoDTO();
                 if ((produtoVtexRef != null) && (skuProduto == null)) {
                     log.info("Cadastrando SKU para o produto " + produto.getId());
@@ -470,7 +471,7 @@ public class VtexService {
                     skuInclusaoVtex.setHeighCubicWeightt(null);
 
                     produtosVtex.postSku(skuInclusaoVtex);
-                    skuProduto = produtosVtex.getSKURefId(produto.getId());
+                    skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
                 }
 
                 if (skuProduto != null) {
@@ -479,7 +480,7 @@ public class VtexService {
 
                         var skuFileExistente = produtosVtex.getSkuFile(skuProduto.getId());
                         if (skuFileExistente == null) {
-                            var imgProd = produtoWinthor.getFotoProdutoPorId(produto.getId());
+                            var imgProd = produtoWinthor.getFotoProdutoPorId(produto.getId().toString());
                             if (imgProd != null && !imgProd.isEmpty()) {
                                 var skuFile = new SkuFileDTO();
                                 skuFile.setId(null);

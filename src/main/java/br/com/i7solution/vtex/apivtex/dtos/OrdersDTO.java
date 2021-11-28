@@ -6,9 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class OrdersDTO implements Serializable {
-	private OrderDTO orders[];
-    private Long page;
-    private Long pageCount;
-    private Long perPage;
+	private OrderDTO list[];
+    private PagingDTO paging;
 }
 

@@ -12,7 +12,7 @@ public class OrderDTO implements Serializable {
     private String approvedBy;
     private String cancelledBy;
     private String cancelReason;
-    private Long orderId;
+    private String orderId;
     private String sequence;
     private String marketplaceOrderId;
     private String marketplaceServicesEndpoint;
@@ -30,7 +30,7 @@ public class OrderDTO implements Serializable {
     private TotalsDTO totals[];
     private ItemsDTO items[];
     private String marketplaceItems[];
-    private ClientProfileDataDTO clientProfileData[];
+    private ClientProfileDataDTO clientProfileData;
     private String giftRegistryData;
     private String marketingData;
     private RatesAndBenefitsDataDTO rateAndBenefitsIdentifiers[];

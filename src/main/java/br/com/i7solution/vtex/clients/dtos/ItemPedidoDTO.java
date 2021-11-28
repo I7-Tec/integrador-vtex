@@ -1,88 +1,26 @@
 package br.com.i7solution.vtex.clients.dtos;
 
+import lombok.Data;
+
 import java.io.Serializable;
+import java.util.Date;
 
+@Data
 public class ItemPedidoDTO implements Serializable {
-
-    private String idProduto;
-    private String refId;
-    private Long codigoDeBarras;
-    private Double preco;
-    private Double valorDesconto;
-    private String filialRetira;
-    private String posicao;
-    private Long quantidade;
-    private boolean erro;
-
-    public String getIdProduto() {
-        return idProduto;
-    }
-
-    public void setIdProduto(String idProduto) {
-        this.idProduto = idProduto;
-    }
-
-    public Long getCodigoDeBarras() {
-        return codigoDeBarras;
-    }
-
-    public void setCodigoDeBarras(Long codigoDeBarras) {
-        this.codigoDeBarras = codigoDeBarras;
-    }
-
-    public Double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(Double preco) {
-        this.preco = preco;
-    }
-
-    public Double getValorDesconto() {
-        return valorDesconto;
-    }
-
-    public void setValorDesconto(Double valorDesconto) {
-        this.valorDesconto = valorDesconto;
-    }
-
-    public String getFilialRetira() {
-        return filialRetira;
-    }
-
-    public void setFilialRetira(String filialRetira) {
-        this.filialRetira = filialRetira;
-    }
-
-    public String getPosicao() {
-        return posicao;
-    }
-
-    public void setPosicao(String posicao) {
-        this.posicao = posicao;
-    }
-
-    public Integer getSequencial() {
-        return sequencial;
-    }
-
-    public void setSequencial(Integer sequencial) {
-        this.sequencial = sequencial;
-    }
-
-    public boolean isErro() {
-        return erro;
-    }
-
-    public Long getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Long quantidade) {
-        this.quantidade = quantidade;
-    }
-
-    private Integer sequencial;
-
-
+    private Long numpedweb;
+    private Long codprod;
+    private Long numseq;
+    private Date data;
+    private String numpedrca;
+    private String numpedcli;
+    private String tipointegracao;
+    private String codcli;
+    private Double ptabela;
+    private Double qt;
+    private Double pvenda;
+    private Long codusur;
+    private Long codauxiliar;
+    private Double pesobruto;
+    private String integradora;
+    private String codfilialretira;
 }

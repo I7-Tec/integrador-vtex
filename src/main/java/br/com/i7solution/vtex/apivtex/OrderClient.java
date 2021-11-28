@@ -1,12 +1,12 @@
 package br.com.i7solution.vtex.apivtex;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import br.com.i7solution.vtex.config.PropertiesConfig;
+import br.com.i7solution.vtex.tools.Ferramentas;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,89 +24,93 @@ public class OrderClient {
     @Autowired
     private PropertiesConfig properties;
 
-    public OrderDTO getPedidoPorId(String orderId) throws IOException {
+    public OrderDTO getPedidoPorId(Long orderId) throws IOException {
         var props = properties.getProperties();
-        String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoGet + orderId.toString() + "?an=" + DadosVtex.sellers;
+        var result = new OrderDTO();
         HttpResponse<OrderDTO> response = null;
         try {
-            response = Unirest.get(url).header("Content-Type", "application/json")
+            String url = props.getProperty("properties.vtex.url") +
+                    DadosVtex.endPointPedidos +
+                    "/" + orderId;
+
+            response = Unirest.get(url)
+                    .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
                     .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .asObject(OrderDTO.class);
 
             if (response.getStatus() == 200) {
-                return response.getBody();
+                result = response.getBody();
             } else {
-                String msgErro = "HttpStatus: " + response.getStatus() + " ";
+                String msgErro = "HttpStatus: " + response.getStatus() + " \n";
                 var msg = response.mapError(HashMap.class);
                 if (msg != null) {
-                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
-                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                    if (msg.containsKey("Message")) msgErro += msg.get("Message") + " \n";
+                    if (msg.containsKey("message")) msgErro += msg.get("message") + " \n";
                 }
                 throw new UnirestException(msgErro);
             }
-        } catch (UnirestException e) {
-            log.warn("[getPedidoPorId] - Erro: " + e.getMessage());
-            return null;
-        }
-    }
-
-    public List<OrderDTO> getPedidosPorStatus(String status) throws IOException {
-        var props = properties.getProperties();
-        List<OrderDTO> result = new ArrayList<>();
-        HttpResponse<OrdersDTO> response = null;
-        try {
-            var temPedidos = true;
-            int pag = 1;
-            while (temPedidos) {
-                String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointPedidos + DadosVtex.sellers + "&perPage=50&page=" + pag
-                        + "&status=" + status;
-
-                response = Unirest.get(url).header("Content-Type", "application/json")
-                        .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
-                        .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
-                        .asObject(OrdersDTO.class);
-
-                Arrays.stream(response.getBody().getOrders()).map(result::add);
-
-                ++pag;
-                temPedidos = !(response.getBody().getPageCount() < response.getBody().getPerPage());
-            }
             return result;
         } catch (UnirestException e) {
-            log.warn("[getPedidosPorData] - Erro: " + e.getMessage());
+            log.warn("[getPedidos] - Erro: " + e.getMessage());
             return null;
         }
     }
 
-    public List<OrderDTO> getPedidosPorData(String dataIni, String dataFim) throws IOException {
+    /* Status possíveis:
+    waiting-for-sellers-confirmation - pendente
+    payment-pending - bloqueado
+    payment-approved - liberado
+    ready-for-handling - montado
+    handling - montado
+    invoiced - faturado
+    canceled - cancelado
+    */
+    public List<OrderDTO> getPedidos(String status, Long diasPedidos) throws IOException {
         var props = properties.getProperties();
-        List<OrderDTO> result = new ArrayList<>();
+        List<OrderDTO> result = new ArrayList<OrderDTO>();
         HttpResponse<OrdersDTO> response = null;
         try {
+            Date dtPedidos = Date.from(Instant.now().minus(diasPedidos, ChronoUnit.DAYS));
+            String dtInicio = Ferramentas.dataFormatada(dtPedidos, "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+            String dtFim = Ferramentas.dataFormatada(Date.from(Instant.now()), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
+
             var temPedidos = true;
             int pag = 1;
             while (temPedidos) {
-                String url = props.getProperty("properties.vtex.url") + "/oms/orders/?an=" + DadosVtex.sellers + "&perPage=50&page=" + pag +
-                        "&creationDateStart=" + dataIni + "&creationDateEnd=" + dataFim;
+                String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointPedidos;
 
                 response = Unirest.get(url)
                         .header("Content-Type", "application/json")
                         .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))
                         .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
+                        .queryString("per_page", 30)
+                        .queryString("page", pag)
+                        .queryString("f_status", status)
+                        .queryString("f_creationDate", "creationDate:[" + dtInicio + " TO " + dtFim + "]")
                         .asObject(OrdersDTO.class);
 
-                var list = response.getBody().getOrders();
-                for (var i = 0; i < list.length; i++) {
-                    result.add(list[i]);
-                }
+                if (response.getStatus() == 200) {
+                    if (response.getBody().getList().length > 0) {
+                        var listaPedidos = response.getBody().getList();
+                        result.addAll(Arrays.asList(listaPedidos));
+                    }
 
-                ++pag;
-                temPedidos = !(response.getBody().getPageCount() < response.getBody().getPerPage());
+                    temPedidos = pag < response.getBody().getPaging().getPages();
+                    ++pag;
+                } else {
+                    String msgErro = "HttpStatus: " + response.getStatus() + " \n";
+                    var msg = response.mapError(HashMap.class);
+                    if (msg != null) {
+                        if (msg.containsKey("Message")) msgErro += msg.get("Message") + " \n";
+                        if (msg.containsKey("message")) msgErro += msg.get("message") + " \n";
+                    }
+                    throw new UnirestException(msgErro);
+                }
             }
             return result;
         } catch (UnirestException e) {
-            log.warn("[getPedidosPorData] - Erro: " + e.getMessage());
+            log.warn("[getPedidos] - Erro: " + e.getMessage());
             return null;
         }
     }
