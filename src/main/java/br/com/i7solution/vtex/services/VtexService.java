@@ -129,7 +129,6 @@ public class VtexService {
     public void atualizacaoEstoque() throws IOException {
         log.info("Iniciando sincronização de estoques");
         try {
-            //
             var lista = new ArrayList<String>();
             lista.add("75");
             lista.add("312");
@@ -141,20 +140,21 @@ public class VtexService {
                 if (estoque != null) {
                     var skuVtex = produtosVtex.getSKURefId(estoque.getProduto().getId().toString());
                     if (skuVtex != null) {
-                        log.info("[atualizacaoEstoque] - Atualizando estoque do produto " +
-                                estoque.getProduto().getId() +
-                                " - " +
-                                estoque.getProduto().getDescricao() +
-                                " para " + estoque.getQuantidadeDisponivel()
+                        log.info(
+                            "[atualizacaoEstoque] - Atualizando estoque do produto " +
+                            estoque.getProduto().getId() +
+                            " - " +
+                            estoque.getProduto().getDescricao() +
+                            " para " + estoque.getQuantidadeDisponivel()
                         );
                         var itemEstoque = new InventoryPutDTO();
                         itemEstoque.setQuantity(estoque.getQuantidadeDisponivel().intValue());
                         itemEstoque.setUnlimitedQuantity(false);
 
                         inventoryVtex.putEstoquePorSku(
-                                itemEstoque,
-                                skuVtex.getId(),
-                                estoque.getFilial().getId()
+                            itemEstoque,
+                            skuVtex.getId(),
+                            estoque.getFilial().getId()
                         );
                     }
                 }
@@ -188,6 +188,36 @@ public class VtexService {
         log.info("Finalizando sincronização de estoques");
     }
 
+    @Async(value = "taskPedidos")
+    @Scheduled(fixedRate = 10000, initialDelay = 60000)
+    public void sincronizarPedidos() throws Exception {
+        try {
+            log.info("Integrando pedidos de venda...");
+            var listOrders = pedidosVtex.getPedidos("payment-approved", 10L);
+            for (int i = 0; i < listOrders.size(); i++) {
+                var pedW = pedidoWinthor.getPedidoPorNumpedWeb(
+                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                );
+                if ((pedW == null) || (pedW.getId() == null)) {
+                    ped_vtex_winthor(listOrders.get(i));
+
+                    var resultPed = pedidoWinthor.importarPedido(
+                        Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                    );
+                    log.info(
+                        "Pedido VTEX nr." + resultPed.getNumpedweb() + "\n" +
+                        "...Importado: " + resultPed.getImportado() + "\n" +
+                        "...Msg: " + resultPed.getMsg() + "\n" +
+                        "...Pedido Winthor: " + resultPed.getNumped() + "\n"
+                    );
+                }
+            }
+            log.info("Fim da integração dos pedidos de venda.");
+        } catch (Exception e) {
+            log.warn("[sincronizarPedidos] - Erro: " + e);
+        }
+    }
+
     public void ped_vtex_winthor(OrderDTO pedVtex) throws Exception {
         var pedWinthor = new PedidoDTO();
         String pontoErro = "";
@@ -197,8 +227,7 @@ public class VtexService {
 
             pontoErro = "dados cabeçalho";
 
-            var clienteVtex = new ClientProfileDataDTO();
-            clienteVtex = pedV.getClientProfileData();
+            var clienteVtex = pedV.getClientProfileData();
             var clienteWinthor = new ClienteDTO();
             clienteWinthor.setCpfCnpj(clienteVtex.getDocument());
             clienteWinthor.setEmail(clienteVtex.getEmail());
@@ -224,19 +253,19 @@ public class VtexService {
             pedWinthor.setCliente(clienteWinthor);
             pedWinthor.setValorTotal(pedV.getValue());
             pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
-            pedWinthor.setIdPedidoCliente(pedV.getOrderId().toString());
+            pedWinthor.setIdPedidoCliente(pedV.getOrderId());
 
             pontoErro = "Definindo dados de pagamento...";
-            var pagtos = pedV.getPayments();//validar pagamentos
-            if (pagtos.length > 0) {
-                if (pagtos[0].getGroup() == "credit card") {
-                    if (pagtos.length == 1) {
+            var pagtos = pedV.getPaymentData().getTransactions()[0];
+            if (pagtos.getPayments().length > 0) {
+                if (pagtos.getPayments()[0].getGroup().equals("creditCard")) {
+                    if (pagtos.getPayments().length == 1) {
                         pedWinthor.setIdCobranca("WCCI");
                     } else {
                         pedWinthor.setIdCobranca("WCPI");
                     }
 
-                    switch (pagtos.length) {
+                    switch (pagtos.getPayments().length) {
                         case 1:
                             pedWinthor.setIdPlanoDePagamento("24");
                         case 2:
@@ -268,7 +297,7 @@ public class VtexService {
                     pedWinthor.setIdCobranca("WBI");
                     pedWinthor.setIdPlanoDePagamento("39");
                 }
-            }//validar pagamentos
+            }
 
             pontoErro = "Lendo itens...";
             var itensVtex = pedV.getItems();
@@ -302,32 +331,7 @@ public class VtexService {
             log.error("ped_vtex_winthor: " + pontoErro + " -> msg original: " + e);
             throw new Exception(e.getMessage());
         }
-        log.info("Fim da leitura dos Itens !");
-    }
-
-
-    @Async(value = "taskPedidos")
-    @Scheduled(fixedRate = 10000, initialDelay = 60000)
-    public void sincronizarPedidos() throws Exception {
-        var listOrders = pedidosVtex.getPedidos("payment-approved", 10L);
-        for (int i = 0; i < listOrders.size(); i++) {
-            var pedW = pedidoWinthor.getPedidoPorNumpedWeb(
-                Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
-            );
-            if ((pedW == null) || (pedW.getId() == null)) {
-                ped_vtex_winthor(listOrders.get(i));
-
-                var resultPed = pedidoWinthor.importarPedido(
-                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
-                );
-                log.info(
-                    "Pedido VTEX nr." + resultPed.getNumpedweb() + "\n" +
-                    "...Importado: " + resultPed.getImportado() + "\n" +
-                    "...Msg: " + resultPed.getMsg() + "\n" +
-                    "...Pedido Winthor: " + resultPed.getNumped() + "\n"
-                );
-            }
-        }
+        log.info("Fim da leitura dos itens.");
     }
 
     //@Async

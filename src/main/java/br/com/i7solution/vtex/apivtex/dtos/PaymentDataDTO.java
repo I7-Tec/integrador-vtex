@@ -1,16 +1,10 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class PaymentDataDTO implements Serializable {
-
-	private TransactionsDTO transactions[];
-
-	public TransactionsDTO[] getTransactions() {
-		return transactions;
-	}
-
-	public void setTransactions(TransactionsDTO transactions[]) {
-		this.transactions = transactions;
-	}
+	private TransactionsDTO[] transactions;
 }
