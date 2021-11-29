@@ -1,5 +1,6 @@
 package br.com.i7solution.vtex.clients;
 
+import br.com.i7solution.vtex.clients.dtos.ImportarPedidoDTO;
 import br.com.i7solution.vtex.config.PropertiesConfig;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,7 +113,6 @@ public class PedidoClient {
                     .body(dados).asObject(PedidoDTO.class);
         } catch (UnirestException e) {
             e.printStackTrace();
-
         }
         return response.getBody();
 
@@ -131,6 +131,36 @@ public class PedidoClient {
 
         } catch (UnirestException e) {
             e.printStackTrace();
+        }
+
+    }
+
+    public ImportarPedidoDTO importarPedido(Long numpedweb) throws IOException {
+        var props = properties.getProperties();
+        String url = DadosMicroServicos.endPointPedidos;
+        try {
+            var response = Unirest.post(url)
+                    .header("Content-Type", "application/json")
+                    .header("Authorization", "Bearer " + props.getProperty("properties.token"))
+                    .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
+                    .queryString("idClienteI7", props.getProperty("properties.idcliente"))
+                    .queryString("id", numpedweb)
+                    .asObject(ImportarPedidoDTO.class);
+
+            if (response.isSuccess()) {
+                return response.getBody();
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus();
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("message")) msgErro += msg.get("message") + " \n";
+                    if (msg.containsKey("Message")) msgErro += msg.get("Message") + " \n";
+                }
+                throw new UnirestException(msgErro);
+            }
+        } catch (UnirestException e) {
+            log.warn("[importarPedido] - Erro: " + e.getMessage());
+            return null;
         }
 
     }

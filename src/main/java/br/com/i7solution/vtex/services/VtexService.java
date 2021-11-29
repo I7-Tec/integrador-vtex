@@ -189,7 +189,6 @@ public class VtexService {
     }
 
     public void ped_vtex_winthor(OrderDTO pedVtex) throws Exception {
-
         var pedWinthor = new PedidoDTO();
         String pontoErro = "";
 
@@ -205,7 +204,7 @@ public class VtexService {
             clienteWinthor.setEmail(clienteVtex.getEmail());
             clienteWinthor.setNome(clienteVtex.getFirstName() + " " + clienteVtex.getLastName());
             clienteWinthor.setTelefoneFixo(clienteVtex.getPhone());
-            clienteWinthor.setTelefoneCelular(clienteVtex.getCorporatePhone()); // observação
+            clienteWinthor.setTelefoneCelular(clienteVtex.getCorporatePhone());
 
             var enderecoVtex = new AdressDTO();
             var enderecoWinthor = new EnderecoDTO();
@@ -313,10 +312,20 @@ public class VtexService {
         var listOrders = pedidosVtex.getPedidos("payment-approved", 10L);
         for (int i = 0; i < listOrders.size(); i++) {
             var pedW = pedidoWinthor.getPedidoPorNumpedWeb(
-                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
             );
             if ((pedW == null) || (pedW.getId() == null)) {
                 ped_vtex_winthor(listOrders.get(i));
+
+                var resultPed = pedidoWinthor.importarPedido(
+                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                );
+                log.info(
+                    "Pedido VTEX nr." + resultPed.getNumpedweb() + "\n" +
+                    "...Importado: " + resultPed.getImportado() + "\n" +
+                    "...Msg: " + resultPed.getMsg() + "\n" +
+                    "...Pedido Winthor: " + resultPed.getNumped() + "\n"
+                );
             }
         }
     }
