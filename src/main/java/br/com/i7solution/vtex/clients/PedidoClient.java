@@ -73,6 +73,7 @@ public class PedidoClient {
                 if (msg != null) {
                     if (msg.containsKey("message")) msgErro += msg.get("message") + " \n";
                     if (msg.containsKey("Message")) msgErro += msg.get("Message") + " \n";
+                    if (msg.containsKey("error")) msgErro += msg.get("error") + " \n";
                 }
                 throw new UnirestException(msgErro);
             }
@@ -118,21 +119,35 @@ public class PedidoClient {
 
     }
 
-    public void postPedido(PedidoDTO dados) throws IOException {
+    public PedidoDTO postPedido(PedidoDTO dados) throws IOException {
         var props = properties.getProperties();
+        var token = props.getProperty("properties.token");
         String url = DadosMicroServicos.endPointPedidos;
         try {
             var response = Unirest.post(url)
                     .header("Content-Type", "application/json")
-                    .header("Authorization", "Bearer " + props.getProperty("properties.token"))
+                    .header("Authorization", "Bearer " + token)
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
                     .queryString("idClienteI7", props.getProperty("properties.idcliente"))
-                    .body(dados);
+                    .body(dados)
+                    .asObject(PedidoDTO.class);
 
+            if (response.getStatus() == 200) {
+                return response.getBody();
+            } else {
+                String msgErro = "HttpStatus: " + response.getStatus() + " \n";
+                var msg = response.mapError(HashMap.class);
+                if (msg != null) {
+                    if (msg.containsKey("Message")) msgErro += msg.get("Message") + " \n";
+                    if (msg.containsKey("message")) msgErro += msg.get("message") + " \n";
+                    if (msg.containsKey("error")) msgErro += msg.get("error") + " \n";
+                }
+                throw new UnirestException(msgErro);
+            }
         } catch (UnirestException e) {
-            e.printStackTrace();
+            log.warn("[postPedido] - Erro: " + e.getMessage());
+            return null;
         }
-
     }
 
     public ImportarPedidoDTO importarPedido(Long numpedweb) throws IOException {

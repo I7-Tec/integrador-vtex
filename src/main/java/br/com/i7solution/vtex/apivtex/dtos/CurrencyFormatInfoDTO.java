@@ -1,62 +1,20 @@
 package br.com.i7solution.vtex.apivtex.dtos;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
 public class CurrencyFormatInfoDTO implements Serializable {
-
+    @JsonProperty("CurrencyDecimalDigits")
     private Integer currencyDecimalDigits;
+    @JsonProperty("CurrencyDecimalSeparator")
     private String currencyDecimalSeparator;
+    @JsonProperty("CurrencyGroupSeparator")
     private String currencyGroupSeparator;
+    @JsonProperty("CurrencyGroupSize")
     private Integer currencyGroupSize;
+    @JsonProperty("StartsWithCurrencySymbol")
     private Boolean startsWithCurrencySymbol;
-    private Integer currencyLocale;
-
-    public Integer getCurrencyDecimalDigits() {
-        return currencyDecimalDigits;
-    }
-
-    public void setCurrencyDecimalDigits(Integer currencyDecimalDigits) {
-        this.currencyDecimalDigits = currencyDecimalDigits;
-    }
-
-    public String getCurrencyDecimalSeparator() {
-        return currencyDecimalSeparator;
-    }
-
-    public void setCurrencyDecimalSeparator(String currencyDecimalSeparator) {
-        this.currencyDecimalSeparator = currencyDecimalSeparator;
-    }
-
-    public String getCurrencyGroupSeparator() {
-        return currencyGroupSeparator;
-    }
-
-    public void setCurrencyGroupSeparator(String currencyGroupSeparator) {
-        this.currencyGroupSeparator = currencyGroupSeparator;
-    }
-
-    public Integer getCurrencyGroupSize() {
-        return currencyGroupSize;
-    }
-
-    public void setCurrencyGroupSize(Integer currencyGroupSize) {
-        this.currencyGroupSize = currencyGroupSize;
-    }
-
-    public Boolean getStartsWithCurrencySymbol() {
-        return startsWithCurrencySymbol;
-    }
-
-    public void setStartsWithCurrencySymbol(Boolean startsWithCurrencySymbol) {
-        this.startsWithCurrencySymbol = startsWithCurrencySymbol;
-    }
-
-    public Integer getCurrencyLocale() {
-        return currencyLocale;
-    }
-
-    public void setCurrencyLocale(Integer currencyLocale) {
-        this.currencyLocale = currencyLocale;
-    }
-
 }

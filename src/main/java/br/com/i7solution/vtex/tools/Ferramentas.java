@@ -12,7 +12,7 @@ public class Ferramentas {
 		try{
 			return Long.parseLong(valor);
 		} catch (Exception e) {
-			return 0L;
+			return null;
 		}
 	}
 
@@ -20,7 +20,15 @@ public class Ferramentas {
 		try{
 			return Double.parseDouble(valor);
 		} catch (Exception e) {
-			return 0.0;
+			return null;
+		}
+	}
+
+	static public Integer stringToInt(String valor) {
+		try{
+			return Integer.parseInt(valor);
+		} catch (Exception e) {
+			return null;
 		}
 	}
 

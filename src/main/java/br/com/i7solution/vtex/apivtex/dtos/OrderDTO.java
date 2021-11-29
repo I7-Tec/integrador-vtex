@@ -34,9 +34,9 @@ public class OrderDTO implements Serializable {
     private String giftRegistryData;
     private String marketingData;
     private RatesAndBenefitsDataDTO[] rateAndBenefitsIdentifiers;
-    private ShippingDataDTO[] shippingData;
+    private ShippingDataDTO shippingData;
     private PaymentDataDTO paymentData;
-    private PackageAttachmentDTO[] packageAttachment;
+    //private PackageAttachmentDTO[] packageAttachment;
     private SellersDTO[] sellers;
     private String callCenterOperatorData;
     private String followUpEmail;
@@ -50,11 +50,11 @@ public class OrderDTO implements Serializable {
     private String commercialConditionData;
     private Boolean isCompleted;
     private String customData;
-    private StorePreferencesDataDTO[] storePreferencesData;
+    private StorePreferencesDataDTO storePreferencesData;
     private Boolean allowCancellation;
     private Boolean allowEdition;
     private Boolean isCheckedIn;
-    private MarketplaceDTO[] marketplace;
+    private MarketplaceDTO marketplace;
     private Date authorizedDate;
     private Date invoicedDate;
     private Double quantity;

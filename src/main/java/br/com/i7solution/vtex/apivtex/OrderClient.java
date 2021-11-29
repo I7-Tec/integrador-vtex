@@ -24,7 +24,7 @@ public class OrderClient {
     @Autowired
     private PropertiesConfig properties;
 
-    public OrderDTO getPedidoPorId(Long orderId) throws IOException {
+    public OrderDTO getPedidoPorId(String orderId) throws IOException {
         var props = properties.getProperties();
         var result = new OrderDTO();
         HttpResponse<OrderDTO> response = null;

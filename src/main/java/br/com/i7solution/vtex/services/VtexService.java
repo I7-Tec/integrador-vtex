@@ -56,8 +56,8 @@ public class VtexService {
     @Autowired
     private WarehouseClient warehouseClientService;
 
-    @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1800000, initialDelay = 10000)
+    //@Async(value = "taskAtualizacoes")
+    //@Scheduled(fixedRate = 1800000, initialDelay = 10000)
     public void atualizarPrecos() throws IOException {
         log.info("[atualizarPrecos] - Iniciando sincronização de preços");
         var existeProximo = true;
@@ -92,8 +92,8 @@ public class VtexService {
         log.info("[atualizarFiliais] - Finalizando sincronização de filiais");
     }
 
-    @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedDelay = 1800000, initialDelay = 10000)
+    //@Async(value = "taskAtualizacoes")
+    //@Scheduled(fixedDelay = 1800000, initialDelay = 10000)
     public void atualizarProdutos() throws IOException {
         log.info("[atualizarProdutos] - Iniciando sincronização de produtos");
 
@@ -124,8 +124,8 @@ public class VtexService {
         log.info("[atualizarProdutos] - Fim da Atualização de Produtos");
     }
 
-    @Async(value = "taskAtualizacoes")
-    @Scheduled(fixedRate = 1200000, initialDelay = 60000)
+    //@Async(value = "taskAtualizacoes")
+    //@Scheduled(fixedRate = 1200000, initialDelay = 60000)
     public void atualizacaoEstoque() throws IOException {
         log.info("Iniciando sincronização de estoques");
         try {
@@ -189,20 +189,22 @@ public class VtexService {
     }
 
     @Async(value = "taskPedidos")
-    @Scheduled(fixedRate = 10000, initialDelay = 60000)
+    @Scheduled(fixedDelay = 60000, initialDelay = 10000)
     public void sincronizarPedidos() throws Exception {
         try {
             log.info("Integrando pedidos de venda...");
-            var listOrders = pedidosVtex.getPedidos("payment-approved", 10L);
-            for (int i = 0; i < listOrders.size(); i++) {
+            //ready-for-handling
+            //payment-approved
+            var listOrders = pedidosVtex.getPedidos("ready-for-handling", 10L);
+            for (OrderDTO listOrder : listOrders) {
                 var pedW = pedidoWinthor.getPedidoPorNumpedWeb(
-                    Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                    Long.parseLong(Ferramentas.somenteNumeros(listOrder.getOrderId()))
                 );
-                if ((pedW == null) || (pedW.getId() == null)) {
-                    ped_vtex_winthor(listOrders.get(i));
+                if (pedW == null) {
+                    ped_vtex_winthor(listOrder);
 
                     var resultPed = pedidoWinthor.importarPedido(
-                        Long.parseLong(Ferramentas.somenteNumeros(listOrders.get(i).getOrderId()))
+                        Long.parseLong(Ferramentas.somenteNumeros(listOrder.getOrderId()))
                     );
                     log.info(
                         "Pedido VTEX nr." + resultPed.getNumpedweb() + "\n" +
@@ -223,7 +225,7 @@ public class VtexService {
         String pontoErro = "";
 
         try {
-            var pedV = pedidosVtex.getPedidoPorId(pedVtex.getId());
+            var pedV = pedidosVtex.getPedidoPorId(pedVtex.getOrderId());
 
             pontoErro = "dados cabeçalho";
 
@@ -243,59 +245,91 @@ public class VtexService {
             enderecoWinthor.setMunicipio(enderecoVtex.getCity());
             enderecoWinthor.setUf(enderecoVtex.getState());
             enderecoWinthor.setPais(enderecoVtex.getCountry());
-            enderecoWinthor.setNumero(enderecoVtex.getNumber());
+            enderecoWinthor.setNumero(Ferramentas.stringToInt(enderecoVtex.getNumber()));
             enderecoWinthor.setRua(enderecoVtex.getStreet());
 
-            pedWinthor.setId(pedV.getId().toString());
+            pedWinthor.setId(Ferramentas.somenteNumeros(pedV.getOrderId()));
             pedWinthor.setEndereco(enderecoWinthor);
-            pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
-            pedWinthor.setIdFilial("1");
+            pedWinthor.setIdPedidoCliente(Ferramentas.somenteNumeros(pedV.getOrderId()));
+            var filial = new FilialDTO();
+            filial.setId("1");
+            pedWinthor.setFilial(filial);
             pedWinthor.setCliente(clienteWinthor);
-            pedWinthor.setValorTotal(pedV.getValue());
-            pedWinthor.setIdPedidoEcommerce(pedV.getId().toString());
-            pedWinthor.setIdPedidoCliente(pedV.getOrderId());
+            pedWinthor.setValorTotal(pedV.getValue() / 100);
+            pedWinthor.setIdPedidoCliente(Ferramentas.somenteNumeros(pedV.getOrderId()));
 
             pontoErro = "Definindo dados de pagamento...";
             var pagtos = pedV.getPaymentData().getTransactions()[0];
             if (pagtos.getPayments().length > 0) {
                 if (pagtos.getPayments()[0].getGroup().equals("creditCard")) {
-                    if (pagtos.getPayments().length == 1) {
-                        pedWinthor.setIdCobranca("WCCI");
+                    var cob = new CobrancaDTO();
+                    if (pagtos.getPayments()[0].getInstallments() == 1) {
+                        cob.setId("WCCI");
+                        pedWinthor.setCobranca(cob);
                     } else {
-                        pedWinthor.setIdCobranca("WCPI");
+                        cob.setId("WCPI");
+                        pedWinthor.setCobranca(cob);
                     }
 
-                    switch (pagtos.getPayments().length) {
+                    var plPag = new PlanoDePagamentoDTO();
+                    switch (pagtos.getPayments()[0].getInstallments()) {
                         case 1:
-                            pedWinthor.setIdPlanoDePagamento("24");
+                            plPag.setId("24");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 2:
-                            pedWinthor.setIdPlanoDePagamento("25");
+                            plPag.setId("25");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 3:
-                            pedWinthor.setIdPlanoDePagamento("26");
+                            plPag.setId("26");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 4:
-                            pedWinthor.setIdPlanoDePagamento("27");
+                            plPag.setId("27");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 5:
-                            pedWinthor.setIdPlanoDePagamento("28");
+                            plPag.setId("28");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 6:
-                            pedWinthor.setIdPlanoDePagamento("29");
+                            plPag.setId("29");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 7:
-                            pedWinthor.setIdPlanoDePagamento("30");
+                            plPag.setId("30");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 8:
-                            pedWinthor.setIdPlanoDePagamento("31");
+                            plPag.setId("31");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 9:
-                            pedWinthor.setIdPlanoDePagamento("32");
+                            plPag.setId("32");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 10:
-                            pedWinthor.setIdPlanoDePagamento("33");
+                            plPag.setId("33");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 11:
-                            pedWinthor.setIdPlanoDePagamento("34");
+                            plPag.setId("34");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         case 12:
-                            pedWinthor.setIdPlanoDePagamento("35");
+                            plPag.setId("35");
+                            pedWinthor.setPlanoDePagamento(plPag);
+                            break;
                         default:
-                            pedWinthor.setIdPlanoDePagamento("23");
+                            plPag.setId("23");
+                            pedWinthor.setPlanoDePagamento(plPag);
                     }
                 } else {
-                    pedWinthor.setIdCobranca("WBI");
-                    pedWinthor.setIdPlanoDePagamento("39");
+                    var cob = new CobrancaDTO();
+                    var plPag = new PlanoDePagamentoDTO();
+                    pedWinthor.setCobranca(cob);
+                    pedWinthor.setPlanoDePagamento(plPag);
                 }
             }
 
@@ -392,7 +426,6 @@ public class VtexService {
             e.printStackTrace();
         }
     }
-
 
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         try {
@@ -515,15 +548,13 @@ public class VtexService {
                         var skuEan = produtosVtex.getSkuEan(skuProduto.getId().toString());
                         if (skuEan == null) {
                             produtosVtex.postSkuEan(
-                                    skuProduto.getId().toString(),
-                                    produto.getCodigoDeBarras().toString()
+                                skuProduto.getId().toString(),
+                                produto.getCodigoDeBarras().toString()
                             );
                         }
                     }
                 }
-
             }
-
         } catch (Exception e) {
             log.warn("[sincronizarProdutos] - Erro: " + e);
         }
