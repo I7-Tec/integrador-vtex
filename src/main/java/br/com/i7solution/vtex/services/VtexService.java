@@ -532,8 +532,7 @@ public class VtexService {
     }
 
     private void sincronizarPrecos(TabelaPrecoDTO[] precos) throws IOException {
-        for (int i = 0; i < precos.length; i++) {
-            var preco = precos[i];
+        for (TabelaPrecoDTO preco : precos) {
             log.info("Sincronizando preço do produto: " + preco.getIdProduto());
             var skuVtex = produtosVtex.getSKURefId(preco.getIdProduto());
 
@@ -547,7 +546,6 @@ public class VtexService {
             } else {
                 log.info("Não existe SKU para o produto: " + preco.getIdProduto());
             }
-
         }
     }
 
