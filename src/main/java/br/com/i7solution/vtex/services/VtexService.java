@@ -396,9 +396,7 @@ public class VtexService {
 
     private void sincronizarProdutos(List<ProdutoDTO> produtos) {
         try {
-            for (int i = 0; i < produtos.size(); i++) {
-                var produto = produtos.get(i);
-
+            for (ProdutoDTO produto : produtos) {
                 var produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId().toString());
                 var produtoInclusaoVtex = new ProductInclusaoDTO();
                 Long idProdutoVtex = 0L;
@@ -432,7 +430,7 @@ public class VtexService {
                     produtoInclusaoVtex.setDescription(Ferramentas.toRSCase(produto.getDescricao()));
                     produtoInclusaoVtex.setDescriptionShort(Ferramentas.toRSCase(produto.getDescricao()));
                     produtoInclusaoVtex.setReleaseDate(
-                            Ferramentas.dataFormatada(Date.from(Instant.now()),"yyyy-MM-dd HH:mm:ss")
+                            Ferramentas.dataFormatada(Date.from(Instant.now()), "yyyy-MM-dd HH:mm:ss")
                     );
                     produtoInclusaoVtex.setKeyWords(Ferramentas.toRSCase(produto.getSubtituloecommerce()));
                     produtoInclusaoVtex.setTitle(Ferramentas.toRSCase(produto.getNomeecommerce()));
@@ -517,8 +515,8 @@ public class VtexService {
                         var skuEan = produtosVtex.getSkuEan(skuProduto.getId().toString());
                         if (skuEan == null) {
                             produtosVtex.postSkuEan(
-                                skuProduto.getId().toString(),
-                                produto.getCodigoDeBarras().toString()
+                                    skuProduto.getId().toString(),
+                                    produto.getCodigoDeBarras().toString()
                             );
                         }
                     }

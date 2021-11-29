@@ -37,8 +37,8 @@ public class PriceClient {
                 String msgErro = "HttpStatus: " + response.getStatus() + " ";
                 var msg = response.mapError(HashMap.class);
                 if (msg != null) {
-                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
-                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                    if (msg.containsKey("message")) msgErro += msg.containsKey("message") + "\n";
+                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message") + "\n";
                 }
                 throw new UnirestException(msgErro);
             }
@@ -66,8 +66,8 @@ public class PriceClient {
                 String msgErro = "HttpStatus: " + response.getStatus() + " ";
                 var msg = response.mapError(HashMap.class);
                 if (msg != null) {
-                    if (msg.containsKey("message")) msgErro += msg.containsKey("message");
-                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message");
+                    if (msg.containsKey("message")) msgErro += msg.containsKey("message") + "\n";
+                    if (msg.containsKey("Message")) msgErro += msg.containsKey("Message") + "\n";
                 }
                 throw new UnirestException(msgErro);
             }
