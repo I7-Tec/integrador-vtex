@@ -2,6 +2,7 @@ package br.com.i7solution.vtex.clients;
 
 import br.com.i7solution.vtex.clients.dtos.ImportarPedidoDTO;
 import br.com.i7solution.vtex.config.PropertiesConfig;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -124,6 +125,8 @@ public class PedidoClient {
         var token = props.getProperty("properties.token");
         String url = DadosMicroServicos.endPointPedidos;
         try {
+            ObjectMapper mapper = new ObjectMapper();
+            log.info(mapper.writeValueAsString(dados));
             var response = Unirest.post(url)
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + token)
