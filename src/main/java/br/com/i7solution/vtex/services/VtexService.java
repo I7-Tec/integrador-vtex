@@ -471,12 +471,7 @@ public class VtexService {
                 produtoInclusaoVtex.setLomadeeCampaignCode("");
                 produtoInclusaoVtex.setScore(1L);
 
-                var produtoIncluido = produtosVtex.postProduto(produtoInclusaoVtex);
-                if (produtoIncluido != null) {
-                    if (produtoIncluido.getId() != null) {
-                        log.info("Produto cadastrado no VTEX(productId VTEX: " + produtoIncluido.getId() + ")");
-                    }
-                }
+                produtosVtex.postProduto(produtoInclusaoVtex);
             }
 
             var skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
@@ -509,6 +504,8 @@ public class VtexService {
                 skuInclusaoVtex.setHeighCubicWeightt(null);
 
                 produtosVtex.postSku(skuInclusaoVtex);
+            } else {
+                log.warn("GravarSku - Não foi possível encontrar o produto " + produto.getId());
             }
 
             skuProduto = produtosVtex.getSKURefId(produto.getId().toString());

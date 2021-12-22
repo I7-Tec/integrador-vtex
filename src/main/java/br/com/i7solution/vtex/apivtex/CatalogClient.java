@@ -145,7 +145,7 @@ public class CatalogClient {
         }
     }
 
-    public ProductInclusaoDTO postProduto(ProductInclusaoDTO dados) throws IOException {
+    public Boolean postProduto(ProductInclusaoDTO dados) throws IOException {
         var props = properties.getProperties();
         String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointProdutoPost;
         HttpResponse<ProductInclusaoDTO> response = null;
@@ -157,20 +157,13 @@ public class CatalogClient {
                     .header("X-VTEX-API-AppToken", props.getProperty("properties.vtex.apptoken"))
                     .body(dados)
                     .asObject(ProductInclusaoDTO.class);
-            log.info("Status Code Post Produto: " + response.getStatus());
-            if (response.isSuccess()) {
-                log.info("Body Response Post Produto " + response.getBody());
-                return response.getBody();
-            }
 
-            var msg = response.mapError(HashMap.class);
-            if (msg.containsKey("Message")) log.info("Erro: " + msg.get("Message"));
-            if (msg.containsKey("message")) log.info("Erro: " + msg.get("message"));
-            return null;
+            log.info("Status Code Post Produto: " + response.getStatus());
+            return response.isSuccess();
 
         } catch (UnirestException e) {
-            log.warn("[postSku] Erro: " + e.getMessage());
-            return null;
+            log.warn("[postProduto] Erro: " + e.getMessage());
+            return false;
         }
     }
 
@@ -255,7 +248,6 @@ public class CatalogClient {
                 }
                 throw new UnirestException(msgErro);
             }
-
         } catch (UnirestException e) {
             log.warn("[postSkuFile] Erro: " + e.getMessage());
             return false;
