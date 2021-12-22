@@ -7,7 +7,7 @@ import java.io.Serializable;
 @Data
 public class ShippingDataDTO implements Serializable {
 	private String id;
-	private AdressDTO[] shippingDataAdress;
+	private AdressDTO address;
 	private LogisticsInfoDTO[] logisticsInfo;
 	private AdressDTO[] selectedAdress;
 	private String trackingHints;

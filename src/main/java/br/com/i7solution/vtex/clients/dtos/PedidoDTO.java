@@ -10,17 +10,17 @@ public class PedidoDTO implements Serializable {
     private String id;
     private String idPedidoErp;
     private String idPedidoVendedor;
+    private String idPedidoCliente;
     private FilialDTO filial;
     private Boolean importado;
     private Double valorTotal;
-    private String posicao;
+    //private String posicao;
     private Date dataCriacao;
-    private Date dataCancelamento;
-    private Date dataFaturamento;
-    private Date dataBloqueio;
-    private String idPedidoCliente;
+    //private Date dataCancelamento;
+    //private Date dataFaturamento;
+    //private Date dataBloqueio;
     private Long quantidadeItens;
-    private Date dataEntrega;
+    //private Date dataEntrega;
     private VendedorDTO vendedor;
     private CobrancaDTO cobranca;
     private PlanoDePagamentoDTO planoDePagamento;
@@ -28,7 +28,7 @@ public class PedidoDTO implements Serializable {
     private Double valorOutrasDespesas;
     private String tipoFrete;
     private ClienteDTO cliente;
-    private String obeservacaoIntegracao;
+    private String observacaoIntegracao;
     private String tipoIntegracao;
     private String tipoVenda;
     private Long hora;
@@ -36,4 +36,5 @@ public class PedidoDTO implements Serializable {
     private String integradora;
     private ItemPedidoDTO[] itens;
     private EnderecoDTO endereco;
+    private String origemPedido;
 }

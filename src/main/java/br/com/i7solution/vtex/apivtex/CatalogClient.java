@@ -224,7 +224,7 @@ public class CatalogClient {
             }
             return null;
         } catch (UnirestException e) {
-            log.warn("[postSkuFile] Erro: " + e.getMessage());
+            log.warn("[getSkuFile] Erro: " + e.getMessage());
             return null;
         }
     }
@@ -276,6 +276,8 @@ public class CatalogClient {
             response = request.asObject(SkuDTO.class);
             if (response.getStatus() == 200) {
                 return response.getBody();
+            } else if (response.getStatus() == 404) {
+                return null;
             } else {
                 throw new UnirestException("HttpStatus: " + response.getStatus());
             }

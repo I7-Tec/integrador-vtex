@@ -27,13 +27,13 @@ public class ProdutoClient {
     @Autowired
     private PropertiesConfig properties;
 
-    public List<ProdutoDTO> getProdutos(int pageNumber, int pageSize) throws IOException {
+    public ProdutoDTO[] getProdutos(Long pageNumber, Long pageSize) throws IOException {
         var props = properties.getProperties();
         String idCliente = props.getProperty("properties.idcliente");
         String token = props.getProperty("properties.token");
 
         String url = DadosMicroServicos.endPointProdutos;
-        HttpResponse<List<ProdutoDTO>> response = null;
+        HttpResponse<ProdutoDTO[]> response = null;
         try {
             response = Unirest.get(url)
                     .connectTimeout(60000)
@@ -41,7 +41,9 @@ public class ProdutoClient {
                     .header("Authorization", "Bearer " + token)
                     .queryString("idClienteI7", idCliente)
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
-                    .asObject(new GenericType<List<ProdutoDTO>>() {});
+                    .queryString("pageNumber", pageNumber)
+                    .queryString("pageSize", pageSize)
+                    .asObject(ProdutoDTO[].class);
 
             if(response != null) {
                 return response.getBody();
@@ -98,7 +100,7 @@ public class ProdutoClient {
         String url = DadosMicroServicos.endPointFotoProduto;
         HttpResponse<byte[]> response = null;
         try {
-            log.info("[getProdutoPorId] - Buscando produto " + id);
+            log.info("[getFotoProdutoPorId] - Buscando foto do produto " + id);
             var request = Unirest.get(url)
                     .connectTimeout(60000)
                     .header("Content-Type", "image/jpg")
@@ -108,8 +110,8 @@ public class ProdutoClient {
                     .queryString("id", id);
 
             response = request.asBytes();//File("./cache_imagens/produto_" + id + ".jpg");
-            var arqImagem = response.getBody();
-            if (response.isSuccess()) {
+            if (response.getStatus() == 200) {
+                var arqImagem = response.getBody();
                 result.put("file", arqImagem);
                 result.put("url", url + "?idClienteI7=" + idCliente +
                         "&idProdutoI7=" + DadosMicroServicos.idProdutoI7 +
@@ -118,14 +120,16 @@ public class ProdutoClient {
                 return result;
             }
             var msg = response.mapError(HashMap.class);
-            if (msg.containsKey("Message")) log.info("[postSku] Erro: " + msg.get("Message"));
-            if (msg.containsKey("message")) log.info("[postSku] Erro: " + msg.get("message"));
+            if (msg != null) {
+                if (msg.containsKey("Message")) log.info("[getFotoProdutoPorId] Erro: " + msg.get("Message"));
+                if (msg.containsKey("message")) log.info("[getFotoProdutoPorId] Erro: " + msg.get("message"));
+            }
             return null;
         } catch (UnirestException e) {
-            log.warn("[getProdutoPorId: UnirestException] - Erro: " + e.getMessage());
+            log.warn("[getFotoProdutoPorId: UnirestException] - Erro: " + e.getMessage());
             return null;
         } catch (Exception e) {
-            log.warn("[getProdutoPorId: Exception] - Erro: " + e);
+            log.warn("[getFotoProdutoPorId: Exception] - Erro: " + e);
             return null;
         }
     }

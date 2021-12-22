@@ -1,8 +1,10 @@
 package br.com.i7solution.vtex.clients;
 
 import br.com.i7solution.vtex.clients.dtos.ImportarPedidoDTO;
+import br.com.i7solution.vtex.clients.dtos.ProdutoDTO;
 import br.com.i7solution.vtex.config.PropertiesConfig;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import kong.unirest.GenericType;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,7 @@ import br.com.i7solution.vtex.clients.dtos.PedidoDTO;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 @Log4j2
@@ -33,7 +36,7 @@ public class PedidoClient {
                     .header("Authorization", "Bearer " + props.getProperty("properties.token"))
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
                     .queryString("idClienteI7", props.getProperty("properties.idcliente"))
-                    .queryString("id", id)
+                    .queryString("idPedidoErp", id)
                     .asObject(PedidoDTO.class);
 
             if (response.getStatus() == 200) {
@@ -56,18 +59,21 @@ public class PedidoClient {
     public PedidoDTO getPedidoPorNumpedWeb(Long numpedweb) throws IOException {
         var props = properties.getProperties();
         String url = DadosMicroServicos.endPointPedidos;
-        HttpResponse<PedidoDTO> response = null;
+        HttpResponse<PedidoDTO[]> response = null;
         try {
             response = Unirest.get(url)
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + props.getProperty("properties.token"))
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
                     .queryString("idClienteI7", props.getProperty("properties.idcliente"))
-                    .queryString("numpedweb", numpedweb)
-                    .asObject(PedidoDTO.class);
+                    .queryString("id", numpedweb)
+                    .asObject(PedidoDTO[].class);
 
             if (response.getStatus() == 200) {
-                return response.getBody();
+                var result = response.getBody();
+                if (result == null) return null;
+                if (result.length > 0) return result[0];
+                return null;
             } else {
                 String msgErro = "HttpStatus: " + response.getStatus();
                 var msg = response.mapError(HashMap.class);
@@ -79,7 +85,7 @@ public class PedidoClient {
                 throw new UnirestException(msgErro);
             }
         } catch (UnirestException e) {
-            log.warn("[getPedidoPorId] - Erro: " + e.getMessage());
+            log.warn("[getPedidoPorNumpedWeb] - Erro: " + e.getMessage());
             return null;
         }
     }
@@ -128,6 +134,7 @@ public class PedidoClient {
             ObjectMapper mapper = new ObjectMapper();
             log.info(mapper.writeValueAsString(dados));
             var response = Unirest.post(url)
+                    .connectTimeout(60000)
                     .header("Content-Type", "application/json")
                     .header("Authorization", "Bearer " + token)
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
@@ -135,7 +142,7 @@ public class PedidoClient {
                     .body(dados)
                     .asObject(PedidoDTO.class);
 
-            if (response.getStatus() == 200) {
+            if (response.getStatus() == 201) {
                 return response.getBody();
             } else {
                 String msgErro = "HttpStatus: " + response.getStatus() + " \n";

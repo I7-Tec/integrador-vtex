@@ -54,7 +54,7 @@ public class InventoryClient {
         String url = props.getProperty("properties.vtex.url") + DadosVtex.endPointInventory + skuId + "/warehouses/" + warehouseId;
         HttpResponse<String> response = null;
         try {
-            log.info("[putEstoquePorSku] - Dados: " + inventory.toString());
+            //log.info("[putEstoquePorSku] - Dados: " + inventory.toString());
             response = Unirest.put(url)
                     .header("Content-Type", "application/json")
                     .header("X-VTEX-API-AppKey", props.getProperty("properties.vtex.appkey"))

@@ -24,6 +24,6 @@ public class SkuFileDTO implements Serializable {
 	private String url;
 	@JsonProperty("Text")
 	private String text;
-	@JsonProperty("Image file")
-	private byte[] image;
+//	@JsonProperty("Image file")
+//	private byte[] image;
 }

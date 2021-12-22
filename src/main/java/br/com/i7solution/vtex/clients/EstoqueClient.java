@@ -22,7 +22,7 @@ public class EstoqueClient {
     @Autowired
     private PropertiesConfig properties;
 
-    public EstoqueDTO[] getEstoque() throws IOException {
+    public EstoqueDTO[] getEstoques(Long pageSize, Long pageNr) throws IOException {
         var props = properties.getProperties();
         String url = DadosMicroServicos.endPointEstoques;
         HttpResponse<EstoqueDTO[]> response = null;
@@ -35,6 +35,8 @@ public class EstoqueClient {
                     //.queryString("idProduto", "")
                     .queryString("idFilial", "1")
                     .queryString("enviaEcommerce", true)
+                    .queryString("pageSize", pageSize)
+                    .queryString("pageNumber", pageNr)
                     .asObject(EstoqueDTO[].class);
 
             return response.getBody();

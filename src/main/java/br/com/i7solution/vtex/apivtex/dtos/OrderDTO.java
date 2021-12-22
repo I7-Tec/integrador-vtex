@@ -42,14 +42,14 @@ public class OrderDTO implements Serializable {
     private String followUpEmail;
     private String lastMessage;
     private String hostname;
-    private InvoiceDataDTO[] invoiceData;
+    //private InvoiceDataDTO invoiceData;
     private ChangesAttachmentDTO[] changesAttachment;
     private String openTextField;
     private Integer roundingError;
     private String orderFormId;
     private String commercialConditionData;
     private Boolean isCompleted;
-    private String customData;
+    private CustomData customData;
     private StorePreferencesDataDTO storePreferencesData;
     private Boolean allowCancellation;
     private Boolean allowEdition;
