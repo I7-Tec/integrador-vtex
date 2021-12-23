@@ -180,6 +180,7 @@ public class CatalogClient {
                     .asObject(SkuInclusaoDTO.class);
 
             if (response.getStatus() == 200) {
+                log.warn("[postSku] Sucesso: Status " + response.getStatus());
                 return response.getBody();
             } else {
                 String msgErro = "HttpStatus: " + response.getStatus() + " - ";

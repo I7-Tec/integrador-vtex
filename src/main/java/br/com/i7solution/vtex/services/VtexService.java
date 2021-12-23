@@ -474,59 +474,58 @@ public class VtexService {
                 produtosVtex.postProduto(produtoInclusaoVtex);
             }
 
-            var skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
-            var skuInclusaoVtex = new SkuInclusaoDTO();
-            if ((produtoVtexRef != null) && (skuProduto == null)) {
-                log.info("Cadastrando SKU para o produto " + produto.getId());
-                skuInclusaoVtex.setProductId(produtoVtexRef.getId());
-                skuInclusaoVtex.setIsActive(false);
-                skuInclusaoVtex.setName(Ferramentas.toRSCase(produtoVtexRef.getName()));
-                skuInclusaoVtex.setRefId(produto.getId().toString());
-                skuInclusaoVtex.setPackagedHeight(produto.getAltura());
-                skuInclusaoVtex.setPackagedLength(produto.getComprimento());
-                skuInclusaoVtex.setPackagedWidth(produto.getLargura());
-                skuInclusaoVtex.setPackagedWeightKg(produto.getPesoLiquido());
-                skuInclusaoVtex.setHeight(produto.getAltura());
-                skuInclusaoVtex.setLength(produto.getComprimento());
-                skuInclusaoVtex.setWidth(produto.getLargura());
-                skuInclusaoVtex.setWeightKg(produto.getPesoLiquido());
-                skuInclusaoVtex.setCubicWeight(0.0);
-                skuInclusaoVtex.setIsKit(false);
-                skuInclusaoVtex.setCreationDate(Date.from(Instant.now()));
-                skuInclusaoVtex.setRewardValue(0.0);
-                skuInclusaoVtex.setEstimatedDateArrival("");
-                skuInclusaoVtex.setManufacturerCode(produto.getCodigoDeFabrica());
-                skuInclusaoVtex.setCommercialConditionId(null);
-                skuInclusaoVtex.setMeasurementUnit(produto.getUnidade());
-                skuInclusaoVtex.setUnitMultiplier(produto.getMultiploVenda());
-                skuInclusaoVtex.setModalType(null);
-                skuInclusaoVtex.setKitItensSellApart(false);
-                skuInclusaoVtex.setHeighCubicWeightt(null);
+            produtoVtexRef = produtosVtex.getProdutoRefId(produto.getId().toString());
+            if (produtoVtexRef != null) {
+                var skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
+                if (skuProduto == null) {
+                    var skuInclusaoVtex = new SkuInclusaoDTO();
+                    log.info("Cadastrando SKU para o produto " + produto.getId());
+                    skuInclusaoVtex.setProductId(produtoVtexRef.getId());
+                    skuInclusaoVtex.setIsActive(false);
+                    skuInclusaoVtex.setName(Ferramentas.toRSCase(produtoVtexRef.getName()));
+                    skuInclusaoVtex.setRefId(produto.getId().toString());
+                    skuInclusaoVtex.setPackagedHeight(produto.getAltura());
+                    skuInclusaoVtex.setPackagedLength(produto.getComprimento());
+                    skuInclusaoVtex.setPackagedWidth(produto.getLargura());
+                    skuInclusaoVtex.setPackagedWeightKg(produto.getPesoLiquido());
+                    skuInclusaoVtex.setHeight(produto.getAltura());
+                    skuInclusaoVtex.setLength(produto.getComprimento());
+                    skuInclusaoVtex.setWidth(produto.getLargura());
+                    skuInclusaoVtex.setWeightKg(produto.getPesoLiquido());
+                    skuInclusaoVtex.setCubicWeight(0.0);
+                    skuInclusaoVtex.setIsKit(false);
+                    skuInclusaoVtex.setCreationDate(Date.from(Instant.now()));
+                    skuInclusaoVtex.setRewardValue(0.0);
+                    skuInclusaoVtex.setEstimatedDateArrival("");
+                    skuInclusaoVtex.setManufacturerCode(produto.getCodigoDeFabrica());
+                    skuInclusaoVtex.setCommercialConditionId(null);
+                    skuInclusaoVtex.setMeasurementUnit(produto.getUnidade());
+                    skuInclusaoVtex.setUnitMultiplier(produto.getMultiploVenda());
+                    skuInclusaoVtex.setModalType(null);
+                    skuInclusaoVtex.setKitItensSellApart(false);
+                    skuInclusaoVtex.setHeighCubicWeightt(null);
 
-                produtosVtex.postSku(skuInclusaoVtex);
-            } else {
-                log.warn("GravarSku - Não foi possível encontrar o produto " + produto.getId());
-            }
+                    var dadosSku = produtosVtex.postSku(skuInclusaoVtex);
+                    if ((dadosSku != null) && (dadosSku.getId() == null)) {
 
-            skuProduto = produtosVtex.getSKURefId(produto.getId().toString());
-            if (skuProduto != null) {
-                if (skuProduto.getId() != null) {
-                    var skuFileExistente = produtosVtex.getSkuFile(skuProduto.getId());
+                    }
+
+                    var skuFileExistente = produtosVtex.getSkuFile(dadosSku.getId());
                     if (skuFileExistente == null) {
                         var imgProd = produtoWinthor.getFotoProdutoPorId(produto.getId().toString());
                         if (imgProd != null && !imgProd.isEmpty()) {
                             var skuFile = new SkuFileDTO();
                             skuFile.setId(null);
-                            skuFile.setSkuId(skuProduto.getId());
+                            skuFile.setSkuId(dadosSku.getId());
                             skuFile.setArchiveId(null);
-                            var nameSkuFile = Ferramentas.removerAcentos(skuProduto.getName());
+                            var nameSkuFile = Ferramentas.removerAcentos(dadosSku.getName());
                             skuFile.setName(
                                 nameSkuFile
                                     .replace(".", "")
                                     .replace(" ", "-")
                             );
-                            skuFile.setLabel(skuProduto.getName());
-                            skuFile.setText(skuProduto.getName());
+                            skuFile.setLabel(dadosSku.getName());
+                            skuFile.setText(dadosSku.getName());
                             skuFile.setUrl((String) imgProd.get("url"));
                             skuFile.setIsMain(true);
                             //skuFile.setImage((byte[]) imgProd.get("file"));
@@ -540,17 +539,17 @@ public class VtexService {
                     }
 
                     if (produto.getCodigoDeBarras() != null) {
-                        var skuEan = produtosVtex.getSkuEan(skuProduto.getId().toString());
+                        var skuEan = produtosVtex.getSkuEan(dadosSku.getId().toString());
                         if (skuEan == null) {
                             produtosVtex.postSkuEan(
-                                skuProduto.getId().toString(),
+                                dadosSku.getId().toString(),
                                 produto.getCodigoDeBarras().toString()
                             );
                         }
                     }
-                } else {
-                    log.info("SKU cadastrado na VTEX(skuId VTEX: " + skuProduto.getId() + ")");
                 }
+            } else {
+                log.warn("GravarSku - Não foi possível encontrar o produto " + produto.getId());
             }
         } catch (Exception e) {
             log.warn("[sincronizarProdutos] - Erro: " + e);

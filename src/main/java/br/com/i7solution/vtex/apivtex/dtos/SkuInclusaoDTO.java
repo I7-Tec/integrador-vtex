@@ -7,9 +7,9 @@ import java.util.Date;
 
 @Data
 public class SkuInclusaoDTO implements Serializable {
-    private Long Id ;
-    private Long ProductId ;
-    private boolean IsActive;
+    private Long Id;
+    private Long ProductId;
+    private Boolean IsActive;
     private String Name;
     private String RefId;
     private Double PackagedHeight;
@@ -21,7 +21,7 @@ public class SkuInclusaoDTO implements Serializable {
     private Double Width;
     private Double WeightKg;
     private Double CubicWeight;
-    private boolean IsKit;
+    private Boolean IsKit;
     private Date CreationDate;
     private Double RewardValue;
     private String EstimatedDateArrival;
@@ -30,7 +30,7 @@ public class SkuInclusaoDTO implements Serializable {
     private String MeasurementUnit;
     private Double UnitMultiplier;
     private String ModalType;
-    private boolean KitItensSellApart;
+    private Boolean KitItensSellApart;
     private Double HeighCubicWeightt;
 
     @Override

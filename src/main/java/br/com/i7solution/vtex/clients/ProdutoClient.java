@@ -41,6 +41,8 @@ public class ProdutoClient {
                     .header("Authorization", "Bearer " + token)
                     .queryString("idClienteI7", idCliente)
                     .queryString("idProdutoI7", DadosMicroServicos.idProdutoI7)
+                    .queryString("ativo", true)
+                    .queryString("enviaEcommerce", true)
                     .queryString("pageNumber", pageNumber)
                     .queryString("pageSize", pageSize)
                     .asObject(ProdutoDTO[].class);
