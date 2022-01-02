@@ -22,6 +22,6 @@ public class PriceDTO implements Serializable {
                 "    \"basePrice\": " + basePrice + ",\n" +
                 "    \"costPrice\": " + costPrice + ",\n" +
                 "    \"fixedPrices\": " + fixedPrices.toString() + "\n" +
-                '}';
+                "}";
     }
 }

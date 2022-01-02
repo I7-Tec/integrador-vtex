@@ -433,8 +433,7 @@ public class VtexService {
             }
             log.info("Finalizando sincronização de Seções...");
         } catch (Exception e) {
-            log.error(e.toString());
-            e.printStackTrace();
+            log.warn(e.toString());
         }
     }
 
@@ -506,26 +505,27 @@ public class VtexService {
                     skuInclusaoVtex.setHeighCubicWeightt(null);
 
                     var dadosSku = produtosVtex.postSku(skuInclusaoVtex);
+                    var skuIncluso = new SkuDTO();
                     if ((dadosSku != null) && (dadosSku.getId() == null)) {
-
+                        skuIncluso = produtosVtex.getSKURefId(produto.getId().toString());
                     }
 
-                    var skuFileExistente = produtosVtex.getSkuFile(dadosSku.getId());
+                    var skuFileExistente = produtosVtex.getSkuFile(skuIncluso.getId());
                     if (skuFileExistente == null) {
                         var imgProd = produtoWinthor.getFotoProdutoPorId(produto.getId().toString());
                         if (imgProd != null && !imgProd.isEmpty()) {
                             var skuFile = new SkuFileDTO();
                             skuFile.setId(null);
-                            skuFile.setSkuId(dadosSku.getId());
+                            skuFile.setSkuId(skuIncluso.getId());
                             skuFile.setArchiveId(null);
-                            var nameSkuFile = Ferramentas.removerAcentos(dadosSku.getName());
+                            var nameSkuFile = Ferramentas.removerAcentos(skuIncluso.getName());
                             skuFile.setName(
                                 nameSkuFile
                                     .replace(".", "")
                                     .replace(" ", "-")
                             );
-                            skuFile.setLabel(dadosSku.getName());
-                            skuFile.setText(dadosSku.getName());
+                            skuFile.setLabel(skuIncluso.getName());
+                            skuFile.setText(skuIncluso.getName());
                             skuFile.setUrl((String) imgProd.get("url"));
                             skuFile.setIsMain(true);
                             //skuFile.setImage((byte[]) imgProd.get("file"));
@@ -539,10 +539,10 @@ public class VtexService {
                     }
 
                     if (produto.getCodigoDeBarras() != null) {
-                        var skuEan = produtosVtex.getSkuEan(dadosSku.getId().toString());
+                        var skuEan = produtosVtex.getSkuEan(skuIncluso.getId().toString());
                         if (skuEan == null) {
                             produtosVtex.postSkuEan(
-                                dadosSku.getId().toString(),
+                                skuIncluso.getId().toString(),
                                 produto.getCodigoDeBarras().toString()
                             );
                         }
